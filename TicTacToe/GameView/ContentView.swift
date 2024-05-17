@@ -14,9 +14,11 @@ struct ContentView: View {
         
         VStack {
             
-            Text("Title")
+            Text("Tic Tac Toe")
                 .font(.largeTitle)
                 .fontWeight(.black)
+            Text("Revisited")
+                .font(.callout)
             
             GameGrid()
                 .padding()
@@ -25,11 +27,12 @@ struct ContentView: View {
                 gameLogic.resetGame()
             } label: {
                 Text("Restart")
-                    .frame(width: 200, height: 50, alignment: .center)
+                    .frame(width: 200, height: 70, alignment: .center)
                     .background(.black)
                     .foregroundStyle(.white)
                     .font(.title3)
                     .fontWeight(.medium)
+                    .cornerRadius(20)
             }
             .padding()
         }
