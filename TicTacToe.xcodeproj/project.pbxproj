@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3E5EF2DA2BF812E2001B6D22 /* GameGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameGrid.swift; path = GameView/GameGrid.swift; sourceTree = "<group>"; };
+		3E5EF2DA2BF812E2001B6D22 /* GameGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameGrid.swift; sourceTree = "<group>"; };
 		3E6C13B32BF7F82400373047 /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E6C13B62BF7F82400373047 /* TicTacToeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeApp.swift; sourceTree = "<group>"; };
 		3E6C13B82BF7F82400373047 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -38,6 +38,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E5EF2DC2BF816BB001B6D22 /* GameView */ = {
+			isa = PBXGroup;
+			children = (
+				3E6C13B82BF7F82400373047 /* ContentView.swift */,
+				3E5EF2DA2BF812E2001B6D22 /* GameGrid.swift */,
+			);
+			path = GameView;
+			sourceTree = "<group>";
+		};
+		3E5EF2DD2BF816DD001B6D22 /* GameLogic */ = {
+			isa = PBXGroup;
+			children = (
+				3EDF8B802BF7FBAB00957F89 /* GameLogic.swift */,
+				3EDF8B822BF80D1A00957F89 /* GameLogicConditions.swift */,
+			);
+			path = GameLogic;
+			sourceTree = "<group>";
+		};
 		3E6C13AA2BF7F82400373047 = {
 			isa = PBXGroup;
 			children = (
@@ -58,10 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				3E6C13B62BF7F82400373047 /* TicTacToeApp.swift */,
-				3E6C13B82BF7F82400373047 /* ContentView.swift */,
-				3E5EF2DA2BF812E2001B6D22 /* GameGrid.swift */,
-				3EDF8B802BF7FBAB00957F89 /* GameLogic.swift */,
-				3EDF8B822BF80D1A00957F89 /* GameLogicConditions.swift */,
+				3E5EF2DC2BF816BB001B6D22 /* GameView */,
+				3E5EF2DD2BF816DD001B6D22 /* GameLogic */,
 				3E6C13BA2BF7F82500373047 /* Assets.xcassets */,
 				3E6C13BC2BF7F82500373047 /* Preview Content */,
 			);
