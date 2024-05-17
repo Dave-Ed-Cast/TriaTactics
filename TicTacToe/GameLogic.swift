@@ -17,12 +17,18 @@ class TicTacToe: ObservableObject {
     @Published var board: [Player?] = Array(repeating: nil, count: 9)
     @Published var activePlayer: Player = .X
     @Published var winner: Player? = nil
+    var moveCountX: Int = 0
+    var moveCountO: Int = 0
+    var totalMoves: Int = 0
+    var rotate: Bool = false
     
     func buttonTap(index: Int) {
         
         guard board[index] == nil && winner == nil else {
             return
         }
+        
+        gameActions()
         
         board[index] = activePlayer
         
@@ -44,10 +50,32 @@ class TicTacToe: ObservableObject {
         
     }
     
+    func gameActions() {
+        
+        if activePlayer == .X {
+            moveCountX += 1
+        } else {
+            moveCountO += 1
+        }
+        
+        if (activePlayer == .X && moveCountX == 4) || (activePlayer == .O && moveCountO == 4) {
+            removeFirstMove(of: activePlayer)
+        }
+        
+        totalMoves = moveCountX + moveCountO
+        
+        if totalMoves > 10 {
+            rotate = true
+        }
+        print("count x: \(moveCountX), count o: \(moveCountO)")
+    }
     func resetGame() {
         board = Array(repeating: nil, count: 9)
         activePlayer = .X
         winner = nil
+        moveCountX = 0
+        moveCountO = 0
+        totalMoves = 0
     }
     
     func checkWinner() -> Bool {
@@ -78,5 +106,22 @@ class TicTacToe: ObservableObject {
         }
         
         return false
+    }
+    
+    func removeFirstMove(of player: Player) {
+        // Find the index of the first move made by the player
+        guard let firstMoveIndex = board.firstIndex(where: { $0 == player }) else {
+            return
+        }
+        
+        // Remove the first move of the player
+        board[firstMoveIndex] = nil
+        
+        // Decrement move count for the player
+        if player == .X {
+            moveCountX -= 1
+        } else {
+            moveCountO -= 1
+        }
     }
 }
