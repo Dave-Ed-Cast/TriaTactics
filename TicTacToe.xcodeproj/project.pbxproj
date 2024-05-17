@@ -12,6 +12,7 @@
 		3E6C13BB2BF7F82500373047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E6C13BA2BF7F82500373047 /* Assets.xcassets */; };
 		3E6C13BE2BF7F82500373047 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E6C13BD2BF7F82500373047 /* Preview Assets.xcassets */; };
 		3EDF8B812BF7FBAB00957F89 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDF8B802BF7FBAB00957F89 /* GameLogic.swift */; };
+		3EDF8B832BF80D1A00957F89 /* GameLogicConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDF8B822BF80D1A00957F89 /* GameLogicConditions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		3E6C13BA2BF7F82500373047 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E6C13BD2BF7F82500373047 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3EDF8B802BF7FBAB00957F89 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
+		3EDF8B822BF80D1A00957F89 /* GameLogicConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogicConditions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 				3E6C13B62BF7F82400373047 /* TicTacToeApp.swift */,
 				3E6C13B82BF7F82400373047 /* ContentView.swift */,
 				3EDF8B802BF7FBAB00957F89 /* GameLogic.swift */,
+				3EDF8B822BF80D1A00957F89 /* GameLogicConditions.swift */,
 				3E6C13BA2BF7F82500373047 /* Assets.xcassets */,
 				3E6C13BC2BF7F82500373047 /* Preview Content */,
 			);
@@ -142,6 +145,7 @@
 			files = (
 				3EDF8B812BF7FBAB00957F89 /* GameLogic.swift in Sources */,
 				3E6C13B92BF7F82400373047 /* ContentView.swift in Sources */,
+				3EDF8B832BF80D1A00957F89 /* GameLogicConditions.swift in Sources */,
 				3E6C13B72BF7F82400373047 /* TicTacToeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

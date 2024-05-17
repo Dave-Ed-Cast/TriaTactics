@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @ObservedObject var ticTacToe: TicTacToe = TicTacToe()
+    @ObservedObject var gameLogic: GameLogic = GameLogic()
     var body: some View {
         
         VStack {
@@ -23,22 +23,22 @@ struct ContentView: View {
             LazyVGrid(columns: col, content: {
                 ForEach(0..<9) { value in
                     Button {
-                        ticTacToe.buttonTap(index: value)
+                        gameLogic.buttonTap(index: value)
                     } label: {
-                            Text("\(ticTacToe.buttonLabel(index: value))")
-                                .frame(width: 100, height: 100, alignment: .center)
-                                .background(.black)
-                                .foregroundStyle(.white)
-                                .font(.title)
-                                .fontWeight(.bold)
-                        
+                        Text("\(gameLogic.buttonLabel(index: value))")
+                            .frame(width: 100, height: 100, alignment: .center)
+                            .background(.black)
+                            .foregroundStyle(.white)
+                            .font(.title)
+                            .fontWeight(.bold)
                     }
                 }
             })
+            
             .padding()
             
             Button {
-                ticTacToe.resetGame()
+                gameLogic.resetGame()
             } label: {
                 Text("Restart")
                     .frame(width: 200, height: 50, alignment: .center)
