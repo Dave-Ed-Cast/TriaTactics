@@ -17,6 +17,8 @@ class GameLogic: ObservableObject {
     @Published var board: [Player?] = Array(repeating: nil, count: 9)
     @Published var activePlayer: Player = .X
     @Published var winner: Player? = nil
+    
+    var playerHistory: [Player: [Int]] = [.X: [], .O: []]
     var moveCountX: Int = 0
     var moveCountO: Int = 0
     var totalMoves: Int = 0
@@ -28,10 +30,10 @@ class GameLogic: ObservableObject {
             return
         }
         
-        gameActions()
-        
         board[index] = activePlayer
         
+        gameActions(index: index)
+                
         if checkWinner() {
             winner = activePlayer
             print("\(activePlayer) won. GZ!")
@@ -57,5 +59,7 @@ class GameLogic: ObservableObject {
         moveCountX = 0
         moveCountO = 0
         totalMoves = 0
+        playerHistory[.X] = []
+        playerHistory[.O] = []
     }
 }

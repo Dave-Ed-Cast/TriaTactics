@@ -18,24 +18,8 @@ struct ContentView: View {
                 .font(.largeTitle)
                 .fontWeight(.black)
             
-            let col = Array(repeating: GridItem(.flexible()), count: 3)
-            
-            LazyVGrid(columns: col, content: {
-                ForEach(0..<9) { value in
-                    Button {
-                        gameLogic.buttonTap(index: value)
-                    } label: {
-                        Text("\(gameLogic.buttonLabel(index: value))")
-                            .frame(width: 100, height: 100, alignment: .center)
-                            .background(.black)
-                            .foregroundStyle(.white)
-                            .font(.title)
-                            .fontWeight(.bold)
-                    }
-                }
-            })
-            
-            .padding()
+            GameGrid()
+                .padding()
             
             Button {
                 gameLogic.resetGame()

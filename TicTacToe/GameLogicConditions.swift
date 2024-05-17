@@ -9,12 +9,14 @@ import Foundation
 
 extension GameLogic {
     
-    func gameActions() {
+    func gameActions(index: Int) {
         
         if activePlayer == .X {
             moveCountX += 1
+            playerHistory[.X]?.append(index)
         } else {
             moveCountO += 1
+            playerHistory[.O]?.append(index)
         }
         
         if (activePlayer == .X && moveCountX == 4) || (activePlayer == .O && moveCountO == 4) {
@@ -31,7 +33,7 @@ extension GameLogic {
     
     func removeFirstMove(of player: Player) {
 
-        guard let firstMoveIndex = board.firstIndex(where: { $0 == player }) else {
+        guard let firstMoveIndex = playerHistory[activePlayer]?.removeFirst() else {
             return
         }
         
