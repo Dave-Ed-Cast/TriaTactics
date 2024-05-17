@@ -25,12 +25,13 @@ struct ContentView: View {
                     Button {
                         ticTacToe.buttonTap(index: value)
                     } label: {
-                        Text("\(ticTacToe.buttonLabel(index: value))")
-                            .frame(width: 100, height: 100, alignment: .center)
-                            .background(.black)
-                            .foregroundStyle(.white)
-                            .font(.title)
-                            .fontWeight(.bold)
+                            Text("\(ticTacToe.buttonLabel(index: value))")
+                                .frame(width: 100, height: 100, alignment: .center)
+                                .background(.black)
+                                .foregroundStyle(.white)
+                                .font(.title)
+                                .fontWeight(.bold)
+                        
                     }
                 }
             })
