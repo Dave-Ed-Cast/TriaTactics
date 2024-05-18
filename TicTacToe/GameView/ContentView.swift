@@ -9,32 +9,42 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @ObservedObject var gameLogic: GameLogic = GameLogic()
+    let onboardingStatusKey = "OnboardingStatus"
+    @State var onboardingIsOver: Bool = UserDefaults.standard.bool(forKey: "OnboardingStatus")
+    @State private var showGameView: Bool = false
+    
     var body: some View {
-        
-        VStack {
-            
-            Text("Tic Tac Toe")
-                .font(.largeTitle)
-                .fontWeight(.black)
-            Text("Revisited")
-                .font(.callout)
-            
-            GameGrid()
-                .padding()
-            
-            Button {
-                gameLogic.resetGame()
-            } label: {
-                Text("Restart")
-                    .frame(width: 200, height: 70, alignment: .center)
-                    .background(.black)
-                    .foregroundStyle(.white)
-                    .font(.title3)
-                    .fontWeight(.medium)
-                    .cornerRadius(20)
+        if !onboardingIsOver {
+            Onboarding(onboardingIsOver: $onboardingIsOver)
+            //and after the user completed it
+                .onDisappear {
+                    //we save its value
+                    UserDefaults.standard.set(true, forKey: onboardingStatusKey)
+                }
+        } else {
+            VStack {
+                Text("Tic Tac Toe")
+                    .font(.largeTitle)
+                    .fontWeight(.black)
+                Text("Revisited")
+                    .font(.callout)
+                
+                RoundedRectangle(cornerRadius: 20)
+                    .frame(width: 200, height: 100, alignment: .center)
+                    .padding()
+                    .overlay(
+                        Button{
+                            showGameView = true
+                        } label: {
+                            Text("Play")
+                                .foregroundStyle(.white)
+                                .font(.title)
+                        }
+                    )
+                    .fullScreenCover(isPresented: $showGameView) {
+                        GameView()
+                    }
             }
-            .padding()
         }
     }
 }

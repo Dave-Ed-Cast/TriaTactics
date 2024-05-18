@@ -13,10 +13,11 @@ enum Player {
 }
 
 class GameLogic: ObservableObject {
-    
+        
     @Published var board: [Player?] = Array(repeating: nil, count: 9)
     @Published var activePlayer: Player = .X
     @Published var winner: Player? = nil
+    @Published var isGameOver: Bool = false
     
     var playerHistory: [Player: [Int]] = [.X: [], .O: []]
     var moveCountX: Int = 0
@@ -36,12 +37,12 @@ class GameLogic: ObservableObject {
                 
         if checkWinner() {
             winner = activePlayer
+            isGameOver = true
+            print(isGameOver)
             print("\(activePlayer) won. GZ!")
         } else {
             activePlayer = (activePlayer == .X) ? .O : .X
         }
-        
-        print("\(activePlayer) won")
     }
     
     func buttonLabel(index: Int) -> String {
@@ -61,5 +62,6 @@ class GameLogic: ObservableObject {
         totalMoves = 0
         playerHistory[.X] = []
         playerHistory[.O] = []
+        isGameOver = false
     }
 }

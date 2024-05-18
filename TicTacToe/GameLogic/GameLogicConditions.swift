@@ -72,7 +72,7 @@ extension GameLogic {
         if board[2] == activePlayer && board[4] == activePlayer && board[6] == activePlayer {
             return true
         }
-        
+                
         return false
     }
 }

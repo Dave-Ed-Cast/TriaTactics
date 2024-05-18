@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E5630812BF822B00009B48B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3E5630802BF822B00009B48B /* Lottie */; };
+		3E5630832BF822BC0009B48B /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5630822BF822BC0009B48B /* Onboarding.swift */; };
+		3E5630872BF827AF0009B48B /* LottieAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5630862BF827AF0009B48B /* LottieAnimation.swift */; };
+		3E56308B2BF82BBF0009B48B /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E56308A2BF82BBF0009B48B /* GameView.swift */; };
 		3E5EF2DB2BF812E2001B6D22 /* GameGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5EF2DA2BF812E2001B6D22 /* GameGrid.swift */; };
 		3E6C13B72BF7F82400373047 /* TicTacToeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6C13B62BF7F82400373047 /* TicTacToeApp.swift */; };
 		3E6C13B92BF7F82400373047 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6C13B82BF7F82400373047 /* ContentView.swift */; };
@@ -17,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E5630822BF822BC0009B48B /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		3E5630862BF827AF0009B48B /* LottieAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieAnimation.swift; sourceTree = "<group>"; };
+		3E56308A2BF82BBF0009B48B /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		3E5EF2DA2BF812E2001B6D22 /* GameGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameGrid.swift; sourceTree = "<group>"; };
 		3E6C13B32BF7F82400373047 /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E6C13B62BF7F82400373047 /* TicTacToeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeApp.swift; sourceTree = "<group>"; };
@@ -32,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E5630812BF822B00009B48B /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +51,7 @@
 			children = (
 				3E6C13B82BF7F82400373047 /* ContentView.swift */,
 				3E5EF2DA2BF812E2001B6D22 /* GameGrid.swift */,
+				3E56308A2BF82BBF0009B48B /* GameView.swift */,
 			);
 			path = GameView;
 			sourceTree = "<group>";
@@ -76,6 +85,8 @@
 			isa = PBXGroup;
 			children = (
 				3E6C13B62BF7F82400373047 /* TicTacToeApp.swift */,
+				3E5630822BF822BC0009B48B /* Onboarding.swift */,
+				3E5630862BF827AF0009B48B /* LottieAnimation.swift */,
 				3E5EF2DC2BF816BB001B6D22 /* GameView */,
 				3E5EF2DD2BF816DD001B6D22 /* GameLogic */,
 				3E6C13BA2BF7F82500373047 /* Assets.xcassets */,
@@ -108,6 +119,9 @@
 			dependencies = (
 			);
 			name = TicTacToe;
+			packageProductDependencies = (
+				3E5630802BF822B00009B48B /* Lottie */,
+			);
 			productName = TicTacToe;
 			productReference = 3E6C13B32BF7F82400373047 /* TicTacToe.app */;
 			productType = "com.apple.product-type.application";
@@ -136,6 +150,9 @@
 				Base,
 			);
 			mainGroup = 3E6C13AA2BF7F82400373047;
+			packageReferences = (
+				3E56307F2BF822B00009B48B /* XCRemoteSwiftPackageReference "lottie-spm" */,
+			);
 			productRefGroup = 3E6C13B42BF7F82400373047 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -162,10 +179,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E5630832BF822BC0009B48B /* Onboarding.swift in Sources */,
 				3EDF8B812BF7FBAB00957F89 /* GameLogic.swift in Sources */,
 				3E6C13B92BF7F82400373047 /* ContentView.swift in Sources */,
 				3E5EF2DB2BF812E2001B6D22 /* GameGrid.swift in Sources */,
 				3EDF8B832BF80D1A00957F89 /* GameLogicConditions.swift in Sources */,
+				3E5630872BF827AF0009B48B /* LottieAnimation.swift in Sources */,
+				3E56308B2BF82BBF0009B48B /* GameView.swift in Sources */,
 				3E6C13B72BF7F82400373047 /* TicTacToeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,6 +394,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3E56307F2BF822B00009B48B /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3E5630802BF822B00009B48B /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3E56307F2BF822B00009B48B /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3E6C13AB2BF7F82400373047 /* Project object */;
 }
