@@ -19,7 +19,7 @@ struct Onboarding: View {
     
     var onboardingTitle: [String] = [
         "Welcome!",
-        "Title"
+        "Tria Tactics - the new tic tac toe"
     ]
     var onboardingText: [String] = [
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
