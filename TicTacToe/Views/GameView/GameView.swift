@@ -24,9 +24,7 @@ struct GameView: View {
                 .padding()
             
             Button {
-                if gameLogic.isGameOver {
-                    gameLogic.resetGame()
-                }
+                gameLogic.resetGame()
             } label: {
                 Text("Restart")
                     .frame(width: 200, height: 70, alignment: .center)
@@ -38,7 +36,6 @@ struct GameView: View {
                 
             }
             .padding()
-            .opacity(gameLogic.isGameOver ? 1 : 0.5)
             
             //            Spacer()
             //            Group {

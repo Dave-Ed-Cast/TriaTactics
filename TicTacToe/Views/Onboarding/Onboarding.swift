@@ -31,7 +31,7 @@ struct Onboarding: View {
         //ok so bear with me now, this is boring part
         VStack(spacing: 50) {
             //i created this view which can handle different modifiers, and 3 required fields (the first three). Lottie is extremely powerful and given any kind of animation, you can totally modify it and play it however you want. The hard part however is to make it in a way that suits your needs, so using these modifiers everyone can simply adjust accordingly
-            LottieAnimation(name: "Map", contentMode: .scaleAspectFit, playbackMode: .playing(.fromFrame(1, toFrame: 269, loopMode: .playOnce)), width: 300, height: 230, scaleFactor: 1.5, cornerRadiusFactor: 20)
+            LottieAnimation(name: "abc", contentMode: .scaleAspectFit, playbackMode: .playing(.toProgress(1, loopMode: .loop)))
             
             //god bless the spacers so that they do everything on their own
             Spacer()

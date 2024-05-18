@@ -46,5 +46,5 @@ struct LottieAnimation: View {
 }
 
 #Preview {
-    LottieAnimation(name: "Map", contentMode: .center, playbackMode: .playing(.fromFrame(1, toFrame: 269, loopMode: .playOnce)), width: 300, height: 300, scaleFactor: 1, cornerRadiusFactor: 40)
+    LottieAnimation(name: "abc", contentMode: .scaleAspectFit, playbackMode: .playing(.toProgress(1, loopMode: .loop)))
 }
