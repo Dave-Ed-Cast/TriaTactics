@@ -16,6 +16,7 @@ struct ContentView: View {
     var body: some View {
         if !onboardingIsOver {
             Onboarding(onboardingIsOver: $onboardingIsOver)
+                .preferredColorScheme(.light)
             //and after the user completed it
                 .onDisappear {
                     //we save its value
@@ -31,6 +32,7 @@ struct ContentView: View {
                 
                 RoundedRectangle(cornerRadius: 20)
                     .frame(width: 200, height: 100, alignment: .center)
+                    .foregroundStyle(.red)
                     .padding()
                     .overlay(
                         Button{
@@ -39,10 +41,13 @@ struct ContentView: View {
                             Text("Play")
                                 .foregroundStyle(.white)
                                 .font(.title)
+                                .fontWeight(.bold)
+                                .frame(width: 200, height: 100, alignment: .center)
                         }
                     )
                     .fullScreenCover(isPresented: $showGameView) {
                         GameView()
+                            .preferredColorScheme(.light)
                     }
             }
         }

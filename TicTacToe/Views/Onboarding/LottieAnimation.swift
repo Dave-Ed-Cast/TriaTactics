@@ -46,5 +46,5 @@ struct LottieAnimation: View {
 }
 
 #Preview {
-    LottieAnimation(name: "abc", contentMode: .scaleAspectFit, playbackMode: .playing(.toProgress(1, loopMode: .loop)))
+    LottieAnimation(name: "Cool", contentMode: .scaleAspectFit, playbackMode: .playing(.toProgress(1, loopMode: .loop)))
 }
