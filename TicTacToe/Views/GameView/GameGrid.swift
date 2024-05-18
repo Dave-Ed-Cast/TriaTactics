@@ -6,28 +6,58 @@
 //
 
 import SwiftUI
+import MetalKit
 
 struct GameGrid: View {
     
     @ObservedObject var gameLogic: GameLogic = GameLogic()
-
+    
     let col = Array(repeating: GridItem(.flexible()), count: 3)
     
+    @State private var start: Date = Date.now
+    
     var body: some View {
-        LazyVGrid(columns: col, content: {
-            ForEach(0..<9) { value in
-                Button {
-                    gameLogic.buttonTap(index: value)
-                } label: {
-                    Text("\(gameLogic.buttonLabel(index: value))")
-                        .frame(width: 100, height: 100, alignment: .center)
-                        .background(.black)
-                        .foregroundStyle(.white)
-                        .font(.title)
-                        .fontWeight(.bold)
+        
+        ZStack {
+            VStack(spacing: 105){
+                Rectangle()
+                    .frame(height: 5)
+                Rectangle()
+                    .frame(height: 5)
+            }
+            .frame(width: 350, height: 100)
+            HStack(spacing: 125){
+                Rectangle()
+                    .frame(width: 5)
+                Rectangle()
+                    .frame(width: 5)
+            }
+            .frame(width: 100, height: 340)
+            LazyVGrid(columns: col, spacing: 10) {
+                                
+                ForEach(0..<9) { value in
+                    Button {
+                        gameLogic.buttonTap(index: value)
+                        print(gameLogic.activePlayer)
+                    } label: {
+                        TimelineView(.animation) { tl in
+                            
+                            let time = start.distance(to: tl.date)
+                            Image(gameLogic.buttonLabel(index: value))
+                                .interpolation(.none)
+                                .resizable()
+                                .frame(width: 100, height: 100, alignment: .center)
+                                .foregroundStyle(.white)
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .colorEffect(ShaderLibrary.rainbow(.float(time)))
+
+                        }
+                    }
+                
                 }
             }
-        })
+        }
     }
 }
 

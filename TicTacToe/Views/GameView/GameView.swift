@@ -10,6 +10,7 @@ import SwiftUI
 struct GameView: View {
     
     @ObservedObject var gameLogic: GameLogic = GameLogic()
+    @State private var start: Date = Date.now
     
     var body: some View {
         VStack {
@@ -22,6 +23,7 @@ struct GameView: View {
             
             GameGrid()
                 .padding()
+            
             
             Button {
                 gameLogic.resetGame()
@@ -37,6 +39,7 @@ struct GameView: View {
             }
             .padding()
             
+            
             //            Spacer()
             //            Group {
             //                Text("Tic Tac Toe")
@@ -46,6 +49,7 @@ struct GameView: View {
             //                    .font(.callout)
             //            }
             //            .rotationEffect(.degrees(180))
+            
         }
     }
 }
