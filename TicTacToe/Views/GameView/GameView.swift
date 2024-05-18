@@ -21,7 +21,6 @@ struct GameView: View {
 
             GameGrid()
                 .padding()
-            if gameLogic.isGameOver ?? true {
                 Button {
                     gameLogic.resetGame()
                 } label: {
@@ -36,7 +35,6 @@ struct GameView: View {
                 }
                 .padding()
                 .padding(.top, 50)
-            }
             
             //            Spacer()
             //            Group {
