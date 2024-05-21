@@ -12,7 +12,7 @@ struct TicTacToeApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(onboardingIsOver: UserDefaults.standard.bool(forKey: "OnboardingStatus"))
+            ContentView(onboardingIsOver: UserDefaults.standard.bool(forKey: "OnboardingStatus"), currentStep: .constant(0))
                 .preferredColorScheme(.light)
         }
     }

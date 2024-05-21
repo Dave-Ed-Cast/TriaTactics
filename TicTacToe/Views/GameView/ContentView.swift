@@ -13,14 +13,12 @@ struct ContentView: View {
     @State var onboardingIsOver: Bool = UserDefaults.standard.bool(forKey: "OnboardingStatus")
     @State private var showGameView: Bool = false
     @State private var showTutorialView: Bool = false
+    @Binding var currentStep: Int
     
     var body: some View {
         if !onboardingIsOver {
-            Onboarding(onboardingIsOver: $onboardingIsOver)
-                .preferredColorScheme(.light)
-            //and after the user completed it
+            OnboardView(onbooardingIsOver: $onboardingIsOver, currentStep: $currentStep)
                 .onDisappear {
-                    //we save its value
                     UserDefaults.standard.set(true, forKey: onboardingStatusKey)
                 }
         } else {
@@ -75,5 +73,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView(currentStep: .constant(0))
 }

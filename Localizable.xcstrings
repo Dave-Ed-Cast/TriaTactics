@@ -11,34 +11,12 @@
         }
       }
     },
-    "Continue" : {
+    "After your third move, when you will make your fourth, the first one made will disappear! This is Tria Tactics..." : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Continue"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Continua"
-          }
-        }
-      }
-    },
-    "Done" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Done"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fatto"
+            "value" : "Dopo la tua terza mossa, quando farai la quarta, la prima effettuata sparirà! Questo è Tria tactics..."
           }
         }
       }
@@ -49,6 +27,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Per ora goditi la versione in locale perché la versione multi giocatore arriverà al più presto"
+          }
+        }
+      }
+    },
+    "Let's start!" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Iniziamo!"
           }
         }
       }
@@ -121,12 +109,12 @@
         }
       }
     },
-    "The key rule" : {
+    "Skip" : {
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La regola chiave"
+            "value" : "Salta"
           }
         }
       }
@@ -183,16 +171,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Benvenuto in Tria Tactics!"
-          }
-        }
-      }
-    },
-    "When each of you reach their 3rd move... the first move you made will disappear! So Tria Tactics begins..." : {
-      "localizations" : {
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quando si raggiunge la terza mossa, la prima viene eliminata! Quindi inizia Tria Tactics..."
           }
         }
       }
