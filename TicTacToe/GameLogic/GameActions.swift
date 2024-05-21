@@ -28,7 +28,6 @@ extension GameLogic {
         if checkWinner() {
             winner = activePlayer
             isGameOver = true
-            print("\(activePlayer) won. GZ!")
         } else {
             activePlayer = (activePlayer == .X) ? .O : .X
         }
@@ -82,6 +81,7 @@ extension GameLogic {
         playerHistory[.X] = []
         playerHistory[.O] = []
         isGameOver = false
+        offsetPosition = CGSize.zero
     }
     
 }

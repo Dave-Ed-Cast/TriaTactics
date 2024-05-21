@@ -20,6 +20,8 @@ class GameLogic: ObservableObject {
     var totalMoves: Int = 0
     var winningIndices: [Int]? = nil
     var rotate: Bool = false
+    var degrees: Double = 0
+    var offsetPosition: CGSize = CGSize.zero
     
     //set winning indices
     func setWinningIndices(indices: [Int]) {

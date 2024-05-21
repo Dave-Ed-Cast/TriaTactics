@@ -39,6 +39,15 @@ extension GameLogic {
             if grid[index] == activePlayer &&
                 grid[index + 1] == activePlayer &&
                 grid[index + 2] == activePlayer {
+                
+                degrees = 90
+                if index == 0 {
+                    offsetPosition = CGSize(width: 0, height: -120)
+                } else if index == 3 {
+                    offsetPosition = CGSize(width: 0, height: -10)
+                } else {
+                    offsetPosition = CGSize(width: 0, height: 100)
+                }
                 return true
             }
             
@@ -49,21 +58,23 @@ extension GameLogic {
             if grid[index] == activePlayer &&
                 grid[index + 3] == activePlayer &&
                 grid[index + 6] == activePlayer {
+                
+                if index == 0 {
+                    offsetPosition = CGSize(width: -128, height: 0)
+                } else if index == 1 {
+                    offsetPosition = CGSize(width: -8, height: 0)
+                } else {
+                    offsetPosition = CGSize(width: 112, height: 0)
+                }
                 return true
             }
         }
         
         //and these are the diagonals
-        if (
-            grid[0] == activePlayer &&
-            grid[4] == activePlayer &&
-            grid[8] == activePlayer
-        )
-            ||
-            (
-                grid[2] == activePlayer &&
-                grid[4] == activePlayer &&
-                grid[6] == activePlayer) {
+        if (grid[0] == activePlayer && grid[4] == activePlayer && grid[8] == activePlayer) || (grid[2] == activePlayer && grid[4] == activePlayer && grid[6] == activePlayer) {
+            
+            offsetPosition = grid[0] != nil ? CGSize(width: 0, height: 10) : CGSize(width: 0, height: -10)
+            degrees = grid[0] != nil ? -45 : 45
             return true
         }
         

@@ -28,6 +28,7 @@ struct LottieAnimation: View {
     var scaleFactor: CGFloat? = nil
     var cornerRadiusFactor: Double? = nil
     var degrees: Double? = nil
+    var offset: CGSize? = nil
     
     var body: some View {
         LottieView(animation: .named(name))
@@ -42,6 +43,8 @@ struct LottieAnimation: View {
             .scaleEffect(scaleFactor ?? 1)
             .cornerRadius(cornerRadiusFactor ?? 0)
             .rotationEffect(.degrees(degrees ?? 0))
+            .offset(offset ?? CGSize.zero)
+            
     }
 }
 
