@@ -17,35 +17,37 @@ struct GameView: View {
             Text("Tria Tactics")
                 .font(.largeTitle)
                 .fontWeight(.black)
-                .padding(.bottom, 100)
+                .padding()
+            HStack {
+                Text("Your turn: ")
+                    .font(.title)
+                    .fontWeight(.semibold)
+                Text("\(gameLogic.activePlayer == .X ? "X" : "O")")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+            }
+            .padding()
+            .padding(.bottom, 50)
 
-            GameGrid()
+            GameGrid(gameLogic: gameLogic)
                 .padding()
-                Button {
+            
+            Button {
+                if gameLogic.checkWinner() {
                     gameLogic.resetGame()
-                } label: {
-                    Text("Restart")
-                        .frame(width: 200, height: 70, alignment: .center)
-                        .background(.red)
-                        .foregroundStyle(.white)
-                        .font(.title3)
-                        .fontWeight(.medium)
-                        .cornerRadius(20)
-                        .opacity(1)
                 }
-                .padding()
-                .padding(.top, 50)
-            
-            //            Spacer()
-            //            Group {
-            //                Text("Tic Tac Toe")
-            //                    .font(.largeTitle)
-            //                    .fontWeight(.black)
-            //                Text("Revisited")
-            //                    .font(.callout)
-            //            }
-            //            .rotationEffect(.degrees(180))
-            
+            } label: {
+                Text("Restart")
+                    .frame(width: 200, height: 70, alignment: .center)
+                    .background(.yellow)
+                    .foregroundStyle(.black)
+                    .font(.title3)
+                    .fontWeight(.medium)
+                    .cornerRadius(20)
+                    .opacity(gameLogic.checkWinner() ? 1 : 0.5)
+            }
+            .disabled(!gameLogic.checkWinner())
+            .padding()
         }
     }
 }

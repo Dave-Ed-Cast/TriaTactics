@@ -22,3 +22,6 @@ using namespace metal;
     return half4(sin(angle), sin(angle + 2), sin(angle + 4), color.a);
 }
 
+[[stitchable]] half4 recolor(float2 pos, half4 color) {
+    return half4(1, 0, 0, color.a);
+}

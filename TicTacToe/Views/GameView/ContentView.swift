@@ -12,6 +12,7 @@ struct ContentView: View {
     let onboardingStatusKey = "OnboardingStatus"
     @State var onboardingIsOver: Bool = UserDefaults.standard.bool(forKey: "OnboardingStatus")
     @State private var showGameView: Bool = false
+    @State private var showTutorialView: Bool = false
     
     var body: some View {
         if !onboardingIsOver {
@@ -24,31 +25,50 @@ struct ContentView: View {
                 }
         } else {
             VStack {
-                Text("Tic Tac Toe")
-                    .font(.largeTitle)
-                    .fontWeight(.black)
-                Text("Revisited")
-                    .font(.callout)
+                    Text("Tria Tactics")
+                        .font(.system(size: 50))
+                        .fontWeight(.black)
+                        .padding()
                 
-                RoundedRectangle(cornerRadius: 20)
-                    .frame(width: 200, height: 100, alignment: .center)
-                    .foregroundStyle(.red)
-                    .padding()
-                    .overlay(
+                VStack(spacing: 200) {
+                    Text("Revisited")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                    
+                    VStack (spacing: 20){
                         Button{
                             showGameView = true
                         } label: {
                             Text("Play")
-                                .foregroundStyle(.white)
+                                .frame(width: 200, height: 70, alignment: .center)
+                                .background(.yellow)
+                                .foregroundStyle(.black)
                                 .font(.title)
-                                .fontWeight(.bold)
-                                .frame(width: 200, height: 100, alignment: .center)
+                                .fontWeight(.medium)
+                                .cornerRadius(20)
+                                .fullScreenCover(isPresented: $showGameView) {
+                                    GameView()
+                                }
                         }
-                    )
-                    .fullScreenCover(isPresented: $showGameView) {
-                        GameView()
-                            .preferredColorScheme(.light)
+                        Button{
+                            showTutorialView = true
+                        } label: {
+                            Text("Tutorial")
+                                .frame(width: 150, height: 50, alignment: .center)
+                                .background(.yellow)
+                                .foregroundStyle(.black)
+                                .font(.title3)
+                                .fontWeight(.medium)
+                                .cornerRadius(20)
+                        }
+                        .sheet(isPresented: $showTutorialView) {
+                            TutorialView()
+                        }
                     }
+                }
+                
+                
+                
             }
         }
     }

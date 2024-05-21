@@ -1,6 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
+    },
     "Continue" : {
       "localizations" : {
         "en" : {
@@ -53,6 +63,16 @@
         }
       }
     },
+    "OK!" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK!"
+          }
+        }
+      }
+    },
     "Play" : {
       "localizations" : {
         "en" : {
@@ -101,18 +121,12 @@
         }
       }
     },
-    "Tic Tac Toe" : {
+    "The key rule" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tic Tac Toe"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gioco del Tris"
+            "value" : "La regola chiave"
           }
         }
       }
@@ -147,6 +161,16 @@
         }
       }
     },
+    "Tutorial" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutorial"
+          }
+        }
+      }
+    },
     "Welcome to Tria Tactics!" : {
       "localizations" : {
         "en" : {
@@ -169,6 +193,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Quando si raggiunge la terza mossa, la prima viene eliminata! Quindi inizia Tria Tactics..."
+          }
+        }
+      }
+    },
+    "Your turn: " : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turno di: "
           }
         }
       }

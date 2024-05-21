@@ -6,11 +6,10 @@
 //
 
 import SwiftUI
-import MetalKit
 
 struct GameGrid: View {
     
-    @ObservedObject var gameLogic: GameLogic = GameLogic()
+    @ObservedObject var gameLogic: GameLogic
     
     let col = Array(repeating: GridItem(.flexible()), count: 3)
     
@@ -23,41 +22,41 @@ struct GameGrid: View {
                 .foregroundStyle(.yellow)
             VStack(spacing: 105) {
                 Rectangle()
-                    .frame(height: 5)
+                    .foregroundStyle(.white)
+                    .frame(height: 6)
                 Rectangle()
-                    .frame(height: 5)
+                    .foregroundStyle(.white)
+                    .frame(height: 6)
             }
             .frame(width: 350, height: 100)
             
             HStack(spacing: 125) {
                 Rectangle()
-                    .frame(width: 5)
+                    .foregroundStyle(.white)
+                    .frame(width: 6)
                 Rectangle()
-                    .frame(width: 5)
+                    .foregroundStyle(.white)
+                    .frame(width: 6)
             }
             .frame(width: 100, height: 340)
             
-            VStack(spacing: 30) { 
-                            ForEach(0..<3) { row in
-                                HStack(spacing: 40) { // Horizontal spacing between images in a row
-                                    ForEach(0..<3) { col in
-                                        let index = row * 3 + col
-                                        Button {
-                                            gameLogic.buttonTap(index: index)
-                                        } label: {
-                                            TimelineView(.animation) { tl in
-                                                let time = start.distance(to: tl.date)
-                                                Image(gameLogic.buttonLabel(index: index))
-                                                    .interpolation(.none)
-                                                    .resizable()
-                                                    .frame(width: 80, height: 80) // Adjust size as needed
-                                                    .colorEffect(ShaderLibrary.rainbow(.float(time)))
-                                            }
-                                        }
-                                    }
-                                }
+            VStack(spacing: 30) {
+                ForEach(0..<3) { row in
+                    HStack(spacing: 40) {
+                        ForEach(0..<3) { col in
+                            let index = row * 3 + col
+                            Button {
+                                gameLogic.buttonTap(index: index)
+                            } label: {
+                                Image(gameLogic.buttonLabel(index: index))
+                                    .interpolation(.none)
+                                    .resizable()
+                                    .frame(width: 80, height: 80)
                             }
                         }
+                    }
+                }
+            }
             
             if gameLogic.isGameOver ?? false {
                 LottieAnimation(name: "GameOver", contentMode: .center, playbackMode: .playing(.toProgress(1, loopMode: .playOnce)))
@@ -66,10 +65,9 @@ struct GameGrid: View {
                     .padding()
             }
         }
-        
     }
 }
 
 #Preview {
-    GameGrid()
+    GameGrid(gameLogic: GameLogic())
 }
