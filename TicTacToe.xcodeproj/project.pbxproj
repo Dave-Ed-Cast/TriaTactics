@@ -130,8 +130,8 @@
 		3EE9618A2BF8BB6800DBC853 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				3E5630822BF822BC0009B48B /* Onboarding.swift */,
 				3E5630862BF827AF0009B48B /* LottieAnimation.swift */,
+				3E5630822BF822BC0009B48B /* Onboarding.swift */,
 				3EBCE0822BFCEED600D5D37C /* TutorialView.swift */,
 			);
 			path = Onboarding;

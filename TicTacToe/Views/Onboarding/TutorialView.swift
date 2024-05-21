@@ -20,25 +20,26 @@ struct TutorialView: View {
             Spacer()
             
             VStack(spacing: 50) {
-                Text("The key rule")
-                    .font(.title)
+                Text("Tria Tactics rule")
+                    .font(.title2)
                     .fontWeight(.bold)
                 Text("When each of you reach their 3rd move... the first move you made will disappear! So Tria Tactics begins...")
-                    .font(.title3)
+                    .font(.body)
                     .fontWeight(.semibold)
                     .multilineTextAlignment(.center)
                 Button {
                     dismiss()
                 } label: {
                     Text("OK!")
-                        .frame(width: 200, height: 70, alignment: .center)
+                        .frame(width: 200, height: 60)
                         .background(.yellow)
                         .foregroundStyle(.black)
-                        .font(.title3)
-                        .fontWeight(.medium)
+                        .font(.body)
+                        .fontWeight(.semibold)
                         .cornerRadius(20)
                 }
             }
+            .padding()
             .padding(.bottom, 30)
         }
         .padding()

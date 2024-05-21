@@ -43,14 +43,14 @@ struct Onboarding: View {
             
             //user, read it please
             Text(onboardingTitle[currentStep])
-                .font(.title)
+                .font(.title2)
                 .fontWeight(.bold)
             Text(onboardingText[currentStep])
-                .font(.title3)
+                .font(.body)
                 .fontWeight(.semibold)
                 .multilineTextAlignment(.center)
 
-            ProgressView(value: progress, total: 3)
+            ProgressView(value: progress + 1, total: 3)
                 .padding()
 
             //this is the backend in the frontend
@@ -71,11 +71,13 @@ struct Onboarding: View {
             } label: {
                 //pretty way to display the text according to where we are
                 Text(currentStep == 2 ? "Done" : "Continue")
-                    .foregroundColor(.white)
-                    .frame(width: 150, height: 50)
+                    .font(.body)
+                    .foregroundStyle(.black)
+                    .fontWeight(.semibold)
+                    .frame(width: 200, height: 60)
             }
-            .background(.red)
-            .cornerRadius(10)
+            .background(.yellow)
+            .cornerRadius(20)
             
         }
         .padding()
