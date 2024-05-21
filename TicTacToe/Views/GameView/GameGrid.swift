@@ -9,36 +9,16 @@ import SwiftUI
 
 struct GameGrid: View {
     
+    
     @ObservedObject var gameLogic: GameLogic
     
     let col = Array(repeating: GridItem(.flexible()), count: 3)
     
-    @State private var start: Date = Date.now
+    @State private var showLottieAnimation = false
     
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 20)
-                .frame(width: 350, height: 350)
-                .foregroundStyle(.yellow)
-            VStack(spacing: 105) {
-                Rectangle()
-                    .foregroundStyle(.white)
-                    .frame(height: 6)
-                Rectangle()
-                    .foregroundStyle(.white)
-                    .frame(height: 6)
-            }
-            .frame(width: 350, height: 100)
-            
-            HStack(spacing: 125) {
-                Rectangle()
-                    .foregroundStyle(.white)
-                    .frame(width: 6)
-                Rectangle()
-                    .foregroundStyle(.white)
-                    .frame(width: 6)
-            }
-            .frame(width: 100, height: 340)
+            BackgroundGridViewModel()
             
             VStack(spacing: 30) {
                 ForEach(0..<3) { row in
@@ -59,10 +39,23 @@ struct GameGrid: View {
             }
             
             if gameLogic.isGameOver ?? false {
-                LottieAnimation(name: "GameOver", contentMode: .center, playbackMode: .playing(.toProgress(1, loopMode: .playOnce)))
-                    .background(Color.black.opacity(0.8))
-                    .cornerRadius(20)
-                    .padding()
+                ZStack {
+                    LottieAnimation(name: "Line", contentMode: .scaleAspectFit, playbackMode: .playing(.fromFrame(1, toFrame: 26, loopMode: .playOnce)), scaleFactor: 5)
+                    if showLottieAnimation {
+                        LottieAnimation(name: "GameOver", contentMode: .center, playbackMode: .playing(.toProgress(1, loopMode: .playOnce)))
+                            .background(Color.black.opacity(0.8))
+                            .cornerRadius(20)
+                            .padding()
+                    }
+                }
+                .onAppear {
+                    // Start a timer to toggle the visibility of LottieAnimation after one second
+                    Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
+                        withAnimation {
+                            showLottieAnimation = true
+                        }
+                    }
+                }
             }
         }
     }

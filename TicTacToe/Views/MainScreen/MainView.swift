@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainView: View {
     
     let onboardingStatusKey = "OnboardingStatus"
     @State var onboardingIsOver: Bool = UserDefaults.standard.bool(forKey: "OnboardingStatus")
@@ -73,5 +73,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView(currentStep: .constant(0))
+    MainView(currentStep: .constant(0))
 }

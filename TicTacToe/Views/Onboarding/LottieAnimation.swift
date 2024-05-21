@@ -9,26 +9,25 @@ import SwiftUI
 import Lottie
 
 struct LottieAnimation: View {
-    
-    //understing which modifers are useful was very tedious and hard, but they should be everything that one would need. And now let's explain what is important.
-    
-    //DA NAME
+        
+    //the name of the animation
     var name: String
     
     //the content mode is for how and where we want to display it
     var contentMode: UIView.ContentMode
     
-    //there are A LOT of ways we can do playback of the animation...
+    //there are different ways we can do playback of the animation
     var playbackMode: LottiePlaybackMode
     
     //maybe after it finished something should happen?
     var didFinish: (() -> Void)? = nil
     
-    //the modifiers (well technically everything is a modifer here..)
+    //the optional parameters
     var width: CGFloat? = nil
     var height: CGFloat? = nil
     var scaleFactor: CGFloat? = nil
     var cornerRadiusFactor: Double? = nil
+    var degrees: Double? = nil
     
     var body: some View {
         LottieView(animation: .named(name))
@@ -42,9 +41,10 @@ struct LottieAnimation: View {
             .frame(width: width, height: height)
             .scaleEffect(scaleFactor ?? 1)
             .cornerRadius(cornerRadiusFactor ?? 0)
+            .rotationEffect(.degrees(degrees ?? 0))
     }
 }
 
 #Preview {
-    LottieAnimation(name: "Cool", contentMode: .scaleAspectFit, playbackMode: .playing(.toProgress(1, loopMode: .loop)))
+    LottieAnimation(name: "Line", contentMode: .scaleAspectFit, playbackMode: .playing(.toProgress(1, loopMode: .loop)), scaleFactor: 5)
 }

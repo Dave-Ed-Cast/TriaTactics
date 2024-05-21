@@ -11,7 +11,7 @@ struct TutorialView: View {
     
     @Environment (\.dismiss) var dismiss
     var body: some View {
-        Onboarding(
+        OnboardingViewModel(
             onboardingIsOver: .constant(false),
             onboardingTitle: "Tria Tactics rule",
             onboardingImage: "Rule",

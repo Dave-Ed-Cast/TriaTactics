@@ -16,19 +16,19 @@ struct OnboardView: View {
     var body: some View {
         TabView {
             
-            Onboarding(
+            OnboardingViewModel(
                 onboardingIsOver: $onbooardingIsOver,
                 onboardingTitle: "Welcome to Tria Tactics!",
                 onboardingImage: "TicTacToe",
                 onboardingText: "Tria Tactics is a revisited version of Tic Tac Toe. Play the classic game until something new will happen!"
             )
-            Onboarding(
+            OnboardingViewModel(
                 onboardingIsOver: $onbooardingIsOver,
                 onboardingTitle: "Tria Tactics rule",
                 onboardingImage: "Rule",
                 onboardingText: "After your third move, when you will make your fourth, the first one made will disappear! This is Tria Tactics..."
             )
-            Onboarding(
+            OnboardingViewModel(
                 onboardingIsOver: $onbooardingIsOver,
                 onboardingTitle: "Local multiplayer (for now)",
                 onboardingImage: "Cool",

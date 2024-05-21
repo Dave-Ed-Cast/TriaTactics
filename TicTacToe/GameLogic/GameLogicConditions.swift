@@ -9,36 +9,19 @@ import Foundation
 
 extension GameLogic {
     
-    func gameActions(index: Int) {
-        
-        if activePlayer == .X {
-            moveCountX += 1
-            playerHistory[.X]?.append(index)
-        } else {
-            moveCountO += 1
-            playerHistory[.O]?.append(index)
-        }
-        
-        if (activePlayer == .X && moveCountX == 4) || (activePlayer == .O && moveCountO == 4) {
-            removeFirstMove(of: activePlayer)
-        }
-        
-        totalMoves = moveCountX + moveCountO
-        
-        if totalMoves > 10 {
-            rotate = true
-        }
-        print("count x: \(moveCountX), count o: \(moveCountO)")
-    }
-    
+    /// This is the function that delets the last move, it extracts the first element of this array.
+    /// By its own construction it's always gonna remove the first element, and later another one is gonna be appended
+    /// - Parameter player: it needs to know the player that is doing the move
     func removeFirstMove(of player: Player) {
-
+        
         guard let firstMoveIndex = playerHistory[activePlayer]?.removeFirst() else {
             return
         }
         
-        board[firstMoveIndex] = nil
+        //delete that action of the player
+        grid[firstMoveIndex] = nil
         
+        //and decremenet their count, so that the algorithm works
         if player == .X {
             moveCountX -= 1
         } else {
@@ -46,33 +29,45 @@ extension GameLogic {
         }
     }
     
+    /// This function checks all the possible winning combinations.
+    /// It counts the elements corresponding to the rule of Tic Tac Toe
+    /// - Returns: returns the "winner" status
     func checkWinner() -> Bool {
         
+        //this is on rows
         for index in stride(from: 0, to: 9, by: 3) {
-            if board[index] == activePlayer &&
-                board[index + 1] == activePlayer &&
-                board[index + 2] == activePlayer {
+            if grid[index] == activePlayer &&
+                grid[index + 1] == activePlayer &&
+                grid[index + 2] == activePlayer {
                 return true
             }
             
         }
         
+        //this is columns
         for index in 0..<3 {
-            if board[index] == activePlayer &&
-                board[index + 3] == activePlayer &&
-                board[index + 6] == activePlayer {
+            if grid[index] == activePlayer &&
+                grid[index + 3] == activePlayer &&
+                grid[index + 6] == activePlayer {
                 return true
             }
         }
         
-        if board[0] == activePlayer && board[4] == activePlayer && board[8] == activePlayer {
+        //and these are the diagonals
+        if (
+            grid[0] == activePlayer &&
+            grid[4] == activePlayer &&
+            grid[8] == activePlayer
+        )
+            ||
+            (
+                grid[2] == activePlayer &&
+                grid[4] == activePlayer &&
+                grid[6] == activePlayer) {
             return true
         }
         
-        if board[2] == activePlayer && board[4] == activePlayer && board[6] == activePlayer {
-            return true
-        }
-                
+        //*outer wilds* nobody won yet
         return false
     }
 }

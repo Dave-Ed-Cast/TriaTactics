@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-struct Onboarding: View {
-    
+struct OnboardingViewModel: View {
 
     @Binding var onboardingIsOver: Bool
     
@@ -60,7 +59,7 @@ struct Onboarding: View {
 
 
 #Preview("English") {
-    Onboarding(
+    OnboardingViewModel(
         onboardingIsOver: .constant(false),
         onboardingTitle: "Local multiplayer (for now)",
         onboardingImage: "Cool",
@@ -71,7 +70,7 @@ struct Onboarding: View {
 }
 
 #Preview("Italian"){
-    Onboarding(
+    OnboardingViewModel(
         onboardingIsOver: .constant(false),
         onboardingTitle: "Local multiplayer (for now)",
         onboardingImage: "Cool",

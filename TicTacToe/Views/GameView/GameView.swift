@@ -48,7 +48,10 @@ struct GameView: View {
             }
             .disabled(!gameLogic.checkWinner())
             .padding()
+            
         }
+       
+        
     }
 }
 
