@@ -189,8 +189,8 @@
 			isa = PBXGroup;
 			children = (
 				3E3925C72BFD34F80033F0E2 /* ViewModel */,
-				3EE9618A2BF8BB6800DBC853 /* Onboarding */,
 				3E3925C12BFD2CEE0033F0E2 /* MainScreen */,
+				3EE9618A2BF8BB6800DBC853 /* Onboarding */,
 				3E5EF2DC2BF816BB001B6D22 /* GameView */,
 			);
 			path = Views;

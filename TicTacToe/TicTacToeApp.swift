@@ -10,9 +10,10 @@ import SwiftUI
 @main
 struct TicTacToeApp: App {
     
+    @State var skipOnboarding: Bool = false
     var body: some Scene {
         WindowGroup {
-            MainView(onboardingIsOver: UserDefaults.standard.bool(forKey: "OnboardingStatus"), currentStep: .constant(0))
+            MainView(onboardingIsCompleted: UserDefaults.standard.bool(forKey: "OnboardingStatus"), skipOnboarding: $skipOnboarding, currentStep: .constant(0))
                 .preferredColorScheme(.light)
         }
     }

@@ -12,7 +12,7 @@ struct TutorialView: View {
     @Environment (\.dismiss) var dismiss
     var body: some View {
         OnboardingViewModel(
-            onboardingIsOver: .constant(false),
+            onboardingIsCompleted: .constant(false),
             onboardingTitle: "Tria Tactics rule",
             onboardingImage: "Rule",
             onboardingText: "After your third move, when you will make your fourth, the first one made will disappear! This is Tria Tactics..."

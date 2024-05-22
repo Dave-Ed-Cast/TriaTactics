@@ -9,7 +9,7 @@ import SwiftUI
 
 struct OnboardingViewModel: View {
 
-    @Binding var onboardingIsOver: Bool
+    @Binding var onboardingIsCompleted: Bool
     
     @State var onboardingTitle: LocalizedStringKey
     @State var onboardingImage: String
@@ -35,7 +35,7 @@ struct OnboardingViewModel: View {
 
             Button {
                 withAnimation {
-                    onboardingIsOver = true
+                    onboardingIsCompleted = true
                 }
             } label: {
 
@@ -60,7 +60,7 @@ struct OnboardingViewModel: View {
 
 #Preview("English") {
     OnboardingViewModel(
-        onboardingIsOver: .constant(false),
+        onboardingIsCompleted: .constant(false),
         onboardingTitle: "Local multiplayer (for now)",
         onboardingImage: "Cool",
         onboardingText: "For now enjoy the local version because multiplayer is coming soon as possible!",
@@ -71,7 +71,7 @@ struct OnboardingViewModel: View {
 
 #Preview("Italian"){
     OnboardingViewModel(
-        onboardingIsOver: .constant(false),
+        onboardingIsCompleted: .constant(false),
         onboardingTitle: "Local multiplayer (for now)",
         onboardingImage: "Cool",
         onboardingText: "For now enjoy the local version because multiplayer is coming soon as possible!",

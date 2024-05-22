@@ -10,23 +10,30 @@ import SwiftUI
 struct MainView: View {
     
     let onboardingStatusKey = "OnboardingStatus"
-    @State var onboardingIsOver: Bool = UserDefaults.standard.bool(forKey: "OnboardingStatus")
+    @Environment (\.dismiss) var dismiss
+    @State var onboardingIsCompleted: Bool = UserDefaults.standard.bool(forKey: "OnboardingStatus")
+    @Binding var skipOnboarding: Bool
     @State private var showGameView: Bool = false
     @State private var showTutorialView: Bool = false
     @Binding var currentStep: Int
     
     var body: some View {
-        if !onboardingIsOver {
-            OnboardView(onbooardingIsOver: $onboardingIsOver, currentStep: $currentStep)
-                .onDisappear {
+        if !onboardingIsCompleted && !skipOnboarding {
+            OnboardView(
+                onboardingIsCompleted: $onboardingIsCompleted,
+                skipOnboarding: $skipOnboarding,
+                currentStep: $currentStep)
+            .onDisappear {
+                if onboardingIsCompleted {
                     UserDefaults.standard.set(true, forKey: onboardingStatusKey)
                 }
+            }
         } else {
             VStack {
-                    Text("Tria Tactics")
-                        .font(.system(size: 50))
-                        .fontWeight(.black)
-                        .padding()
+                Text("Tria Tactics")
+                    .font(.system(size: 50))
+                    .fontWeight(.black)
+                    .padding()
                 
                 VStack(spacing: 200) {
                     Text("Revisited")
@@ -69,9 +76,10 @@ struct MainView: View {
                 
             }
         }
+        
     }
 }
 
 #Preview {
-    MainView(currentStep: .constant(0))
+    MainView(skipOnboarding: .constant(false), currentStep: .constant(0))
 }
