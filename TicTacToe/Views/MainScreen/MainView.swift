@@ -33,7 +33,7 @@ struct MainView: View {
                         .font(.title3)
                         .fontWeight(.semibold)
                     
-                    VStack (spacing: 20){
+                    VStack (spacing: 20) {
                         Button{
                             showGameView = true
                         } label: {
