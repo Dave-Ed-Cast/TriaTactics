@@ -40,16 +40,27 @@ struct GameGrid: View {
             
             if gameLogic.isGameOver ?? false {
                 ZStack {
-                    LottieAnimation(name: "Line", contentMode: .scaleAspectFit, playbackMode: .playing(.fromFrame(1, toFrame: 26, loopMode: .playOnce)), scaleFactor: 8, degrees: gameLogic.degrees, offset: gameLogic.offsetPosition)
+                    LottieAnimation(
+                        name: "Line",
+                        contentMode: .scaleAspectFit,
+                        playbackMode: .playing(.fromFrame(1, toFrame: 26, loopMode: .playOnce)),
+                        scaleFactor: 8,
+                        degrees: gameLogic.degrees,
+                        offset: gameLogic.offsetPosition)
+                    
                     if showLottieAnimation {
-                        LottieAnimation(name: "GameOver", contentMode: .center, playbackMode: .playing(.toProgress(1, loopMode: .playOnce)))
-                            .background(Color.black.opacity(0.8))
+                        LottieAnimation(
+                            name: "GameOver",
+                            contentMode: .center,
+                            playbackMode: .playing(.toProgress(1, loopMode: .playOnce)), 
+                            scaleFactor: 0.9)
+                            .background(Color.black.opacity(0.75))
                             .cornerRadius(20)
                             .padding()
                     }
                 }
                 .onAppear {
-                    Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
+                    Timer.scheduledTimer(withTimeInterval: 0.7, repeats: false) { _ in
                         withAnimation {
                             showLottieAnimation = true
                         }

@@ -24,7 +24,7 @@ struct GameView: View {
                     .fontWeight(.semibold)
                 Text("\(gameLogic.activePlayer == .X ? "X" : "O")")
                     .font(.largeTitle)
-                    .fontWeight(.bold)
+                    .fontWeight(.bold)                
             }
             .padding()
             .padding(.bottom, 50)
