@@ -10,25 +10,29 @@ import SwiftUI
 struct GameView: View {
     
     @ObservedObject var gameLogic: GameLogic = GameLogic()
+    @Environment (\.dismiss) var dismiss
     
     var body: some View {
-        VStack {
-            
-            Text("Tria Tactics")
-                .font(.largeTitle)
-                .fontWeight(.black)
-                .padding()
-            HStack {
-                Text("Your turn: ")
-                    .font(.title)
-                    .fontWeight(.semibold)
-                Text("\(gameLogic.activePlayer == .X ? "X" : "O")")
+        
+        Group {
+            VStack {
+                
+                Text("Tria Tactics")
                     .font(.largeTitle)
-                    .fontWeight(.bold)                
+                    .fontWeight(.black)
+                HStack {
+                    Text("Your turn: ")
+                        .font(.title)
+                        .fontWeight(.semibold)
+                    Text("\(gameLogic.activePlayer == .X ? "X" : "O")")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                }
+                .padding()
+                .padding(.bottom, 50)
             }
-            .padding()
-            .padding(.bottom, 50)
-
+            .foregroundStyle(.black)
+            
             GameGrid(gameLogic: gameLogic)
                 .padding()
             
@@ -50,7 +54,9 @@ struct GameView: View {
             .padding()
             
         }
-       
+        .onAppear {
+            gameLogic.resetGame()
+        }
         
     }
 }

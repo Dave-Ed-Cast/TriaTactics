@@ -66,6 +66,9 @@ struct GameGrid: View {
                         }
                     }
                 }
+                .onDisappear {
+                    showLottieAnimation = false
+                }
             }
         }
     }

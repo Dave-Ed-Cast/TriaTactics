@@ -11,11 +11,15 @@ struct TutorialView: View {
     
     @Environment (\.dismiss) var dismiss
     var body: some View {
+        Spacer(minLength: 20)
+        RoundedRectangle(cornerRadius: 20)
+            .frame(width: 50, height: 5)
+            .foregroundStyle(.gray.opacity(0.5))
         OnboardingViewModel(
             onboardingIsCompleted: .constant(false),
             onboardingTitle: "Tria Tactics rule",
             onboardingImage: "Rule",
-            onboardingText: "After your third move, when you will make your fourth, the first one made will disappear! This is Tria Tactics..."
+            onboardingText: "Making a fourth move will cost the first one. The next one follows the same logic. \n\nTria Tactics is about choosing wisely!"
         )
         
         Button {
@@ -31,11 +35,17 @@ struct TutorialView: View {
         }
         
         .padding()
-        .padding(.bottom, 30)
 
     }
 }
 
-#Preview {
+#Preview("English") {
     TutorialView()
+        .environment(\.locale, Locale(identifier: "EN"))
 }
+
+#Preview("Italian"){
+    TutorialView()
+        .environment(\.locale, Locale(identifier: "IT"))
+}
+

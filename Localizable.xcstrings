@@ -11,16 +11,6 @@
         }
       }
     },
-    "After your third move, when you will make your fourth, the first one made will disappear! This is Tria Tactics..." : {
-      "localizations" : {
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dopo la tua terza mossa, quando farai la quarta, la prima effettuata sparirà! Questo è Tria tactics..."
-          }
-        }
-      }
-    },
     "For now enjoy the local version because multiplayer is coming soon as possible!" : {
       "localizations" : {
         "it" : {
@@ -31,8 +21,15 @@
         }
       }
     },
-    "For the moment, enjoy the local version because multiplayer and, later, new challenges will be on their way!" : {
-
+    "For the moment, play with your friends locally, but don't worry because the online mode is coming very soon!" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per il momento gioca localmente con i tuoi amici, ma non preoccuparti perché la modalità online arriverà presto!"
+          }
+        }
+      }
     },
     "Let's start!" : {
       "localizations" : {
@@ -50,6 +47,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Online in arrivo"
+          }
+        }
+      }
+    },
+    "Making a fourth move will cost the first one. The next one follows the same logic. \n\nTria Tactics is about choosing wisely!" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fare la quarta mossa ti costerà la prima. Le successive seguiranno la stessa logica.\n\nTria Tactics tratta di scelte sagge!"
+          }
+        }
+      }
+    },
+    "Making your fourth move of the game will make the first one disappear! And it keeps going after that! This is Tria Tactics..." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fare la quarta mossa della partita farà scomparire la prima! E continuerà così! Questo è Tria Tactics..."
           }
         }
       }
@@ -96,28 +113,22 @@
         }
       }
     },
-    "Revisited" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Revisited"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rivisitato"
-          }
-        }
-      }
-    },
     "Skip" : {
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Salta"
+          }
+        }
+      }
+    },
+    "Tic Tac Toe - Revisited!" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tris - Rivisitato!"
           }
         }
       }

@@ -27,20 +27,22 @@ struct OnboardView: View {
                 onboardingIsCompleted: $onboardingIsCompleted,
                 onboardingTitle: "Tria Tactics rule",
                 onboardingImage: "Rule",
-                onboardingText: "After your third move, when you will make your fourth, the first one made will disappear! This is Tria Tactics..."
+                onboardingText: "Making your fourth move of the game will make the first one disappear! And it keeps going after that! This is Tria Tactics..."
             )
             OnboardingViewModel(
                 onboardingIsCompleted: $onboardingIsCompleted,
                 onboardingTitle: "Local multiplayer (for now)",
                 onboardingImage: "Cool",
-                onboardingText: "For the moment, enjoy the local version because multiplayer and, later, new challenges will be on their way!",
+                onboardingText: "For the moment, play with your friends locally, but don't worry because the online mode is coming very soon!",
                 showDoneButton: true
             )
         }
         
         .overlay(alignment: .topTrailing, content: {
             Button {
-                skipOnboarding = true
+                withAnimation {
+                    skipOnboarding = true
+                }
             } label: {
                 Text("Skip")
             }
