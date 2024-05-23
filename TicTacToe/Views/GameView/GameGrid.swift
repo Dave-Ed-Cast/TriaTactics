@@ -20,7 +20,7 @@ struct GameGrid: View {
         ZStack {
             BackgroundGridViewModel()
             
-            VStack(spacing: 30) {
+            VStack(spacing: 35) {
                 ForEach(0..<3) { row in
                     HStack(spacing: 40) {
                         ForEach(0..<3) { col in
