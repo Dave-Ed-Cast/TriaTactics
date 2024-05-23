@@ -65,9 +65,10 @@ struct GameGrid: View {
                             showLottieAnimation = true
                         }
                     }
+                    showLottieAnimation = false
                 }
                 .onDisappear {
-                    showLottieAnimation = false
+                    
                 }
             }
         }

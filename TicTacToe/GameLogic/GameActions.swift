@@ -81,6 +81,7 @@ extension GameLogic {
         playerHistory[.X] = []
         playerHistory[.O] = []
         isGameOver = false
+        degrees = 0.0
         offsetPosition = CGSize.zero
     }
     
