@@ -123,12 +123,12 @@
         }
       }
     },
-    "Tic Tac Toe - Revisited!" : {
+    "The game for true tacticians!" : {
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tris - Rivisitato!"
+            "value" : "Il gioco per veri tattici!"
           }
         }
       }

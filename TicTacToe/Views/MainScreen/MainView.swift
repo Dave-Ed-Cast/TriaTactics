@@ -41,7 +41,7 @@ struct MainView: View {
                         .padding()
                     
                     VStack(spacing: 200) {
-                        Text("Tic Tac Toe - Revisited!")
+                        Text("The game for true tacticians!")
                             .font(.title3)
                             .fontWeight(.semibold)
                         
