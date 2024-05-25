@@ -12,7 +12,7 @@ extension MatchManager: GKMatchDelegate {
     func match(_ match: GKMatch, didReceive data: Data, forRecipient recipient: GKPlayer, fromRemotePlayer player: GKPlayer) {
         let content = String(decoding: data, as: UTF8.self)
         if content.starts(with: "strData:") {
-            let message = content.replacing("strData", with: "")
+            let message = content.replacingOccurrences(of: "strData:", with: "")
             receivedString(message)
             print("okok")
         } else {

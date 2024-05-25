@@ -29,6 +29,8 @@ class MatchManager: NSObject, ObservableObject {
         return windowScene?.windows.first?.rootViewController
     }
     
+    var gameLogic: GameLogic?
+    
     func authenticateUser() {
         GKLocalPlayer.local.authenticateHandler = { [weak self] viewController, error in
             if let viewController = viewController {
@@ -72,6 +74,11 @@ class MatchManager: NSObject, ObservableObject {
         sendString("began:\(playerUUIDKey)")
     }
     
+    func sendMove(index: Int, player: Player) {
+        let moveMessage = "move:\(index):\(player)"
+        sendString(moveMessage)
+    }
+    
     func receivedString(_ message: String) {
         let messageSplit = message.split(separator: ":")
         guard let messagePrefix = messageSplit.first else { return }
@@ -94,7 +101,11 @@ class MatchManager: NSObject, ObservableObject {
             if isTimeKeeper {
                 countdownTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
             }
-        default: 
+        case "move":
+            if messageSplit.count == 3, let index = Int(messageSplit[1]), let playerSymbol = messageSplit[2].first, let player = Player(rawValue: String(playerSymbol)) {
+                gameLogic?.receiveMove(index: index, player: player)
+            }
+        default:
             break
         }
     }

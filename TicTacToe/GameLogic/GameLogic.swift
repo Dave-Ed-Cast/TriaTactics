@@ -7,17 +7,19 @@
 
 import Foundation
 
-enum Player {
-    case X
-    case O
+enum Player: String {
+    case X = "X"
+    case O = "O"
 }
 
 class GameLogic: ObservableObject {
-        
+    
     @Published var grid: [Player?] = Array(repeating: nil, count: 9)
     @Published var activePlayer: Player = .X
     @Published var winner: Player? = nil
     @Published var isGameOver: Bool? = nil
+    
+    var matchManager: MatchManager?
     
     var playerHistory: [Player: [Int]] = [.X: [], .O: []]
     var moveCountX: Int = 0
@@ -28,7 +30,6 @@ class GameLogic: ObservableObject {
     var degrees: Double = 0.0
     var offsetPosition: CGSize = CGSize.zero
     
-    //set winning indices
     func setWinningIndices(indices: [Int]) {
         self.winningIndices = indices
     }

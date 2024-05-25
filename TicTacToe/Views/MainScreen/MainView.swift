@@ -10,7 +10,7 @@ import SwiftUI
 struct MainView: View {
     
     private let onboardingStatusKey = "OnboardingStatus"
-    @Environment (\.dismiss) var dismiss
+    @Environment(\.dismiss) var dismiss
     
     @State var onboardingIsCompleted: Bool = UserDefaults.standard.bool(forKey: "OnboardingStatus")
     @State private var showTutorialView: Bool = false
@@ -20,9 +20,8 @@ struct MainView: View {
     @Binding var skipOnboarding: Bool
     @Binding var showLottieAnimation: Bool
     
-    @ObservedObject var matchManager: MatchManager = MatchManager()
-    @ObservedObject var gameLogic: GameLogic
-    
+    @EnvironmentObject var matchManager: MatchManager
+    @EnvironmentObject var gameLogic: GameLogic
     
     var body: some View {
         
@@ -53,7 +52,7 @@ struct MainView: View {
                         VStack (spacing: 20) {
                             
                             Button(action: {
-//                                matchManager.startMatchmaking()
+                                // matchManager.startMatchmaking()
                             }) {
                                 NavigationLink {
                                     OnlineView(matchManager: matchManager, gameLogic: gameLogic, showLottieAnimation: $showLottieAnimation, isOffline: $isOffline)
@@ -67,24 +66,9 @@ struct MainView: View {
                                         .cornerRadius(20)
                                         .navigationBarBackButtonHidden()
                                 }
-
                             }
                             .disabled(matchManager.autheticationState != .authenticated || matchManager.inGame)
                             .opacity(matchManager.autheticationState != .authenticated ? 0.5 : 1)
-//                            Button {
-//                                matchManager.startMatchmaking()
-//                            } label: {
-//                                Text("Play Online")
-//                                    .frame(width: 200, height: 70, alignment: .center)
-//                                    .background(.yellow)
-//                                    .foregroundStyle(.black)
-//                                    .font(.title)
-//                                    .fontWeight(.bold)
-//                                    .cornerRadius(20)
-//                                
-//                            }
-//                            .disabled(matchManager.autheticationState != .authenticated || matchManager.inGame)
-//                            .opacity(matchManager.autheticationState != .authenticated ? 0.5 : 1)
                             
                             Button(action: {
                                 isOffline = true
@@ -100,7 +84,7 @@ struct MainView: View {
                                 }
                             }
                             
-                            Button{
+                            Button {
                                 showTutorialView = true
                             } label: {
                                 Text("Tutorial")
@@ -134,5 +118,7 @@ struct MainView: View {
 }
 
 #Preview {
-    MainView(currentStep: .constant(0), skipOnboarding: .constant(false), showLottieAnimation: .constant(true), matchManager: MatchManager(), gameLogic: GameLogic())
+    MainView(currentStep: .constant(0), skipOnboarding: .constant(false), showLottieAnimation: .constant(true))
+        .environmentObject(MatchManager())
+        .environmentObject(GameLogic())
 }
