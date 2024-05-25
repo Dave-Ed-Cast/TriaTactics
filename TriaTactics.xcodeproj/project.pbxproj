@@ -33,8 +33,8 @@
 		3ED67FAB2BF9072600B2F400 /* Rule.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ED67FAA2BF9072600B2F400 /* Rule.json */; };
 		3ED6BF542C02428B00A53C29 /* OnlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED6BF532C02428B00A53C29 /* OnlineView.swift */; };
 		3ED6BF562C0242C400A53C29 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED6BF552C0242C400A53C29 /* GameOver.swift */; };
-		3ED6BF592C0244AD00A53C29 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3ED6BF582C0244AD00A53C29 /* Lottie */; };
 		3ED6BF5B2C0249E300A53C29 /* MatchManager+GKMatchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED6BF5A2C0249E300A53C29 /* MatchManager+GKMatchDelegate.swift */; };
+		3ED6BF5E2C02A13200A53C29 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3ED6BF5D2C02A13200A53C29 /* Lottie */; };
 		3EDF8B812BF7FBAB00957F89 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDF8B802BF7FBAB00957F89 /* GameLogic.swift */; };
 		3EDF8B832BF80D1A00957F89 /* GameLogicConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDF8B822BF80D1A00957F89 /* GameLogicConditions.swift */; };
 /* End PBXBuildFile section */
@@ -78,7 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3ED6BF592C0244AD00A53C29 /* Lottie in Frameworks */,
+				3ED6BF5E2C02A13200A53C29 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,7 +227,7 @@
 			);
 			name = TicTacToe;
 			packageProductDependencies = (
-				3ED6BF582C0244AD00A53C29 /* Lottie */,
+				3ED6BF5D2C02A13200A53C29 /* Lottie */,
 			);
 			productName = TicTacToe;
 			productReference = 3E6C13B32BF7F82400373047 /* TicTacToe.app */;
@@ -259,7 +259,7 @@
 			);
 			mainGroup = 3E6C13AA2BF7F82400373047;
 			packageReferences = (
-				3ED6BF572C0244AD00A53C29 /* XCRemoteSwiftPackageReference "lottie-spm" */,
+				3ED6BF5C2C02A13200A53C29 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
 			productRefGroup = 3E6C13B42BF7F82400373047 /* Products */;
 			projectDirPath = "";
@@ -537,7 +537,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3ED6BF572C0244AD00A53C29 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+		3ED6BF5C2C02A13200A53C29 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-spm";
 			requirement = {
@@ -548,9 +548,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3ED6BF582C0244AD00A53C29 /* Lottie */ = {
+		3ED6BF5D2C02A13200A53C29 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3ED6BF572C0244AD00A53C29 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			package = 3ED6BF5C2C02A13200A53C29 /* XCRemoteSwiftPackageReference "lottie-spm" */;
 			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
