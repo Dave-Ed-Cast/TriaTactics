@@ -10,6 +10,7 @@ import SwiftUI
 struct GameView: View {
     
     @ObservedObject var gameLogic: GameLogic = GameLogic()
+    @ObservedObject var matchManager: MatchManager
     @Environment (\.dismiss) var dismiss
     
     var body: some View {
@@ -63,5 +64,5 @@ struct GameView: View {
 
 
 #Preview {
-    GameView()
+    GameView(matchManager: MatchManager())
 }

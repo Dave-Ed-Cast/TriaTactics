@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum Player {
+    case X
+    case O
+}
+
 class GameLogic: ObservableObject {
         
     @Published var grid: [Player?] = Array(repeating: nil, count: 9)
@@ -26,10 +31,5 @@ class GameLogic: ObservableObject {
     //set winning indices
     func setWinningIndices(indices: [Int]) {
         self.winningIndices = indices
-    }
-    
-    enum Player {
-        case X
-        case O
     }
 }

@@ -71,6 +71,9 @@
         }
       }
     },
+    "Match found!" : {
+
+    },
     "OK!" : {
       "localizations" : {
         "it" : {
@@ -82,6 +85,7 @@
       }
     },
     "Play" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -96,6 +100,15 @@
           }
         }
       }
+    },
+    "Play Offline" : {
+
+    },
+    "Play Online" : {
+
+    },
+    "Press restart to play again!" : {
+
     },
     "Restart" : {
       "localizations" : {
@@ -112,6 +125,9 @@
           }
         }
       }
+    },
+    "Searching for opponents..." : {
+
     },
     "Skip" : {
       "localizations" : {
@@ -188,6 +204,9 @@
           }
         }
       }
+    },
+    "You are not logged in Game Center!" : {
+
     },
     "Your turn: " : {
       "localizations" : {

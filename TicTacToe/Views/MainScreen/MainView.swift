@@ -18,6 +18,9 @@ struct MainView: View {
     @Binding var currentStep: Int
     @Binding var skipOnboarding: Bool
     
+    @ObservedObject var matchManager: MatchManager
+    @ObservedObject var gameLogic: GameLogic
+    
     
     var body: some View {
         
@@ -47,15 +50,30 @@ struct MainView: View {
                         
                         VStack (spacing: 20) {
                             Button(action: {
-                                //empty
+                                //placeholder
                             }) {
-                                NavigationLink(destination: GameView()) {
-                                    Text("Play")
+                                NavigationLink(destination: OnlineView(matchManager: matchManager, gameLogic: gameLogic, currentStep: $currentStep, skipOnboarding: $skipOnboarding)) {
+                                    Text("Play Online")
                                         .frame(width: 200, height: 70, alignment: .center)
                                         .background(.yellow)
                                         .foregroundStyle(.black)
                                         .font(.title)
-                                        .fontWeight(.medium)
+                                        .fontWeight(.bold)
+                                        .cornerRadius(20)
+                                }
+                            }
+                            .disabled(matchManager.autheticationState != .authenticated || matchManager.inGame)
+                            
+                            Button(action: {
+                                //empty
+                            }) {
+                                NavigationLink(destination: GameView(matchManager: matchManager)) {
+                                    Text("Play Offline")
+                                        .frame(width: 200, height: 70, alignment: .center)
+                                        .background(.yellow)
+                                        .foregroundStyle(.black)
+                                        .font(.title)
+                                        .fontWeight(.bold)
                                         .cornerRadius(20)
                                 }
                             }
@@ -77,15 +95,21 @@ struct MainView: View {
                         }
                     }
                     
-                    
-                    
                 }
+                
+            }
+            .onAppear {
+                matchManager.authenticateUser()
+            }
+            .overlay(alignment: .bottom) {
+                Text(matchManager.autheticationState.rawValue)
             }
             .tint(.black)
+            
         }
     }
 }
 
 #Preview {
-    MainView(currentStep: .constant(0), skipOnboarding: .constant(false))
+    MainView(currentStep: .constant(0), skipOnboarding: .constant(false), matchManager: MatchManager(), gameLogic: GameLogic())
 }
