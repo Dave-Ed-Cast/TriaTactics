@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GameGrid: View {
     
-    
+    @ObservedObject var matchManager: MatchManager
     @ObservedObject var gameLogic: GameLogic
     
     let col = Array(repeating: GridItem(.flexible()), count: 3)
@@ -39,42 +39,12 @@ struct GameGrid: View {
             }
             
             if gameLogic.isGameOver ?? false {
-                ZStack {
-                    LottieAnimation(
-                        name: "Line",
-                        contentMode: .scaleAspectFit,
-                        playbackMode: .playing(.fromFrame(1, toFrame: 26, loopMode: .playOnce)),
-                        scaleFactor: 8,
-                        degrees: gameLogic.degrees,
-                        offset: gameLogic.offsetPosition)
-                    
-                    if showLottieAnimation {
-                        LottieAnimation(
-                            name: "GameOver",
-                            contentMode: .center,
-                            playbackMode: .playing(.toProgress(1, loopMode: .playOnce)), 
-                            scaleFactor: 0.9)
-                            .background(Color.black.opacity(0.75))
-                            .cornerRadius(20)
-                            .padding()
-                    }
-                }
-                .onAppear {
-                    Timer.scheduledTimer(withTimeInterval: 0.7, repeats: false) { _ in
-                        withAnimation {
-                            showLottieAnimation = true
-                        }
-                    }
-                    showLottieAnimation = false
-                }
-                .onDisappear {
-                    
-                }
+                GameOver(matchManager: matchManager, gameLogic: gameLogic, showLottieAnimation: $showLottieAnimation)
             }
         }
     }
 }
 
 #Preview {
-    GameGrid(gameLogic: GameLogic())
+    GameGrid(matchManager: MatchManager(), gameLogic: GameLogic())
 }

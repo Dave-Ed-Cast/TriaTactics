@@ -11,6 +11,9 @@
         }
       }
     },
+    "Finish" : {
+
+    },
     "For now enjoy the local version because multiplayer is coming soon as possible!" : {
       "localizations" : {
         "it" : {
@@ -30,6 +33,9 @@
           }
         }
       }
+    },
+    "I should not be here" : {
+
     },
     "Let's start!" : {
       "localizations" : {
@@ -71,9 +77,6 @@
         }
       }
     },
-    "Match found!" : {
-
-    },
     "OK!" : {
       "localizations" : {
         "it" : {
@@ -107,9 +110,6 @@
     "Play Online" : {
 
     },
-    "Press restart to play again!" : {
-
-    },
     "Restart" : {
       "localizations" : {
         "en" : {
@@ -125,9 +125,6 @@
           }
         }
       }
-    },
-    "Searching for opponents..." : {
-
     },
     "Skip" : {
       "localizations" : {
@@ -148,6 +145,9 @@
           }
         }
       }
+    },
+    "Time left: %lld" : {
+
     },
     "Tria Tactics" : {
       "localizations" : {
@@ -204,9 +204,6 @@
           }
         }
       }
-    },
-    "You are not logged in Game Center!" : {
-
     },
     "Your turn: " : {
       "localizations" : {

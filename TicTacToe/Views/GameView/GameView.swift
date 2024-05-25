@@ -7,11 +7,14 @@
 
 import SwiftUI
 
+var countdownTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
 struct GameView: View {
     
-    @ObservedObject var gameLogic: GameLogic = GameLogic()
     @ObservedObject var matchManager: MatchManager
-    @Environment (\.dismiss) var dismiss
+    @ObservedObject var gameLogic: GameLogic = GameLogic()
+    
+    @Binding var isOffline: Bool
     
     var body: some View {
         
@@ -21,7 +24,12 @@ struct GameView: View {
                 Text("Tria Tactics")
                     .font(.largeTitle)
                     .fontWeight(.black)
+                    .padding()
+                Text("Time left: \(matchManager.remainingTime)")
+                    .font(.title)
+                    .fontWeight(.semibold)
                 HStack {
+                    
                     Text("Your turn: ")
                         .font(.title)
                         .fontWeight(.semibold)
@@ -34,7 +42,7 @@ struct GameView: View {
             }
             .foregroundStyle(.black)
             
-            GameGrid(gameLogic: gameLogic)
+            GameGrid(matchManager: matchManager, gameLogic: gameLogic)
                 .padding()
             
             Button {
@@ -42,15 +50,18 @@ struct GameView: View {
                     gameLogic.resetGame()
                 }
             } label: {
-                Text("Restart")
+                Text(isOffline ? "Restart" : "Finish")
                     .frame(width: 200, height: 70, alignment: .center)
                     .background(.yellow)
                     .foregroundStyle(.black)
                     .font(.title3)
                     .fontWeight(.medium)
                     .cornerRadius(20)
-                    .opacity(gameLogic.checkWinner() ? 1 : 0.5)
             }
+            .onSubmit {
+                matchManager.isGameOver = true
+            }
+            .opacity(gameLogic.checkWinner() ? 1 : 0.5)
             .disabled(!gameLogic.checkWinner())
             .padding()
             
@@ -58,11 +69,14 @@ struct GameView: View {
         .onAppear {
             gameLogic.resetGame()
         }
-        
+        .onReceive(countdownTimer) { _ in
+            guard matchManager.isTimeKeeper else { return }
+            matchManager.remainingTime -= 1
+        }
     }
 }
 
 
 #Preview {
-    GameView(matchManager: MatchManager())
+    GameView(matchManager: MatchManager(), isOffline: .constant(true))
 }

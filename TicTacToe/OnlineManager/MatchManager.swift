@@ -9,26 +9,24 @@ import Foundation
 import GameKit
 import SwiftUI
 
-class MatchManager: NSObject, ObservableObject, GKTurnBasedMatchmakerViewControllerDelegate, GKTurnBasedEventListener, GKLocalPlayerListener {
+class MatchManager: NSObject, ObservableObject {
     
     @Published var inGame: Bool = false
     @Published var isGameOver: Bool = false
     @Published var autheticationState: PlayerAuthState = .authenticating
     @Published var currentlyPlaying: Bool = false
     @Published var score: Int = 0
-    @Published var activePlayer: Player = .X
+    @Published var lastIndexReceived: Int = 0
+    @Published var isTimeKeeper: Bool = false
+    @Published var remainingTime = 10
     
-    var match: GKTurnBasedMatch?
+    var match: GKMatch?
     var localPlayer: GKLocalPlayer = GKLocalPlayer.local
-    var playerUUIDString = UUID().uuidString
+    var otherPlayer: GKPlayer?
+    var playerUUIDKey = UUID().uuidString
     var rootViewController: UIViewController? {
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         return windowScene?.windows.first?.rootViewController
-    }
-    
-    override init() {
-        super.init()
-        GKLocalPlayer.local.register(self)
     }
     
     func authenticateUser() {
@@ -61,47 +59,43 @@ class MatchManager: NSObject, ObservableObject, GKTurnBasedMatchmakerViewControl
         request.minPlayers = 2
         request.maxPlayers = 2
         
-        let matchMakerViewController = GKTurnBasedMatchmakerViewController(matchRequest: request)
-        matchMakerViewController.turnBasedMatchmakerDelegate = self
-        rootViewController?.present(matchMakerViewController, animated: true, completion: nil)
+        let matchMakerVC = GKMatchmakerViewController(matchRequest: request)
+        matchMakerVC?.matchmakerDelegate = self
+        rootViewController?.present(matchMakerVC!, animated: true)
     }
     
-    func startGame(match: GKTurnBasedMatch) {
-        self.match = match
-        // Initialize your game state with the match data
-        self.inGame = true
+    func startGame(newMatch: GKMatch) {
+        match = newMatch
+        match?.delegate = self
+        otherPlayer = match?.players.first
+        
+        sendString("began:\(playerUUIDKey)")
     }
     
-    // MARK: - GKTurnBasedMatchmakerViewControllerDelegate
-    func turnBasedMatchmakerViewController(_ viewController: GKTurnBasedMatchmakerViewController, didFind match: GKTurnBasedMatch) {
-        viewController.dismiss(animated: true, completion: nil)
-        startGame(match: match)
+    func receivedString(_ message: String) {
+        let messageSplit = message.split(separator: ":")
+        guard let messagePrefix = messageSplit.first else { return }
+        
+        let parameter = String(messageSplit.last ?? "")
+        
+        switch messagePrefix {
+        case "began":
+            if playerUUIDKey == parameter {
+                playerUUIDKey = UUID().uuidString
+                sendString("began:\(playerUUIDKey)")
+                break
+            }
+            
+            currentlyPlaying = playerUUIDKey < parameter
+            print(currentlyPlaying)
+            inGame = true
+            isTimeKeeper = true
+            
+            if isTimeKeeper {
+                countdownTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+            }
+        default: 
+            break
+        }
     }
-    
-    func turnBasedMatchmakerViewControllerWasCancelled(_ viewController: GKTurnBasedMatchmakerViewController) {
-        viewController.dismiss(animated: true, completion: nil)
-    }
-    
-    func turnBasedMatchmakerViewController(_ viewController: GKTurnBasedMatchmakerViewController, didFailWithError error: Error) {
-        print("Matchmaking failed with error: \(error.localizedDescription)")
-        viewController.dismiss(animated: true, completion: nil)
-    }
-    
-    // MARK: - GKTurnBasedEventListener
-    func player(_ player: GKPlayer, receivedTurnEventFor match: GKTurnBasedMatch, didBecomeActive: Bool) {
-        self.match = match
-        // Handle turn events and update the game state
-    }
-    
-    func player(_ player: GKPlayer, matchEnded match: GKTurnBasedMatch) {
-        // Handle end of match and update the game state
-        self.isGameOver = true
-    }
-    
-    // MARK: - GKLocalPlayerListener
-    func player(_ player: GKPlayer, didAccept inviteTo: GKInvite) {
-        // Handle invitation acceptance
-    }
-    
-    // Implement other GKLocalPlayerListener methods as needed
 }

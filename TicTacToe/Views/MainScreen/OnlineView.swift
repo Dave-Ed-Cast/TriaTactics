@@ -11,8 +11,6 @@ struct OnlineView: View {
     
     @ObservedObject var matchManager: MatchManager
     @ObservedObject var gameLogic : GameLogic
-    @Binding var currentStep: Int
-    @Binding var skipOnboarding: Bool
     
     var body: some View {
         ZStack {

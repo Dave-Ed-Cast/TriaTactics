@@ -14,11 +14,13 @@ struct MainView: View {
     
     @State var onboardingIsCompleted: Bool = UserDefaults.standard.bool(forKey: "OnboardingStatus")
     @State private var showTutorialView: Bool = false
+    @State private var isOffline: Bool = false
     
     @Binding var currentStep: Int
     @Binding var skipOnboarding: Bool
+    @Binding var showLottieAnimation: Bool
     
-    @ObservedObject var matchManager: MatchManager
+    @ObservedObject var matchManager: MatchManager = MatchManager()
     @ObservedObject var gameLogic: GameLogic
     
     
@@ -49,10 +51,13 @@ struct MainView: View {
                             .fontWeight(.semibold)
                         
                         VStack (spacing: 20) {
+                            
                             Button(action: {
-                                //placeholder
+//                                matchManager.startMatchmaking()
                             }) {
-                                NavigationLink(destination: OnlineView(matchManager: matchManager, gameLogic: gameLogic, currentStep: $currentStep, skipOnboarding: $skipOnboarding)) {
+                                NavigationLink {
+                                    OnlineView(matchManager: matchManager, gameLogic: gameLogic, showLottieAnimation: $showLottieAnimation, isOffline: $isOffline)
+                                } label: {
                                     Text("Play Online")
                                         .frame(width: 200, height: 70, alignment: .center)
                                         .background(.yellow)
@@ -60,14 +65,31 @@ struct MainView: View {
                                         .font(.title)
                                         .fontWeight(.bold)
                                         .cornerRadius(20)
+                                        .navigationBarBackButtonHidden()
                                 }
+
                             }
                             .disabled(matchManager.autheticationState != .authenticated || matchManager.inGame)
+                            .opacity(matchManager.autheticationState != .authenticated ? 0.5 : 1)
+//                            Button {
+//                                matchManager.startMatchmaking()
+//                            } label: {
+//                                Text("Play Online")
+//                                    .frame(width: 200, height: 70, alignment: .center)
+//                                    .background(.yellow)
+//                                    .foregroundStyle(.black)
+//                                    .font(.title)
+//                                    .fontWeight(.bold)
+//                                    .cornerRadius(20)
+//                                
+//                            }
+//                            .disabled(matchManager.autheticationState != .authenticated || matchManager.inGame)
+//                            .opacity(matchManager.autheticationState != .authenticated ? 0.5 : 1)
                             
                             Button(action: {
-                                //empty
+                                isOffline = true
                             }) {
-                                NavigationLink(destination: GameView(matchManager: matchManager)) {
+                                NavigationLink(destination: GameView(matchManager: matchManager, isOffline: $isOffline)) {
                                     Text("Play Offline")
                                         .frame(width: 200, height: 70, alignment: .center)
                                         .background(.yellow)
@@ -96,13 +118,14 @@ struct MainView: View {
                     }
                     
                 }
+                .overlay(alignment: .bottom) {
+                    Text(matchManager.autheticationState.rawValue)
+                        .offset(CGSize(width: 0.0, height: 80.0))
+                }
                 
             }
             .onAppear {
                 matchManager.authenticateUser()
-            }
-            .overlay(alignment: .bottom) {
-                Text(matchManager.autheticationState.rawValue)
             }
             .tint(.black)
             
@@ -111,5 +134,5 @@ struct MainView: View {
 }
 
 #Preview {
-    MainView(currentStep: .constant(0), skipOnboarding: .constant(false), matchManager: MatchManager(), gameLogic: GameLogic())
+    MainView(currentStep: .constant(0), skipOnboarding: .constant(false), showLottieAnimation: .constant(true), matchManager: MatchManager(), gameLogic: GameLogic())
 }
