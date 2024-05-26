@@ -18,6 +18,11 @@ extension GameLogic {
             return
         }
         
+        guard matchManager!.currentlyPlaying else {
+            print("Not your turn!")
+            return
+        }
+        
         //occupy that grid portion to the active player
         grid[index] = activePlayer
         
@@ -30,25 +35,27 @@ extension GameLogic {
             winner = activePlayer
             isGameOver = true
         } else {
+            matchManager!.currentlyPlaying = !(matchManager!.currentlyPlaying)
             activePlayer = (activePlayer == .X) ? .O : .X
         }
     }
     
     func receiveMove(index: Int, player: Player) {
-            guard grid[index] == nil && winner == nil else {
-                return
-            }
-
-            grid[index] = player
-            gameActions(index: index)
-
-            if checkWinner() {
-                winner = player
-                isGameOver = true
-            } else {
-                activePlayer = (activePlayer == .X) ? .O : .X
-            }
+        guard grid[index] == nil && winner == nil else {
+            return
         }
+                
+        grid[index] = player
+        gameActions(index: index)
+        
+        if checkWinner() {
+            winner = player
+            isGameOver = true
+        } else {
+            matchManager!.currentlyPlaying = !(matchManager!.currentlyPlaying)
+            activePlayer = (activePlayer == .X) ? .O : .X
+        }
+    }
     //which player touched that grid spot? Give me their name
     func buttonLabel(index: Int) -> String {
         if let player = grid[index] {

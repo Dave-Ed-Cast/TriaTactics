@@ -46,8 +46,14 @@ struct GameView: View {
                 .padding()
             
             Button {
-                if gameLogic.checkWinner() {
-                    gameLogic.resetGame()
+                if isOffline {
+                    if gameLogic.checkWinner() {
+                        gameLogic.resetGame()
+                    }
+                } else {
+                    if gameLogic.checkWinner() {
+                        matchManager.resetGame()
+                    }
                 }
             } label: {
                 Text(isOffline ? "Restart" : "Finish")
@@ -57,9 +63,6 @@ struct GameView: View {
                     .font(.title3)
                     .fontWeight(.medium)
                     .cornerRadius(20)
-            }
-            .onSubmit {
-                matchManager.isGameOver = true
             }
             .opacity(gameLogic.checkWinner() ? 1 : 0.5)
             .disabled(!gameLogic.checkWinner())

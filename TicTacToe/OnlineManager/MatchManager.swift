@@ -19,7 +19,7 @@ class MatchManager: NSObject, ObservableObject {
     @Published var lastIndexReceived: Int = 0
     @Published var isTimeKeeper: Bool = false
     @Published var remainingTime = 10
-    
+        
     var match: GKMatch?
     var localPlayer: GKLocalPlayer = GKLocalPlayer.local
     var otherPlayer: GKPlayer?
@@ -70,13 +70,31 @@ class MatchManager: NSObject, ObservableObject {
         match = newMatch
         match?.delegate = self
         otherPlayer = match?.players.first
-        
+        currentlyPlaying = true
         sendString("began:\(playerUUIDKey)")
     }
     
     func sendMove(index: Int, player: Player) {
         let moveMessage = "move:\(index):\(player)"
         sendString(moveMessage)
+    }
+    
+    func swapActivePlayer() {
+        currentlyPlaying = !currentlyPlaying
+    }
+    
+    func gameOver() {
+        isGameOver = true
+        match?.disconnect()
+    }
+    
+    func resetGame() {
+        gameLogic?.resetGame()
+        isTimeKeeper = false
+        match?.delegate = nil
+        match = nil
+        otherPlayer = nil
+        playerUUIDKey = UUID().uuidString
     }
     
     func receivedString(_ message: String) {
@@ -94,7 +112,6 @@ class MatchManager: NSObject, ObservableObject {
             }
             
             currentlyPlaying = playerUUIDKey < parameter
-            print(currentlyPlaying)
             inGame = true
             isTimeKeeper = true
             
@@ -104,6 +121,7 @@ class MatchManager: NSObject, ObservableObject {
         case "move":
             if messageSplit.count == 3, let index = Int(messageSplit[1]), let playerSymbol = messageSplit[2].first, let player = Player(rawValue: String(playerSymbol)) {
                 gameLogic?.receiveMove(index: index, player: player)
+                currentlyPlaying = !currentlyPlaying
             }
         default:
             break

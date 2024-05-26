@@ -67,6 +67,7 @@ struct MainView: View {
                                         .navigationBarBackButtonHidden()
                                 }
                             }
+                            .navigationBarBackButtonHidden()
                             .disabled(matchManager.autheticationState != .authenticated || matchManager.inGame)
                             .opacity(matchManager.autheticationState != .authenticated ? 0.5 : 1)
                             
