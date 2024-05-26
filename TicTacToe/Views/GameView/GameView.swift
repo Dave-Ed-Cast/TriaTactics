@@ -24,22 +24,49 @@ struct GameView: View {
                 Text("Tria Tactics")
                     .font(.largeTitle)
                     .fontWeight(.black)
-                    .padding()
                 Text("Time left: \(isOffline ? 0 : matchManager.remainingTime)")
                     .font(.title)
                     .fontWeight(.semibold)
                     .opacity(isOffline ? 0 : 1)
                 HStack {
-                    
-                    Text("Your turn: ")
-                        .font(.title)
-                        .fontWeight(.semibold)
-                    Text("\(isOffline ? (gameLogic.activePlayer == .X ? "X" : "O") : matchManager.playerUUIDKey) ")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
+                    if isOffline {
+                        Text("Your turn: \(gameLogic.activePlayer == .X ? "X" : "O")")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                    } else {
+                        Text("\(matchManager.currentlyPlaying ? "Your Turn" : "Opponent's Turn")")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundStyle(matchManager.currentlyPlaying ? .blue : .red)
+                    }
                 }
                 .padding()
-                .padding(.bottom, 50)
+                .padding(.bottom, 60)
+                .overlay(
+                Group {
+                    if let winner = gameLogic.winner {
+                        if isOffline {
+                            Text("\(winner.rawValue) wins!")
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .padding(.bottom, 20)
+                        } else {
+                            if matchManager.localPlayerWin {
+                                Text("You Lose!")
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .padding(.bottom, 20)
+                            } else {
+                                Text("You Win!")
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .padding(.bottom, 20)
+                            }
+                        }
+                    }
+                }
+                    .offset(y: 30)
+                )
             }
             .foregroundStyle(.black)
             

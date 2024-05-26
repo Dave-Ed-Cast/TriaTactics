@@ -19,7 +19,9 @@ class MatchManager: NSObject, ObservableObject {
     @Published var lastIndexReceived: Int = 0
     @Published var isTimeKeeper: Bool = false
     @Published var remainingTime = 10
-        
+    @Published var localPlayerWin: Bool = false
+
+    var localPlayerSymbol: Player = .X
     var match: GKMatch?
     var localPlayer: GKLocalPlayer = GKLocalPlayer.local
     var otherPlayer: GKPlayer?
@@ -123,6 +125,10 @@ class MatchManager: NSObject, ObservableObject {
                 gameLogic?.receiveMove(index: index, player: player)
                 currentlyPlaying = playerUUIDKey != player.rawValue
                 print("Move received, currentlyPlaying: \(currentlyPlaying)")
+                
+                if gameLogic!.checkWinner() {
+                    localPlayerWin = gameLogic?.winner == localPlayerSymbol
+                }
             }
         default:
             break

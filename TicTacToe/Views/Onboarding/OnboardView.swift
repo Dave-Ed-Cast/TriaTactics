@@ -31,9 +31,9 @@ struct OnboardView: View {
             )
             OnboardingViewModel(
                 onboardingIsCompleted: $onboardingIsCompleted,
-                onboardingTitle: "Local multiplayer (for now)",
+                onboardingTitle: "Multiplayer is finally here!",
                 onboardingImage: "Cool",
-                onboardingText: "For the moment, play with your friends locally, but don't worry because the online mode is coming very soon!",
+                onboardingText: "Here comes the multiplayer! Challenge your friends in a strategic battle. Log into Game Center and enjoy!",
                 showDoneButton: true
             )
         }

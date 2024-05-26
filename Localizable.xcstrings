@@ -2,7 +2,6 @@
   "sourceLanguage" : "en",
   "strings" : {
     "%@" : {
-      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -12,7 +11,7 @@
         }
       }
     },
-    "%@ " : {
+    "%@ wins!" : {
 
     },
     "Finish" : {
@@ -29,6 +28,7 @@
       }
     },
     "For the moment, play with your friends locally, but don't worry because the online mode is coming very soon!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -37,6 +37,9 @@
           }
         }
       }
+    },
+    "Here comes the multiplayer! Challenge your friends in a strategic battle. Log into Game Center and enjoy!" : {
+
     },
     "I should not be here" : {
 
@@ -80,6 +83,9 @@
           }
         }
       }
+    },
+    "Multiplayer is finally here!" : {
+
     },
     "OK!" : {
       "localizations" : {
@@ -212,7 +218,14 @@
         }
       }
     },
+    "You Lose!" : {
+
+    },
+    "You Win!" : {
+
+    },
     "Your turn: " : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -221,6 +234,9 @@
           }
         }
       }
+    },
+    "Your turn: %@" : {
+
     }
   },
   "version" : "1.0"
