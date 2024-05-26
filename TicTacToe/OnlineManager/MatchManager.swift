@@ -121,7 +121,8 @@ class MatchManager: NSObject, ObservableObject {
         case "move":
             if messageSplit.count == 3, let index = Int(messageSplit[1]), let playerSymbol = messageSplit[2].first, let player = Player(rawValue: String(playerSymbol)) {
                 gameLogic?.receiveMove(index: index, player: player)
-                currentlyPlaying = !currentlyPlaying
+                currentlyPlaying = playerUUIDKey != player.rawValue
+                print("Move received, currentlyPlaying: \(currentlyPlaying)")
             }
         default:
             break

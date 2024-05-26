@@ -25,6 +25,7 @@ extension GameLogic {
         
         //occupy that grid portion to the active player
         grid[index] = activePlayer
+        print("Player \(activePlayer) moved at index \(index)")
         
         //do some stuff
         gameActions(index: index)
@@ -35,8 +36,9 @@ extension GameLogic {
             winner = activePlayer
             isGameOver = true
         } else {
-            matchManager!.currentlyPlaying = !(matchManager!.currentlyPlaying)
+            matchManager!.currentlyPlaying = false
             activePlayer = (activePlayer == .X) ? .O : .X
+            print("Next player: \(activePlayer), currentlyPlaying: \(matchManager!.currentlyPlaying)")
         }
     }
     
@@ -46,6 +48,8 @@ extension GameLogic {
         }
                 
         grid[index] = player
+        print("Received move from player \(player) at index \(index)")
+        
         gameActions(index: index)
         
         if checkWinner() {
@@ -54,6 +58,8 @@ extension GameLogic {
         } else {
             matchManager!.currentlyPlaying = !(matchManager!.currentlyPlaying)
             activePlayer = (activePlayer == .X) ? .O : .X
+            print("Next player: \(activePlayer), currentlyPlaying: \(matchManager!.currentlyPlaying)")
+
         }
     }
     //which player touched that grid spot? Give me their name
