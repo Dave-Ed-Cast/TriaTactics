@@ -25,15 +25,16 @@ struct GameView: View {
                     .font(.largeTitle)
                     .fontWeight(.black)
                     .padding()
-                Text("Time left: \(matchManager.remainingTime)")
+                Text("Time left: \(isOffline ? 0 : matchManager.remainingTime)")
                     .font(.title)
                     .fontWeight(.semibold)
+                    .opacity(isOffline ? 0 : 1)
                 HStack {
                     
                     Text("Your turn: ")
                         .font(.title)
                         .fontWeight(.semibold)
-                    Text("\(gameLogic.activePlayer == .X ? "X" : "O")")
+                    Text("\(isOffline ? (gameLogic.activePlayer == .X ? "X" : "O") : matchManager.playerUUIDKey) ")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                 }
@@ -52,7 +53,10 @@ struct GameView: View {
                     }
                 } else {
                     if gameLogic.checkWinner() {
-                        matchManager.resetGame()
+                        withAnimation {
+                            matchManager.gameOver()
+                            matchManager.resetGame()
+                        }
                     }
                 }
             } label: {
@@ -71,6 +75,7 @@ struct GameView: View {
         }
         .onAppear {
             gameLogic.resetGame()
+            gameLogic.isOffline = isOffline
         }
         .onReceive(countdownTimer) { _ in
             guard matchManager.isTimeKeeper else { return }

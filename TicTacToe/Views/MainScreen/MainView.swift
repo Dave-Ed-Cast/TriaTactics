@@ -14,7 +14,7 @@ struct MainView: View {
     
     @State var onboardingIsCompleted: Bool = UserDefaults.standard.bool(forKey: "OnboardingStatus")
     @State private var showTutorialView: Bool = false
-    @State private var isOffline: Bool = false
+    @State var isOffline: Bool = false
     
     @Binding var currentStep: Int
     @Binding var skipOnboarding: Bool
@@ -52,10 +52,12 @@ struct MainView: View {
                         VStack (spacing: 20) {
                             
                             Button(action: {
-                                // matchManager.startMatchmaking()
                             }) {
                                 NavigationLink {
                                     OnlineView(matchManager: matchManager, gameLogic: gameLogic, showLottieAnimation: $showLottieAnimation, isOffline: $isOffline)
+                                        .onAppear {
+                                            isOffline = false
+                                        }
                                 } label: {
                                     Text("Play Online")
                                         .frame(width: 200, height: 70, alignment: .center)
@@ -84,6 +86,9 @@ struct MainView: View {
                                         .cornerRadius(20)
                                 }
                             }
+                            .simultaneousGesture(TapGesture().onEnded {
+                                isOffline = true
+                            })
                             
                             Button {
                                 showTutorialView = true

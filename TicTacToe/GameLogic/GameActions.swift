@@ -18,9 +18,11 @@ extension GameLogic {
             return
         }
         
-        guard matchManager!.currentlyPlaying else {
-            print("Not your turn!")
-            return
+        if !isOffline! {
+            guard matchManager!.currentlyPlaying else {
+                print("Not your turn!")
+                return
+            }
         }
         
         //occupy that grid portion to the active player
@@ -29,37 +31,42 @@ extension GameLogic {
         
         //do some stuff
         gameActions(index: index)
-                
-        matchManager?.sendMove(index: index, player: activePlayer)
-        //if someone won, prompt the game over
+        
+        if !isOffline! {
+            matchManager?.sendMove(index: index, player: activePlayer)
+        }
+        
         if checkWinner() {
             winner = activePlayer
             isGameOver = true
         } else {
-            matchManager!.currentlyPlaying = false
+            if !isOffline! {
+                matchManager!.currentlyPlaying = false
+            }
             activePlayer = (activePlayer == .X) ? .O : .X
-            print("Next player: \(activePlayer), currentlyPlaying: \(matchManager!.currentlyPlaying)")
         }
     }
     
     func receiveMove(index: Int, player: Player) {
-        guard grid[index] == nil && winner == nil else {
-            return
-        }
+        if !isOffline! {
+            guard grid[index] == nil && winner == nil else {
+                return
+            }
+            
+            grid[index] = player
+            print("Received move from player \(player) at index \(index)")
+            
+            gameActions(index: index)
+            
+            if checkWinner() {
+                winner = player
+                isGameOver = true
+            } else {
+                matchManager!.currentlyPlaying = !(matchManager!.currentlyPlaying)
+                activePlayer = (activePlayer == .X) ? .O : .X
+                print("Next player: \(activePlayer), currentlyPlaying: \(matchManager!.currentlyPlaying)")
                 
-        grid[index] = player
-        print("Received move from player \(player) at index \(index)")
-        
-        gameActions(index: index)
-        
-        if checkWinner() {
-            winner = player
-            isGameOver = true
-        } else {
-            matchManager!.currentlyPlaying = !(matchManager!.currentlyPlaying)
-            activePlayer = (activePlayer == .X) ? .O : .X
-            print("Next player: \(activePlayer), currentlyPlaying: \(matchManager!.currentlyPlaying)")
-
+            }
         }
     }
     //which player touched that grid spot? Give me their name
