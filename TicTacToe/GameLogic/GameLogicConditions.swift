@@ -74,7 +74,11 @@ extension GameLogic {
         if (grid[0] == activePlayer && grid[4] == activePlayer && grid[8] == activePlayer) || (grid[2] == activePlayer && grid[4] == activePlayer && grid[6] == activePlayer) {
             
             offsetPosition = grid[0] != nil ? CGSize(width: 0, height: 10) : CGSize(width: 0, height: -10)
-            degrees = grid[0] != nil ? -45 : 45
+            if grid[0] != nil {
+                degrees = -45
+            } else if grid[0] == nil && grid[2] != nil {
+                degrees = 45
+            }
             return true
         }
         
