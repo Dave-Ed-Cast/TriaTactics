@@ -18,7 +18,7 @@ struct OnboardingViewModel: View {
     
     var body: some View {
         
-        //ok so bear with me now, this is boring part
+        //this is the model i call for the onboarding
         VStack(spacing: 25) {
 
             LottieAnimation(name: onboardingImage, contentMode: .scaleAspectFit, playbackMode: .playing(.toProgress(1, loopMode: .loop)))

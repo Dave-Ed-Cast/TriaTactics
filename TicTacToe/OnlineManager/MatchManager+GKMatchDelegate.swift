@@ -9,27 +9,34 @@ import Foundation
 import GameKit
 
 extension MatchManager: GKMatchDelegate {
+    
+    /// This is the core function that defines a match
+    /// - Parameters:
+    ///   - match: the match we are in
+    ///   - data: the data as the string content
+    ///   - recipient: this is unused but could be useful in future
+    ///   - player: this is unused but could be useful in future
     func match(_ match: GKMatch, didReceive data: Data, forRecipient recipient: GKPlayer, fromRemotePlayer player: GKPlayer) {
         let content = String(decoding: data, as: UTF8.self)
         if content.starts(with: "strData:") {
             let message = content.replacingOccurrences(of: "strData:", with: "")
             receivedString(message)
             print("okok")
-        } else {
-            do {
-                print("oh no")
-            } catch {
-                print(error)
-            }
         }
     }
     
+    /// This sends the string encoded with data in utf8
+    /// - Parameter message: the message we need to send after modifying it
     func sendString(_ message: String) {
         guard let encoded = "strData:\(message)".data(using: .utf8) else { return }
         sendData(encoded, mode: .reliable)
         print("sent")
     }
     
+    /// This is the sending of that data
+    /// - Parameters:
+    ///   - data: the data we are passing it to
+    ///   - mode: mode is just reagrding the type of data
     func sendData(_ data: Data, mode: GKMatch.SendDataMode) {
         
         do {
@@ -39,7 +46,21 @@ extension MatchManager: GKMatchDelegate {
         }
     }
     
+    /// This is the function that dictates what happens if someone disconnects
+    /// - Parameters:
+    ///   - match: the match we are talking about
+    ///   - player: the player that can disconnect
+    ///   - state: its connection state
     func match(_ match: GKMatch, player: GKPlayer, didChange state: GKPlayerConnectionState) {
+        guard state == .disconnected else { return }
+        let alert = UIAlertController(title: "Player disconnected!", message: "The other player disconnected from the game", preferredStyle: .alert)
         
+        alert.addAction(UIAlertAction(title: "OK", style: .destructive) { _ in
+            self.match?.disconnect()
+        })
+        DispatchQueue.main.async {
+            self.gameLogic?.resetGame()
+            self.rootViewController?.present(alert, animated: true)
+        }
     }
 }

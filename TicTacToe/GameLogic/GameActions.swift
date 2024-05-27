@@ -18,6 +18,7 @@ extension GameLogic {
             return
         }
         
+        //if it's NOT offline, update the match manager
         if !isOffline! {
             guard matchManager!.currentlyPlaying else {
                 print("Not your turn!")
@@ -32,6 +33,7 @@ extension GameLogic {
         //do some stuff
         gameActions(index: index)
         
+        //and if it's NOT offline, update the match manager
         if !isOffline! {
             matchManager?.sendMove(index: index, player: activePlayer)
         }
@@ -40,6 +42,7 @@ extension GameLogic {
             winner = activePlayer
             isGameOver = true
         } else {
+            //if it's NOT offline, update the match manager
             if !isOffline! {
                 matchManager!.currentlyPlaying = false
             }
@@ -47,6 +50,10 @@ extension GameLogic {
         }
     }
     
+    /// This is an exclusive function for online matches, so it checks if it's offline and skips it if it's false
+    /// - Parameters:
+    ///   - index: the index we received
+    ///   - player: the player that made the move
     func receiveMove(index: Int, player: Player) {
         if !isOffline! {
             guard grid[index] == nil && winner == nil else {
@@ -69,7 +76,11 @@ extension GameLogic {
             }
         }
     }
-    //which player touched that grid spot? Give me their name
+    
+    /// This is the player that touched the label of the grid.
+    /// It just tells which symbol to apply according to the player
+    /// - Parameter index: index of touched label
+    /// - Returns: the image name to be loaded in
     func buttonLabel(index: Int) -> String {
         if let player = grid[index] {
             return player == .X ? "X" : "O"
@@ -100,7 +111,7 @@ extension GameLogic {
         //we save the values for possible actions such as future implementations
         totalMoves = moveCountX + moveCountO
         
-        //MARK: future implementation for difficulty
+        //TODO: future implementation for difficulty
         if totalMoves > 14 {
             rotate = true
         }

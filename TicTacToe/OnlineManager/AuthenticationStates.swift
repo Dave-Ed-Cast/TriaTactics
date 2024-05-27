@@ -7,11 +7,11 @@
 
 import Foundation
 
-/// This defines the state of the authetication
+/// This defines the state of the authetication of the user
 enum PlayerAuthState: String {
     case authenticating = "Logging in to Game Center..."
-    case unauthenticated = "Please sign in to Game Center to play."
+    case unauthenticated = "Sign in to Game Center to play."
     case authenticated = "Logged in!"
-    case error = "There was an error logging into Game Center."
-    case restricted = "You're not allowed to play multiplayer games!"
+    case error = "Error logging into Game Center."
+    case restricted = "You're can't play multiplayer games!"
 }

@@ -51,59 +51,10 @@ struct MainView: View {
                         
                         VStack (spacing: 20) {
                             
-                            Button(action: {
-                            }) {
-                                NavigationLink {
-                                    OnlineView(matchManager: matchManager, gameLogic: gameLogic, showLottieAnimation: $showLottieAnimation, isOffline: $isOffline)
-                                        .onAppear {
-                                            isOffline = false
-                                        }
-                                } label: {
-                                    Text("Play Online")
-                                        .frame(width: 200, height: 70, alignment: .center)
-                                        .background(.yellow)
-                                        .foregroundStyle(.black)
-                                        .font(.title)
-                                        .fontWeight(.bold)
-                                        .cornerRadius(20)
-                                        .navigationBarBackButtonHidden()
-                                }
-                            }
-                            .navigationBarBackButtonHidden()
-                            .disabled(matchManager.autheticationState != .authenticated || matchManager.inGame)
-                            .opacity(matchManager.autheticationState != .authenticated ? 0.5 : 1)
+                            onlineButtonView
+                            offlineButtonView
+                            tutorialButtonView
                             
-                            Button(action: {
-                                isOffline = true
-                            }) {
-                                NavigationLink(destination: GameView(matchManager: matchManager, isOffline: $isOffline)) {
-                                    Text("Play Offline")
-                                        .frame(width: 200, height: 70, alignment: .center)
-                                        .background(.yellow)
-                                        .foregroundStyle(.black)
-                                        .font(.title)
-                                        .fontWeight(.bold)
-                                        .cornerRadius(20)
-                                }
-                            }
-                            .simultaneousGesture(TapGesture().onEnded {
-                                isOffline = true
-                            })
-                            
-                            Button {
-                                showTutorialView = true
-                            } label: {
-                                Text("Tutorial")
-                                    .frame(width: 150, height: 50, alignment: .center)
-                                    .background(.yellow)
-                                    .foregroundStyle(.black)
-                                    .font(.title3)
-                                    .fontWeight(.medium)
-                                    .cornerRadius(20)
-                            }
-                            .sheet(isPresented: $showTutorialView) {
-                                TutorialView()
-                            }
                         }
                     }
                     
@@ -119,6 +70,64 @@ struct MainView: View {
             }
             .tint(.black)
             
+        }
+    }
+    
+    var onlineButtonView: some View {
+        Button(action: {
+        }) {
+            NavigationLink {
+                OnlineView(matchManager: matchManager, gameLogic: gameLogic, showLottieAnimation: $showLottieAnimation, isOffline: $isOffline)
+                    .onAppear {
+                        isOffline = false
+                    }
+            } label: {
+                Text("Play Online")
+                    .frame(width: 200, height: 70, alignment: .center)
+                    .background(.yellow)
+                    .foregroundStyle(.black)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .cornerRadius(20)
+                    .navigationBarBackButtonHidden()
+            }
+        }
+        .navigationBarBackButtonHidden()
+        .disabled(matchManager.autheticationState != .authenticated || matchManager.inGame)
+        .opacity(matchManager.autheticationState != .authenticated ? 0.5 : 1)
+    }
+    var offlineButtonView: some View {
+        Button(action: {
+            isOffline = true
+        }) {
+            NavigationLink(destination: GameView(matchManager: matchManager, isOffline: $isOffline)) {
+                Text("Play Offline")
+                    .frame(width: 200, height: 70, alignment: .center)
+                    .background(.yellow)
+                    .foregroundStyle(.black)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .cornerRadius(20)
+            }
+        }
+        .simultaneousGesture(TapGesture().onEnded {
+            isOffline = true
+        })
+    }
+    var tutorialButtonView: some View {
+        Button {
+            showTutorialView = true
+        } label: {
+            Text("Tutorial")
+                .frame(width: 150, height: 50, alignment: .center)
+                .background(.yellow)
+                .foregroundStyle(.black)
+                .font(.title3)
+                .fontWeight(.medium)
+                .cornerRadius(20)
+        }
+        .sheet(isPresented: $showTutorialView) {
+            TutorialView()
         }
     }
 }

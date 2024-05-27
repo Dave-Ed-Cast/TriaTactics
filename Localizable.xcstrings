@@ -12,10 +12,24 @@
       }
     },
     "%@ wins!" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ vince!"
+          }
+        }
+      }
     },
     "Finish" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Termina"
+          }
+        }
+      }
     },
     "For now enjoy the local version because multiplayer is coming soon as possible!" : {
       "localizations" : {
@@ -27,22 +41,25 @@
         }
       }
     },
-    "For the moment, play with your friends locally, but don't worry because the online mode is coming very soon!" : {
-      "extractionState" : "stale",
+    "Here comes the multiplayer! Challenge your friends in a strategic battle. Log into Game Center and enjoy!" : {
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Per il momento gioca localmente con i tuoi amici, ma non preoccuparti perché la modalità online arriverà presto!"
+            "value" : "È arrivato il multigiocatore! Sfida i tuoi amici in una battaglia strategica. Accedi nel Game Center e divertiti!"
           }
         }
       }
     },
-    "Here comes the multiplayer! Challenge your friends in a strategic battle. Log into Game Center and enjoy!" : {
-
-    },
     "I should not be here" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non dovrei essere qui"
+          }
+        }
+      }
     },
     "Let's start!" : {
       "localizations" : {
@@ -85,7 +102,14 @@
       }
     },
     "Multiplayer is finally here!" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il multigiocatore è qui!"
+          }
+        }
+      }
     },
     "OK!" : {
       "localizations" : {
@@ -97,31 +121,35 @@
         }
       }
     },
-    "Play" : {
-      "extractionState" : "stale",
+    "Play again?" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Play"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gioca"
+            "value" : "Gioca ancora?"
           }
         }
       }
     },
-    "Play again?" : {
-
-    },
     "Play Offline" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gioca Offline"
+          }
+        }
+      }
     },
     "Play Online" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gioca Online"
+          }
+        }
+      }
     },
     "Restart" : {
       "localizations" : {
@@ -160,7 +188,14 @@
       }
     },
     "Time left: %lld" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tempo: %lld"
+          }
+        }
+      }
     },
     "Tria Tactics" : {
       "localizations" : {
@@ -219,24 +254,34 @@
       }
     },
     "You Lose!" : {
-
-    },
-    "You Win!" : {
-
-    },
-    "Your turn: " : {
-      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Turno di: "
+            "value" : "Hai perso!"
+          }
+        }
+      }
+    },
+    "You Win!" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hai vinto!"
           }
         }
       }
     },
     "Your turn: %@" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turno di: %@"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

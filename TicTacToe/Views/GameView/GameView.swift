@@ -43,29 +43,8 @@ struct GameView: View {
                 .padding()
                 .padding(.bottom, 60)
                 .overlay(
-                Group {
-                    if let winner = gameLogic.winner {
-                        if isOffline {
-                            Text("\(winner.rawValue) wins!")
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .padding(.bottom, 20)
-                        } else {
-                            if matchManager.localPlayerWin {
-                                Text("You Lose!")
-                                    .font(.title)
-                                    .fontWeight(.bold)
-                                    .padding(.bottom, 20)
-                            } else {
-                                Text("You Win!")
-                                    .font(.title)
-                                    .fontWeight(.bold)
-                                    .padding(.bottom, 20)
-                            }
-                        }
-                    }
-                }
-                    .offset(y: 30)
+                    winnerView
+                        .offset(y: 30)
                 )
             }
             .foregroundStyle(.black)
@@ -73,31 +52,7 @@ struct GameView: View {
             GameGrid(matchManager: matchManager, gameLogic: gameLogic)
                 .padding()
             
-            Button {
-                if isOffline {
-                    if gameLogic.checkWinner() {
-                        gameLogic.resetGame()
-                    }
-                } else {
-                    if gameLogic.checkWinner() {
-                        withAnimation {
-                            matchManager.gameOver()
-                            matchManager.resetGame()
-                        }
-                    }
-                }
-            } label: {
-                Text(isOffline ? "Restart" : "Finish")
-                    .frame(width: 200, height: 70, alignment: .center)
-                    .background(.yellow)
-                    .foregroundStyle(.black)
-                    .font(.title3)
-                    .fontWeight(.medium)
-                    .cornerRadius(20)
-            }
-            .opacity(gameLogic.checkWinner() ? 1 : 0.5)
-            .disabled(!gameLogic.checkWinner())
-            .padding()
+            buttonView
             
         }
         .onAppear {
@@ -108,6 +63,58 @@ struct GameView: View {
             guard matchManager.isTimeKeeper else { return }
             matchManager.remainingTime -= 1
         }
+    }
+    
+    var winnerView: some View {
+        Group {
+            if let winner = gameLogic.winner {
+                if isOffline {
+                    Text("\(winner.rawValue) wins!")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding(.bottom, 20)
+                } else {
+                    if matchManager.localPlayerWin {
+                        Text("You Lose!")
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .padding(.bottom, 20)
+                    } else {
+                        Text("You Win!")
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .padding(.bottom, 20)
+                    }
+                }
+            }
+        }
+    }
+    var buttonView: some View {
+        Button {
+            if isOffline {
+                if gameLogic.checkWinner() {
+                    gameLogic.resetGame()
+                }
+            } else {
+                if gameLogic.checkWinner() {
+                    withAnimation {
+                        matchManager.gameOver()
+                        matchManager.resetGame()
+                    }
+                }
+            }
+        } label: {
+            Text(isOffline ? "Restart" : "Finish")
+                .frame(width: 200, height: 70, alignment: .center)
+                .background(.yellow)
+                .foregroundStyle(.black)
+                .font(.title3)
+                .fontWeight(.medium)
+                .cornerRadius(20)
+        }
+        .opacity(gameLogic.checkWinner() ? 1 : 0.5)
+        .disabled(!gameLogic.checkWinner())
+        .padding()
     }
 }
 

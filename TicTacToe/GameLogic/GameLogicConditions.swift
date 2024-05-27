@@ -31,6 +31,7 @@ extension GameLogic {
     
     /// This function checks all the possible winning combinations.
     /// It counts the elements corresponding to the rule of Tic Tac Toe
+    /// It also tells at which degree (in the diagonals) to rotate the animation in the view
     /// - Returns: returns the "winner" status
     func checkWinner() -> Bool {
         
