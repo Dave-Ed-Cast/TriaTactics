@@ -14,23 +14,14 @@ struct OnlineView: View {
     
     @Binding var showLottieAnimation: Bool
     @Binding var isOffline: Bool
+    @Binding var currentStep: Int
+    @Binding var skipOnboarding: Bool
     
     var body: some View {
         Group {
             if matchManager.autheticationState == .authenticated {
                 if matchManager.isGameOver {
-                    Button {
-                        matchManager.startMatchmaking()
-                        matchManager.isGameOver = false
-                    } label: {
-                        Text("Play again?")
-                            .frame(width: 200, height: 70, alignment: .center)
-                            .background(.yellow)
-                            .foregroundStyle(.black)
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .cornerRadius(20)
-                    }
+                    MainView(currentStep: $currentStep, skipOnboarding: $skipOnboarding, showLottieAnimation: $showLottieAnimation)
                 } else if matchManager.inGame {
                     GameView(matchManager: matchManager, gameLogic: gameLogic, isOffline: $isOffline)
                 } else {
@@ -41,9 +32,13 @@ struct OnlineView: View {
         .onAppear {
             matchManager.startMatchmaking()
         }
+        .onDisappear {
+            matchManager.resetGame()
+            matchManager.gameOver()
+        }
     }
 }
 
 #Preview {
-    OnlineView(matchManager: MatchManager(), gameLogic: GameLogic(), showLottieAnimation: .constant(true), isOffline: .constant(true))
+    OnlineView(matchManager: MatchManager(), gameLogic: GameLogic(), showLottieAnimation: .constant(true), isOffline: .constant(false), currentStep: .constant(0), skipOnboarding: .constant(true))
 }

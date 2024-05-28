@@ -122,6 +122,7 @@
       }
     },
     "Play again?" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -176,6 +177,9 @@
           }
         }
       }
+    },
+    "Status: %@" : {
+
     },
     "The game for true tacticians!" : {
       "localizations" : {

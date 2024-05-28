@@ -15,6 +15,7 @@ struct MainView: View {
     @State var onboardingIsCompleted: Bool = UserDefaults.standard.bool(forKey: "OnboardingStatus")
     @State private var showTutorialView: Bool = false
     @State var isOffline: Bool = false
+    @State private var showOnlineView: Bool = false
     
     @Binding var currentStep: Int
     @Binding var skipOnboarding: Bool
@@ -39,30 +40,21 @@ struct MainView: View {
         } else {
             NavigationStack {
                 VStack {
-                    Text("Tria Tactics")
-                        .font(.system(size: 50))
-                        .fontWeight(.black)
-                        .padding()
-                    
-                    VStack(spacing: 200) {
-                        Text("The game for true tacticians!")
-                            .font(.title3)
-                            .fontWeight(.semibold)
-                        
-                        VStack (spacing: 20) {
-                            
-                            onlineButtonView
-                            offlineButtonView
-                            tutorialButtonView
-                            
-                        }
+                    if showOnlineView {
+                        OnlineView(matchManager: matchManager, gameLogic: gameLogic, showLottieAnimation: $showLottieAnimation, isOffline: $isOffline, currentStep: $currentStep, skipOnboarding: $skipOnboarding)
+                            .onAppear {
+                                isOffline = false
+                            }
+                    } else {
+                        mainMenuView
                     }
-                    
                 }
                 .overlay(alignment: .bottom) {
-                    Text("Status: \(matchManager.autheticationState.rawValue)")
-                        .offset(CGSize(width: 0.0, height: 80.0))
-                        .frame(width: 350)
+                    if !showOnlineView {
+                        Text("Status: \(matchManager.autheticationState.rawValue)")
+                            .offset(CGSize(width: 0.0, height: 80.0))
+                            .frame(width: 350)
+                    }
                 }
                 
             }
@@ -74,24 +66,39 @@ struct MainView: View {
         }
     }
     
+    var mainMenuView: some View {
+        VStack {
+            Text("Tria Tactics")
+                .font(.system(size: 50))
+                .fontWeight(.black)
+                .padding()
+            
+            VStack(spacing: 200) {
+                Text("The game for true tacticians!")
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                
+                VStack (spacing: 20) {
+                    
+                    onlineButtonView
+                    offlineButtonView
+                    tutorialButtonView
+                    
+                }
+            }
+        }
+    }
     var onlineButtonView: some View {
         Button(action: {
+            showOnlineView = true
         }) {
-            NavigationLink {
-                OnlineView(matchManager: matchManager, gameLogic: gameLogic, showLottieAnimation: $showLottieAnimation, isOffline: $isOffline)
-                    .onAppear {
-                        isOffline = false
-                    }
-            } label: {
-                Text("Play Online")
-                    .frame(width: 200, height: 70, alignment: .center)
-                    .background(.yellow)
-                    .foregroundStyle(.black)
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .cornerRadius(20)
-                    .navigationBarBackButtonHidden()
-            }
+            Text("Play Online")
+                .frame(width: 200, height: 70, alignment: .center)
+                .background(.yellow)
+                .foregroundStyle(.black)
+                .font(.title)
+                .fontWeight(.bold)
+                .cornerRadius(20)
         }
         .navigationBarBackButtonHidden()
         .disabled(matchManager.autheticationState != .authenticated || matchManager.inGame)
