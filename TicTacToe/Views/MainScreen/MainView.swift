@@ -60,8 +60,9 @@ struct MainView: View {
                     
                 }
                 .overlay(alignment: .bottom) {
-                    Text(matchManager.autheticationState.rawValue)
+                    Text("Status: \(matchManager.autheticationState.rawValue)")
                         .offset(CGSize(width: 0.0, height: 80.0))
+                        .frame(width: 350)
                 }
                 
             }
