@@ -40,9 +40,9 @@ struct OnboardingViewModel: View {
             } label: {
 
                 Text("Let's start!")
-                    .font(.body)
-                    .foregroundStyle(.black)
                     .fontWeight(.semibold)
+                    .foregroundStyle(.black)
+                    .font(.body)
                     .frame(width: 200, height: 60)
                     
             }

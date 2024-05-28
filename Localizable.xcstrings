@@ -52,6 +52,7 @@
       }
     },
     "I should not be here" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {

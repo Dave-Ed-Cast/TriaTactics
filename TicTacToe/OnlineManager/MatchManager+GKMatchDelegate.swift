@@ -21,7 +21,6 @@ extension MatchManager: GKMatchDelegate {
         if content.starts(with: "strData:") {
             let message = content.replacingOccurrences(of: "strData:", with: "")
             receivedString(message)
-            print("okok")
         }
     }
     

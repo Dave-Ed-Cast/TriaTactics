@@ -97,6 +97,8 @@ class MatchManager: NSObject, ObservableObject {
     /// Ends the game
     func gameOver() {
         isGameOver = true
+        inGame = false
+        resetGame()
         match?.disconnect()
     }
     

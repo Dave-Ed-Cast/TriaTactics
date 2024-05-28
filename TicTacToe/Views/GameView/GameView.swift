@@ -105,11 +105,11 @@ struct GameView: View {
             }
         } label: {
             Text(isOffline ? "Restart" : "Finish")
+                .fontWeight(.medium)
                 .frame(width: 200, height: 70, alignment: .center)
                 .background(.yellow)
                 .foregroundStyle(.black)
                 .font(.title3)
-                .fontWeight(.medium)
                 .cornerRadius(20)
         }
         .opacity(gameLogic.checkWinner() ? 1 : 0.5)

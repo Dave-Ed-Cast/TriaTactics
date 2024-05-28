@@ -26,11 +26,11 @@ struct TutorialView: View {
             dismiss()
         } label: {
             Text("OK!")
+                .fontWeight(.semibold)
                 .frame(width: 200, height: 60)
                 .background(.yellow)
                 .foregroundStyle(.black)
                 .font(.body)
-                .fontWeight(.semibold)
                 .cornerRadius(20)
         }
         

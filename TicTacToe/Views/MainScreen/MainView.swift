@@ -38,12 +38,18 @@ struct MainView: View {
             }
             
         } else {
-            NavigationStack {
+            NavigationView {
                 VStack {
                     if showOnlineView {
-                        OnlineView(matchManager: matchManager, gameLogic: gameLogic, showLottieAnimation: $showLottieAnimation, isOffline: $isOffline, currentStep: $currentStep, skipOnboarding: $skipOnboarding)
+                        withAnimation {
+                            OnlineView(matchManager: matchManager, gameLogic: gameLogic, showLottieAnimation: $showLottieAnimation, isOffline: $isOffline, currentStep: $currentStep, skipOnboarding: $skipOnboarding)
+                            
+                        }
                             .onAppear {
                                 isOffline = false
+                            }
+                            .onDisappear {
+                                showOnlineView = false
                             }
                     } else {
                         mainMenuView
@@ -91,16 +97,16 @@ struct MainView: View {
     var onlineButtonView: some View {
         Button(action: {
             showOnlineView = true
+            print(showOnlineView)
         }) {
             Text("Play Online")
+                .fontWeight(.bold)
                 .frame(width: 200, height: 70, alignment: .center)
                 .background(.yellow)
                 .foregroundStyle(.black)
                 .font(.title)
-                .fontWeight(.bold)
                 .cornerRadius(20)
         }
-        .navigationBarBackButtonHidden()
         .disabled(matchManager.autheticationState != .authenticated || matchManager.inGame)
         .opacity(matchManager.autheticationState != .authenticated ? 0.5 : 1)
     }
@@ -110,11 +116,11 @@ struct MainView: View {
         }) {
             NavigationLink(destination: GameView(matchManager: matchManager, isOffline: $isOffline)) {
                 Text("Play Offline")
+                    .fontWeight(.bold)
                     .frame(width: 200, height: 70, alignment: .center)
                     .background(.yellow)
                     .foregroundStyle(.black)
                     .font(.title)
-                    .fontWeight(.bold)
                     .cornerRadius(20)
             }
         }
@@ -127,11 +133,11 @@ struct MainView: View {
             showTutorialView = true
         } label: {
             Text("Tutorial")
+                .fontWeight(.medium)
                 .frame(width: 150, height: 50, alignment: .center)
                 .background(.yellow)
                 .foregroundStyle(.black)
                 .font(.title3)
-                .fontWeight(.medium)
                 .cornerRadius(20)
         }
         .sheet(isPresented: $showTutorialView) {

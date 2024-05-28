@@ -25,7 +25,7 @@ struct OnlineView: View {
                 } else if matchManager.inGame {
                     GameView(matchManager: matchManager, gameLogic: gameLogic, isOffline: $isOffline)
                 } else {
-                   Text("I should not be here")
+                    MainView(currentStep: $currentStep, skipOnboarding: $skipOnboarding, showLottieAnimation: $showLottieAnimation)
                 }
             }
         }
