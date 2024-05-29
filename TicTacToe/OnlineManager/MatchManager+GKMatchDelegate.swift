@@ -66,6 +66,7 @@ extension MatchManager: GKMatchDelegate {
         })
         DispatchQueue.main.async {
             self.gameLogic?.resetGame()
+            self.gameOver()
             self.rootViewController?.present(alert, animated: true)
         }
     }

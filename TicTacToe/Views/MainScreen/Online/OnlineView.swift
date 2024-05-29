@@ -24,13 +24,17 @@ struct OnlineView: View {
                     MainView(currentStep: $currentStep, skipOnboarding: $skipOnboarding, showLottieAnimation: $showLottieAnimation)
                 } else if matchManager.inGame {
                     GameView(matchManager: matchManager, gameLogic: gameLogic, isOffline: $isOffline)
+                    
                 } else {
-                    MainView(currentStep: $currentStep, skipOnboarding: $skipOnboarding, showLottieAnimation: $showLottieAnimation)
+                    Text("I should not be here")
+//                    MainView(currentStep: $currentStep, skipOnboarding: $skipOnboarding, showLottieAnimation: $showLottieAnimation)
                 }
             }
         }
         .onAppear {
-            matchManager.startMatchmaking()
+            if !matchManager.inGame {
+                matchManager.startMatchmaking()
+            }
         }
     }
 }

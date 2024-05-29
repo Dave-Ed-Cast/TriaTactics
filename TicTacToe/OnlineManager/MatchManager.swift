@@ -99,6 +99,7 @@ class MatchManager: NSObject, ObservableObject {
     func gameOver() {
         isGameOver = true
         inGame = false
+        print("Game over called, inGame: \(inGame)")
         lastIndexReceived = 0
         localPlayerScore = 0
         isGameOver = true
@@ -141,6 +142,7 @@ class MatchManager: NSObject, ObservableObject {
              */
             currentlyPlaying = playerUUIDKey < parameter
             inGame = true
+            print("Beginning the game, inGame: \(inGame)")
             isTimeKeeper = true
             
             if isTimeKeeper {

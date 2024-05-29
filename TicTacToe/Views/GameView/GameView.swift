@@ -76,6 +76,9 @@ struct GameView: View {
             gameLogic.resetGame()
             gameLogic.isOffline = isOffline
         }
+        .onDisappear {
+            matchManager.gameOver()
+        }
         .onReceive(countdownTimer) { _ in
             guard matchManager.isTimeKeeper else { return }
             matchManager.remainingTime -= 1

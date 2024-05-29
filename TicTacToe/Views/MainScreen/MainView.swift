@@ -86,8 +86,11 @@ struct MainView: View {
             }
         }
     }
+    
     var onlineButtonView: some View {
         Button(action: {
+            matchManager.resetGame()
+            matchManager.startMatchmaking()
             showOnlineView = true
         }) {
             Text("Play Online")

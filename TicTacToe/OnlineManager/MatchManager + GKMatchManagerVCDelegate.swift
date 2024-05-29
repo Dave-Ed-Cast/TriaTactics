@@ -25,13 +25,14 @@ extension MatchManager: GKMatchmakerViewControllerDelegate {
     ///   - viewController: the gamekit view controller
     ///   - error: the error
     func matchmakerViewController(_ viewController: GKMatchmakerViewController, didFailWithError error: any Error) {
-        viewController.dismiss(animated: true)
         print("Matchmaking failed with error: \(error.localizedDescription)")
+        viewController.dismiss(animated: true)
     }
     
     /// This describes what happens if the matchmaking was cancelled
     /// - Parameter viewController: the gamekit view controller
     func matchmakerViewControllerWasCancelled(_ viewController: GKMatchmakerViewController) {
+        print("Matchmaking was cancelled.")
         viewController.dismiss(animated: true)
     }
     
