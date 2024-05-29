@@ -17,7 +17,8 @@ class MatchManager: NSObject, ObservableObject {
     @Published var isGameOver: Bool = false
     @Published var autheticationState: PlayerAuthState = .authenticating
     @Published var currentlyPlaying: Bool = false
-//    @Published var score: Int = 0
+    @Published var localPlayerScore: Int = 0
+    @Published var otherPlayerScore: Int = 0
     @Published var lastIndexReceived: Int = 0
     @Published var isTimeKeeper: Bool = false
     @Published var remainingTime = 10
@@ -98,17 +99,20 @@ class MatchManager: NSObject, ObservableObject {
     func gameOver() {
         isGameOver = true
         inGame = false
-        resetGame()
+        lastIndexReceived = 0
+        localPlayerScore = 0
+        isGameOver = true
         match?.disconnect()
+        match?.delegate = nil
+        match = nil
     }
     
     /// Resets the game
     func resetGame() {
+        
         gameLogic?.resetGame()
+        localPlayerWin = false
         isTimeKeeper = false
-        match?.delegate = nil
-        match = nil
-        otherPlayer = nil
         playerUUIDKey = UUID().uuidString
     }
     
@@ -156,8 +160,17 @@ class MatchManager: NSObject, ObservableObject {
                 //and if with the received move they won, then we know the winner
                 if gameLogic!.checkWinner() {
                     localPlayerWin = gameLogic?.winner == localPlayerSymbol
+                    localPlayerScore += 1
+                    otherPlayerScore = localPlayerScore
+                    currentlyPlaying = playerUUIDKey == player.rawValue
                 }
             }
+        case "requestRematch":
+            showRematchRequest()
+        case "rematchAccepted":
+            handleRematchAccepted()
+        case "rematchDeclined":
+            handleRematchDeclined()
         default:
             break
         }

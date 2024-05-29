@@ -8,6 +8,7 @@
 import Foundation
 import GameKit
 
+///This is the delegate for the matchmaking view controller
 extension MatchManager: GKMatchmakerViewControllerDelegate {
     
     /// This is the function that handles the match found
@@ -33,4 +34,5 @@ extension MatchManager: GKMatchmakerViewControllerDelegate {
     func matchmakerViewControllerWasCancelled(_ viewController: GKMatchmakerViewController) {
         viewController.dismiss(animated: true)
     }
+    
 }

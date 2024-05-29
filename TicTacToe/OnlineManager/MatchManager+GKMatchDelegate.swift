@@ -8,6 +8,7 @@
 import Foundation
 import GameKit
 
+///This is the match delegate
 extension MatchManager: GKMatchDelegate {
     
     /// This is the core function that defines a match
@@ -21,6 +22,12 @@ extension MatchManager: GKMatchDelegate {
         if content.starts(with: "strData:") {
             let message = content.replacingOccurrences(of: "strData:", with: "")
             receivedString(message)
+        } else if content == "requestRematch" {
+            showRematchRequest()
+        } else if content == "rematchAccepted" {
+            handleRematchAccepted()
+        } else if content == "rematchDeclined" {
+            handleRematchDeclined()
         }
     }
     
@@ -54,12 +61,77 @@ extension MatchManager: GKMatchDelegate {
         guard state == .disconnected else { return }
         let alert = UIAlertController(title: "Player disconnected!", message: "The other player disconnected from the game", preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "OK", style: .destructive) { _ in
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
             self.match?.disconnect()
         })
         DispatchQueue.main.async {
             self.gameLogic?.resetGame()
             self.rootViewController?.present(alert, animated: true)
         }
+    }
+    
+    func showRematchRequest() {
+        let alert = UIAlertController(title: "Rematch?", message: "Do you want to play again?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default) { [self] _ in
+            sendRematchResponse(accepted: true)
+            gameLogic?.resetGame()
+            resetGame()
+        })
+        alert.addAction(UIAlertAction(title: "No", style: .cancel) { [self] _ in
+            sendRematchResponse(accepted: false)
+            self.match?.disconnect()
+            gameOver()
+        })
+        DispatchQueue.main.async { [self] in
+            rootViewController?.present(alert, animated: true)
+        }
+    }
+    
+    /// Send rematch response
+    func sendRematchResponse(accepted: Bool) {
+        let response = accepted ? "rematchAccepted" : "rematchDeclined"
+        guard let data = response.data(using: .utf8) else { return }
+        sendData(data, mode: .reliable)
+    }
+    
+    /// Handle rematch accepted response
+    func handleRematchAccepted() {
+        // Logic to handle rematch accepted
+        DispatchQueue.main.async {
+            self.gameLogic?.resetGame()
+            let alert = UIAlertController(title: "Rematch Accepted", message: "The other player accepted the rematch", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.rootViewController?.present(alert, animated: true)
+        }
+    }
+    
+    /// Handle rematch declined response
+    func handleRematchDeclined() {
+        // Logic to handle rematch declined
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Rematch Declined", message: "The other player declined the rematch", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.rootViewController?.present(alert, animated: true)
+        }
+    }
+    
+    /// Show rematch alert when game ends
+    func showEndGameRematchAlert() {
+        let alert = UIAlertController(title: "Game Over", message: "Do you want a rematch?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default) { _ in
+            self.sendRematchRequest()
+        })
+        alert.addAction(UIAlertAction(title: "No", style: .cancel) { _ in
+            self.match?.disconnect()
+        })
+        DispatchQueue.main.async {
+            self.rootViewController?.present(alert, animated: true)
+        }
+    }
+    
+    /// Send rematch request to the other player
+    func sendRematchRequest() {
+        guard let data = "requestRematch".data(using: .utf8) else { return }
+        sendData(data, mode: .reliable)
     }
 }

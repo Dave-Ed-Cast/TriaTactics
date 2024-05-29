@@ -10,7 +10,6 @@ import SwiftUI
 struct MainView: View {
     
     private let onboardingStatusKey = "OnboardingStatus"
-    @Environment(\.dismiss) var dismiss
     
     @State var onboardingIsCompleted: Bool = UserDefaults.standard.bool(forKey: "OnboardingStatus")
     @State private var showTutorialView: Bool = false
@@ -43,14 +42,7 @@ struct MainView: View {
                     if showOnlineView {
                         withAnimation {
                             OnlineView(matchManager: matchManager, gameLogic: gameLogic, showLottieAnimation: $showLottieAnimation, isOffline: $isOffline, currentStep: $currentStep, skipOnboarding: $skipOnboarding)
-                            
                         }
-                            .onAppear {
-                                isOffline = false
-                            }
-                            .onDisappear {
-                                showOnlineView = false
-                            }
                     } else {
                         mainMenuView
                     }
@@ -97,7 +89,6 @@ struct MainView: View {
     var onlineButtonView: some View {
         Button(action: {
             showOnlineView = true
-            print(showOnlineView)
         }) {
             Text("Play Online")
                 .fontWeight(.bold)
@@ -107,7 +98,7 @@ struct MainView: View {
                 .font(.title)
                 .cornerRadius(20)
         }
-        .disabled(matchManager.autheticationState != .authenticated || matchManager.inGame)
+//        .disabled(matchManager.autheticationState != .authenticated || matchManager.isGameOver)
         .opacity(matchManager.autheticationState != .authenticated ? 0.5 : 1)
     }
     var offlineButtonView: some View {

@@ -32,10 +32,6 @@ struct OnlineView: View {
         .onAppear {
             matchManager.startMatchmaking()
         }
-        .onDisappear {
-            matchManager.resetGame()
-            matchManager.gameOver()
-        }
     }
 }
 

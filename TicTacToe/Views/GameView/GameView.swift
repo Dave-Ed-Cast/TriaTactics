@@ -14,32 +14,47 @@ struct GameView: View {
     @ObservedObject var matchManager: MatchManager
     @ObservedObject var gameLogic: GameLogic = GameLogic()
     
+    @Environment(\.dismiss) var dismiss
+    
     @Binding var isOffline: Bool
     
+    @State private var showAlert = false
+    
     var body: some View {
-        
+        NavigationView {
+            
+        }
+        .overlay(alignment: .topTrailing) {
+            if !isOffline {
+                backToMenuView
+                    .padding()
+                    .padding(.top, 15)
+            }
+        }
         Group {
             VStack {
-                
                 Text("Tria Tactics")
                     .font(.largeTitle)
                     .fontWeight(.black)
+                    .padding()
                 Text("Time left: \(isOffline ? 0 : matchManager.remainingTime)")
                     .font(.title)
                     .fontWeight(.semibold)
                     .opacity(isOffline ? 0 : 1)
+                    .padding()
+                Spacer()
                 HStack {
                     if isOffline {
                         Text("Your turn: \(gameLogic.activePlayer == .X ? "X" : "O")")
-                            .font(.title2)
                             .fontWeight(.bold)
                     } else {
-                        Text("\(matchManager.currentlyPlaying ? "Your Turn" : "Opponent's Turn")")
-                            .font(.title2)
+                        Text("\(matchManager.currentlyPlaying ? matchManager.localPlayer.displayName : matchManager.otherPlayer!.displayName) turn")
                             .fontWeight(.bold)
                             .foregroundStyle(matchManager.currentlyPlaying ? .blue : .red)
                     }
+                        
                 }
+                .font(.title2)
                 .padding()
                 .padding(.bottom, 60)
                 .overlay(
@@ -48,6 +63,8 @@ struct GameView: View {
                 )
             }
             .foregroundStyle(.black)
+            
+            scoreView
             
             GameGrid(matchManager: matchManager, gameLogic: gameLogic)
                 .padding()
@@ -63,6 +80,7 @@ struct GameView: View {
             guard matchManager.isTimeKeeper else { return }
             matchManager.remainingTime -= 1
         }
+        
     }
     
     var winnerView: some View {
@@ -89,6 +107,13 @@ struct GameView: View {
             }
         }
     }
+    var scoreView: some View {
+        HStack(spacing: 80) {
+            Text("Your wins: \(isOffline ? 2 : matchManager.localPlayerScore)")
+            Text("Opponent wins: \(isOffline ? 2 : matchManager.otherPlayerScore)")
+        }
+        .font(.callout)
+    }
     var buttonView: some View {
         Button {
             if isOffline {
@@ -98,13 +123,13 @@ struct GameView: View {
             } else {
                 if gameLogic.checkWinner() {
                     withAnimation {
-                        matchManager.gameOver()
+                        gameLogic.resetGame()
                         matchManager.resetGame()
                     }
                 }
             }
         } label: {
-            Text(isOffline ? "Restart" : "Finish")
+            Text("Restart?")
                 .fontWeight(.medium)
                 .frame(width: 200, height: 70, alignment: .center)
                 .background(.yellow)
@@ -116,9 +141,36 @@ struct GameView: View {
         .disabled(!gameLogic.checkWinner())
         .padding()
     }
+    var backToMenuView: some View {
+            Button(action: {
+                showAlert = true
+            }) {
+                ZStack {
+                    Circle()
+                        .scaledToFit()
+                        .foregroundColor(.yellow)
+                    Text("X")
+                        .font(.callout)
+                        .foregroundColor(.black)
+                }
+                .frame(width: 30, height: 30)
+            }
+            .alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("Quit game?"),
+                    message: Text("Are you sure you want to leave?"),
+                    primaryButton: .destructive(Text("Yes")) {
+                        matchManager.gameOver()
+                        showAlert = false
+                    },
+                    secondaryButton: .cancel()
+                )
+            }
+        }
 }
 
 
 #Preview {
+    //setting offline = false crashes the preview due to Text(match manager)
     GameView(matchManager: MatchManager(), isOffline: .constant(true))
 }
