@@ -15,7 +15,8 @@ struct TutorialView: View {
         RoundedRectangle(cornerRadius: 20)
             .frame(width: 50, height: 5)
             .foregroundStyle(.gray.opacity(0.5))
-        OnboardingViewModel(
+        Spacer(minLength: 40)
+        OnboardingPageViewModel(
             onboardingIsCompleted: .constant(false),
             onboardingTitle: "Tria Tactics rule",
             onboardingImage: "Rule",
@@ -27,11 +28,14 @@ struct TutorialView: View {
         } label: {
             Text("OK!")
                 .fontWeight(.semibold)
-                .frame(width: 200, height: 60)
-                .background(.yellow)
+                .background(
+                    RoundedRectangle(cornerRadius: 2)
+                        .fill(Color.yellow)
+                        .scaleEffect(CGSize(width: 4.0, height: 2.5))
+                )
                 .foregroundStyle(.black)
                 .font(.body)
-                .cornerRadius(20)
+                .padding()
         }
         
         .padding()

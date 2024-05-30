@@ -14,20 +14,17 @@ struct OnlineView: View {
     
     @Binding var showLottieAnimation: Bool
     @Binding var isOffline: Bool
-    @Binding var currentStep: Int
-    @Binding var skipOnboarding: Bool
+    
     
     var body: some View {
         Group {
             if matchManager.autheticationState == .authenticated {
                 if matchManager.isGameOver {
-                    MainView(currentStep: $currentStep, skipOnboarding: $skipOnboarding, showLottieAnimation: $showLottieAnimation)
+                    MainView()
                 } else if matchManager.inGame {
                     GameView(matchManager: matchManager, gameLogic: gameLogic, isOffline: $isOffline)
-                    
                 } else {
                     Text("I should not be here")
-//                    MainView(currentStep: $currentStep, skipOnboarding: $skipOnboarding, showLottieAnimation: $showLottieAnimation)
                 }
             }
         }
@@ -40,5 +37,5 @@ struct OnlineView: View {
 }
 
 #Preview {
-    OnlineView(matchManager: MatchManager(), gameLogic: GameLogic(), showLottieAnimation: .constant(true), isOffline: .constant(false), currentStep: .constant(0), skipOnboarding: .constant(true))
+    OnlineView(matchManager: MatchManager(), gameLogic: GameLogic(), showLottieAnimation: .constant(true), isOffline: .constant(false))
 }

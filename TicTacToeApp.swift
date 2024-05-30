@@ -10,19 +10,12 @@ import SwiftUI
 @main
 struct TicTacToeApp: App {
     
-    @State var skipOnboarding: Bool = false
-    @State var showLottieAnimation: Bool = false
     @StateObject private var matchManager = MatchManager()
     @StateObject private var gameLogic = GameLogic()
 
     var body: some Scene {
         WindowGroup {
-            MainView(
-                onboardingIsCompleted: UserDefaults.standard.bool(forKey: "OnboardingStatus"),
-                currentStep: .constant(0),
-                skipOnboarding: $skipOnboarding,
-                showLottieAnimation: $showLottieAnimation
-            )
+            MainView()
             .preferredColorScheme(.light)
             .environmentObject(matchManager)
             .environmentObject(gameLogic)

@@ -95,17 +95,20 @@ class MatchManager: NSObject, ObservableObject {
         sendString(moveMessage)
     }
     
+    
+
     /// Ends the game
     func gameOver() {
         isGameOver = true
         inGame = false
-        print("Game over called, inGame: \(inGame)")
+        currentlyPlaying = false
         lastIndexReceived = 0
         localPlayerScore = 0
         isGameOver = true
         match?.disconnect()
         match?.delegate = nil
         match = nil
+        gameLogic?.resetGame()
     }
     
     /// Resets the game

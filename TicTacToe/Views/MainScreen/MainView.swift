@@ -9,39 +9,30 @@ import SwiftUI
 
 struct MainView: View {
     
-    private let onboardingStatusKey = "OnboardingStatus"
+    @StateObject private var onboardingViewModel = OnboardingParameters()
     
-    @State var onboardingIsCompleted: Bool = UserDefaults.standard.bool(forKey: "OnboardingStatus")
     @State private var showTutorialView: Bool = false
     @State var isOffline: Bool = false
     @State private var showOnlineView: Bool = false
-    
-    @Binding var currentStep: Int
-    @Binding var skipOnboarding: Bool
-    @Binding var showLottieAnimation: Bool
     
     @EnvironmentObject var matchManager: MatchManager
     @EnvironmentObject var gameLogic: GameLogic
     
     var body: some View {
         
-        if !onboardingIsCompleted && !skipOnboarding {
-            OnboardView(
-                onboardingIsCompleted: $onboardingIsCompleted,
-                skipOnboarding: $skipOnboarding,
-                currentStep: $currentStep)
-            .onDisappear {
-                if onboardingIsCompleted {
-                    UserDefaults.standard.set(true, forKey: onboardingStatusKey)
+        if !onboardingViewModel.onboardingIsCompleted && !onboardingViewModel.skipOnboarding {
+            OnboardView(viewModel: onboardingViewModel)
+                .onDisappear {
+                    if onboardingViewModel.onboardingIsCompleted {
+                        onboardingViewModel.completeOnboarding()
+                    }
                 }
-            }
-            
         } else {
             NavigationView {
                 VStack {
                     if showOnlineView {
                         withAnimation {
-                            OnlineView(matchManager: matchManager, gameLogic: gameLogic, showLottieAnimation: $showLottieAnimation, isOffline: $isOffline, currentStep: $currentStep, skipOnboarding: $skipOnboarding)
+                            OnlineView(matchManager: matchManager, gameLogic: gameLogic, showLottieAnimation: .constant(false), isOffline: $isOffline)
                         }
                     } else {
                         mainMenuView
@@ -54,13 +45,11 @@ struct MainView: View {
                             .frame(width: 350)
                     }
                 }
-                
             }
             .onAppear {
                 matchManager.authenticateUser()
             }
             .tint(.black)
-            
         }
     }
     
@@ -77,11 +66,9 @@ struct MainView: View {
                     .fontWeight(.semibold)
                 
                 VStack (spacing: 20) {
-                    
                     onlineButtonView
                     offlineButtonView
                     tutorialButtonView
-                    
                 }
             }
         }
@@ -101,9 +88,9 @@ struct MainView: View {
                 .font(.title)
                 .cornerRadius(20)
         }
-//        .disabled(matchManager.autheticationState != .authenticated || matchManager.isGameOver)
         .opacity(matchManager.autheticationState != .authenticated ? 0.5 : 1)
     }
+    
     var offlineButtonView: some View {
         Button(action: {
             isOffline = true
@@ -122,6 +109,7 @@ struct MainView: View {
             isOffline = true
         })
     }
+    
     var tutorialButtonView: some View {
         Button {
             showTutorialView = true
@@ -141,7 +129,7 @@ struct MainView: View {
 }
 
 #Preview {
-    MainView(currentStep: .constant(0), skipOnboarding: .constant(false), showLottieAnimation: .constant(true))
+    MainView()
         .environmentObject(MatchManager())
         .environmentObject(GameLogic())
 }
