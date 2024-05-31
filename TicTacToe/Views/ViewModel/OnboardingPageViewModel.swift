@@ -20,7 +20,7 @@ struct OnboardingPageViewModel: View {
     var body: some View {
         VStack(spacing: 30) {
             Spacer()
-            LottieAnimation(name: onboardingImage, contentMode: .scaleAspectFit, playbackMode: .playing(.toProgress(1, loopMode: .loop)), scaleFactor: 1)
+            LottieAnimation(name: onboardingImage, contentMode: .scaleAspectFit, playbackMode: .playing(.toProgress(1, loopMode: .loop)))
                 .frame(width: animationSize, height: animationSize)
                 .aspectRatio(contentMode: .fit)
                 .padding()

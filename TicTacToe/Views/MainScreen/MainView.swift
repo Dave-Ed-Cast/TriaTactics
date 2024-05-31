@@ -83,20 +83,15 @@ struct MainView: View {
                             showOnlineView = false
                         }
                 }
-            } else {
-                Text("Authenticating...")
-            }
-        }
-        .onAppear {
-            if !matchManager.inGame {
-                matchManager.startMatchmaking()
             }
         }
     }
     
     var onlineButtonView: some View {
         Button(action: {
-            matchManager.startMatchmaking()
+            if !matchManager.inGame {
+                matchManager.startMatchmaking()
+            }
             showOnlineView = true
         }) {
             Text("Play Online")
