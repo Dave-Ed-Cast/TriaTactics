@@ -31,9 +31,7 @@ struct MainView: View {
             NavigationView {
                 VStack {
                     if showOnlineView {
-                        withAnimation {
-                            OnlineView(matchManager: matchManager, gameLogic: gameLogic, showLottieAnimation: .constant(false), isOffline: $isOffline)
-                        }
+                        onlineView
                     } else {
                         mainMenuView
                     }
@@ -70,6 +68,28 @@ struct MainView: View {
                     offlineButtonView
                     tutorialButtonView
                 }
+            }
+        }
+    }
+    
+    var onlineView: some View {
+        Group {
+            if matchManager.autheticationState == .authenticated {
+                if matchManager.inGame {
+                    GameView(matchManager: matchManager, gameLogic: gameLogic, isOffline: .constant(false))
+                } else {
+                    mainMenuView
+                        .onChange(of: matchManager.inGame) { _ in
+                            showOnlineView = false
+                        }
+                }
+            } else {
+                Text("Authenticating...")
+            }
+        }
+        .onAppear {
+            if !matchManager.inGame {
+                matchManager.startMatchmaking()
             }
         }
     }

@@ -33,7 +33,6 @@
 		3ED67F9F2BF901E800B2F400 /* Game.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ED67F9E2BF901E800B2F400 /* Game.json */; };
 		3ED67FA52BF9046100B2F400 /* Cool.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ED67FA42BF9046100B2F400 /* Cool.json */; };
 		3ED67FAB2BF9072600B2F400 /* Rule.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ED67FAA2BF9072600B2F400 /* Rule.json */; };
-		3ED6BF542C02428B00A53C29 /* OnlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED6BF532C02428B00A53C29 /* OnlineView.swift */; };
 		3ED6BF562C0242C400A53C29 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED6BF552C0242C400A53C29 /* GameOver.swift */; };
 		3ED6BF5B2C0249E300A53C29 /* MatchManager+GKMatchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED6BF5A2C0249E300A53C29 /* MatchManager+GKMatchDelegate.swift */; };
 		3EDF8B812BF7FBAB00957F89 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDF8B802BF7FBAB00957F89 /* GameLogic.swift */; };
@@ -68,7 +67,6 @@
 		3ED67F9E2BF901E800B2F400 /* Game.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Game.json; sourceTree = "<group>"; };
 		3ED67FA42BF9046100B2F400 /* Cool.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Cool.json; sourceTree = "<group>"; };
 		3ED67FAA2BF9072600B2F400 /* Rule.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Rule.json; sourceTree = "<group>"; };
-		3ED6BF532C02428B00A53C29 /* OnlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnlineView.swift; path = Online/OnlineView.swift; sourceTree = "<group>"; };
 		3ED6BF552C0242C400A53C29 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		3ED6BF5A2C0249E300A53C29 /* MatchManager+GKMatchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MatchManager+GKMatchDelegate.swift"; sourceTree = "<group>"; };
 		3EDF8B802BF7FBAB00957F89 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
@@ -103,7 +101,6 @@
 			children = (
 				3E6C13B82BF7F82400373047 /* MainView.swift */,
 				3EBCE0822BFCEED600D5D37C /* TutorialView.swift */,
-				3ED6BF532C02428B00A53C29 /* OnlineView.swift */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -303,7 +300,6 @@
 				3EDF8B812BF7FBAB00957F89 /* GameLogic.swift in Sources */,
 				3ED6BF5B2C0249E300A53C29 /* MatchManager+GKMatchDelegate.swift in Sources */,
 				3ED67F932BF8C09600B2F400 /* MetalLibrary.metal in Sources */,
-				3ED6BF542C02428B00A53C29 /* OnlineView.swift in Sources */,
 				3E2BFCBA2BFE2C2D0012529A /* AuthenticationStates.swift in Sources */,
 				3E2BFCB82BFE2C270012529A /* MatchManager.swift in Sources */,
 				3E6C13B92BF7F82400373047 /* MainView.swift in Sources */,
@@ -450,7 +446,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TicTacToe/TicTacToe.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"TicTacToe/Preview Content\"";
 				DEVELOPMENT_TEAM = WLW428B75Y;
 				ENABLE_PREVIEWS = YES;
@@ -487,7 +483,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TicTacToe/TicTacToe.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"TicTacToe/Preview Content\"";
 				DEVELOPMENT_TEAM = WLW428B75Y;
 				ENABLE_PREVIEWS = YES;

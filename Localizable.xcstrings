@@ -28,6 +28,9 @@
     "Are you sure you want to leave?" : {
 
     },
+    "Authenticating..." : {
+
+    },
     "Finish" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -60,6 +63,7 @@
       }
     },
     "I should not be here" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {

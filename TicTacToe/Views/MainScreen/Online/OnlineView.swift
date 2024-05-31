@@ -14,16 +14,19 @@ struct OnlineView: View {
     
     @Binding var showLottieAnimation: Bool
     @Binding var isOffline: Bool
-    
+    @Environment (\.dismiss) var dismiss
     var body: some View {
         Group {
             if matchManager.autheticationState == .authenticated {
-                if matchManager.isGameOver {
-                    MainView()
-                } else if matchManager.inGame {
+                if matchManager.inGame {
+                    Text("entered the if")
                     GameView(matchManager: matchManager, gameLogic: gameLogic, isOffline: .constant(false))
                 } else {
-                    Text("I should not be here")
+                    Text("main")
+                    MainView()
+                        .onChange(of: matchManager.inGame) { _ in
+                            dismiss()
+                        }
                 }
             }
         }

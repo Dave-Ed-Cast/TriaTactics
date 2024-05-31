@@ -104,6 +104,7 @@ class MatchManager: NSObject, ObservableObject {
         match?.delegate = self
         otherPlayer = match?.players.first
         currentlyPlaying = true
+        inGame = true
         sendString("began:\(playerUUIDKey)")
     }
     
