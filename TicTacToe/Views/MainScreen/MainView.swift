@@ -76,7 +76,6 @@ struct MainView: View {
     
     var onlineButtonView: some View {
         Button(action: {
-            matchManager.resetGame()
             matchManager.startMatchmaking()
             showOnlineView = true
         }) {
@@ -93,9 +92,9 @@ struct MainView: View {
     
     var offlineButtonView: some View {
         Button(action: {
-            isOffline = true
+
         }) {
-            NavigationLink(destination: GameView(matchManager: matchManager, isOffline: $isOffline)) {
+            NavigationLink(destination: GameView(matchManager: matchManager, isOffline: .constant(true))) {
                 Text("Play Offline")
                     .fontWeight(.bold)
                     .frame(width: 200, height: 70, alignment: .center)
@@ -105,9 +104,6 @@ struct MainView: View {
                     .cornerRadius(20)
             }
         }
-        .simultaneousGesture(TapGesture().onEnded {
-            isOffline = true
-        })
     }
     
     var tutorialButtonView: some View {

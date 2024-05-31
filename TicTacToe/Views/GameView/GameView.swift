@@ -11,7 +11,7 @@ var countdownTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect
 
 struct GameView: View {
     
-    @ObservedObject var matchManager: MatchManager
+    @ObservedObject var matchManager: MatchManager = MatchManager()
     @ObservedObject var gameLogic: GameLogic = GameLogic()
     
     @Environment(\.dismiss) var dismiss
@@ -28,10 +28,10 @@ struct GameView: View {
             if !isOffline {
                 backToMenuView
                     .padding()
-                    .padding(.top, 15)
+                    .padding(.top, 20)
             }
         }
-        Group {
+        ZStack {
             VStack {
                 Text("Tria Tactics")
                     .font(.largeTitle)
@@ -96,12 +96,12 @@ struct GameView: View {
                         .padding(.bottom, 20)
                 } else {
                     if matchManager.localPlayerWin {
-                        Text("You Lose!")
+                        Text("You Win!")
                             .font(.title)
                             .fontWeight(.bold)
                             .padding(.bottom, 20)
                     } else {
-                        Text("You Win!")
+                        Text("You Lose!")
                             .font(.title)
                             .fontWeight(.bold)
                             .padding(.bottom, 20)
@@ -112,8 +112,8 @@ struct GameView: View {
     }
     var scoreView: some View {
         HStack(spacing: 80) {
-            Text("Your wins: \(isOffline ? 2 : matchManager.localPlayerScore)")
-            Text("Opponent wins: \(isOffline ? 2 : matchManager.otherPlayerScore)")
+            Text("Your wins: \(isOffline ? 2 : matchManager.otherPlayerScore)")
+            Text("Opponent wins: \(isOffline ? 2 : matchManager.localPlayerScore)")
         }
         .font(.callout)
     }
@@ -155,8 +155,14 @@ struct GameView: View {
                     Text("X")
                         .font(.callout)
                         .foregroundColor(.black)
+                        .background(
+                            Circle()
+                                .fill(Color.yellow)
+                                .scaleEffect(CGSize(width: 3.0, height: 3.0))
+                        )
                 }
-                .frame(width: 30, height: 30)
+                .padding(.horizontal, 10)
+                
             }
             .alert(isPresented: $showAlert) {
                 Alert(

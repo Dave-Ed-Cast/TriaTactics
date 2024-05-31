@@ -42,9 +42,6 @@ struct GameOver: View {
             }
             showLottieAnimation = false
         }
-        .onDisappear {
-            
-        }
     }
 }
 

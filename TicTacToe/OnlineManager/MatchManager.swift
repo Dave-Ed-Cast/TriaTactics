@@ -104,7 +104,6 @@ class MatchManager: NSObject, ObservableObject {
         currentlyPlaying = false
         lastIndexReceived = 0
         localPlayerScore = 0
-        isGameOver = true
         match?.disconnect()
         match?.delegate = nil
         match = nil

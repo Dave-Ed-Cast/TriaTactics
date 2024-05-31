@@ -41,6 +41,8 @@ struct OnboardView: View {
                 }
             } label: {
                 Text("Skip")
+                    .padding()
+                
             }
             .buttonBorderShape(.automatic)
             .padding()

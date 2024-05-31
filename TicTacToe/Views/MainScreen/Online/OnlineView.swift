@@ -22,7 +22,7 @@ struct OnlineView: View {
                 if matchManager.isGameOver {
                     MainView()
                 } else if matchManager.inGame {
-                    GameView(matchManager: matchManager, gameLogic: gameLogic, isOffline: $isOffline)
+                    GameView(matchManager: matchManager, gameLogic: gameLogic, isOffline: .constant(false))
                 } else {
                     Text("I should not be here")
                 }
