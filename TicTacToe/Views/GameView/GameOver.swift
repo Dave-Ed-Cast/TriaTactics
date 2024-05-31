@@ -9,7 +9,6 @@ import SwiftUI
 
 struct GameOver: View {
     
-    @ObservedObject var matchManager: MatchManager
     @ObservedObject var gameLogic: GameLogic
     @Binding var showLottieAnimation: Bool
 
@@ -46,5 +45,5 @@ struct GameOver: View {
 }
 
 #Preview {
-    GameOver(matchManager: MatchManager(), gameLogic: GameLogic(), showLottieAnimation: .constant(true))
+    GameOver(gameLogic: GameLogic(), showLottieAnimation: .constant(true))
 }

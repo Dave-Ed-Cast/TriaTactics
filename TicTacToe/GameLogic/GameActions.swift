@@ -41,10 +41,13 @@ extension GameLogic {
         if checkWinner() {
             winner = activePlayer
             isGameOver = true
+            matchManager?.isTimeKeeper = false
+            matchManager?.stopTimer()
         } else {
             //if it's NOT offline, update the match manager
             if !isOffline! {
                 matchManager!.currentlyPlaying = false
+                matchManager?.remainingTime = 10
             }
             activePlayer = (activePlayer == .X) ? .O : .X
         }
@@ -73,6 +76,9 @@ extension GameLogic {
                 activePlayer = (activePlayer == .X) ? .O : .X
                 print("Next player: \(activePlayer), currentlyPlaying: \(matchManager!.currentlyPlaying)")
                 
+                if matchManager!.currentlyPlaying {
+                    matchManager?.remainingTime = 10
+                }
             }
         }
     }
@@ -115,6 +121,16 @@ extension GameLogic {
         if totalMoves > 14 {
             rotate = true
         }
+    }
+    
+    func makeRandomMove() {
+        guard !matchManager!.isGameOver else { return }
+        
+        if let index = grid.firstIndex(of: nil) {
+            buttonTap(index: index)
+        }
+        matchManager?.currentlyPlaying = false
+        matchManager?.remainingTime = 10
     }
     
     /// put everything back in place

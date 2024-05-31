@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-var countdownTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-
 struct GameView: View {
     
     @ObservedObject var matchManager: MatchManager = MatchManager()
@@ -31,14 +29,14 @@ struct GameView: View {
                     .padding(.top, 20)
             }
         }
-        ZStack {
+        Group {
             VStack {
                 Text("Tria Tactics")
                     .font(.largeTitle)
                     .fontWeight(.black)
                     .padding()
                 Text("Time left: \(isOffline ? 0 : matchManager.remainingTime)")
-                    .font(.title)
+                    .font(.title2)
                     .fontWeight(.semibold)
                     .opacity(isOffline ? 0 : 1)
                     .padding()
@@ -46,20 +44,20 @@ struct GameView: View {
                 HStack {
                     if isOffline {
                         Text("Your turn: \(gameLogic.activePlayer == .X ? "X" : "O")")
+                            .font(.title3)
                             .fontWeight(.bold)
                     } else {
                         Text("\(matchManager.currentlyPlaying ? matchManager.localPlayer.displayName : matchManager.otherPlayer!.displayName) turn")
+                            .font(.title3)
                             .fontWeight(.bold)
                             .foregroundStyle(matchManager.currentlyPlaying ? .blue : .red)
                     }
                         
                 }
-                .font(.title2)
-                .padding()
                 .padding(.bottom, 60)
                 .overlay(
                     winnerView
-                        .offset(y: 30)
+                        .offset(y: 20)
                 )
             }
             .foregroundStyle(.black)
@@ -79,11 +77,6 @@ struct GameView: View {
         .onDisappear {
             matchManager.gameOver()
         }
-        .onReceive(countdownTimer) { _ in
-            guard matchManager.isTimeKeeper else { return }
-            matchManager.remainingTime -= 1
-        }
-        
     }
     
     var winnerView: some View {
@@ -112,8 +105,10 @@ struct GameView: View {
     }
     var scoreView: some View {
         HStack(spacing: 80) {
-            Text("Your wins: \(isOffline ? 2 : matchManager.otherPlayerScore)")
-            Text("Opponent wins: \(isOffline ? 2 : matchManager.localPlayerScore)")
+            if !isOffline {
+                Text("Your wins: \(matchManager.otherPlayerScore)")
+                Text("Opponent wins: \(matchManager.localPlayerScore)")
+            }
         }
         .font(.callout)
     }

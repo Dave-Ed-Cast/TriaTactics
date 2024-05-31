@@ -39,7 +39,7 @@ struct GameGrid: View {
             }
             
             if gameLogic.isGameOver ?? false {
-                GameOver(matchManager: matchManager, gameLogic: gameLogic, showLottieAnimation: .constant(true))
+                GameOver(gameLogic: gameLogic, showLottieAnimation: .constant(true))
             }
         }
     }

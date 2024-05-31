@@ -27,6 +27,7 @@ class MatchManager: NSObject, ObservableObject {
     //there needs to be a reference of the GameLogic
     var gameLogic: GameLogic?
     
+    var timer: Timer?
     var localPlayerSymbol: Player = .X
     var match: GKMatch?
     var localPlayer: GKLocalPlayer = GKLocalPlayer.local
@@ -65,6 +66,26 @@ class MatchManager: NSObject, ObservableObject {
         }
     }
     
+    func startTimer() {        
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+            self?.handleTimerTick()
+        }
+    }
+    
+    func handleTimerTick() {
+        remainingTime -= 1
+        if remainingTime <= 0 {
+            remainingTime = 10
+            gameLogic?.makeRandomMove()
+        }
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
     /// The moment the users wants to play online, we find the players
     func startMatchmaking() {
         let request = GKMatchRequest()
@@ -95,8 +116,6 @@ class MatchManager: NSObject, ObservableObject {
         sendString(moveMessage)
     }
     
-    
-
     /// Ends the game
     func gameOver() {
         isGameOver = true
@@ -108,15 +127,16 @@ class MatchManager: NSObject, ObservableObject {
         match?.delegate = nil
         match = nil
         gameLogic?.resetGame()
+        stopTimer()
     }
     
     /// Resets the game
     func resetGame() {
-        
         gameLogic?.resetGame()
         localPlayerWin = false
         isTimeKeeper = false
         playerUUIDKey = UUID().uuidString
+        stopTimer()
     }
     
     /// When we send a string, we also need to receive it
@@ -146,9 +166,8 @@ class MatchManager: NSObject, ObservableObject {
             inGame = true
             print("Beginning the game, inGame: \(inGame)")
             isTimeKeeper = true
-            
             if isTimeKeeper {
-                countdownTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+                startTimer()
             }
             
             //then we make the move made of three elements regarding the message and if it's sent successfully
@@ -160,7 +179,7 @@ class MatchManager: NSObject, ObservableObject {
                 
                 //tell that the other player can't move
                 currentlyPlaying = playerUUIDKey != player.rawValue
-                
+               
                 //and if with the received move they won, then we know the winner
                 if gameLogic!.checkWinner() {
                     localPlayerWin = gameLogic?.winner == localPlayerSymbol
