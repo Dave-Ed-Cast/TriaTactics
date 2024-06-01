@@ -22,7 +22,7 @@ struct TutorialView: View {
                 onboardingTitle: "Tria Tactics rule",
                 onboardingImage: "Rule",
                 onboardingText: "Making a fourth move will cost the first one. The next one follows the same logic. \n\nTria Tactics is about choosing wisely!",
-                animationSize: CGFloat(0.9)
+                animationSize: CGFloat(300)
             )
             
             Button {

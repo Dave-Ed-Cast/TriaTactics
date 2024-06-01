@@ -18,7 +18,8 @@ struct OnboardView: View {
                 onboardingIsCompleted: $viewModel.onboardingIsCompleted,
                 onboardingTitle: "Welcome to Tria Tactics!",
                 onboardingImage: "TicTacToe",
-                onboardingText: "Tria Tactics is a revisited version of Tic Tac Toe. Play the classic game until something new will happen!"
+                onboardingText: "Tria Tactics is a revisited version of Tic Tac Toe. Play the classic game until something new will happen!",
+                scaleFactor: 0.8
             )
             OnboardingPageViewModel(
                 onboardingIsCompleted: $viewModel.onboardingIsCompleted,
@@ -29,11 +30,14 @@ struct OnboardView: View {
             OnboardingPageViewModel(
                 onboardingIsCompleted: $viewModel.onboardingIsCompleted,
                 onboardingTitle: "Multiplayer is finally here!",
-                onboardingImage: "Cool",
+                onboardingImage: "Done",
                 onboardingText: "Here comes the multiplayer! Challenge your friends in a strategic battle. Log into Game Center and enjoy!",
-                showDoneButton: true
+                showDoneButton: true,
+                scaleFactor: 0.7
             )
         }
+        .tabViewStyle(.page(indexDisplayMode: .automatic))
+        .indexViewStyle(.page(backgroundDisplayMode: .always))
         .overlay(alignment: .topTrailing, content: {
             Button {
                 withAnimation {
@@ -47,7 +51,6 @@ struct OnboardView: View {
             .buttonBorderShape(.automatic)
             .padding()
         })
-        .tabViewStyle(.page(indexDisplayMode: .automatic))
     }
 }
 

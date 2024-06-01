@@ -13,6 +13,8 @@
 		3E3925C32BFD2F2A0033F0E2 /* GameActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3925C22BFD2F2A0033F0E2 /* GameActions.swift */; };
 		3E3925C52BFD303D0033F0E2 /* Line.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E3925C42BFD303D0033F0E2 /* Line.json */; };
 		3E3925C92BFD351F0033F0E2 /* BackgroundGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3925C82BFD351F0033F0E2 /* BackgroundGridViewModel.swift */; };
+		3E43425E2C0B35CD0093FA80 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3E43425D2C0B35CD0093FA80 /* Lottie */; };
+		3E4342662C0B48A90093FA80 /* Done.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E4342652C0B48A90093FA80 /* Done.json */; };
 		3E5630832BF822BC0009B48B /* OnboardingPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5630822BF822BC0009B48B /* OnboardingPageViewModel.swift */; };
 		3E5630872BF827AF0009B48B /* LottieAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5630862BF827AF0009B48B /* LottieAnimation.swift */; };
 		3E56308B2BF82BBF0009B48B /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E56308A2BF82BBF0009B48B /* GameView.swift */; };
@@ -24,14 +26,10 @@
 		3E90784D2C013E5000F34BA3 /* MatchManager + GKMatchManagerVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E90784C2C013E5000F34BA3 /* MatchManager + GKMatchManagerVCDelegate.swift */; };
 		3EBCE0832BFCEED600D5D37C /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBCE0822BFCEED600D5D37C /* TutorialView.swift */; };
 		3EC8FE192C0908570014BBC0 /* OnboardingParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC8FE182C0908570014BBC0 /* OnboardingParameters.swift */; };
-		3EC8FE222C092A5E0014BBC0 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3EC8FE212C092A5E0014BBC0 /* Lottie */; };
 		3ED67F932BF8C09600B2F400 /* MetalLibrary.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3ED67F922BF8C09600B2F400 /* MetalLibrary.metal */; };
 		3ED67F952BF8EEFE00B2F400 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 3ED67F942BF8EEFE00B2F400 /* Localizable.xcstrings */; };
-		3ED67F972BF8F14A00B2F400 /* Test.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ED67F962BF8F14A00B2F400 /* Test.json */; };
 		3ED67F9B2BF8FB6900B2F400 /* TicTacToe.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ED67F9A2BF8FB6900B2F400 /* TicTacToe.json */; };
 		3ED67F9D2BF8FBDA00B2F400 /* GameOver.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ED67F9C2BF8FBDA00B2F400 /* GameOver.json */; };
-		3ED67F9F2BF901E800B2F400 /* Game.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ED67F9E2BF901E800B2F400 /* Game.json */; };
-		3ED67FA52BF9046100B2F400 /* Cool.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ED67FA42BF9046100B2F400 /* Cool.json */; };
 		3ED67FAB2BF9072600B2F400 /* Rule.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ED67FAA2BF9072600B2F400 /* Rule.json */; };
 		3ED6BF562C0242C400A53C29 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED6BF552C0242C400A53C29 /* GameOver.swift */; };
 		3ED6BF5B2C0249E300A53C29 /* MatchManager+GKMatchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED6BF5A2C0249E300A53C29 /* MatchManager+GKMatchDelegate.swift */; };
@@ -46,6 +44,7 @@
 		3E3925C22BFD2F2A0033F0E2 /* GameActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameActions.swift; sourceTree = "<group>"; };
 		3E3925C42BFD303D0033F0E2 /* Line.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Line.json; sourceTree = "<group>"; };
 		3E3925C82BFD351F0033F0E2 /* BackgroundGridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundGridViewModel.swift; sourceTree = "<group>"; };
+		3E4342652C0B48A90093FA80 /* Done.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Done.json; sourceTree = "<group>"; };
 		3E5630822BF822BC0009B48B /* OnboardingPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewModel.swift; sourceTree = "<group>"; };
 		3E5630862BF827AF0009B48B /* LottieAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieAnimation.swift; sourceTree = "<group>"; };
 		3E56308A2BF82BBF0009B48B /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -61,11 +60,8 @@
 		3EC8FE182C0908570014BBC0 /* OnboardingParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingParameters.swift; sourceTree = "<group>"; };
 		3ED67F922BF8C09600B2F400 /* MetalLibrary.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = MetalLibrary.metal; sourceTree = "<group>"; };
 		3ED67F942BF8EEFE00B2F400 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
-		3ED67F962BF8F14A00B2F400 /* Test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Test.json; sourceTree = "<group>"; };
 		3ED67F9A2BF8FB6900B2F400 /* TicTacToe.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TicTacToe.json; sourceTree = "<group>"; };
 		3ED67F9C2BF8FBDA00B2F400 /* GameOver.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GameOver.json; sourceTree = "<group>"; };
-		3ED67F9E2BF901E800B2F400 /* Game.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Game.json; sourceTree = "<group>"; };
-		3ED67FA42BF9046100B2F400 /* Cool.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Cool.json; sourceTree = "<group>"; };
 		3ED67FAA2BF9072600B2F400 /* Rule.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Rule.json; sourceTree = "<group>"; };
 		3ED6BF552C0242C400A53C29 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		3ED6BF5A2C0249E300A53C29 /* MatchManager+GKMatchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MatchManager+GKMatchDelegate.swift"; sourceTree = "<group>"; };
@@ -78,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EC8FE222C092A5E0014BBC0 /* Lottie in Frameworks */,
+				3E43425E2C0B35CD0093FA80 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,13 +104,11 @@
 		3E3925C62BFD30560033F0E2 /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				3E4342652C0B48A90093FA80 /* Done.json */,
 				3E3925C42BFD303D0033F0E2 /* Line.json */,
 				3ED67FAA2BF9072600B2F400 /* Rule.json */,
-				3ED67FA42BF9046100B2F400 /* Cool.json */,
 				3ED67F9A2BF8FB6900B2F400 /* TicTacToe.json */,
-				3ED67F9E2BF901E800B2F400 /* Game.json */,
 				3ED67F9C2BF8FBDA00B2F400 /* GameOver.json */,
-				3ED67F962BF8F14A00B2F400 /* Test.json */,
 			);
 			name = Animations;
 			sourceTree = "<group>";
@@ -227,7 +221,7 @@
 			);
 			name = TicTacToe;
 			packageProductDependencies = (
-				3EC8FE212C092A5E0014BBC0 /* Lottie */,
+				3E43425D2C0B35CD0093FA80 /* Lottie */,
 			);
 			productName = TicTacToe;
 			productReference = 3E6C13B32BF7F82400373047 /* TicTacToe.app */;
@@ -259,7 +253,7 @@
 			);
 			mainGroup = 3E6C13AA2BF7F82400373047;
 			packageReferences = (
-				3EC8FE202C092A5E0014BBC0 /* XCRemoteSwiftPackageReference "lottie-spm" */,
+				3E43425C2C0B35CD0093FA80 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
 			productRefGroup = 3E6C13B42BF7F82400373047 /* Products */;
 			projectDirPath = "";
@@ -278,13 +272,11 @@
 				3E6C13BE2BF7F82500373047 /* Preview Assets.xcassets in Resources */,
 				3ED67F9D2BF8FBDA00B2F400 /* GameOver.json in Resources */,
 				3E6C13BB2BF7F82500373047 /* Assets.xcassets in Resources */,
-				3ED67F972BF8F14A00B2F400 /* Test.json in Resources */,
 				3ED67F952BF8EEFE00B2F400 /* Localizable.xcstrings in Resources */,
-				3ED67FA52BF9046100B2F400 /* Cool.json in Resources */,
 				3ED67F9B2BF8FB6900B2F400 /* TicTacToe.json in Resources */,
 				3E3925C52BFD303D0033F0E2 /* Line.json in Resources */,
 				3ED67FAB2BF9072600B2F400 /* Rule.json in Resources */,
-				3ED67F9F2BF901E800B2F400 /* Game.json in Resources */,
+				3E4342662C0B48A90093FA80 /* Done.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,7 +529,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3EC8FE202C092A5E0014BBC0 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+		3E43425C2C0B35CD0093FA80 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-spm";
 			requirement = {
@@ -548,9 +540,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3EC8FE212C092A5E0014BBC0 /* Lottie */ = {
+		3E43425D2C0B35CD0093FA80 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3EC8FE202C092A5E0014BBC0 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			package = 3E43425C2C0B35CD0093FA80 /* XCRemoteSwiftPackageReference "lottie-spm" */;
 			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */

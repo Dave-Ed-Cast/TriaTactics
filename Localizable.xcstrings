@@ -28,9 +28,6 @@
     "Are you sure you want to leave?" : {
 
     },
-    "Authenticating..." : {
-
-    },
     "Finish" : {
       "extractionState" : "stale",
       "localizations" : {

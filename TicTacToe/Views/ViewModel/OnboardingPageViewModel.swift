@@ -15,15 +15,13 @@ struct OnboardingPageViewModel: View {
     var onboardingImage: String
     var onboardingText: LocalizedStringKey
     var showDoneButton: Bool = false
-    var animationSize: CGFloat = 350 // Define a fixed size for the animation
+    var animationSize: CGFloat = 350
+    var scaleFactor: CGFloat = 1.0
     
     var body: some View {
         VStack(spacing: 30) {
             Spacer()
-            LottieAnimation(name: onboardingImage, contentMode: .scaleAspectFit, playbackMode: .playing(.toProgress(1, loopMode: .loop)))
-                .frame(width: animationSize, height: animationSize)
-                .aspectRatio(contentMode: .fit)
-                .padding()
+            LottieAnimation(name: onboardingImage, contentMode: .scaleAspectFit, playbackMode: onboardingImage != "Done" ? (.playing(.toProgress(1, loopMode: .loop))) : (.playing(.fromFrame(87, toFrame: 140, loopMode: .autoReverse))), width: animationSize, height: animationSize, scaleFactor: scaleFactor)
             
             Text(onboardingTitle)
                 .font(.title2)
@@ -36,6 +34,7 @@ struct OnboardingPageViewModel: View {
             Spacer()
             
         }
+        .padding()
         .overlay(alignment: .bottom, content: {
             
             if showDoneButton {
@@ -64,7 +63,7 @@ struct OnboardingPageViewModel: View {
     OnboardingPageViewModel(
         onboardingIsCompleted: .constant(false),
         onboardingTitle: "Local multiplayer (for now)",
-        onboardingImage: "Cool",
+        onboardingImage: "Done",
         onboardingText: "For now enjoy the local version because multiplayer is coming soon as possible!",
         showDoneButton: false
     )
