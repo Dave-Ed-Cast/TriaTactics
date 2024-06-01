@@ -71,10 +71,9 @@ extension MatchManager: GKMatchDelegate {
     }
     
     func showRematchRequest() {
-        let alert = UIAlertController(title: "Rematch?", message: "Do you want to play again?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Rematch?", message: "The other player requested a rematch. Do you want to play again?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yes", style: .default) { [self] _ in
             sendRematchResponse(accepted: true)
-            gameLogic?.resetGame()
             resetGame()
         })
         alert.addAction(UIAlertAction(title: "No", style: .cancel) { [self] _ in

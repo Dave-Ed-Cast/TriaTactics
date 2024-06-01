@@ -55,14 +55,14 @@ struct GameView: View {
                         
                 }
                 .padding(.bottom, 60)
-                .overlay(
-                    winnerView
-                        .offset(y: 20)
-                )
+//                .overlay(
+//                    winnerView
+//                        .offset(y: 20)
+//                )
             }
             .foregroundStyle(.black)
             
-            scoreView
+//            scoreView
             
             GameGrid(matchManager: matchManager, gameLogic: gameLogic)
                 .padding()
@@ -84,30 +84,21 @@ struct GameView: View {
             if let winner = gameLogic.winner {
                 if isOffline {
                     Text("\(winner.rawValue) wins!")
-                        .font(.title)
                         .fontWeight(.bold)
-                        .padding(.bottom, 20)
                 } else {
-                    if matchManager.localPlayerWin {
-                        Text("You Win!")
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .padding(.bottom, 20)
-                    } else {
-                        Text("You Lose!")
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .padding(.bottom, 20)
-                    }
+                    Text(matchManager.localPlayerWin ? "You win!" : "You Lose!")
+                        .fontWeight(.bold)
                 }
             }
         }
+        .font(.title)
+        .padding(.bottom, 20)
     }
     var scoreView: some View {
         HStack(spacing: 80) {
             if !isOffline {
-                Text("Your wins: \(matchManager.otherPlayerScore)")
-                Text("Opponent wins: \(matchManager.localPlayerScore)")
+                Text("Your wins: \(matchManager.localPlayerScore)")
+                Text("Opponent wins: \(matchManager.otherPlayerScore)")
             }
         }
         .font(.callout)
@@ -121,13 +112,12 @@ struct GameView: View {
             } else {
                 if gameLogic.checkWinner() {
                     withAnimation {
-                        gameLogic.resetGame()
-                        matchManager.resetGame()
+                        matchManager.sendRematchRequest()
                     }
                 }
             }
         } label: {
-            Text("Restart?")
+            Text("Rematch?")
                 .fontWeight(.medium)
                 .frame(width: 200, height: 70, alignment: .center)
                 .background(.yellow)

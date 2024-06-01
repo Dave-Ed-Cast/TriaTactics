@@ -292,7 +292,11 @@
         }
       }
     },
+    "You win!" : {
+
+    },
     "You Win!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {

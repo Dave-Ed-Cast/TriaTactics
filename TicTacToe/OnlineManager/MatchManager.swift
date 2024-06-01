@@ -19,10 +19,10 @@ class MatchManager: NSObject, ObservableObject {
     @Published var currentlyPlaying: Bool = false
     @Published var localPlayerScore: Int = 0
     @Published var otherPlayerScore: Int = 0
-    @Published var lastIndexReceived: Int = 0
     @Published var isTimeKeeper: Bool = false
     @Published var remainingTime = 10
     @Published var localPlayerWin: Bool = false
+    @Published var waitingForRematchResponse: Bool = false
     
     //there needs to be a reference of the GameLogic
     var gameLogic: GameLogic?
@@ -103,8 +103,6 @@ class MatchManager: NSObject, ObservableObject {
         match = newMatch
         match?.delegate = self
         otherPlayer = match?.players.first
-        currentlyPlaying = true
-        inGame = true
         sendString("began:\(playerUUIDKey)")
     }
     
@@ -122,7 +120,6 @@ class MatchManager: NSObject, ObservableObject {
         isGameOver = true
         inGame = false
         currentlyPlaying = false
-        lastIndexReceived = 0
         localPlayerScore = 0
         match?.disconnect()
         match?.delegate = nil
@@ -134,10 +131,9 @@ class MatchManager: NSObject, ObservableObject {
     /// Resets the game
     func resetGame() {
         gameLogic?.resetGame()
-        localPlayerWin = false
         isTimeKeeper = false
-        playerUUIDKey = UUID().uuidString
         stopTimer()
+        sendString("began:\(playerUUIDKey)")
     }
     
     /// When we send a string, we also need to receive it
@@ -163,31 +159,33 @@ class MatchManager: NSObject, ObservableObject {
              we set the player who is lexicographically smaller, UUIDkey < param, currentlyPlaying = true
              also we set the inGame status and isTimeKeeper for the views
              */
-            currentlyPlaying = playerUUIDKey < parameter
+            
+            currentlyPlaying = (playerUUIDKey < parameter)
             inGame = true
-            print("Beginning the game, inGame: \(inGame)")
             isTimeKeeper = true
-            if isTimeKeeper {
-                startTimer()
-            }
+            startTimer()
             
             //then we make the move made of three elements regarding the message and if it's sent successfully
         case "move":
             if messageSplit.count == 3, let index = Int(messageSplit[1]), let playerSymbol = messageSplit[2].first, let player = Player(rawValue: String(playerSymbol)) {
                 
-                //we make the game logic receive this move
+                //if you were to receive this move, would you lose?
                 gameLogic?.receiveMove(index: index, player: player)
                 
-                //tell that the other player can't move
-                currentlyPlaying = playerUUIDKey != player.rawValue
-               
-                //and if with the received move they won, then we know the winner
+                //nah I'd win
                 if gameLogic!.checkWinner() {
-                    localPlayerWin = gameLogic?.winner == localPlayerSymbol
-                    localPlayerScore += 1
-                    otherPlayerScore = localPlayerScore
-                    currentlyPlaying = playerUUIDKey == player.rawValue
+                    localPlayerWin = (gameLogic?.winner == localPlayerSymbol)
+                    localPlayerWin ? (localPlayerScore += 1) : (otherPlayerScore += 1)
+                    currentlyPlaying = false
+                } else {
+                    currentlyPlaying = (playerUUIDKey != player.rawValue)
                 }
+                
+                print("currentlyPlaying: \(currentlyPlaying)")
+                print("localPlayerWin: \(localPlayerWin)")
+                print("localPlayerScore: \(localPlayerScore)")
+                print("otherPlayerScore: \(otherPlayerScore)")
+
             }
         case "requestRematch":
             showRematchRequest()

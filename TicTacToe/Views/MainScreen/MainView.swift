@@ -103,6 +103,7 @@ struct MainView: View {
                 .cornerRadius(20)
         }
         .opacity(matchManager.autheticationState != .authenticated ? 0.5 : 1)
+        .disabled(matchManager.autheticationState != .authenticated)
     }
     
     var offlineButtonView: some View {

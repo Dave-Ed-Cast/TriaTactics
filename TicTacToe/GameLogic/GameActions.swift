@@ -35,7 +35,7 @@ extension GameLogic {
         
         //and if it's NOT offline, update the match manager
         if !isOffline! {
-            matchManager?.sendMove(index: index, player: activePlayer)
+            matchManager?.sendMove(index: index, player: activePlayer)            
         }
         
         if checkWinner() {
@@ -69,7 +69,7 @@ extension GameLogic {
             gameActions(index: index)
             
             if checkWinner() {
-                winner = player
+//                winner = player
                 isGameOver = true
             } else {
                 matchManager!.currentlyPlaying = !(matchManager!.currentlyPlaying)
