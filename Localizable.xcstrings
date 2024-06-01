@@ -1,19 +1,15 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%@" : {
-      "extractionState" : "stale",
+    "%@ turn" : {
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@"
+            "value" : "turno di: %@"
           }
         }
       }
-    },
-    "%@ turn" : {
-
     },
     "%@ wins!" : {
       "localizations" : {
@@ -26,15 +22,11 @@
       }
     },
     "Are you sure you want to leave?" : {
-
-    },
-    "Finish" : {
-      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Termina"
+            "value" : "Sei sicuro di voler abbandonare?"
           }
         }
       }
@@ -55,17 +47,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "È arrivato il multigiocatore! Sfida i tuoi amici in una battaglia strategica. Accedi nel Game Center e divertiti!"
-          }
-        }
-      }
-    },
-    "I should not be here" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Non dovrei essere qui"
           }
         }
       }
@@ -131,15 +112,11 @@
       }
     },
     "Opponent wins: %lld" : {
-
-    },
-    "Play again?" : {
-      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gioca ancora?"
+            "value" : "Vincite avversario: %lld"
           }
         }
       }
@@ -165,27 +142,24 @@
       }
     },
     "Quit game?" : {
-
-    },
-    "Restart" : {
-      "extractionState" : "stale",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Restart"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ricomincia"
+            "value" : "Abbandona?"
           }
         }
       }
     },
-    "Restart?" : {
-
+    "Rematch?" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rivincita?"
+          }
+        }
+      }
     },
     "Skip" : {
       "localizations" : {
@@ -198,7 +172,14 @@
       }
     },
     "Status: %@" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status: %@"
+          }
+        }
+      }
     },
     "The game for true tacticians!" : {
       "localizations" : {
@@ -277,10 +258,24 @@
       }
     },
     "X" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "X"
+          }
+        }
+      }
     },
     "Yes" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sì"
+          }
+        }
+      }
     },
     "You Lose!" : {
       "localizations" : {
@@ -293,10 +288,6 @@
       }
     },
     "You win!" : {
-
-    },
-    "You Win!" : {
-      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -317,7 +308,14 @@
       }
     },
     "Your wins: %lld" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tue vincite: %lld"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
