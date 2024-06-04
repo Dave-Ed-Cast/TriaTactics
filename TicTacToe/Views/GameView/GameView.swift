@@ -34,7 +34,6 @@ struct GameView: View {
                 Text("Tria Tactics")
                     .font(.largeTitle)
                     .fontWeight(.black)
-                    .padding()
                 Text("Time left: \(isOffline ? 0 : matchManager.remainingTime)")
                     .font(.title2)
                     .fontWeight(.semibold)
@@ -54,7 +53,7 @@ struct GameView: View {
                     }
                         
                 }
-                .padding(.bottom, 60)
+                .padding(.bottom, 30)
 //                .overlay(
 //                    winnerView
 //                        .offset(y: 20)
@@ -64,11 +63,11 @@ struct GameView: View {
             
 //            scoreView
             
+            
             GameGrid(matchManager: matchManager, gameLogic: gameLogic)
-                .padding()
-            
+            Spacer()
             buttonView
-            
+            Spacer(minLength: 30)
         }
         .onAppear {
             gameLogic.resetGame()
@@ -119,15 +118,19 @@ struct GameView: View {
         } label: {
             Text("Rematch?")
                 .fontWeight(.medium)
-                .frame(width: 200, height: 70, alignment: .center)
-                .background(.yellow)
                 .foregroundStyle(.black)
                 .font(.title3)
-                .cornerRadius(20)
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 15)
+                        .foregroundStyle(.yellow)
+                )
         }
+        
         .opacity(gameLogic.checkWinner() ? 1 : 0.5)
         .disabled(!gameLogic.checkWinner())
-        .padding()
+        .padding(.vertical, 30)
+        
     }
     var backToMenuView: some View {
             Button(action: {

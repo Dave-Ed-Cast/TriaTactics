@@ -29,20 +29,20 @@ struct MainView: View {
                 }
         } else {
             NavigationView {
-                VStack {
+                VStack(spacing: -150) {
+                    Spacer()
                     if showOnlineView {
                         onlineView
                     } else {
                         mainMenuView
-                    }
-                }
-                .overlay(alignment: .bottom) {
-                    if !showOnlineView {
+                        Spacer()
                         Text("Status: \(matchManager.autheticationState.rawValue)")
-                            .offset(CGSize(width: 0.0, height: 80.0))
-                            .frame(width: 350)
+                            .font(.body)
+                            .padding()
                     }
                 }
+                
+                
             }
             .onAppear {
                 matchManager.authenticateUser()
@@ -54,19 +54,18 @@ struct MainView: View {
     var mainMenuView: some View {
         VStack {
             Text("Tria Tactics")
-                .font(.system(size: 50))
+                .font(.largeTitle)
                 .fontWeight(.black)
-                .padding()
             
-            VStack(spacing: 200) {
+            VStack(spacing: 170) {
                 Text("The game for true tacticians!")
-                    .font(.title3)
-                    .fontWeight(.semibold)
+                    .font(.headline)
                 
                 VStack (spacing: 20) {
                     onlineButtonView
                     offlineButtonView
                     tutorialButtonView
+                    
                 }
             }
         }
@@ -96,11 +95,13 @@ struct MainView: View {
         }) {
             Text("Play Online")
                 .fontWeight(.bold)
-                .frame(width: 200, height: 70, alignment: .center)
-                .background(.yellow)
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 15)
+                        .foregroundStyle(.yellow)
+                )
                 .foregroundStyle(.black)
                 .font(.title)
-                .cornerRadius(20)
         }
         .opacity(matchManager.autheticationState != .authenticated ? 0.5 : 1)
         .disabled(matchManager.autheticationState != .authenticated)
@@ -108,16 +109,18 @@ struct MainView: View {
     
     var offlineButtonView: some View {
         Button(action: {
-
+            
         }) {
             NavigationLink(destination: GameView(matchManager: matchManager, isOffline: .constant(true))) {
                 Text("Play Offline")
                     .fontWeight(.bold)
-                    .frame(width: 200, height: 70, alignment: .center)
-                    .background(.yellow)
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 15)
+                            .foregroundStyle(.yellow)
+                    )
                     .foregroundStyle(.black)
                     .font(.title)
-                    .cornerRadius(20)
             }
         }
     }
@@ -128,11 +131,13 @@ struct MainView: View {
         } label: {
             Text("Tutorial")
                 .fontWeight(.medium)
-                .frame(width: 150, height: 50, alignment: .center)
-                .background(.yellow)
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 15)
+                        .foregroundStyle(.yellow)
+                )
                 .foregroundStyle(.black)
                 .font(.title3)
-                .cornerRadius(20)
         }
         .sheet(isPresented: $showTutorialView) {
             TutorialView()
