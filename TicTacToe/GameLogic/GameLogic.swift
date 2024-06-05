@@ -15,7 +15,7 @@ enum Player: String {
 
 /** 
  This is the class that takes care of the game behaviour.
- It is indipendend from the match manager because the match manager handles the online part of the match.
+ It is indipendent from the match manager for mantainability, scalability, and testing purposes.
  */
 class GameLogic: ObservableObject {
     

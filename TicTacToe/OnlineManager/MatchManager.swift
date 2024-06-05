@@ -9,7 +9,10 @@ import Foundation
 import GameKit
 import SwiftUI
 
-/// This is the class that manages the online part of the matches
+/** 
+ This is the class that manages the online part of the matches
+ It is indipendent from the game logic  for mantainability, scalability, and testing purposes.
+ */
 class MatchManager: NSObject, ObservableObject {
     
     //these variables are all needed for the management of the matches
@@ -28,7 +31,8 @@ class MatchManager: NSObject, ObservableObject {
     var gameLogic: GameLogic?
     
     var timer: Timer?
-    var localPlayerSymbol: Player = .X
+    
+    //matchmaking and online variables
     var match: GKMatch?
     var localPlayer: GKLocalPlayer = GKLocalPlayer.local
     var otherPlayer: GKPlayer?
@@ -66,7 +70,8 @@ class MatchManager: NSObject, ObservableObject {
         }
     }
     
-    func startTimer() {        
+    func startTimer() {
+        isTimeKeeper = true
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             self?.handleTimerTick()
@@ -82,11 +87,12 @@ class MatchManager: NSObject, ObservableObject {
     }
     
     func stopTimer() {
+        isTimeKeeper = false
         timer?.invalidate()
         timer = nil
     }
     
-    /// The moment the users wants to play online, we find the players
+    /// Pair two players to play online
     func startMatchmaking() {
         let request = GKMatchRequest()
         request.minPlayers = 2
@@ -97,7 +103,7 @@ class MatchManager: NSObject, ObservableObject {
         rootViewController?.present(matchMakerVC!, animated: true)
     }
     
-    /// And when the player is found, we play
+    /// Start the game when players are found
     /// - Parameter newMatch: this new match is to assign the id of the match so that we know which is it
     func startGame(newMatch: GKMatch) {
         match = newMatch
@@ -106,10 +112,10 @@ class MatchManager: NSObject, ObservableObject {
         sendString("began:\(playerUUIDKey)")
     }
     
-    /// When we send moves we just have to tell that something should change
+    /// Send the current move
     /// - Parameters:
-    ///   - index: So we just give the move command, along with the index
-    ///   - player: and the player that made the move
+    ///   - index: the index at which the player tapped
+    ///   - player: the player that made the move
     func sendMove(index: Int, player: Player) {
         let moveMessage = "move:\(index):\(player)"
         sendString(moveMessage)
@@ -131,7 +137,6 @@ class MatchManager: NSObject, ObservableObject {
     /// Resets the game
     func resetGame() {
         gameLogic?.resetGame()
-        isTimeKeeper = false
         stopTimer()
         sendString("began:\(playerUUIDKey)")
     }
@@ -147,45 +152,37 @@ class MatchManager: NSObject, ObservableObject {
         
         switch messagePrefix {
             
-            //this means the game started, so we assign UUID keys
+            //when the encoded message is "began" do some stuff
         case "began":
             if playerUUIDKey == parameter {
+                //determine which playerID to give this player
                 playerUUIDKey = UUID().uuidString
                 sendString("began:\(playerUUIDKey)")
                 break
             }
             
-            /*
-             we set the player who is lexicographically smaller, UUIDkey < param, currentlyPlaying = true
-             also we set the inGame status and isTimeKeeper for the views
-             */
-            
+            //the player lexicographically smaller goes first
             currentlyPlaying = (playerUUIDKey < parameter)
             inGame = true
-            isTimeKeeper = true
             startTimer()
             
-            //then we make the move made of three elements regarding the message and if it's sent successfully
+            //when the encoded message is "move" do some stuff
         case "move":
             if messageSplit.count == 3, let index = Int(messageSplit[1]), let playerSymbol = messageSplit[2].first, let player = Player(rawValue: String(playerSymbol)) {
                 
-                //if you were to receive this move, would you lose?
+                //if you were to receive this move, who would win?
                 gameLogic?.receiveMove(index: index, player: player)
                 
-                //nah I'd win
+                //if my opponent were intelligent i would be in a bit of trouble
+                
+                //but would you lose?
                 if gameLogic!.checkWinner() {
-                    localPlayerWin = (gameLogic?.winner == localPlayerSymbol)
+                    localPlayerWin = (gameLogic?.winner == gameLogic?.activePlayer)
                     localPlayerWin ? (localPlayerScore += 1) : (otherPlayerScore += 1)
-                    currentlyPlaying = false
                 } else {
+                    //nah, i'd win
                     currentlyPlaying = (playerUUIDKey != player.rawValue)
                 }
-                
-                print("currentlyPlaying: \(currentlyPlaying)")
-                print("localPlayerWin: \(localPlayerWin)")
-                print("localPlayerScore: \(localPlayerScore)")
-                print("otherPlayerScore: \(otherPlayerScore)")
-
             }
         case "requestRematch":
             showRematchRequest()

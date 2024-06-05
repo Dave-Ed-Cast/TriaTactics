@@ -14,16 +14,28 @@ extension GameLogic {
     func buttonTap(index: Int) {
         
         //supposing the game is still ongoing
-        guard grid[index] == nil && winner == nil else {
+        guard grid[index] == nil && winner == nil else { return }
+        
+        guard index >= 0 && index < grid.count else {
+            print("impossible index")
             return
         }
         
-        //if it's NOT offline, update the match manager
-        if !isOffline! {
-            guard matchManager!.currentlyPlaying else {
-                print("Not your turn!")
+        if let offlineStatus = isOffline, !offlineStatus {
+            guard let matchManager = matchManager else {
+                print("match manager is nil")
                 return
             }
+            matchManager.sendMove(index: index, player: activePlayer)
+            
+            guard matchManager.currentlyPlaying else {
+                print("not your turn")
+                return
+            }
+            
+        } else if isOffline == nil {
+            print("isOffline is nil")
+            return
         }
         
         //occupy that grid portion to the active player
@@ -34,8 +46,12 @@ extension GameLogic {
         gameActions(index: index)
         
         //and if it's NOT offline, update the match manager
-        if !isOffline! {
-            matchManager?.sendMove(index: index, player: activePlayer)            
+        if let offlineStatus = isOffline, !offlineStatus {
+            guard let matchManager = matchManager else {
+                print("Error: Match manager is nil")
+                return
+            }
+            matchManager.sendMove(index: index, player: activePlayer)
         }
         
         if checkWinner() {
@@ -45,9 +61,13 @@ extension GameLogic {
             matchManager?.stopTimer()
         } else {
             //if it's NOT offline, update the match manager
-            if !isOffline! {
-                matchManager!.currentlyPlaying = false
-                matchManager?.remainingTime = 10
+            if let offlineStatus = isOffline, !offlineStatus {
+                guard let matchManager = matchManager else {
+                    print("Error: Match manager is nil")
+                    return
+                }
+                matchManager.currentlyPlaying = false
+                matchManager.remainingTime = 10
             }
             activePlayer = (activePlayer == .X) ? .O : .X
         }
@@ -69,7 +89,7 @@ extension GameLogic {
             gameActions(index: index)
             
             if checkWinner() {
-//                winner = player
+                //                winner = player
                 isGameOver = true
             } else {
                 matchManager!.currentlyPlaying = !(matchManager!.currentlyPlaying)
