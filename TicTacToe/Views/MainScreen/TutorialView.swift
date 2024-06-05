@@ -24,22 +24,22 @@ struct TutorialView: View {
                 onboardingText: "Making a fourth move will cost the first one. The next one follows the same logic. \n\nTria Tactics is about choosing wisely!",
                 animationSize: CGFloat(300)
             )
+            .lineLimit(nil)
             
             Button {
                 dismiss()
             } label: {
                 Text("OK!")
                     .fontWeight(.semibold)
+                    .padding(.horizontal, 40)
+                    .padding(.vertical, 10)
                     .background(
-                        RoundedRectangle(cornerRadius: 5)
+                        RoundedRectangle(cornerRadius: 10)
                             .fill(Color.yellow)
-                            .scaleEffect(CGSize(width: 4.0, height: 2.5))
                     )
                     .foregroundStyle(.black)
                     .font(.body)
-                    .padding()
             }
-            
             .padding()
         }
 

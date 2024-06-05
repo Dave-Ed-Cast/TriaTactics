@@ -13,5 +13,5 @@ enum PlayerAuthState: String {
     case unauthenticated = "Sign in to Game Center to play."
     case authenticated = "Logged in!"
     case error = "Error logging into Game Center."
-    case restricted = "You're can't play multiplayer games!"
+    case restricted = "You can't play multiplayer games!"
 }

@@ -31,6 +31,12 @@
         }
       }
     },
+    "Cancel" : {
+
+    },
+    "Credits" : {
+
+    },
     "For now enjoy the local version because multiplayer is coming soon as possible!" : {
       "localizations" : {
         "it" : {
@@ -187,6 +193,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Il gioco per veri tattici!"
+          }
+        }
+      }
+    },
+    "Their page" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La loro pagina"
           }
         }
       }

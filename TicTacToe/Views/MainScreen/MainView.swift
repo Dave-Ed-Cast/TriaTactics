@@ -9,22 +9,23 @@ import SwiftUI
 
 struct MainView: View {
     
-    @StateObject private var onboardingViewModel = OnboardingParameters()
+    @StateObject private var parameters = OnboardingParameters()
     
     @State private var showTutorialView: Bool = false
     @State var isOffline: Bool = false
     @State private var showOnlineView: Bool = false
+    @State private var showCreditsView: Bool = false
     
     @EnvironmentObject var matchManager: MatchManager
     @EnvironmentObject var gameLogic: GameLogic
     
     var body: some View {
         
-        if !onboardingViewModel.onboardingIsCompleted && !onboardingViewModel.skipOnboarding {
-            OnboardView(viewModel: onboardingViewModel)
+        if !parameters.onboardingIsCompleted && !parameters.skipOnboarding {
+            OnboardView(viewModel: parameters)
                 .onDisappear {
-                    if onboardingViewModel.onboardingIsCompleted {
-                        onboardingViewModel.completeOnboarding()
+                    if parameters.onboardingIsCompleted {
+                        parameters.completeOnboarding()
                     }
                 }
         } else {
@@ -32,7 +33,7 @@ struct MainView: View {
                 VStack(spacing: -150) {
                     Spacer()
                     if showOnlineView {
-                        onlineView
+                        onlineManagerView
                     } else {
                         mainMenuView
                         Spacer()
@@ -41,13 +42,12 @@ struct MainView: View {
                             .padding()
                     }
                 }
-                
-                
             }
             .onAppear {
                 matchManager.authenticateUser()
             }
             .tint(.black)
+            .lineLimit(1)
         }
     }
     
@@ -57,7 +57,7 @@ struct MainView: View {
                 .font(.largeTitle)
                 .fontWeight(.black)
             
-            VStack(spacing: 170) {
+            VStack(spacing: 130) {
                 Text("The game for true tacticians!")
                     .font(.headline)
                 
@@ -65,13 +65,14 @@ struct MainView: View {
                     onlineButtonView
                     offlineButtonView
                     tutorialButtonView
-                    
+                    creditsButtonView
                 }
+                
             }
         }
     }
     
-    var onlineView: some View {
+    var onlineManagerView: some View {
         Group {
             if matchManager.autheticationState == .authenticated {
                 if matchManager.inGame {
@@ -143,6 +144,26 @@ struct MainView: View {
             TutorialView()
         }
     }
+    
+    var creditsButtonView: some View {
+        Button {
+            showCreditsView = true
+        } label: {
+            Text("Credits")
+                .fontWeight(.medium)
+                .padding(.horizontal, 10)
+                .background(
+                    RoundedRectangle(cornerRadius: 15)
+                        .foregroundStyle(.yellow)
+                )
+                .foregroundStyle(.black)
+                .font(.title3)
+        }
+        .sheet(isPresented: $showCreditsView) {
+            CreditsView()
+        }
+    }
+    
 }
 
 #Preview {
