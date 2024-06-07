@@ -267,6 +267,8 @@
 				en,
 				Base,
 				it,
+				ru,
+				"es-419",
 			);
 			mainGroup = 3E6C13AA2BF7F82400373047;
 			packageReferences = (

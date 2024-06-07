@@ -57,7 +57,7 @@ struct MainView: View {
                 .font(.largeTitle)
                 .fontWeight(.black)
             
-            VStack(spacing: 130) {
+            VStack(spacing: 190) {
                 Text("The game for true tacticians!")
                     .font(.headline)
                 

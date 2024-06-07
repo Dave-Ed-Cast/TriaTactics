@@ -3,6 +3,12 @@
   "strings" : {
     "%@ turn" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turno de %@"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13,6 +19,12 @@
     },
     "%@ wins!" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡%@gana!"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -23,6 +35,12 @@
     },
     "Are you sure you want to leave?" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Seguro que quieres salir?"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -32,13 +50,33 @@
       }
     },
     "Cancel" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelar"
+          }
+        }
+      }
     },
     "Credits" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Creditos"
+          }
+        }
+      }
     },
     "For now enjoy the local version because multiplayer is coming soon as possible!" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por ahora disfruta la versión local, la versión multijugador vendrá lo más pronto posible"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -49,6 +87,12 @@
     },
     "Here comes the multiplayer! Challenge your friends in a strategic battle. Log into Game Center and enjoy!" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Aquí esta multijugador! Desafía a tus amigos en una batalla estratégica. ¡Inicia sesión en Game Center y disfruta!"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -59,6 +103,12 @@
     },
     "Let's start!" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Empecemos!"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -69,6 +119,12 @@
     },
     "Local multiplayer (for now)" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Multijugador local (por ahora)"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -79,6 +135,12 @@
     },
     "Making a fourth move will cost the first one. The next one follows the same logic. \n\nTria Tactics is about choosing wisely!" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hacer el cuarto movimiento te costará el primero. El siguiente sigue la misma lógica. \n\n¡Tria Tactics se trata de elegir sabiamente!"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -89,6 +151,12 @@
     },
     "Making your fourth move of the game will make the first one disappear! And it keeps going after that! This is Tria Tactics..." : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Hacer el cuarto movimiento del juego hará que que el primero desaparezca! ¡Y así continuara! Esto es Tria Tactics..."
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -99,6 +167,12 @@
     },
     "Multiplayer is finally here!" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Multijugador finalmente está aquí!"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -109,6 +183,12 @@
     },
     "OK!" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡OK!"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -119,6 +199,12 @@
     },
     "Opponent wins: %lld" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tu oponente gana: %lld"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -129,6 +215,12 @@
     },
     "Play Offline" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Juega Offline"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -139,6 +231,12 @@
     },
     "Play Online" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Juega Online"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -149,6 +247,12 @@
     },
     "Quit game?" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Salir del juego?"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -159,6 +263,12 @@
     },
     "Rematch?" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Revancha? "
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -169,6 +279,12 @@
     },
     "Skip" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Omitir"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -179,6 +295,12 @@
     },
     "Status: %@" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado: %@"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -189,6 +311,12 @@
     },
     "The game for true tacticians!" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡El juego para verdaderos estrategas! "
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -209,6 +337,12 @@
     },
     "Time left: %lld" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiempo restante: %lld"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -219,6 +353,12 @@
     },
     "Tria Tactics" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tria Tactics"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -229,6 +369,12 @@
     },
     "Tria Tactics is a revisited version of Tic Tac Toe. Play the classic game until something new will happen!" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tria Tactics es una versión innovadora de Tic Tac Toe. ¡Juega el modo clásico hasta que algo nuevo suceda!"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -239,6 +385,12 @@
     },
     "Tria Tactics rule" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reglas de Tria Tactics"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -249,6 +401,12 @@
     },
     "Tutorial" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutorial"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -265,6 +423,12 @@
             "value" : "Welcome to Tria Tactics!"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Bienvenido a Tria Tactics!"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -275,6 +439,12 @@
     },
     "X" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "X"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -285,6 +455,12 @@
     },
     "Yes" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -295,6 +471,12 @@
     },
     "You Lose!" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Perdiste!"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -305,6 +487,12 @@
     },
     "You win!" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Ganaste!"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -315,6 +503,12 @@
     },
     "Your turn: %@" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tu turno: %@"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -325,6 +519,12 @@
     },
     "Your wins: %lld" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tus victorias: %lld"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",

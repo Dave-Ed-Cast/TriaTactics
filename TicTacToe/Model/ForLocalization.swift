@@ -52,9 +52,9 @@ struct ForLocalization: View {
         .environment(\.locale, Locale(identifier: "IT"))
 }
 
-#Preview("EN") {
+#Preview("Spanish") {
     ForLocalization()
-        .environment(\.locale, Locale(identifier: "EN"))
+        .environment(\.locale, Locale(identifier: "SP"))
 }
 
 #Preview("EN") {

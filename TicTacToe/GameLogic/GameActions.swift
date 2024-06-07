@@ -57,7 +57,6 @@ extension GameLogic {
         if checkWinner() {
             winner = activePlayer
             isGameOver = true
-            matchManager?.isTimeKeeper = false
             matchManager?.stopTimer()
         } else {
             //if it's NOT offline, update the match manager
