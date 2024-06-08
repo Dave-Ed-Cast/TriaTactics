@@ -70,6 +70,7 @@ class MatchManager: NSObject, ObservableObject {
     }
     /// Start the timer of the match
     func startTimer() {
+        remainingTime = 10
         isTimeKeeper = true
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
@@ -80,7 +81,7 @@ class MatchManager: NSObject, ObservableObject {
     /// Timer logic
     func handleTimerTick() {
         remainingTime -= 1
-        if remainingTime <= 0 {
+        if remainingTime < 0 {
             remainingTime = 10
             gameLogic?.makeRandomMove()
         }
@@ -114,7 +115,8 @@ class MatchManager: NSObject, ObservableObject {
         sendString("began:\(playerUUIDKey)")
     }
     
-    /// Send the current move
+    /// This is an exclusive function for online matches.
+    /// The local player sends the move
     /// - Parameters:
     ///   - index: the index at which the player tapped
     ///   - player: the player that made the move
@@ -139,55 +141,54 @@ class MatchManager: NSObject, ObservableObject {
     /// Resets the game
     func resetGame() {
         gameLogic?.resetGame()
-        stopTimer()
-        sendString("began:\(playerUUIDKey)")
+        startTimer()
+        currentlyPlaying = !currentlyPlaying
     }
     
     /// When we send a string, we also need to receive it
     /// - Parameter message: so we receive the message string with all the components (command, index and player)
     func receivedString(_ message: String) {
         
-        //we split the message and know the first element is the command
+        //MARK: message example - move:2:X
+
         let messageSplit = message.split(separator: ":")
         guard let messagePrefix = messageSplit.first else { return }
         let parameter = String(messageSplit.last ?? "")
         
+        //MARK: split message example - ["move", "2", "X"]
+        
         switch messagePrefix {
             
-            //when the encoded message is "began" do some stuff
+            //when the encoded message is "began"
         case "began":
             if playerUUIDKey == parameter {
                 //determine which playerID to give this player
                 playerUUIDKey = UUID().uuidString
+                print("my playerUUIDKey is: \(playerUUIDKey)")
                 sendString("began:\(playerUUIDKey)")
                 break
             }
             
             //the player lexicographically smaller goes first
             currentlyPlaying = (playerUUIDKey < parameter)
+            print("\(playerUUIDKey) currently playing: \(currentlyPlaying)")
             inGame = true
             startTimer()
             
             //when the encoded message is "move" do some stuff
             //if you were to receive this move, who would win?
         case "move":
+            print(messageSplit)
             if messageSplit.count == 3, let index = Int(messageSplit[1]), let playerSymbol = messageSplit[2].first, let player = Player(rawValue: String(playerSymbol)) {
                 
                 //if my opponent were a tactician i would be in a bit of trouble
                 
                 gameLogic?.receiveMove(index: index, player: player)
-                
-                //but would you lose?
-                if gameLogic!.checkWinner() {
-                    
-                    //nah, i'd win
-                    localPlayerWin = (gameLogic?.winner == localPlayerSymbol)
-                    localPlayerWin ? (localPlayerScore += 1) : (otherPlayerScore += 1)
-                    stopTimer()
-                } else {
-                    currentlyPlaying = (playerUUIDKey != player.rawValue)
-                }
             }
+        case "winner":
+            localPlayerWin = (gameLogic?.winner == localPlayerSymbol)
+            localPlayerWin ? (localPlayerScore += 1) : (otherPlayerScore += 1)
+            stopTimer()
         case "requestRematch":
             showRematchRequest()
         case "rematchAccepted":

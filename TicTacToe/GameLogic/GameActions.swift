@@ -13,7 +13,7 @@ extension GameLogic {
     /// - Parameter index: the index is the pressed spot on the grid
     func buttonTap(index: Int) {
         
-        //supposing the game is still ongoing
+        // Supposing the game is still ongoing
         guard grid[index] == nil && winner == nil else { return }
         
         guard index >= 0 && index < grid.count else {
@@ -21,50 +21,75 @@ extension GameLogic {
             return
         }
         
-        if let offlineStatus = isOffline, !offlineStatus {
-            guard let matchManager = matchManager else {
-                print("match manager is nil")
-                return
+        if let offlineStatus = isOffline {
+            if offlineStatus {
+                handleMoveOffline(index: index)
+            } else {
+                handleMoveOnline(index: index)
             }
-            
-            guard matchManager.currentlyPlaying else {
-                print("not your turn")
-                return
-            }
-            
-            matchManager.sendMove(index: index, player: activePlayer)
-            
-        } else if isOffline == nil {
+        } else {
             print("isOffline is nil")
+        }
+    }
+    
+    /// Defines the actions for an online match
+    /// - Parameter index: the grid spot
+    private func handleMoveOnline(index: Int) {
+        guard let matchManager = matchManager else {
+            print("match manager is nil")
             return
         }
         
-        //occupy that grid portion to the active player
-        grid[index] = activePlayer
-        print("Player \(activePlayer) moved at index \(index)")
+        guard matchManager.currentlyPlaying else {
+            print("not your turn")
+            return
+        }
         
-        //do some stuff
-        gameActions(index: index)
+        matchManager.sendMove(index: index, player: activePlayer)
+        finalizeMove(index: index)
         
-        if checkWinner() {
-            winner = activePlayer
-            isGameOver = true
-            matchManager?.stopTimer()
+        if !checkWinner() {
+            matchManager.localPlayerSymbol = activePlayer
+            matchManager.currentlyPlaying = false
+            matchManager.remainingTime = 10
+            activePlayer = (activePlayer == .X) ? .O : .X
         } else {
-            //if it's NOT offline, update the match manager
-            if let offlineStatus = isOffline, !offlineStatus {
-                guard let matchManager = matchManager else {
-                    print("Error: Match manager is nil")
-                    return
-                }
-                matchManager.currentlyPlaying = false
-                matchManager.remainingTime = 10
-            }
+            matchManager.sendString("winner")
+            matchManager.localPlayerSymbol = activePlayer
+            matchManager.stopTimer()
+        }
+    }
+    
+    /// Defines the actions for an offline match
+    /// - Parameter index: the grid spot
+    private func handleMoveOffline(index: Int) {
+        finalizeMove(index: index)
+        
+        if !checkWinner() {
             activePlayer = (activePlayer == .X) ? .O : .X
         }
     }
     
-    /// This is an exclusive function for online matches, so it checks if it's offline and skips it if it's false
+    /// Finalizes the move in the grid
+    /// - Parameter index: the grid spot
+    private func finalizeMove(index: Int) {
+        //this player occupied the grid at this index
+        grid[index] = activePlayer
+        print("Player \(activePlayer) moved at index \(index)")
+        
+        //the core of Tria Tactics
+        gameActions(index: index)
+        
+        //did you win?
+        if checkWinner() {
+            winner = activePlayer
+            isGameOver = true
+        }
+    }
+
+    
+    /// This is an exclusive function for online matches.
+    /// The opponent receives the move
     /// - Parameters:
     ///   - index: the index we received
     ///   - player: the player that made the move
@@ -81,11 +106,11 @@ extension GameLogic {
             
             if checkWinner() {
                 winner = player
+                matchManager?.sendString("winner")
                 isGameOver = true
             } else {
                 matchManager!.currentlyPlaying = !(matchManager!.currentlyPlaying)
                 activePlayer = (activePlayer == .X) ? .O : .X
-                print("Next player: \(activePlayer), currentlyPlaying: \(matchManager!.currentlyPlaying)")
                 
                 if matchManager!.currentlyPlaying {
                     matchManager?.remainingTime = 10

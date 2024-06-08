@@ -70,7 +70,7 @@ extension MatchManager: GKMatchDelegate {
         }
     }
     
-    /// Handles the request to the other user 
+    /// Handles the request from the other player
     func showRematchRequest() {
         let alert = UIAlertController(title: "Rematch?", message: "The other player requested a rematch. Do you want to play again?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yes", style: .default) { [self] _ in
@@ -96,9 +96,10 @@ extension MatchManager: GKMatchDelegate {
     
     /// Handle rematch accepted response
     func handleRematchAccepted() {
-        // Logic to handle rematch accepted
-        DispatchQueue.main.async {
-            self.gameLogic?.resetGame()
+        
+        resetGame()
+
+        DispatchQueue.main.async {            
             let alert = UIAlertController(title: "Rematch Accepted", message: "The other player accepted the rematch", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             self.rootViewController?.present(alert, animated: true)
@@ -107,24 +108,10 @@ extension MatchManager: GKMatchDelegate {
     
     /// Handle rematch declined response
     func handleRematchDeclined() {
-        // Logic to handle rematch declined
+        
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Rematch Declined", message: "The other player declined the rematch", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
-            self.rootViewController?.present(alert, animated: true)
-        }
-    }
-    
-    /// Show rematch alert when game ends
-    func showEndGameRematchAlert() {
-        let alert = UIAlertController(title: "Game Over", message: "Do you want a rematch?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Yes", style: .default) { _ in
-            self.sendRematchRequest()
-        })
-        alert.addAction(UIAlertAction(title: "No", style: .cancel) { _ in
-            self.match?.disconnect()
-        })
-        DispatchQueue.main.async {
             self.rootViewController?.present(alert, animated: true)
         }
     }
