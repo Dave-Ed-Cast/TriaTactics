@@ -26,12 +26,13 @@ extension GameLogic {
                 print("match manager is nil")
                 return
             }
-            matchManager.sendMove(index: index, player: activePlayer)
             
             guard matchManager.currentlyPlaying else {
                 print("not your turn")
                 return
             }
+            
+            matchManager.sendMove(index: index, player: activePlayer)
             
         } else if isOffline == nil {
             print("isOffline is nil")

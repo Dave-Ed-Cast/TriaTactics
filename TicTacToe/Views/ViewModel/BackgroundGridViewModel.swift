@@ -10,27 +10,25 @@ import SwiftUI
 struct BackgroundGridViewModel: View {
     var body: some View {
         GeometryReader { geometry in
-            let width = geometry.size.width
-            let height = geometry.size.height
-            let gridSize = min(width, height) * 1.1
-            let spacing = gridSize / 3.25
-            
+            let gridSize = min(geometry.size.width, geometry.size.height)
+            let spacing = gridSize * 0.5
+
             ZStack {
                 RoundedRectangle(cornerRadius: 20)
                     .frame(width: gridSize, height: gridSize)
                     .foregroundStyle(.yellow)
-                
-                VStack(spacing: spacing) {
+
+                VStack(spacing: spacing * 0.65) {
                     Rectangle()
                         .foregroundStyle(.white)
-                        .frame(height: gridSize * 0.02)
+                        .frame(height: gridSize * 0.015)
                     Rectangle()
                         .foregroundStyle(.white)
-                        .frame(height: gridSize * 0.02)
+                        .frame(height: gridSize * 0.015)
                 }
-                .frame(width: gridSize, height: spacing * 2)
-                
-                HStack(spacing: spacing * 1.1) {
+                .frame(width: gridSize)
+
+                HStack(spacing: spacing * 0.65) {
                     Rectangle()
                         .foregroundStyle(.white)
                         .frame(width: gridSize * 0.014)
@@ -38,9 +36,9 @@ struct BackgroundGridViewModel: View {
                         .foregroundStyle(.white)
                         .frame(width: gridSize * 0.014)
                 }
-                .frame(width: spacing * 2.2, height: gridSize)
+                .frame(height: gridSize)
             }
-            .frame(width: width, height: height, alignment: .center)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         }
     }
 }

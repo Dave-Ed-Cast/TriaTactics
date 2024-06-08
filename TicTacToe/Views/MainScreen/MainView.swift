@@ -32,15 +32,7 @@ struct MainView: View {
             NavigationView {
                 VStack(spacing: -150) {
                     Spacer()
-                    if showOnlineView {
-                        onlineManagerView
-                    } else {
-                        mainMenuView
-                        Spacer()
-                        Text("Status: \(matchManager.autheticationState.rawValue)")
-                            .font(.body)
-                            .padding()
-                    }
+                        viewManagerView
                 }
             }
             .onAppear {
@@ -72,18 +64,22 @@ struct MainView: View {
         }
     }
     
-    var onlineManagerView: some View {
+    var viewManagerView: some View {
         Group {
-            if matchManager.autheticationState == .authenticated {
-                if matchManager.inGame {
-                    GameView(matchManager: matchManager, gameLogic: gameLogic, isOffline: .constant(false))
-                } else {
-                    mainMenuView
-                        .onChange(of: matchManager.inGame) { _ in
-                            showOnlineView = false
-                        }
-                }
+            
+            if matchManager.inGame && matchManager.autheticationState == .authenticated {
+                GameView(matchManager: matchManager, gameLogic: gameLogic, isOffline: .constant(false))
+            } else {
+                mainMenuView
+                Spacer()
+                Text("Status: \(matchManager.autheticationState.rawValue)")
+                    .font(.body)
+                    .padding()
+                    .onChange(of: matchManager.inGame) { _ in
+                        showOnlineView = false
+                    }
             }
+            
         }
     }
     

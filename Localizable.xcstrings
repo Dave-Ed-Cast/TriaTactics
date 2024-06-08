@@ -101,6 +101,9 @@
         }
       }
     },
+    "hi" : {
+
+    },
     "Let's start!" : {
       "localizations" : {
         "es-419" : {
@@ -438,6 +441,7 @@
       }
     },
     "X" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es-419" : {
           "stringUnit" : {

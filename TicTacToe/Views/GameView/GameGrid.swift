@@ -12,17 +12,16 @@ struct GameGrid: View {
     @ObservedObject var matchManager: MatchManager
     @ObservedObject var gameLogic: GameLogic
     
-    let col = Array(repeating: GridItem(.flexible()), count: 3)
-    
     @State private var showLottieAnimation = false
     
     var body: some View {
-        ZStack {
-            BackgroundGridViewModel()
-            
-            VStack(spacing: 35) {
+        GeometryReader { geometry in
+            let gridSize = min(geometry.size.width, geometry.size.height)
+            let cellSize = gridSize / 4 // Adjust cell size based on available space
+
+            VStack(spacing: gridSize * 0.08) {
                 ForEach(0..<3) { row in
-                    HStack(spacing: 40) {
+                    HStack(spacing: gridSize * 0.09){
                         ForEach(0..<3) { col in
                             let index = row * 3 + col
                             Button {
@@ -31,17 +30,28 @@ struct GameGrid: View {
                                 Image(gameLogic.buttonLabel(index: index))
                                     .interpolation(.none)
                                     .resizable()
-                                    .frame(width: 80, height: 80)
+                                    .frame(width: cellSize, height: cellSize)
                             }
                         }
                     }
                 }
             }
-            
-            if gameLogic.isGameOver ?? false {
-                GameOver(gameLogic: gameLogic, showLottieAnimation: $showLottieAnimation)
+            .frame(width: gridSize, height: gridSize)
+            .background(
+                BackgroundGridViewModel()
+                    .frame(width: gridSize, height: gridSize)
+            )
+            .overlay {
+                // Conditionally overlay the GameOver view
+                if gameLogic.isGameOver ?? false {
+                    GameOver(gameLogic: gameLogic, showLottieAnimation: $showLottieAnimation)
+                        .frame(width: geometry.size.width, height: geometry.size.height)
+                }
             }
         }
+        .aspectRatio(1, contentMode: .fit)
+        
+        
     }
 }
 
