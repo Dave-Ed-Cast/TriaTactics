@@ -26,13 +26,12 @@ class MatchManager: NSObject, ObservableObject {
     @Published var remainingTime = 10
     @Published var localPlayerWin: Bool = false
     @Published var waitingForRematchResponse: Bool = false
-    
+    @Published var localPlayerSymbol: Player = .X
+
     //there needs to be a reference of the GameLogic
     var gameLogic: GameLogic?
     
     var timer: Timer?
-    
-    //matchmaking and online variables
     var match: GKMatch?
     var localPlayer: GKLocalPlayer = GKLocalPlayer.local
     var otherPlayer: GKPlayer?
@@ -42,7 +41,7 @@ class MatchManager: NSObject, ObservableObject {
         return windowScene?.windows.first?.rootViewController
     }
     
-    /// This is the function that handles the log in of the user into game center
+    /// Handles the log in of the user into game center
     func authenticateUser() {
         GKLocalPlayer.local.authenticateHandler = { [weak self] viewController, error in
             if let viewController = viewController {
@@ -69,7 +68,7 @@ class MatchManager: NSObject, ObservableObject {
             }
         }
     }
-    
+    /// Start the timer of the match
     func startTimer() {
         isTimeKeeper = true
         timer?.invalidate()
@@ -78,6 +77,7 @@ class MatchManager: NSObject, ObservableObject {
         }
     }
     
+    /// Timer logic
     func handleTimerTick() {
         remainingTime -= 1
         if remainingTime <= 0 {
@@ -86,6 +86,7 @@ class MatchManager: NSObject, ObservableObject {
         }
     }
     
+    /// Stop the timer of the match
     func stopTimer() {
         isTimeKeeper = false
         timer?.invalidate()
@@ -109,6 +110,7 @@ class MatchManager: NSObject, ObservableObject {
         match = newMatch
         match?.delegate = self
         otherPlayer = match?.players.first
+        localPlayerSymbol = currentlyPlaying ? .X : .O
         sendString("began:\(playerUUIDKey)")
     }
     
@@ -167,20 +169,22 @@ class MatchManager: NSObject, ObservableObject {
             startTimer()
             
             //when the encoded message is "move" do some stuff
+            //if you were to receive this move, who would win?
         case "move":
             if messageSplit.count == 3, let index = Int(messageSplit[1]), let playerSymbol = messageSplit[2].first, let player = Player(rawValue: String(playerSymbol)) {
                 
-                //if you were to receive this move, who would win?
-                gameLogic?.receiveMove(index: index, player: player)
+                //if my opponent were a tactician i would be in a bit of trouble
                 
-                //if my opponent were intelligent i would be in a bit of trouble
+                gameLogic?.receiveMove(index: index, player: player)
                 
                 //but would you lose?
                 if gameLogic!.checkWinner() {
-                    localPlayerWin = (gameLogic?.winner == gameLogic?.activePlayer)
-                    localPlayerWin ? (localPlayerScore += 1) : (otherPlayerScore += 1)
-                } else {
+                    
                     //nah, i'd win
+                    localPlayerWin = (gameLogic?.winner == localPlayerSymbol)
+                    localPlayerWin ? (localPlayerScore += 1) : (otherPlayerScore += 1)
+                    stopTimer()
+                } else {
                     currentlyPlaying = (playerUUIDKey != player.rawValue)
                 }
             }

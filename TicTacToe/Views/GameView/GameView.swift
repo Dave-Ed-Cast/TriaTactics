@@ -18,64 +18,59 @@ struct GameView: View {
     
     var body: some View {
         
-//        NavigationView {
-//            
-//        }
-//        .overlay(alignment: .topTrailing) {
-//            if !isOffline {
-//                backToMenuView
-//                    .padding()
-//                    .padding(.top, 20)
-//            }
-//        }
-        VStack {
-            VStack {
-                Text("Tria Tactics")
-                    .font(.largeTitle)
-                    .fontWeight(.black)
-                Text("Time left: \(matchManager.remainingTime)")
-                    .font(.title2)
-                    .fontWeight(.semibold)
-                    .opacity(isOffline ? 0 : 1)
-                    .padding()
+        NavigationView {
+            VStack(spacing: 25) {
+                Spacer()
+                VStack(spacing: 5) {
+                    Text("Tria Tactics")
+                        .font(.largeTitle)
+                        .fontWeight(.black)
+                    Text("Time left: \(matchManager.remainingTime)")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .opacity(isOffline ? 0 : 1)
+                }
+                
+                HStack {
+                    if isOffline {
+                        Text("Your turn: \(gameLogic.activePlayer == .X ? "X" : "O")")
+                            .font(.headline)
+                            .fontWeight(.bold)
+                    } else {
+                        Text("\(matchManager.currentlyPlaying ? matchManager.localPlayer.displayName : matchManager.otherPlayer!.displayName) turn")
+                            .font(.headline)
+                            .fontWeight(.bold)
+                            .foregroundStyle(matchManager.currentlyPlaying ? .blue : .red)
+                    }
+                }
+                
+                
+                VStack(spacing: 10) {
+                    winnerView
+                    Spacer()
+                    scoreView
+                    GameGrid(matchManager: matchManager, gameLogic: gameLogic)
+                        .frame(maxWidth: 360)
+                    buttonView
+                }
+                
+                
             }
-            .padding(.top, 40)
-            
-            HStack {
-                if isOffline {
-                    Text("Your turn: \(gameLogic.activePlayer == .X ? "X" : "O")")
-                        .font(.title3)
-                        .fontWeight(.bold)
-                } else {
-                    Text("\(matchManager.currentlyPlaying ? matchManager.localPlayer.displayName : matchManager.otherPlayer!.displayName) turn")
-                        .font(.title3)
-                        .fontWeight(.bold)
-                        .foregroundStyle(matchManager.currentlyPlaying ? .blue : .red)
+            .foregroundStyle(.black)
+            .onAppear {
+                gameLogic.resetGame()
+                gameLogic.isOffline = isOffline
+            }
+            .onDisappear {
+                matchManager.gameOver()
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                if !isOffline {
+                    backToMenuView
                 }
             }
-            
-            .overlay(
-                winnerView
-                    .offset(y: 20)
-            )
-            
-            scoreView
-            
-                .padding(.bottom, 30)
-            
-            GameGrid(matchManager: matchManager, gameLogic: gameLogic)
-                .padding(.horizontal, 20)
-            buttonView
-                .padding(.bottom, 30)
-            
-        }
-        .foregroundStyle(.black)
-        .onAppear {
-            gameLogic.resetGame()
-            gameLogic.isOffline = isOffline
-        }
-        .onDisappear {
-            matchManager.gameOver()
         }
     }
     
@@ -85,14 +80,20 @@ struct GameView: View {
                 if isOffline {
                     Text("\(winner.rawValue) wins!")
                         .fontWeight(.bold)
+                } else if matchManager.localPlayerWin {
+                    Text("You win!")
+                        .fontWeight(.bold)
                 } else {
-                    Text(matchManager.localPlayerWin ? "You win!" : "You Lose!")
+                    Text("You lose!")
                         .fontWeight(.bold)
                 }
+            } else {
+                Text("")
             }
         }
+        .opacity(gameLogic.checkWinner() ? 1 : 0)
         .font(.title)
-        .padding(.bottom, 20)
+        
     }
     
     var scoreView: some View {
@@ -100,6 +101,8 @@ struct GameView: View {
             if !isOffline {
                 Text("Your wins: \(matchManager.localPlayerScore)")
                 Text("Opponent wins: \(matchManager.otherPlayerScore)")
+            } else {
+                Text("")
             }
         }
         .font(.callout)
@@ -131,14 +134,22 @@ struct GameView: View {
         }
         .opacity(gameLogic.checkWinner() ? 1 : 0)
         .disabled(!gameLogic.checkWinner())
-        .padding(.vertical, 30)
+        .padding(.vertical, 20)
     }
     
     var backToMenuView: some View {
         Button(action: {
             showAlert = true
         }) {
-            Text("hi")
+            Text("X")
+                .foregroundStyle(.black)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 8)
+                .background(
+                    Circle()
+                        .foregroundStyle(.yellow)
+                )
+            
         }
         .alert(isPresented: $showAlert) {
             Alert(

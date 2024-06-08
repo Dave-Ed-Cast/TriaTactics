@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// This is the game grid, here go all modifications relating to cell position of symbols
 struct GameGrid: View {
     
     @ObservedObject var matchManager: MatchManager
@@ -17,41 +18,40 @@ struct GameGrid: View {
     var body: some View {
         GeometryReader { geometry in
             let gridSize = min(geometry.size.width, geometry.size.height)
-            let cellSize = gridSize / 4 // Adjust cell size based on available space
-
-            VStack(spacing: gridSize * 0.08) {
-                ForEach(0..<3) { row in
-                    HStack(spacing: gridSize * 0.09){
-                        ForEach(0..<3) { col in
-                            let index = row * 3 + col
-                            Button {
-                                gameLogic.buttonTap(index: index)
-                            } label: {
-                                Image(gameLogic.buttonLabel(index: index))
-                                    .interpolation(.none)
-                                    .resizable()
-                                    .frame(width: cellSize, height: cellSize)
+            let cellSize = gridSize / 4
+            
+            ZStack {
+                VStack(spacing: gridSize * 0.075) {
+                    ForEach(0..<3) { row in
+                        HStack(spacing: gridSize * 0.081) {
+                            ForEach(0..<3) { col in
+                                let index = row * 3 + col
+                                Button {
+                                    gameLogic.buttonTap(index: index)
+                                } label: {
+                                    Image(gameLogic.buttonLabel(index: index))
+                                        .interpolation(.none)
+                                        .resizable()
+                                        .frame(width: cellSize, height: cellSize)
+                                }
                             }
                         }
                     }
                 }
-            }
-            .frame(width: gridSize, height: gridSize)
-            .background(
-                BackgroundGridViewModel()
-                    .frame(width: gridSize, height: gridSize)
-            )
-            .overlay {
-                // Conditionally overlay the GameOver view
-                if gameLogic.isGameOver ?? false {
-                    GameOver(gameLogic: gameLogic, showLottieAnimation: $showLottieAnimation)
-                        .frame(width: geometry.size.width, height: geometry.size.height)
+                .frame(width: gridSize, height: gridSize)
+                .background(
+                    BackgroundGridViewModel()
+                )
+                .overlay {
+                    if gameLogic.isGameOver ?? false {
+                        GameOver(gameLogic: gameLogic, showLottieAnimation: $showLottieAnimation)
+                            .frame(width: gridSize, height: gridSize)
+                    }
                 }
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .aspectRatio(1, contentMode: .fit)
-        
-        
     }
 }
 

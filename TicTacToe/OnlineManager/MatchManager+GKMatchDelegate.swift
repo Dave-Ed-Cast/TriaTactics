@@ -70,6 +70,7 @@ extension MatchManager: GKMatchDelegate {
         }
     }
     
+    /// Handles the request to the other user 
     func showRematchRequest() {
         let alert = UIAlertController(title: "Rematch?", message: "The other player requested a rematch. Do you want to play again?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yes", style: .default) { [self] _ in

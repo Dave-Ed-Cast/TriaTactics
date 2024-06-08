@@ -17,10 +17,12 @@ struct GameOver: View {
             LottieAnimation(
                 name: "Line",
                 contentMode: .scaleAspectFit,
-                playbackMode: .playing(.fromFrame(1, toFrame: 26, loopMode: .playOnce)),
+                playbackMode: .playing(.fromFrame(1, toFrame: 12, loopMode: .playOnce)),
+                height: 380,
                 scaleFactor: 8,
                 degrees: gameLogic.degrees,
-                offset: gameLogic.offsetPosition)
+                offset: gameLogic.offsetPosition
+            )
             
             if showLottieAnimation {
                 LottieAnimation(

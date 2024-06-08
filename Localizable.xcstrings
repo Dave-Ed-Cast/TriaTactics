@@ -1,6 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
+    },
     "%@ turn" : {
       "localizations" : {
         "es-419" : {
@@ -100,9 +110,6 @@
           }
         }
       }
-    },
-    "hi" : {
-
     },
     "Let's start!" : {
       "localizations" : {
@@ -330,6 +337,12 @@
     },
     "Their page" : {
       "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Su página"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -441,7 +454,6 @@
       }
     },
     "X" : {
-      "extractionState" : "stale",
       "localizations" : {
         "es-419" : {
           "stringUnit" : {
@@ -473,7 +485,11 @@
         }
       }
     },
+    "You lose!" : {
+
+    },
     "You Lose!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es-419" : {
           "stringUnit" : {

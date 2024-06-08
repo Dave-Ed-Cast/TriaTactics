@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// This is the field grid, here go all modifications relating to the grid
 struct BackgroundGridViewModel: View {
     var body: some View {
         GeometryReader { geometry in
@@ -36,9 +37,8 @@ struct BackgroundGridViewModel: View {
                         .foregroundStyle(.white)
                         .frame(width: gridSize * 0.014)
                 }
-                .frame(height: gridSize)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            .frame(width: gridSize, height: gridSize, alignment: .center)
         }
     }
 }

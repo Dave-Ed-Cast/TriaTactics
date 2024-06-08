@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E18D38F2C14B4010003B39B /* MatchManager+GKMatchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E18D38E2C14B4010003B39B /* MatchManager+GKMatchDelegate.swift */; };
 		3E2BFCB82BFE2C270012529A /* MatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2BFCB72BFE2C270012529A /* MatchManager.swift */; };
 		3E2BFCBA2BFE2C2D0012529A /* AuthenticationStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2BFCB92BFE2C2D0012529A /* AuthenticationStates.swift */; };
 		3E3925C02BFD107E0033F0E2 /* OnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3925BF2BFD107E0033F0E2 /* OnboardView.swift */; };
@@ -35,12 +36,12 @@
 		3ED67F9D2BF8FBDA00B2F400 /* GameOver.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ED67F9C2BF8FBDA00B2F400 /* GameOver.json */; };
 		3ED67FAB2BF9072600B2F400 /* Rule.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ED67FAA2BF9072600B2F400 /* Rule.json */; };
 		3ED6BF562C0242C400A53C29 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED6BF552C0242C400A53C29 /* GameOver.swift */; };
-		3ED6BF5B2C0249E300A53C29 /* MatchManager+GKMatchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED6BF5A2C0249E300A53C29 /* MatchManager+GKMatchDelegate.swift */; };
 		3EDF8B812BF7FBAB00957F89 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDF8B802BF7FBAB00957F89 /* GameLogic.swift */; };
 		3EDF8B832BF80D1A00957F89 /* GameLogicConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDF8B822BF80D1A00957F89 /* GameLogicConditions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E18D38E2C14B4010003B39B /* MatchManager+GKMatchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MatchManager+GKMatchDelegate.swift"; sourceTree = "<group>"; };
 		3E2BFCB72BFE2C270012529A /* MatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchManager.swift; sourceTree = "<group>"; };
 		3E2BFCB92BFE2C2D0012529A /* AuthenticationStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationStates.swift; sourceTree = "<group>"; };
 		3E3925BF2BFD107E0033F0E2 /* OnboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardView.swift; sourceTree = "<group>"; };
@@ -70,7 +71,6 @@
 		3ED67F9C2BF8FBDA00B2F400 /* GameOver.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GameOver.json; sourceTree = "<group>"; };
 		3ED67FAA2BF9072600B2F400 /* Rule.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Rule.json; sourceTree = "<group>"; };
 		3ED6BF552C0242C400A53C29 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
-		3ED6BF5A2C0249E300A53C29 /* MatchManager+GKMatchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MatchManager+GKMatchDelegate.swift"; sourceTree = "<group>"; };
 		3EDF8B802BF7FBAB00957F89 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 		3EDF8B822BF80D1A00957F89 /* GameLogicConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogicConditions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,7 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				3E2BFCB72BFE2C270012529A /* MatchManager.swift */,
-				3ED6BF5A2C0249E300A53C29 /* MatchManager+GKMatchDelegate.swift */,
+				3E18D38E2C14B4010003B39B /* MatchManager+GKMatchDelegate.swift */,
 				3E90784C2C013E5000F34BA3 /* MatchManager + GKMatchManagerVCDelegate.swift */,
 				3E2BFCB92BFE2C2D0012529A /* AuthenticationStates.swift */,
 			);
@@ -309,7 +309,6 @@
 				3E5630832BF822BC0009B48B /* OnboardingPageViewModel.swift in Sources */,
 				3ED6BF562C0242C400A53C29 /* GameOver.swift in Sources */,
 				3EDF8B812BF7FBAB00957F89 /* GameLogic.swift in Sources */,
-				3ED6BF5B2C0249E300A53C29 /* MatchManager+GKMatchDelegate.swift in Sources */,
 				3ED67F932BF8C09600B2F400 /* MetalLibrary.metal in Sources */,
 				3E2BFCBA2BFE2C2D0012529A /* AuthenticationStates.swift in Sources */,
 				3E43504E2C0F9FB000FDFADC /* ForLocalization.swift in Sources */,
@@ -321,6 +320,7 @@
 				3E56308B2BF82BBF0009B48B /* GameView.swift in Sources */,
 				3EBCE0832BFCEED600D5D37C /* TutorialView.swift in Sources */,
 				3E4350492C0F875600FDFADC /* CreditsView.swift in Sources */,
+				3E18D38F2C14B4010003B39B /* MatchManager+GKMatchDelegate.swift in Sources */,
 				3E3925C02BFD107E0033F0E2 /* OnboardView.swift in Sources */,
 				3E43504B2C0F876D00FDFADC /* Collaborator.swift in Sources */,
 				3EC8FE192C0908570014BBC0 /* OnboardingParameters.swift in Sources */,

@@ -9,7 +9,7 @@ import Foundation
 
 extension GameLogic {
     
-    /// Everytime the button on the grid is pressed, we give an image to it
+    /// When the grid is tapped, the player assigns a symbol to that spot
     /// - Parameter index: the index is the pressed spot on the grid
     func buttonTap(index: Int) {
         
@@ -46,15 +46,6 @@ extension GameLogic {
         //do some stuff
         gameActions(index: index)
         
-        //and if it's NOT offline, update the match manager
-        if let offlineStatus = isOffline, !offlineStatus {
-            guard let matchManager = matchManager else {
-                print("Error: Match manager is nil")
-                return
-            }
-            matchManager.sendMove(index: index, player: activePlayer)
-        }
-        
         if checkWinner() {
             winner = activePlayer
             isGameOver = true
@@ -89,7 +80,7 @@ extension GameLogic {
             gameActions(index: index)
             
             if checkWinner() {
-                //                winner = player
+                winner = player
                 isGameOver = true
             } else {
                 matchManager!.currentlyPlaying = !(matchManager!.currentlyPlaying)
@@ -143,6 +134,7 @@ extension GameLogic {
         }
     }
     
+    /// prevent online stalling from someone not making a move
     func makeRandomMove() {
         guard !matchManager!.isGameOver else { return }
         
