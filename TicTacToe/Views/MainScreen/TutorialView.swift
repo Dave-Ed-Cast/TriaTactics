@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TutorialView: View {
     
-    @Environment (\.dismiss) var dismiss
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         VStack {
             Spacer(minLength: 20)

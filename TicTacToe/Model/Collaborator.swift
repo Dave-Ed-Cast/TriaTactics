@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Collaborator: Identifiable {
     
     var id: UUID = UUID()
     var name: String = ""
-    var role: String = ""
-    var contribute: String = ""
+    var role: LocalizedStringKey = ""
+    var contribute: LocalizedStringKey = ""
     var contactInfo: String = ""
     
     static let list = [
@@ -36,20 +37,27 @@ struct Collaborator: Identifiable {
             contactInfo: "https://www.linkedin.com/in/maharyesposito/"
         ),
         
+//        Collaborator(
+//            name: "Giuseppe Francione",
+//            role: "Developer",
+//            contribute: "Code refactoring",
+//            contactInfo: "https://www.linkedin.com/in/giuseppe-francione-69008125a/"
+//        ),
+        
         Collaborator(
-            name: "Giuseppe Francione",
-            role: "Developer",
-            contribute: "Code refactoring",
-            contactInfo: "https://www.linkedin.com/in/giuseppe-francione-69008125a/"
+            name: "Fernanda Lozoya Navarro",
+            role: "UI/UX Designer",
+            contribute: "Localization",
+            contactInfo: "placeholder"
         ),
         
-//        Collaborator(
-//            name: "",
-//            role: "",
-//            contribute: "",
-//            contactInfo: ""
-//        ),
-//        
+        Collaborator(
+            name: "",
+            role: "",
+            contribute: "",
+            contactInfo: ""
+        ),
+        
         
     ]
 }

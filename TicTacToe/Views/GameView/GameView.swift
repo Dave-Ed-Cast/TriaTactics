@@ -122,7 +122,7 @@ struct GameView: View {
                 }
             }
         } label: {
-            Text("Rematch?")
+            Text("Rematch")
                 .fontWeight(.medium)
                 .foregroundStyle(.black)
                 .font(.title3)

@@ -10,7 +10,7 @@ import SwiftUI
 struct OnboardView: View {
     
     @ObservedObject var viewModel: OnboardingParameters
-    @Environment (\.dismiss) var dismiss
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         TabView {

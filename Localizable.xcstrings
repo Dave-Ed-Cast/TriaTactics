@@ -8,6 +8,12 @@
             "state" : "translated",
             "value" : ""
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
         }
       }
     },
@@ -32,13 +38,29 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¡%@gana!"
+            "value" : "¡%@ gana!"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ vince!"
+          }
+        }
+      }
+    },
+    "App icon" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Icono de app"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Icona app"
           }
         }
       }
@@ -59,12 +81,50 @@
         }
       }
     },
+    "Assets" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "activos"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Risorse"
+          }
+        }
+      }
+    },
     "Cancel" : {
       "localizations" : {
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cancelar"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annulla"
+          }
+        }
+      }
+    },
+    "Creator, Developer, UX Designer" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Creador, Desarrollador, Diseñador de UX"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Creatore, Sviluppatore, Progettista UX"
           }
         }
       }
@@ -76,10 +136,17 @@
             "state" : "translated",
             "value" : "Creditos"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riconoscimenti"
+          }
         }
       }
     },
     "For now enjoy the local version because multiplayer is coming soon as possible!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es-419" : {
           "stringUnit" : {
@@ -128,6 +195,7 @@
       }
     },
     "Local multiplayer (for now)" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es-419" : {
           "stringUnit" : {
@@ -139,6 +207,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Online in arrivo"
+          }
+        }
+      }
+    },
+    "Localization" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Localizador"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Traduzione"
           }
         }
       }
@@ -271,7 +355,11 @@
         }
       }
     },
+    "Rematch" : {
+
+    },
     "Rematch?" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es-419" : {
           "stringUnit" : {
@@ -431,6 +519,22 @@
         }
       }
     },
+    "UI/UX Designer" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UI/UX Diseñador"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progettista UI/UX"
+          }
+        }
+      }
+    },
     "Welcome to Tria Tactics!" : {
       "localizations" : {
         "en" : {
@@ -486,10 +590,6 @@
       }
     },
     "You lose!" : {
-
-    },
-    "You Lose!" : {
-      "extractionState" : "stale",
       "localizations" : {
         "es-419" : {
           "stringUnit" : {

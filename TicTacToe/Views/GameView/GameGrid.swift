@@ -33,6 +33,7 @@ struct GameGrid: View {
                                         .interpolation(.none)
                                         .resizable()
                                         .frame(width: cellSize, height: cellSize)
+                                        
                                 }
                             }
                         }

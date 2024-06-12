@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 73;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,7 @@
 		3E4350492C0F875600FDFADC /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4350482C0F875600FDFADC /* CreditsView.swift */; };
 		3E43504B2C0F876D00FDFADC /* Collaborator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43504A2C0F876D00FDFADC /* Collaborator.swift */; };
 		3E43504E2C0F9FB000FDFADC /* ForLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43504D2C0F9FB000FDFADC /* ForLocalization.swift */; };
+		3E5108592C175856001B4B33 /* YouWin.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E5108582C175855001B4B33 /* YouWin.json */; };
 		3E5630832BF822BC0009B48B /* OnboardingPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5630822BF822BC0009B48B /* OnboardingPageViewModel.swift */; };
 		3E5630872BF827AF0009B48B /* LottieAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5630862BF827AF0009B48B /* LottieAnimation.swift */; };
 		3E56308B2BF82BBF0009B48B /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E56308A2BF82BBF0009B48B /* GameView.swift */; };
@@ -52,6 +53,7 @@
 		3E4350482C0F875600FDFADC /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
 		3E43504A2C0F876D00FDFADC /* Collaborator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collaborator.swift; sourceTree = "<group>"; };
 		3E43504D2C0F9FB000FDFADC /* ForLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForLocalization.swift; sourceTree = "<group>"; };
+		3E5108582C175855001B4B33 /* YouWin.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = YouWin.json; sourceTree = "<group>"; };
 		3E5630822BF822BC0009B48B /* OnboardingPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewModel.swift; sourceTree = "<group>"; };
 		3E5630862BF827AF0009B48B /* LottieAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieAnimation.swift; sourceTree = "<group>"; };
 		3E56308A2BF82BBF0009B48B /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				3E4342652C0B48A90093FA80 /* Done.json */,
 				3E3925C42BFD303D0033F0E2 /* Line.json */,
 				3ED67FAA2BF9072600B2F400 /* Rule.json */,
+				3E5108582C175855001B4B33 /* YouWin.json */,
 				3ED67F9A2BF8FB6900B2F400 /* TicTacToe.json */,
 				3ED67F9C2BF8FBDA00B2F400 /* GameOver.json */,
 			);
@@ -260,7 +263,6 @@
 				};
 			};
 			buildConfigurationList = 3E6C13AE2BF7F82400373047 /* Build configuration list for PBXProject "TriaTactics" */;
-			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -274,6 +276,7 @@
 			packageReferences = (
 				3E43425C2C0B35CD0093FA80 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
+			preferredProjectObjectVersion = 73;
 			productRefGroup = 3E6C13B42BF7F82400373047 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -295,6 +298,7 @@
 				3ED67F9B2BF8FB6900B2F400 /* TicTacToe.json in Resources */,
 				3E3925C52BFD303D0033F0E2 /* Line.json in Resources */,
 				3ED67FAB2BF9072600B2F400 /* Rule.json in Resources */,
+				3E5108592C175856001B4B33 /* YouWin.json in Resources */,
 				3E4342662C0B48A90093FA80 /* Done.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

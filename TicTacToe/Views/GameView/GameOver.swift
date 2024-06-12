@@ -29,7 +29,8 @@ struct GameOver: View {
                     name: "GameOver",
                     contentMode: .center,
                     playbackMode: .playing(.toProgress(1, loopMode: .playOnce)),
-                    scaleFactor: 0.9)
+                    scaleFactor: 1
+                )
                     .background(Color.black.opacity(0.65))
                     .cornerRadius(20)
                     .padding()

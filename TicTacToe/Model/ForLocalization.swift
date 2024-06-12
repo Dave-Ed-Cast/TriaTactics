@@ -9,9 +9,10 @@ import SwiftUI
 
 struct ForLocalization: View {
     
-    let collaboratorName: String = "Davide Castaldi"
-    let collaboratorRole: String = "Creator, Developer, UX Designer"
-    let collaboratorContribute: String = "contribute"
+    let collaboratorName: String = "Ciro Esposito"
+    let collaboratorRole: LocalizedStringKey = "Creator, Developer, UX Designer"
+    let collaboratorContribute: LocalizedStringKey = "App icon"
+    let collaboratorContribute2: LocalizedStringKey = "Assets"
     let collaboratorContactInfo: String = "https://www.linkedin.com/in/davide-castaldi31/"
     
     var body: some View {
@@ -23,8 +24,11 @@ struct ForLocalization: View {
                     .fontWeight(.bold)
                 Text(collaboratorRole)
                     .font(.headline)
-                Text(collaboratorContribute)
-                    .font(.callout)
+                HStack {
+                    Text(collaboratorContribute)
+                    Text(collaboratorContribute2)
+                }
+                .font(.callout)
             }
             .padding()
             
@@ -52,12 +56,7 @@ struct ForLocalization: View {
         .environment(\.locale, Locale(identifier: "IT"))
 }
 
-#Preview("Spanish") {
+#Preview("Mexican") {
     ForLocalization()
-        .environment(\.locale, Locale(identifier: "SP"))
-}
-
-#Preview("EN") {
-    ForLocalization()
-        .environment(\.locale, Locale(identifier: "EN"))
+        .environment(\.locale, Locale(identifier: "ES"))
 }

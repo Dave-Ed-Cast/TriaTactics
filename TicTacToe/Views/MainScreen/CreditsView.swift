@@ -10,7 +10,7 @@ import SwiftUI
 struct CreditsView: View {
     
     var collaborator: [Collaborator] = Collaborator.list
-    @Environment (\.dismiss) var dismiss
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         Group {
             ForEach(collaborator) { collab in
