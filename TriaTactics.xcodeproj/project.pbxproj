@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 73;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -263,6 +263,7 @@
 				};
 			};
 			buildConfigurationList = 3E6C13AE2BF7F82400373047 /* Build configuration list for PBXProject "TriaTactics" */;
+			compatibilityVersion = "Xcode 15.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -276,7 +277,6 @@
 			packageReferences = (
 				3E43425C2C0B35CD0093FA80 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
-			preferredProjectObjectVersion = 73;
 			productRefGroup = 3E6C13B42BF7F82400373047 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
