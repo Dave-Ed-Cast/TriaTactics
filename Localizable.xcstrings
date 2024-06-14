@@ -145,23 +145,6 @@
         }
       }
     },
-    "For now enjoy the local version because multiplayer is coming soon as possible!" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Por ahora disfruta la versión local, la versión multijugador vendrá lo más pronto posible"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Per ora goditi la versione in locale perché la versione multi giocatore arriverà al più presto"
-          }
-        }
-      }
-    },
     "Here comes the multiplayer! Challenge your friends in a strategic battle. Log into Game Center and enjoy!" : {
       "localizations" : {
         "es-419" : {
@@ -190,23 +173,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Iniziamo!"
-          }
-        }
-      }
-    },
-    "Local multiplayer (for now)" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Multijugador local (por ahora)"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Online in arrivo"
           }
         }
       }
@@ -357,23 +323,6 @@
     },
     "Rematch" : {
 
-    },
-    "Rematch?" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¿Revancha? "
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rivincita?"
-          }
-        }
-      }
     },
     "Skip" : {
       "localizations" : {
