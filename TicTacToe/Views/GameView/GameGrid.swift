@@ -10,7 +10,6 @@ import SwiftUI
 /// This is the game grid, here go all modifications relating to cell position of symbols
 struct GameGrid: View {
     
-    @ObservedObject var matchManager: MatchManager
     @ObservedObject var gameLogic: GameLogic
     
     @State private var showLottieAnimation = false
@@ -57,5 +56,5 @@ struct GameGrid: View {
 }
 
 #Preview {
-    GameGrid(matchManager: MatchManager(), gameLogic: GameLogic())
+    GameGrid(gameLogic: GameLogic())
 }

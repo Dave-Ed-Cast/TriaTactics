@@ -22,7 +22,6 @@ class MatchManager: NSObject, ObservableObject {
     @Published var currentlyPlaying: Bool = false
     @Published var localPlayerScore: Int = 0
     @Published var otherPlayerScore: Int = 0
-    @Published var isTimeKeeper: Bool = false
     @Published var remainingTime = 10
     @Published var localPlayerWin: Bool = false
     @Published var waitingForRematchResponse: Bool = false
@@ -71,7 +70,7 @@ class MatchManager: NSObject, ObservableObject {
     /// Start the timer of the match
     func startTimer() {
         remainingTime = 10
-        isTimeKeeper = true
+//        isTimeKeeper = true
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             self?.handleTimerTick()
@@ -89,7 +88,7 @@ class MatchManager: NSObject, ObservableObject {
     
     /// Stop the timer of the match
     func stopTimer() {
-        isTimeKeeper = false
+//        isTimeKeeper = false
         timer?.invalidate()
         timer = nil
     }

@@ -1,0 +1,5 @@
+project: TriaTactics.xcodeproj
+schemes:
+- TicTacToe
+targets:
+- TicTacToe

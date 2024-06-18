@@ -49,7 +49,7 @@ struct GameView: View {
                     winnerView
                     Spacer()
                     scoreView
-                    GameGrid(matchManager: matchManager, gameLogic: gameLogic)
+                    GameGrid(gameLogic: gameLogic)
                         .frame(maxWidth: 360)
                     buttonView
                 }
