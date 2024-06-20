@@ -29,9 +29,11 @@ struct GameGrid: View {
                                     gameLogic.buttonTap(index: index)
                                 } label: {
                                     Image(gameLogic.buttonLabel(index: index))
+                                        .renderingMode(.template)
                                         .interpolation(.none)
                                         .resizable()
                                         .frame(width: cellSize, height: cellSize)
+                                        .foregroundColor(gameLogic.buttonColor(index: index))
                                         
                                 }
                             }
