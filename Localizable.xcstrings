@@ -145,6 +145,16 @@
         }
       }
     },
+    "For now enjoy the local version because multiplayer is coming soon as possible!" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
+    },
     "Here comes the multiplayer! Challenge your friends in a strategic battle. Log into Game Center and enjoy!" : {
       "localizations" : {
         "es-419" : {
@@ -176,6 +186,9 @@
           }
         }
       }
+    },
+    "Local multiplayer (for now)" : {
+
     },
     "Localization" : {
       "localizations" : {
