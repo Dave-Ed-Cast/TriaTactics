@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 extension GameLogic {
     
@@ -131,6 +132,13 @@ extension GameLogic {
         
     }
     
+    func buttonColor(index: Int) -> Color {
+        if let player = grid[index] {
+            return player == .X ? .red : .blue
+        }
+        return .black
+        
+    }
     /// The game action function describes the logic of counting and modifying the difficulty (future implementation) of the game
     /// - Parameter index: it takes an index that remembers the position on the grid
     func gameActions(index: Int) {
