@@ -10,11 +10,10 @@ import SwiftUI
 struct MainView: View {
 
     @StateObject private var parameters = OnboardingParameters()
-
-    @State private var showTutorialView: Bool = false
-    @State private var showCreditsView: Bool = false
-    @State private var showPlayView: Bool = false
     @EnvironmentObject var changeViewTo: Navigation
+
+    @State private var showCreditsView: Bool = false
+
     var body: some View {
 
 //        if !parameters.onboardingIsCompleted && !parameters.skipOnboarding {
@@ -39,11 +38,9 @@ struct MainView: View {
 
                     VStack(spacing: 20) {
 
-                        PrimaryButton(showSomething: $showPlayView, buttonText: "Play", action: {
-                            changeViewTo.value = .play
-                            })
+                        PrimaryButton(label: "Play", action: { changeViewTo.value = .play })
 
-                        SecondaryButton(showSomething: $showTutorialView, buttonText: "Tutorial", action: {
+                        SecondaryButton(label: "Tutorial", action: {
                             changeViewTo.value = .tutorial
                         })
                     }// end of 2nd innervstack

@@ -12,55 +12,52 @@ struct PlayView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var matchManager: MatchManager
     @EnvironmentObject var gameLogic: GameLogic
+    @EnvironmentObject var changeViewTo: Navigation
 
     @State private var isOffline: Bool = false
     @State private var showGameView: Bool = false
 
     var body: some View {
-            VStack(spacing: 30) {
-                Spacer()
-                viewManagerView
-                Spacer()
-
-                VStack {
-                    SecondaryButton(showSomething: .constant(true), buttonText: "Menu", action: { dismiss() })
-                }
-            }
-            .onAppear {
-                matchManager.authenticateUser()
-            }
-        }
-
-    var viewManagerView: some View {
-        Group {
-            if matchManager.inGame && matchManager.autheticationState == .authenticated {
-                GameView(matchManager: matchManager, gameLogic: gameLogic, isOffline: .constant(false))
-            } else {
-                Spacer()
-                PrimaryButton(showSomething: .constant(false), buttonText: "Play Online") {
-                    isOffline = false
+        Spacer()
+        VStack(spacing: 30) {
+                PrimaryButton(label: "Play Online", action: {
+                    //                if matchManager.inGame && matchManager.autheticationState == .authenticated {
+                    // MARK: This if statement was for showing the game view
                     matchManager.startMatchmaking()
-                    print("matchmanager")
                     if matchManager.matchFound {
-                        if isOffline {
-                            Navigation.shared.value = .offline
-                        }
-                        showGameView = true
+                        changeViewTo.value = .online
                     }
-                }
-                .onTapGesture {
-                    matchManager.startMatchmaking()
-                    print("ontap")
-                }
+                })
                 .opacity(matchManager.autheticationState != .authenticated ? 0.5 : 1)
                 .disabled(matchManager.autheticationState != .authenticated)
-
-                PrimaryButton(showSomething: $showGameView, buttonText: "Play Offline") {
-                    isOffline = true
-                }
+                
+                PrimaryButton(label: "Play Offline", action: { changeViewTo.value = .offline })
+            
             }
+        .padding(.top, 100)
+        .onAppear {
+            matchManager.authenticateUser()
         }
+        Spacer()
+        SecondaryButton(label: "Menu", action: { changeViewTo.value = .main })
+
     }
+
+    //                    if matchManager.inGame && matchManager.autheticationState == .authenticated {
+    //                GameView(matchManager: matchManager, gameLogic: gameLogic, isOffline: .constant(false))
+    //                changeViewTo.value = .online
+
+    //            } else {
+
+    //            matchManager.startMatchmaking()
+
+    //            if matchManager.matchFound {
+    //                        if isOffline {
+    //                            changeViewTo.value = .offline
+    //                        }
+    //                showGameView = true
+    //            }
+
 }
 
 #Preview {

@@ -115,9 +115,10 @@
 		3E3925C12BFD2CEE0033F0E2 /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
-				3E6C13B82BF7F82400373047 /* MainView.swift */,
-				3E4350482C0F875600FDFADC /* CreditsView.swift */,
 				9D9DC8302C257BB8004EFDFF /* ParentView.swift */,
+				3E6C13B82BF7F82400373047 /* MainView.swift */,
+				3E3D4B3C2C249AB200CC6F1A /* PlayView.swift */,
+				3E4350482C0F875600FDFADC /* CreditsView.swift */,
 				3EBCE0822BFCEED600D5D37C /* TutorialView.swift */,
 			);
 			path = MainScreen;
@@ -148,15 +149,6 @@
 				9DDE10362C24665500A89215 /* CompatibilityNavigation.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		3E3D4B3E2C249ACE00CC6F1A /* PlayView */ = {
-			isa = PBXGroup;
-			children = (
-				3E3D4B3C2C249AB200CC6F1A /* PlayView.swift */,
-			);
-			name = PlayView;
-			path = MainScreen;
 			sourceTree = "<group>";
 		};
 		3E43504C2C0F94AB00FDFADC /* DataModel */ = {
@@ -245,7 +237,6 @@
 				3E3925C72BFD34F80033F0E2 /* ViewModel */,
 				3EE9618A2BF8BB6800DBC853 /* Onboarding */,
 				3E3925C12BFD2CEE0033F0E2 /* MainScreen */,
-				3E3D4B3E2C249ACE00CC6F1A /* PlayView */,
 				3E5EF2DC2BF816BB001B6D22 /* GameView */,
 			);
 			path = Views;

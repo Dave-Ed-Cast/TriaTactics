@@ -11,12 +11,18 @@ struct ParentView: View {
     @EnvironmentObject var navigation: Navigation
     var body: some View {
         switch navigation.value {
-            case .main: MainView()
-            case .play: PlayView()
-            case .online: GameView(isOffline: .constant(false))
-            case .offline: GameView(isOffline: .constant(true))
-            case .bot: GameView(isOffline: .constant(false))
-            case .tutorial: TutorialView()
+            case .main:
+                MainView()
+            case .play:
+                PlayView()
+            case .online:
+                GameView(isOffline: .constant(false))
+            case .offline:
+                GameView(isOffline: .constant(true))
+            case .bot:
+                GameView(isOffline: .constant(false))
+            case .tutorial:
+                TutorialView()
         }
     }
 }

@@ -9,20 +9,20 @@ import SwiftUI
 
 struct PrimaryButton: View {
 
-    @Binding var showSomething: Bool
-    let buttonText: LocalizedStringKey
-    let action: () -> Void
+    @State private var showSomething: Bool = false
+    let label: LocalizedStringKey
+    let action: (() -> Void)?
 
     var body: some View {
-        Button(action: {
-            action()
+        Button {
+            action!()
             showSomething = true
-        }) {
+        } label: {
             ZStack {
                 RoundedRectangle(cornerRadius: 15)
                     .foregroundStyle(.yellow)
                     .frame(minWidth: 50, idealWidth: 200, maxWidth: 200, minHeight: 50, idealHeight: 70, maxHeight: 70)
-                Text(buttonText)
+                Text(label)
                     .fontWeight(.bold)
                     .padding()
                     .foregroundStyle(.black)
@@ -33,5 +33,5 @@ struct PrimaryButton: View {
 }
 
 #Preview {
-    PrimaryButton(showSomething: .constant(true), buttonText: "TEST AAAAAA", action: {})
+    PrimaryButton(label: "TEST AAAAAA", action: {})
 }
