@@ -18,17 +18,17 @@ enum Player: String {
  It is indipendent from the match manager for mantainability, scalability, and testing purposes.
  */
 class GameLogic: ObservableObject {
-    
-    //these variables are all needed for the management of the game logic
+
+    // these variables are all needed for the management of the game logic
     @Published var grid: [Player?] = Array(repeating: nil, count: 9)
     @Published var activePlayer: Player = .X
-    @Published var winner: Player? = nil
-    @Published var isGameOver: Bool? = nil
+    @Published var winner: Player?
+    @Published var isGameOver: Bool?
     @Published var isOffline: Bool = true
-    
-    //there needs to be a reference of the MatchManager
+
+    // there needs to be a reference of the MatchManager
     var matchManager: MatchManager?
-    
+
     var playerHistory: [Player: [Int]] = [.X: [], .O: []]
     var moveCountX: Int = 0
     var moveCountO: Int = 0

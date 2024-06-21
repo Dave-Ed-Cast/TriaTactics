@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct GameView: View {
-    
+
     @ObservedObject var matchManager: MatchManager = MatchManager()
     @ObservedObject var gameLogic: GameLogic = GameLogic()
-    
+
     @Binding var isOffline: Bool
-    
+
     @State private var showAlert = false
-    
+
     var body: some View {
-        
+
         CompatibilityNavigation {
             VStack(spacing: 25) {
                 Spacer()
@@ -30,7 +30,7 @@ struct GameView: View {
                         .fontWeight(.semibold)
                         .opacity(isOffline ? 0 : 1)
                 }
-                
+
                 HStack {
                     if isOffline {
                         Text("Your turn: \(gameLogic.activePlayer == .X ? "X" : "O")")
@@ -43,8 +43,7 @@ struct GameView: View {
                             .foregroundStyle(matchManager.currentlyPlaying ? .blue : .red)
                     }
                 }
-                
-                
+
                 VStack(spacing: 10) {
                     winnerView
                     Spacer()
@@ -53,8 +52,7 @@ struct GameView: View {
                         .frame(maxWidth: 360)
                     buttonView
                 }
-                
-                
+
             }
             .foregroundStyle(.black)
             .onAppear {
@@ -73,7 +71,7 @@ struct GameView: View {
             }
         }
     }
-    
+
     var winnerView: some View {
         Group {
             if let winner = gameLogic.winner {
@@ -93,9 +91,9 @@ struct GameView: View {
         }
         .opacity(gameLogic.checkWinner() ? 1 : 0)
         .font(.title)
-        
+
     }
-    
+
     var scoreView: some View {
         HStack(spacing: 80) {
             if !isOffline {
@@ -107,7 +105,7 @@ struct GameView: View {
         }
         .font(.callout)
     }
-    
+
     var buttonView: some View {
         Button {
             if isOffline {
@@ -136,7 +134,7 @@ struct GameView: View {
         .disabled(!gameLogic.checkWinner())
         .padding(.vertical, 20)
     }
-    
+
     var backToMenuView: some View {
         Button(action: {
             showAlert = true
@@ -149,7 +147,7 @@ struct GameView: View {
                     Circle()
                         .foregroundStyle(.yellow)
                 )
-            
+
         }
         .alert(isPresented: $showAlert) {
             Alert(
@@ -166,6 +164,6 @@ struct GameView: View {
 }
 
 #Preview {
-    //setting offline = false crashes the preview due to Text(match manager)
+    // setting offline = false crashes the preview due to Text(match manager)
     GameView(isOffline: .constant(true))
 }

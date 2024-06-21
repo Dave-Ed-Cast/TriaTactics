@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CreditsView: View {
-    
+
     var collaborator: [Collaborator] = Collaborator.list
     @Environment(\.dismiss) var dismiss
     var body: some View {
@@ -25,9 +25,9 @@ struct CreditsView: View {
                             .font(.callout)
                     }
                     .padding()
-                    
+
                     Spacer()
-                    
+
                     Link(destination: URL(string: collab.contactInfo)!, label: {
                         Text("Their page")
                             .font(.subheadline)
@@ -39,26 +39,25 @@ struct CreditsView: View {
                 .background(.yellow)
                 .lineLimit(nil)
                 .padding()
-                
+
             }
             .toolbar(content: {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button ("Cancel") {
+                    Button("Cancel") {
                         dismiss()
                     }
-                    
+
                 }
             })
         }
-        
+
     }
-    
+
 }
 
 #Preview("English") {
-    
+
     CreditsView()
         .environment(\.locale, Locale(identifier: "EN"))
-    
-}
 
+}

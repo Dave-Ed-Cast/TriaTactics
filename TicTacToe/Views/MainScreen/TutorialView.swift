@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TutorialView: View {
-    
+
     @Environment(\.dismiss) var dismiss
     var body: some View {
         VStack {
@@ -25,7 +25,7 @@ struct TutorialView: View {
                 animationSize: CGFloat(300)
             )
             .lineLimit(nil)
-            
+
             Button {
                 dismiss()
             } label: {
@@ -55,4 +55,3 @@ struct TutorialView: View {
     TutorialView()
         .environment(\.locale, Locale(identifier: "IT"))
 }
-

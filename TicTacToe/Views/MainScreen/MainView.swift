@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct MainView: View {
-    
+
     @StateObject private var parameters = OnboardingParameters()
-    
+
     @State private var showTutorialView: Bool = false
     @State private var showCreditsView: Bool = false
     @State private var showPlayView: Bool = false
-    
+
     var body: some View {
-        
+
 //        if !parameters.onboardingIsCompleted && !parameters.skipOnboarding {
 //            OnboardView(viewModel: parameters)
 //                .onDisappear {
@@ -31,14 +31,14 @@ struct MainView: View {
                         Text("Tria Tactics")
                             .font(.largeTitle)
                             .fontWeight(.black)
-                        
+
                         Text("The game for true tacticians!")
                             .font(.headline)
-                    }//end of 1st inner vstack
+                    }// end of 1st inner vstack
                     .padding(.bottom, 200)
-                    
-                    VStack (spacing: 20) {
-                       
+
+                    VStack(spacing: 20) {
+
                         PrimaryButton(showSomething: $showPlayView, buttonText: "Play", action: {})
                             .onTapGesture {
                                 showPlayView = true
@@ -46,7 +46,7 @@ struct MainView: View {
                             .fullScreenCover(isPresented: $showPlayView) {
                                 PlayView()
                             }
-                        
+
                         SecondaryButton(showSomething: $showTutorialView, buttonText: "Tutorial")
                             .onTapGesture {
                                 showTutorialView = true
@@ -54,8 +54,8 @@ struct MainView: View {
                             .sheet(isPresented: $showTutorialView) {
                                 TutorialView()
                             }
-                    }//end of 2nd innervstack
-                }//end of outer vstack
+                    }// end of 2nd innervstack
+                }// end of outer vstack
                 .toolbar {
                     creditsButtonView
                 }
@@ -64,7 +64,7 @@ struct MainView: View {
             .lineLimit(1)
         }
 //    }
-    
+
     var creditsButtonView: some View {
         Button {
             showCreditsView = true
@@ -78,7 +78,7 @@ struct MainView: View {
             CreditsView()
         }
     }
-    
+
 }
 
 #Preview {

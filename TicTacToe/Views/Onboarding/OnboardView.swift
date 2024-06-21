@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct OnboardView: View {
-    
+
     @ObservedObject var viewModel: OnboardingParameters
     @Environment(\.dismiss) var dismiss
-    
+
     var body: some View {
         TabView {
             OnboardingPageViewModel(
@@ -46,7 +46,7 @@ struct OnboardView: View {
             } label: {
                 Text("Skip")
                     .padding()
-                
+
             }
             .buttonBorderShape(.automatic)
             .padding()
@@ -59,7 +59,7 @@ struct OnboardView_Previews: PreviewProvider {
         Group {
             OnboardView(viewModel: OnboardingParameters())
                 .environment(\.locale, Locale(identifier: "en"))
-            
+
             OnboardView(viewModel: OnboardingParameters())
                 .environment(\.locale, Locale(identifier: "it"))
         }

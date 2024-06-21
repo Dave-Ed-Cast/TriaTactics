@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct OnlineView: View {
-    
+
     @ObservedObject var matchManager: MatchManager
-    @ObservedObject var gameLogic : GameLogic
-    
+    @ObservedObject var gameLogic: GameLogic
+
     var body: some View {
         ZStack {
             VStack {

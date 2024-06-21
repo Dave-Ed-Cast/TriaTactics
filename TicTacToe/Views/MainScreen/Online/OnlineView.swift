@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct OnlineView: View {
-    
+
     @StateObject var matchManager: MatchManager
     @StateObject var gameLogic: GameLogic
-    
+
     @Binding var showLottieAnimation: Bool
     @Binding var isOffline: Bool
     @Environment (\.dismiss) var dismiss

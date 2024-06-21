@@ -9,34 +9,34 @@ import SwiftUI
 import Lottie
 
 struct LottieAnimation: View {
-        
-    //the name of the animation
+
+    // the name of the animation
     var name: String
-    
-    //the content mode is for how and where we want to display it
+
+    // the content mode is for how and where we want to display it
     var contentMode: UIView.ContentMode
-    
-    //there are different ways we can do playback of the animation
+
+    // there are different ways we can do playback of the animation
     var playbackMode: LottiePlaybackMode
-    
-    //maybe after it finished something should happen?
-    var didFinish: (() -> Void)? = nil
-    
-    //the optional parameters
-    var width: CGFloat? = nil
-    var height: CGFloat? = nil
-    var scaleFactor: CGFloat? = nil
-    var cornerRadiusFactor: Double? = nil
-    var degrees: Double? = nil
-    var offset: CGSize? = nil
-    
+
+    // maybe after it finished something should happen?
+    var didFinish: (() -> Void)?
+
+    // the optional parameters
+    var width: CGFloat?
+    var height: CGFloat?
+    var scaleFactor: CGFloat?
+    var cornerRadiusFactor: Double?
+    var degrees: Double?
+    var offset: CGSize?
+
     var body: some View {
         LottieView(animation: .named(name))
             .configure({ configuration in
                 configuration.contentMode = contentMode
             })
             .playbackMode(playbackMode)
-            .animationDidFinish({ completed in
+            .animationDidFinish({ _ in
                 didFinish?()
             })
             .frame(width: width, height: height)
@@ -44,7 +44,7 @@ struct LottieAnimation: View {
             .cornerRadius(cornerRadiusFactor ?? 0)
             .rotationEffect(.degrees(degrees ?? 0))
             .offset(offset ?? CGSize.zero)
-            
+
     }
 }
 

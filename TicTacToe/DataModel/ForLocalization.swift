@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct ForLocalization: View {
-    
+
     let collaboratorName: String = "Ciro Esposito"
     let collaboratorRole: LocalizedStringKey = "Creator, Developer, UX Designer"
     let collaboratorContribute: LocalizedStringKey = "App icon"
     let collaboratorContribute2: LocalizedStringKey = "Assets"
     let collaboratorContactInfo: String = "https://www.linkedin.com/in/davide-castaldi31/"
-    
+
     var body: some View {
-        
+
         HStack {
             VStack(alignment: .leading) {
                 Text(collaboratorName)
@@ -31,9 +31,9 @@ struct ForLocalization: View {
                 .font(.callout)
             }
             .padding()
-            
+
             Spacer()
-            
+
             Link(destination: URL(string: collaboratorContactInfo)!, label: {
                 Text("Their page")
                     .font(.subheadline)

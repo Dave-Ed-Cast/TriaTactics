@@ -9,16 +9,16 @@ import SwiftUI
 
 /// This is the game grid, here go all modifications relating to cell position of symbols
 struct GameGrid: View {
-    
+
     @ObservedObject var gameLogic: GameLogic
-    
+
     @State private var showLottieAnimation = false
-    
+
     var body: some View {
         GeometryReader { geometry in
             let gridSize = min(geometry.size.width, geometry.size.height)
             let cellSize = gridSize / 4
-            
+
             ZStack {
                 VStack(spacing: gridSize * 0.075) {
                     ForEach(0..<3) { row in
@@ -34,7 +34,7 @@ struct GameGrid: View {
                                         .resizable()
                                         .frame(width: cellSize, height: cellSize)
                                         .foregroundColor(gameLogic.buttonColor(index: index))
-                                        
+
                                 }
                             }
                         }

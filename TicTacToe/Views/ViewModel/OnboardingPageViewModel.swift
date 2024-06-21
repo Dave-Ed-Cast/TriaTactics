@@ -8,35 +8,35 @@
 import SwiftUI
 
 struct OnboardingPageViewModel: View {
-    
+
     @Binding var onboardingIsCompleted: Bool
-    
+
     var onboardingTitle: LocalizedStringKey
     var onboardingImage: String
     var onboardingText: LocalizedStringKey
     var showDoneButton: Bool = false
     var animationSize: CGFloat = 350
     var scaleFactor: CGFloat = 1.0
-    
+
     var body: some View {
         VStack(spacing: 30) {
             Spacer()
             LottieAnimation(name: onboardingImage, contentMode: .scaleAspectFit, playbackMode: onboardingImage != "Done" ? (.playing(.toProgress(1, loopMode: .loop))) : (.playing(.fromFrame(87, toFrame: 140, loopMode: .autoReverse))), width: animationSize, height: animationSize, scaleFactor: scaleFactor)
-            
+
             Text(onboardingTitle)
                 .font(.title2)
                 .fontWeight(.bold)
-            
+
             Text(onboardingText)
                 .font(.body)
                 .fontWeight(.semibold)
                 .multilineTextAlignment(.center)
             Spacer()
-            
+
         }
         .padding()
         .overlay(alignment: .bottom, content: {
-            
+
             if showDoneButton {
                 Button {
                     withAnimation {

@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct PrimaryButton: View {
-    
+
     @Binding var showSomething: Bool
     let buttonText: LocalizedStringKey
     let action: () -> Void
-    
+
     var body: some View {
         Button(action: {
             action()

@@ -8,9 +8,9 @@
 import Foundation
 import GameKit
 
-///This is the match delegate
+/// This is the match delegate
 extension MatchManager: GKMatchDelegate {
-    
+
     /// This is the core function that defines a match
     /// - Parameters:
     ///   - match: the match we are in
@@ -30,7 +30,7 @@ extension MatchManager: GKMatchDelegate {
             handleRematchDeclined()
         }
     }
-    
+
     /// This sends the string encoded with data in utf8
     /// - Parameter message: the message we need to send after modifying it
     func sendString(_ message: String) {
@@ -38,20 +38,20 @@ extension MatchManager: GKMatchDelegate {
         sendData(encoded, mode: .reliable)
         print("sent")
     }
-    
+
     /// This is the sending of that data
     /// - Parameters:
     ///   - data: the data we are passing it to
     ///   - mode: mode is just reagrding the type of data
     func sendData(_ data: Data, mode: GKMatch.SendDataMode) {
-        
+
         do {
             try match?.sendData(toAllPlayers: data, with: mode)
         } catch {
             print(error)
         }
     }
-    
+
     /// This is the function that dictates what happens if someone disconnects
     /// - Parameters:
     ///   - match: the match we are talking about
@@ -60,7 +60,7 @@ extension MatchManager: GKMatchDelegate {
     func match(_ match: GKMatch, player: GKPlayer, didChange state: GKPlayerConnectionState) {
         guard state == .disconnected else { return }
         let alert = UIAlertController(title: "Player disconnected!", message: "The other player disconnected from the game", preferredStyle: .alert)
-        
+
         alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
             self.match?.disconnect()
         })
@@ -69,7 +69,7 @@ extension MatchManager: GKMatchDelegate {
             self.rootViewController?.present(alert, animated: true)
         }
     }
-    
+
     /// Handles the request from the other player
     func showRematchRequest() {
         let alert = UIAlertController(title: "Rematch?", message: "The other player requested a rematch. Do you want to play again?", preferredStyle: .alert)
@@ -86,36 +86,36 @@ extension MatchManager: GKMatchDelegate {
             rootViewController?.present(alert, animated: true)
         }
     }
-    
+
     /// Send rematch response
     func sendRematchResponse(accepted: Bool) {
         let response = accepted ? "rematchAccepted" : "rematchDeclined"
         guard let data = response.data(using: .utf8) else { return }
         sendData(data, mode: .reliable)
     }
-    
+
     /// Handle rematch accepted response
     func handleRematchAccepted() {
-        
+
         resetGame()
 
-        DispatchQueue.main.async {            
+        DispatchQueue.main.async {
             let alert = UIAlertController(title: "Rematch Accepted", message: "The other player accepted the rematch", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             self.rootViewController?.present(alert, animated: true)
         }
     }
-    
+
     /// Handle rematch declined response
     func handleRematchDeclined() {
-        
+
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Rematch Declined", message: "The other player declined the rematch", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             self.rootViewController?.present(alert, animated: true)
         }
     }
-    
+
     /// Send rematch request to the other player
     func sendRematchRequest() {
         guard let data = "requestRematch".data(using: .utf8) else { return }

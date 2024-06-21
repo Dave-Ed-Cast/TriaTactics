@@ -42,6 +42,7 @@
 		3EDF8B812BF7FBAB00957F89 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDF8B802BF7FBAB00957F89 /* GameLogic.swift */; };
 		3EDF8B832BF80D1A00957F89 /* GameLogicConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDF8B822BF80D1A00957F89 /* GameLogicConditions.swift */; };
 		9D9DC82C2C257908004EFDFF /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 9D9DC82B2C257908004EFDFF /* Lottie */; };
+		9D9DC82F2C2579ED004EFDFF /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9D9DC82E2C2579ED004EFDFF /* .swiftlint.yml */; };
 		9DDE10372C24665500A89215 /* CompatibilityNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE10362C24665500A89215 /* CompatibilityNavigation.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		3ED6BF552C0242C400A53C29 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		3EDF8B802BF7FBAB00957F89 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 		3EDF8B822BF80D1A00957F89 /* GameLogicConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogicConditions.swift; sourceTree = "<group>"; };
+		9D9DC82E2C2579ED004EFDFF /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		9DDE10362C24665500A89215 /* CompatibilityNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityNavigation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -186,6 +188,7 @@
 		3E6C13AA2BF7F82400373047 = {
 			isa = PBXGroup;
 			children = (
+				9D9DC82E2C2579ED004EFDFF /* .swiftlint.yml */,
 				3ED67F942BF8EEFE00B2F400 /* Localizable.xcstrings */,
 				3E6C13B62BF7F82400373047 /* TicTacToeApp.swift */,
 				3E6C13B52BF7F82400373047 /* TicTacToe */,
@@ -255,6 +258,7 @@
 				3E6C13AF2BF7F82400373047 /* Sources */,
 				3E6C13B02BF7F82400373047 /* Frameworks */,
 				3E6C13B12BF7F82400373047 /* Resources */,
+				9D9DC82D2C2579BE004EFDFF /* Swift Lint */,
 			);
 			buildRules = (
 			);
@@ -315,6 +319,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D9DC82F2C2579ED004EFDFF /* .swiftlint.yml in Resources */,
 				3E6C13BE2BF7F82500373047 /* Preview Assets.xcassets in Resources */,
 				3ED67F9D2BF8FBDA00B2F400 /* GameOver.json in Resources */,
 				3E6C13BB2BF7F82500373047 /* Assets.xcassets in Resources */,
@@ -328,6 +333,29 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9D9DC82D2C2579BE004EFDFF /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint --fix && swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3E6C13AF2BF7F82400373047 /* Sources */ = {
@@ -498,6 +526,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"TicTacToe/Preview Content\"";
 				DEVELOPMENT_TEAM = WLW428B75Y;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Tria Tactics";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.puzzle-games";
@@ -535,6 +564,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"TicTacToe/Preview Content\"";
 				DEVELOPMENT_TEAM = WLW428B75Y;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Tria Tactics";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.puzzle-games";

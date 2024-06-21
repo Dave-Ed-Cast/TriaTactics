@@ -8,39 +8,39 @@
 import Foundation
 
 extension GameLogic {
-    
+
     /// This is the function that delets the last move, it extracts the first element of this array.
     /// By its own construction it's always gonna remove the first element, and later another one is gonna be appended
     /// - Parameter player: it needs to know the player that is doing the move
     func removeFirstMove(of player: Player) {
-        
+
         guard let firstMoveIndex = playerHistory[activePlayer]?.removeFirst() else {
             return
         }
-        
-        //delete that action of the player
+
+        // delete that action of the player
         grid[firstMoveIndex] = nil
-        
-        //and decremenet their count, so that the algorithm works
+
+        // and decremenet their count, so that the algorithm works
         if player == .X {
             moveCountX -= 1
         } else {
             moveCountO -= 1
         }
     }
-    
+
     /// This function checks all the possible winning combinations.
     /// It counts the elements corresponding to the rule of Tic Tac Toe
     /// It also tells at which degree (in the diagonals) to rotate the animation in the view
     /// - Returns: returns the "winner" status
     func checkWinner() -> Bool {
-        
-        //this is on rows
+
+        // this is on rows
         for index in stride(from: 0, to: 9, by: 3) {
             if grid[index] == activePlayer &&
                 grid[index + 1] == activePlayer &&
                 grid[index + 2] == activePlayer {
-                
+
                 degrees = 90
                 if index == 0 {
                     offsetPosition = CGSize(width: 0, height: -120)
@@ -51,15 +51,15 @@ extension GameLogic {
                 }
                 return true
             }
-            
+
         }
-        
-        //this is columns
+
+        // this is columns
         for index in 0..<3 {
             if grid[index] == activePlayer &&
                 grid[index + 3] == activePlayer &&
                 grid[index + 6] == activePlayer {
-                
+
                 if index == 0 {
                     offsetPosition = CGSize(width: -128, height: 0)
                 } else if index == 1 {
@@ -70,8 +70,8 @@ extension GameLogic {
                 return true
             }
         }
-        
-        //and these are the diagonals
+
+        // and these are the diagonals
         if grid[4] == activePlayer {
             if grid[0] == activePlayer && grid[8] == activePlayer {
                 degrees = -45.0
@@ -84,7 +84,7 @@ extension GameLogic {
             }
         }
 
-        //*outer wilds* nobody won yet
+        // *outer wilds* nobody won yet
         return false
     }
 }

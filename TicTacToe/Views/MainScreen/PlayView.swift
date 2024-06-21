@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct PlayView: View {
-    
+
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var matchManager: MatchManager
     @EnvironmentObject var gameLogic: GameLogic
-    
+
     @State private var isOffline: Bool = false
     @State private var showGameView: Bool = false
 
@@ -21,7 +21,7 @@ struct PlayView: View {
                 Spacer()
                 viewManagerView
                 Spacer()
-                
+
                 VStack {
                     SecondaryButton(showSomething: .constant(true), buttonText: "Menu", action: { dismiss() })
                 }
@@ -35,8 +35,7 @@ struct PlayView: View {
                 }
             }
         }
-    
-    
+
     var viewManagerView: some View {
         Group {
             if matchManager.inGame && matchManager.autheticationState == .authenticated {
@@ -57,7 +56,7 @@ struct PlayView: View {
                 }
                 .opacity(matchManager.autheticationState != .authenticated ? 0.5 : 1)
                 .disabled(matchManager.autheticationState != .authenticated)
-                
+
                 PrimaryButton(showSomething: $showGameView, buttonText: "Play Offline") {
                     isOffline = true
                 }

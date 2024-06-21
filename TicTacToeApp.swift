@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct TicTacToeApp: App {
-    
+
     @StateObject private var matchManager = MatchManager()
     @StateObject private var gameLogic = GameLogic()
 

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AfterOnboarding: View {
-    
+
     @Binding var currentStep: Int
     @Binding var skipOnboarding: Bool
     @Binding var showLottieAnimation: Bool

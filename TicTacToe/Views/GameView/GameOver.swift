@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GameOver: View {
-    
+
     @ObservedObject var gameLogic: GameLogic
     @Binding var showLottieAnimation: Bool
 
@@ -23,7 +23,7 @@ struct GameOver: View {
                 degrees: gameLogic.degrees,
                 offset: gameLogic.offsetPosition
             )
-            
+
             if showLottieAnimation {
                 LottieAnimation(
                     name: "GameOver",
