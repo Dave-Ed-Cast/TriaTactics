@@ -24,7 +24,6 @@ struct MainView: View {
 //                    }
 //                }
 //        } else {
-            NavigationView {
                 VStack(spacing: 10) {
                     VStack {
                         Text("Tria Tactics")
@@ -48,7 +47,7 @@ struct MainView: View {
                 .toolbar {
                     creditsButtonView
                 }
-            }
+
             .tint(.black)
             .lineLimit(1)
         }

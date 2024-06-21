@@ -10,7 +10,8 @@ import SwiftUI
 struct ParentView: View {
     @EnvironmentObject var navigation: Navigation
     var body: some View {
-        switch navigation.value {
+        Group {
+            switch navigation.value {
             case .main:
                 MainView()
             case .play:
@@ -23,6 +24,10 @@ struct ParentView: View {
                 GameView(isOffline: .constant(false))
             case .tutorial:
                 TutorialView()
+            }
+        }
+        .background {
+            BackgroundView()
         }
     }
 }
