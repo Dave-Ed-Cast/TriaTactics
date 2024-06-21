@@ -29,7 +29,7 @@ struct MainView: View {
                     }
                 }
         } else {
-            NavigationView {
+            CompatibilityNavigation {
                 VStack(spacing: -150) {
                     Spacer()
                         viewManagerView

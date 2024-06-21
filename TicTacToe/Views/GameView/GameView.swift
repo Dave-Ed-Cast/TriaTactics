@@ -18,7 +18,7 @@ struct GameView: View {
     
     var body: some View {
         
-        NavigationView {
+        CompatibilityNavigation {
             VStack(spacing: 25) {
                 Spacer()
                 VStack(spacing: 5) {

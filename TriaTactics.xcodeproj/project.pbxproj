@@ -39,6 +39,7 @@
 		3ED6BF562C0242C400A53C29 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED6BF552C0242C400A53C29 /* GameOver.swift */; };
 		3EDF8B812BF7FBAB00957F89 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDF8B802BF7FBAB00957F89 /* GameLogic.swift */; };
 		3EDF8B832BF80D1A00957F89 /* GameLogicConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDF8B822BF80D1A00957F89 /* GameLogicConditions.swift */; };
+		9DDE10372C24665500A89215 /* CompatibilityNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE10362C24665500A89215 /* CompatibilityNavigation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		3ED6BF552C0242C400A53C29 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		3EDF8B802BF7FBAB00957F89 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 		3EDF8B822BF80D1A00957F89 /* GameLogicConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogicConditions.swift; sourceTree = "<group>"; };
+		9DDE10362C24665500A89215 /* CompatibilityNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityNavigation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				3EC8FE182C0908570014BBC0 /* OnboardingParameters.swift */,
 				3E5630822BF822BC0009B48B /* OnboardingPageViewModel.swift */,
 				3E3925C82BFD351F0033F0E2 /* BackgroundGridViewModel.swift */,
+				9DDE10362C24665500A89215 /* CompatibilityNavigation.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				3E43504E2C0F9FB000FDFADC /* ForLocalization.swift in Sources */,
 				3E2BFCB82BFE2C270012529A /* MatchManager.swift in Sources */,
 				3E6C13B92BF7F82400373047 /* MainView.swift in Sources */,
+				9DDE10372C24665500A89215 /* CompatibilityNavigation.swift in Sources */,
 				3E5EF2DB2BF812E2001B6D22 /* GameGrid.swift in Sources */,
 				3EDF8B832BF80D1A00957F89 /* GameLogicConditions.swift in Sources */,
 				3E5630872BF827AF0009B48B /* LottieAnimation.swift in Sources */,
@@ -492,7 +496,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -529,7 +533,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -22,15 +22,12 @@ extension GameLogic {
             return
         }
         
-        if let offlineStatus = isOffline {
-            if offlineStatus {
+            if isOffline {
                 handleMoveOffline(index: index)
             } else {
                 handleMoveOnline(index: index)
             }
-        } else {
-            print("isOffline is nil")
-        }
+       
     }
     
     /// Defines the actions for an online match
@@ -95,7 +92,7 @@ extension GameLogic {
     ///   - index: the index we received
     ///   - player: the player that made the move
     func receiveMove(index: Int, player: Player) {
-        if !isOffline! {
+        if !isOffline {
             guard grid[index] == nil && winner == nil else {
                 return
             }
