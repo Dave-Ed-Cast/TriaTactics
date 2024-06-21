@@ -268,6 +268,7 @@
       }
     },
     "Credits" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -370,6 +371,7 @@
       }
     },
     "Localization" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -464,6 +466,9 @@
           }
         }
       }
+    },
+    "Menu" : {
+
     },
     "Multiplayer is finally here!" : {
       "localizations" : {
@@ -566,6 +571,9 @@
           }
         }
       }
+    },
+    "Play" : {
+
     },
     "Play Offline" : {
       "localizations" : {
@@ -738,6 +746,7 @@
       }
     },
     "Status: %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -770,6 +779,12 @@
           }
         }
       }
+    },
+    "TEST" : {
+
+    },
+    "TEST AAAAAA" : {
+
     },
     "The game for true tacticians!" : {
       "localizations" : {

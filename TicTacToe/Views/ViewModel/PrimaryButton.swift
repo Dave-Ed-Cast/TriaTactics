@@ -11,15 +11,17 @@ struct PrimaryButton: View {
     
     @Binding var showSomething: Bool
     let buttonText: LocalizedStringKey
+    let action: () -> Void
     
     var body: some View {
         Button(action: {
+            action()
             showSomething = true
         }) {
             ZStack {
                 RoundedRectangle(cornerRadius: 15)
                     .foregroundStyle(.yellow)
-                    .frame(minWidth: 50, idealWidth: 100, maxWidth: 170, minHeight: 50, idealHeight: 70, maxHeight: 70)
+                    .frame(minWidth: 50, idealWidth: 200, maxWidth: 200, minHeight: 50, idealHeight: 70, maxHeight: 70)
                 Text(buttonText)
                     .fontWeight(.bold)
                     .padding()
@@ -27,10 +29,9 @@ struct PrimaryButton: View {
                     .font(.title)
             }
         }
-        
     }
 }
 
 #Preview {
-    PrimaryButton(showSomething: .constant(true), buttonText: "TEST")
+    PrimaryButton(showSomething: .constant(true), buttonText: "TEST AAAAAA", action: {})
 }

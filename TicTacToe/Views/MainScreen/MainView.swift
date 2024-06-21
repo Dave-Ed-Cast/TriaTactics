@@ -39,7 +39,7 @@ struct MainView: View {
                     
                     VStack (spacing: 20) {
                        
-                        PrimaryButton(showSomething: $showPlayView, buttonText: "Play")
+                        PrimaryButton(showSomething: $showPlayView, buttonText: "Play", action: {})
                             .onTapGesture {
                                 showPlayView = true
                             }
@@ -83,4 +83,6 @@ struct MainView: View {
 
 #Preview {
     MainView()
+        .environmentObject(MatchManager())
+        .environmentObject(GameLogic())
 }

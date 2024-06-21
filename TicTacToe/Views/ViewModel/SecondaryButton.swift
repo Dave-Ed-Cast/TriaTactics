@@ -11,10 +11,12 @@ struct SecondaryButton: View {
     
     @Binding var showSomething: Bool
     let buttonText: LocalizedStringKey
+    var action: (() -> Void)?
     
     var body: some View {
         Button(action: {
             showSomething = true
+            action!()
         }) {
             ZStack {
                 RoundedRectangle(cornerRadius: 15)

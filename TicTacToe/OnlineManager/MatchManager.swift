@@ -20,6 +20,7 @@ class MatchManager: NSObject, ObservableObject {
     @Published var isGameOver: Bool = false
     @Published var autheticationState: PlayerAuthState = .authenticating
     @Published var currentlyPlaying: Bool = false
+    @Published var matchFound: Bool = false
     @Published var localPlayerScore: Int = 0
     @Published var otherPlayerScore: Int = 0
     @Published var remainingTime = 10
@@ -112,6 +113,7 @@ class MatchManager: NSObject, ObservableObject {
         otherPlayer = match?.players.first
         localPlayerSymbol = currentlyPlaying ? .X : .O
         sendString("began:\(playerUUIDKey)")
+        matchFound = true
     }
     
     /// This is an exclusive function for online matches.
@@ -133,6 +135,7 @@ class MatchManager: NSObject, ObservableObject {
         match?.disconnect()
         match?.delegate = nil
         match = nil
+        matchFound = false
         gameLogic?.resetGame()
         stopTimer()
     }

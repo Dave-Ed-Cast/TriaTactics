@@ -37,7 +37,7 @@ struct GameView: View {
                             .font(.headline)
                             .fontWeight(.bold)
                     } else {
-                        Text("\(matchManager.currentlyPlaying ? matchManager.localPlayer.displayName : matchManager.otherPlayer!.displayName) turn")
+                        Text("\(matchManager.currentlyPlaying ? matchManager.localPlayer.displayName : matchManager.otherPlayer?.displayName ?? "Other") turn")
                             .font(.headline)
                             .fontWeight(.bold)
                             .foregroundStyle(matchManager.currentlyPlaying ? .blue : .red)
@@ -167,5 +167,5 @@ struct GameView: View {
 
 #Preview {
     //setting offline = false crashes the preview due to Text(match manager)
-    GameView(matchManager: MatchManager(), isOffline: .constant(true))
+    GameView(isOffline: .constant(true))
 }
