@@ -43,6 +43,7 @@
 		3EDF8B832BF80D1A00957F89 /* GameLogicConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDF8B822BF80D1A00957F89 /* GameLogicConditions.swift */; };
 		9D9DC82C2C257908004EFDFF /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 9D9DC82B2C257908004EFDFF /* Lottie */; };
 		9D9DC82F2C2579ED004EFDFF /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9D9DC82E2C2579ED004EFDFF /* .swiftlint.yml */; };
+		9D9DC8312C257BB8004EFDFF /* ParentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9DC8302C257BB8004EFDFF /* ParentView.swift */; };
 		9DDE10372C24665500A89215 /* CompatibilityNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE10362C24665500A89215 /* CompatibilityNavigation.swift */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		3EDF8B802BF7FBAB00957F89 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 		3EDF8B822BF80D1A00957F89 /* GameLogicConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogicConditions.swift; sourceTree = "<group>"; };
 		9D9DC82E2C2579ED004EFDFF /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		9D9DC8302C257BB8004EFDFF /* ParentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentView.swift; sourceTree = "<group>"; };
 		9DDE10362C24665500A89215 /* CompatibilityNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityNavigation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,6 +117,7 @@
 			children = (
 				3E6C13B82BF7F82400373047 /* MainView.swift */,
 				3E4350482C0F875600FDFADC /* CreditsView.swift */,
+				9D9DC8302C257BB8004EFDFF /* ParentView.swift */,
 				3EBCE0822BFCEED600D5D37C /* TutorialView.swift */,
 			);
 			path = MainScreen;
@@ -375,6 +378,7 @@
 				9DDE10372C24665500A89215 /* CompatibilityNavigation.swift in Sources */,
 				3E3D4B422C24A62900CC6F1A /* SecondaryButton.swift in Sources */,
 				3E5EF2DB2BF812E2001B6D22 /* GameGrid.swift in Sources */,
+				9D9DC8312C257BB8004EFDFF /* ParentView.swift in Sources */,
 				3EDF8B832BF80D1A00957F89 /* GameLogicConditions.swift in Sources */,
 				3E5630872BF827AF0009B48B /* LottieAnimation.swift in Sources */,
 				3E56308B2BF82BBF0009B48B /* GameView.swift in Sources */,

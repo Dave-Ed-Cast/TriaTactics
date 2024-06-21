@@ -14,7 +14,7 @@ struct MainView: View {
     @State private var showTutorialView: Bool = false
     @State private var showCreditsView: Bool = false
     @State private var showPlayView: Bool = false
-
+    @EnvironmentObject var changeViewTo: Navigation
     var body: some View {
 
 //        if !parameters.onboardingIsCompleted && !parameters.skipOnboarding {
@@ -39,21 +39,13 @@ struct MainView: View {
 
                     VStack(spacing: 20) {
 
-                        PrimaryButton(showSomething: $showPlayView, buttonText: "Play", action: {})
-                            .onTapGesture {
-                                showPlayView = true
-                            }
-                            .fullScreenCover(isPresented: $showPlayView) {
-                                PlayView()
-                            }
+                        PrimaryButton(showSomething: $showPlayView, buttonText: "Play", action: {
+                            changeViewTo.value = .play
+                            })
 
-                        SecondaryButton(showSomething: $showTutorialView, buttonText: "Tutorial")
-                            .onTapGesture {
-                                showTutorialView = true
-                            }
-                            .sheet(isPresented: $showTutorialView) {
-                                TutorialView()
-                            }
+                        SecondaryButton(showSomething: $showTutorialView, buttonText: "Tutorial", action: {
+                            changeViewTo.value = .tutorial
+                        })
                     }// end of 2nd innervstack
                 }// end of outer vstack
                 .toolbar {

@@ -29,11 +29,6 @@ struct PlayView: View {
             .onAppear {
                 matchManager.authenticateUser()
             }
-            .fullScreenCover(isPresented: $showGameView) {
-                if isOffline {
-                    GameView(isOffline: .constant(true))
-                }
-            }
         }
 
     var viewManagerView: some View {
@@ -47,6 +42,9 @@ struct PlayView: View {
                     matchManager.startMatchmaking()
                     print("matchmanager")
                     if matchManager.matchFound {
+                        if isOffline {
+                            Navigation.shared.value = .offline
+                        }
                         showGameView = true
                     }
                 }
