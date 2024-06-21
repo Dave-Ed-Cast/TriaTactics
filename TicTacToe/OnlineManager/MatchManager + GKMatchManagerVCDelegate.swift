@@ -24,7 +24,7 @@ extension MatchManager: GKMatchmakerViewControllerDelegate {
     /// - Parameters:
     ///   - viewController: the gamekit view controller
     ///   - error: the error
-    func matchmakerViewController(_ viewController: GKMatchmakerViewController, didFailWithError error: any Error) {
+    func matchmakerViewController(_ viewController: GKMatchmakerViewController, didFailWithError error: Error) {
         print("Matchmaking failed with error: \(error.localizedDescription)")
         viewController.dismiss(animated: true)
     }

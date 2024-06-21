@@ -21,7 +21,7 @@ struct TutorialView: View {
                 onboardingIsCompleted: .constant(false),
                 onboardingTitle: "Tria Tactics rule",
                 onboardingImage: "Rule",
-                onboardingText: "Making a fourth move will cost the first one. The next one follows the same logic. \n\nTria Tactics is about choosing wisely!",
+                onboardingText: "Making a fourth move will cost the first one. The next one follows the same logic. Tria Tactics is about choosing wisely!",
                 animationSize: CGFloat(300)
             )
             .lineLimit(nil)

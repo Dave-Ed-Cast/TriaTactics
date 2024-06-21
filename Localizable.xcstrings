@@ -9,7 +9,19 @@
             "value" : ""
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : ""
@@ -19,10 +31,22 @@
     },
     "%@ turn" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ist dran"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Turno de %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ tour"
           }
         },
         "it" : {
@@ -30,15 +54,33 @@
             "state" : "translated",
             "value" : "turno di: %@"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ sırası"
+          }
         }
       }
     },
     "%@ wins!" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ gewinnt!"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "¡%@ gana!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ gagne!"
           }
         },
         "it" : {
@@ -46,15 +88,33 @@
             "state" : "translated",
             "value" : "%@ vince!"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ kazandı!"
+          }
         }
       }
     },
     "App icon" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App-Symbol"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Icono de app"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Icône de l'application"
           }
         },
         "it" : {
@@ -62,15 +122,33 @@
             "state" : "translated",
             "value" : "Icona app"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uygulama simgesi"
+          }
         }
       }
     },
     "Are you sure you want to leave?" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sind Sie sicher, dass Sie gehen möchten?"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Seguro que quieres salir?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Êtes-vous sûr de vouloir partir?"
           }
         },
         "it" : {
@@ -78,15 +156,33 @@
             "state" : "translated",
             "value" : "Sei sicuro di voler abbandonare?"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çıkmak istediğinizden emin misiniz?"
+          }
         }
       }
     },
     "Assets" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ressourcen"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "activos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ressources"
           }
         },
         "it" : {
@@ -94,15 +190,33 @@
             "state" : "translated",
             "value" : "Risorse"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Varlıklar"
+          }
         }
       }
     },
     "Cancel" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbrechen"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cancelar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
           }
         },
         "it" : {
@@ -110,15 +224,33 @@
             "state" : "translated",
             "value" : "Annulla"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İptal"
+          }
         }
       }
     },
     "Creator, Developer, UX Designer" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ersteller, Entwickler, UX-Designer"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Creador, Desarrollador, Diseñador de UX"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créateur, Développeur, Concepteur UX"
           }
         },
         "it" : {
@@ -126,15 +258,34 @@
             "state" : "translated",
             "value" : "Creatore, Sviluppatore, Progettista UX"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yapımcı, Geliştirici, UX Tasarımcısı"
+          }
         }
       }
     },
     "Credits" : {
+      "extractionState" : "stale",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Credits"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Creditos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crédits"
           }
         },
         "it" : {
@@ -142,15 +293,33 @@
             "state" : "translated",
             "value" : "Riconoscimenti"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Krediler"
+          }
         }
       }
     },
     "Here comes the multiplayer! Challenge your friends in a strategic battle. Log into Game Center and enjoy!" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genießen Sie vorerst die lokale Version, denn der Mehrspielermodus kommt bald!"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "¡Aquí esta multijugador! Desafía a tus amigos en una batalla estratégica. ¡Inicia sesión en Game Center y disfruta!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voici le multijoueur! Défiez vos amis dans une bataille stratégique. Connectez-vous à Game Center et profitez-en!"
           }
         },
         "it" : {
@@ -158,15 +327,33 @@
             "state" : "translated",
             "value" : "È arrivato il multigiocatore! Sfida i tuoi amici in una battaglia strategica. Accedi nel Game Center e divertiti!"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çok oyunculu geliyor! Arkadaşlarınıza stratejik bir savaşta meydan okuyun. Game Center'a giriş yapın ve tadını çıkarın!"
+          }
         }
       }
     },
     "Let's start!" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lass uns anfangen!"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "¡Empecemos!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commençons!"
           }
         },
         "it" : {
@@ -174,15 +361,34 @@
             "state" : "translated",
             "value" : "Iniziamo!"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hadi başlayalım!"
+          }
         }
       }
     },
     "Localization" : {
+      "extractionState" : "stale",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokalisierung"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Localizador"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Localisation"
           }
         },
         "it" : {
@@ -190,31 +396,27 @@
             "state" : "translated",
             "value" : "Traduzione"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yerelleştirme"
+          }
         }
       }
     },
-    "Making a fourth move will cost the first one. The next one follows the same logic. \n\nTria Tactics is about choosing wisely!" : {
+    "Making a fourth move will cost the first one. The next one follows the same logic. Tria Tactics is about choosing wisely!" : {
       "localizations" : {
-        "es-419" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hacer el cuarto movimiento te costará el primero. El siguiente sigue la misma lógica. \n\n¡Tria Tactics se trata de elegir sabiamente!"
+            "value" : "Der vierte Zug kostet den ersten. Der nächste folgt der gleichen Logik. Bei Tria Tactics geht es darum, klug zu wählen!"
           }
         },
-        "it" : {
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fare la quarta mossa ti costerà la prima. Le successive seguiranno la stessa logica.\n\nTria Tactics tratta di scelte sagge!"
-          }
-        }
-      }
-    },
-    "Making your fourth move of the game will make the first one disappear! And it keeps going after that! This is Tria Tactics..." : {
-      "localizations" : {
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¡Hacer el cuarto movimiento del juego hará que que el primero desaparezca! ¡Y así continuara! Esto es Tria Tactics..."
+            "value" : "Faire un quatrième mouvement coûtera le premier. Le suivant suit la même logique. Tria Tactics consiste à choisir judicieusement!"
           }
         },
         "it" : {
@@ -222,15 +424,70 @@
             "state" : "translated",
             "value" : "Fare la quarta mossa della partita farà scomparire la prima! E continuerà così! Questo è Tria Tactics..."
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dördüncü hamleyi yapmak birincisini kaybettirir. Bir sonraki aynı mantıkla devam eder. Tria Tactics, akıllıca seçim yapmakla ilgilidir!"
+          }
         }
       }
     },
+    "Making your fourth move of the game will make the first one disappear! And it keeps going after that! This is Tria Tactics..." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der vierte Zug im Spiel lässt den ersten verschwinden! Und es geht immer so weiter! Das ist Tria Tactics..."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Hacer el cuarto movimiento del juego hará que que el primero desaparezca! ¡Y así continuara! Esto es Tria Tactics..."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faire votre quatrième mouvement du jeu fera disparaître le premier! Et cela continue après! C'est Tria Tactics..."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fare la quarta mossa della partita farà scomparire la prima! E continuerà così! Questo è Tria Tactics..."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyunda dördüncü hamleyi yapmak ilkini yok eder! Ve bu şekilde devam eder! Bu Tria Tactics..."
+          }
+        }
+      }
+    },
+    "Menu" : {
+
+    },
     "Multiplayer is finally here!" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Mehrspieler-Modus ist endlich da!"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "¡Multijugador finalmente está aquí!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le multijoueur est enfin là!"
           }
         },
         "it" : {
@@ -238,15 +495,33 @@
             "state" : "translated",
             "value" : "Il multigiocatore è qui!"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çok oyunculu nihayet burada!"
+          }
         }
       }
     },
     "OK!" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK!"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "¡OK!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK!"
           }
         },
         "it" : {
@@ -254,15 +529,33 @@
             "state" : "translated",
             "value" : "OK!"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamam!"
+          }
         }
       }
     },
     "Opponent wins: %lld" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gegner gewinnt: %lld"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tu oponente gana: %lld"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'adversaire gagne: %lld"
           }
         },
         "it" : {
@@ -270,15 +563,36 @@
             "state" : "translated",
             "value" : "Vincite avversario: %lld"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rakip kazandı: %lld"
+          }
         }
       }
     },
+    "Play" : {
+
+    },
     "Play Offline" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offline spielen"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Juega Offline"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jouer hors ligne"
           }
         },
         "it" : {
@@ -286,15 +600,33 @@
             "state" : "translated",
             "value" : "Gioca Offline"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çevrimdışı oyna"
+          }
         }
       }
     },
     "Play Online" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Online spielen"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Juega Online"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jouer en ligne"
           }
         },
         "it" : {
@@ -302,15 +634,33 @@
             "state" : "translated",
             "value" : "Gioca Online"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çevrimiçi oyna"
+          }
         }
       }
     },
     "Quit game?" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spiel beenden?"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Salir del juego?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quitter le jeu?"
           }
         },
         "it" : {
@@ -318,18 +668,67 @@
             "state" : "translated",
             "value" : "Abbandona?"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyunu bırak?"
+          }
         }
       }
     },
     "Rematch" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rückspiel"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Revanche"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Revanche"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rivincita"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rövanş"
+          }
+        }
+      }
     },
     "Skip" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Überspringen"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Omitir"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passer"
           }
         },
         "it" : {
@@ -337,15 +736,34 @@
             "state" : "translated",
             "value" : "Salta"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geç"
+          }
         }
       }
     },
     "Status: %@" : {
+      "extractionState" : "stale",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status: %@"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Estado: %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statut: %@"
           }
         },
         "it" : {
@@ -353,15 +771,39 @@
             "state" : "translated",
             "value" : "Status: %@"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durum: %@"
+          }
         }
       }
     },
+    "TEST" : {
+
+    },
+    "TEST AAAAAA" : {
+
+    },
     "The game for true tacticians!" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Spiel für wahre Taktiker!"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "¡El juego para verdaderos estrategas! "
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le jeu pour de vrais tacticiens!"
           }
         },
         "it" : {
@@ -369,15 +811,33 @@
             "state" : "translated",
             "value" : "Il gioco per veri tattici!"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerçek taktikçiler için oyun!"
+          }
         }
       }
     },
     "Their page" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ihre Seite"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Su página"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leur page"
           }
         },
         "it" : {
@@ -385,15 +845,33 @@
             "state" : "translated",
             "value" : "La loro pagina"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Onların sayfası"
+          }
         }
       }
     },
     "Time left: %lld" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbleibende Zeit: %lld"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tiempo restante: %lld"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temps restant: %lld"
           }
         },
         "it" : {
@@ -401,18 +879,42 @@
             "state" : "translated",
             "value" : "Tempo: %lld"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalan zaman: %lld"
+          }
         }
       }
     },
     "Tria Tactics" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tria Tactics"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tria Tactics"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tria Tactics"
+          }
+        },
         "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tria Tactics"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tria Tactics"
@@ -422,10 +924,22 @@
     },
     "Tria Tactics is a revisited version of Tic Tac Toe. Play the classic game until something new will happen!" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tria Tactics ist eine überarbeitete Version von Tic Tac Toe. Spielen Sie das klassische Spiel, bis etwas Neues passiert!"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tria Tactics es una versión innovadora de Tic Tac Toe. ¡Juega el modo clásico hasta que algo nuevo suceda!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tria Tactics est une version revisitée du Tic Tac Toe. Jouez au jeu classique jusqu'à ce que quelque chose de nouveau se produise!"
           }
         },
         "it" : {
@@ -433,15 +947,33 @@
             "state" : "translated",
             "value" : "Tuffati nel classico Tris finché non succede qualcosa di nuovo con Tria Tactics!"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tria Tactics, Tic Tac Toe'nun yeniden gözden geçirilmiş bir versiyonudur. Yeni bir şey olana kadar klasik oyunu oynayın!"
+          }
         }
       }
     },
     "Tria Tactics rule" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tria Tactics-Regel"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reglas de Tria Tactics"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Règle de Tria Tactics"
           }
         },
         "it" : {
@@ -449,15 +981,33 @@
             "state" : "translated",
             "value" : "La regola Tria Tactics"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tria Tactics kuralı"
+          }
         }
       }
     },
     "Tutorial" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutorial"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tutorial"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutoriel"
           }
         },
         "it" : {
@@ -465,15 +1015,33 @@
             "state" : "translated",
             "value" : "Tutorial"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eğitim"
+          }
         }
       }
     },
     "UI/UX Designer" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UI/UX-Designer"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "UI/UX Diseñador"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Concepteur UI/UX"
           }
         },
         "it" : {
@@ -481,11 +1049,23 @@
             "state" : "translated",
             "value" : "Progettista UI/UX"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UI/UX Tasarımcısı"
+          }
         }
       }
     },
     "Welcome to Tria Tactics!" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Willkommen bei Tria Tactics!"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -498,23 +1078,53 @@
             "value" : "¡Bienvenido a Tria Tactics!"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bienvenue à Tria Tactics!"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Benvenuto in Tria Tactics!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tria Tactics'e hoş geldiniz!"
           }
         }
       }
     },
     "X" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "X"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "X"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "X"
+          }
+        },
         "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "X"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "X"
@@ -524,10 +1134,22 @@
     },
     "Yes" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ja"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Si"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oui"
           }
         },
         "it" : {
@@ -535,15 +1157,33 @@
             "state" : "translated",
             "value" : "Sì"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evet"
+          }
         }
       }
     },
     "You lose!" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du verlierst!"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "¡Perdiste!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous avez perdu!"
           }
         },
         "it" : {
@@ -551,15 +1191,33 @@
             "state" : "translated",
             "value" : "Hai perso!"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaybettin!"
+          }
         }
       }
     },
     "You win!" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du gewinnst!"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "¡Ganaste!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous avez gagné!"
           }
         },
         "it" : {
@@ -567,15 +1225,33 @@
             "state" : "translated",
             "value" : "Hai vinto!"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kazandın!"
+          }
         }
       }
     },
     "Your turn: %@" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dein Zug: %@"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tu turno: %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre tour: %@"
           }
         },
         "it" : {
@@ -583,21 +1259,45 @@
             "state" : "translated",
             "value" : "Turno di: %@"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Senin sıran: %@"
+          }
         }
       }
     },
     "Your wins: %lld" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deine Siege: %lld"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tus victorias: %lld"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vos victoires: %lld"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tue vincite: %lld"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Senin galibiyetlerin: %lld"
           }
         }
       }

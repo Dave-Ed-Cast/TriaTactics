@@ -14,7 +14,7 @@ extension GameLogic {
     /// - Parameter index: the index is the pressed spot on the grid
     func buttonTap(index: Int) {
         
-        // Supposing the game is still ongoing
+        //supposing the game is still ongoing
         guard grid[index] == nil && winner == nil else { return }
         
         guard index >= 0 && index < grid.count else {

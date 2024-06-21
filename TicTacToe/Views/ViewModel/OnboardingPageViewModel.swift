@@ -62,9 +62,9 @@ struct OnboardingPageViewModel: View {
 #Preview("English") {
     OnboardingPageViewModel(
         onboardingIsCompleted: .constant(false),
-        onboardingTitle: "Local multiplayer (for now)",
+        onboardingTitle: "Multiplayer is finally here!",
         onboardingImage: "Done",
-        onboardingText: "For now enjoy the local version because multiplayer is coming soon as possible!",
+        onboardingText: "Here comes the multiplayer! Challenge your friends in a strategic battle. Log into Game Center and enjoy!",
         showDoneButton: false
     )
     .environment(\.locale, Locale(identifier: "EN"))
@@ -73,9 +73,9 @@ struct OnboardingPageViewModel: View {
 #Preview("Italian") {
     OnboardingPageViewModel(
         onboardingIsCompleted: .constant(false),
-        onboardingTitle: "Local multiplayer (for now)",
-        onboardingImage: "Cool",
-        onboardingText: "For now enjoy the local version because multiplayer is coming soon as possible!",
+        onboardingTitle: "Multiplayer is finally here!",
+        onboardingImage: "Done",
+        onboardingText: "Here comes the multiplayer! Challenge your friends in a strategic battle. Log into Game Center and enjoy!",
         showDoneButton: true
     )
     .environment(\.locale, Locale(identifier: "IT"))

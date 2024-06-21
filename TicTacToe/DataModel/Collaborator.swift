@@ -35,7 +35,7 @@ struct Collaborator: Identifiable {
             role: "UI/UX Designer",
             contribute: "Assets",
             contactInfo: "https://www.linkedin.com/in/maharyesposito/"
-        ),
+        )
         
 //        Collaborator(
 //            name: "Giuseppe Francione",
@@ -43,21 +43,6 @@ struct Collaborator: Identifiable {
 //            contribute: "Code refactoring",
 //            contactInfo: "https://www.linkedin.com/in/giuseppe-francione-69008125a/"
 //        ),
-        
-        Collaborator(
-            name: "Fernanda Lozoya Navarro",
-            role: "UI/UX Designer",
-            contribute: "Localization",
-            contactInfo: "placeholder"
-        ),
-        
-        Collaborator(
-            name: "",
-            role: "",
-            contribute: "",
-            contactInfo: ""
-        ),
-        
         
     ]
 }
