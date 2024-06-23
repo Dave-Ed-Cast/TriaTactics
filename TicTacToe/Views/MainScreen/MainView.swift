@@ -16,14 +16,14 @@ struct MainView: View {
 
     var body: some View {
 
-//        if !parameters.onboardingIsCompleted && !parameters.skipOnboarding {
-//            OnboardView(viewModel: parameters)
-//                .onDisappear {
-//                    if parameters.onboardingIsCompleted {
-//                        parameters.completeOnboarding()
-//                    }
-//                }
-//        } else {
+        if !parameters.onboardingIsCompleted && !parameters.skipOnboarding {
+            OnboardView(viewModel: parameters)
+                .onDisappear {
+                    if parameters.onboardingIsCompleted {
+                        parameters.completeOnboarding()
+                    }
+                }
+        } else {
             NavigationView {
                 VStack(spacing: 10) {
                     VStack {
@@ -43,35 +43,31 @@ struct MainView: View {
                         SecondaryButton(label: "Tutorial", action: {
                             changeViewTo.value = .tutorial
                         })
-                    }// end of 2nd innervstack
+                    }// end of 2nd inner vstack
                 }// end of outer vstack
                 .toolbar {
-                    creditsButtonView
+                    Button {
+                        showCreditsView = true
+                    } label: {
+                        Image(systemName: "info.circle")
+                            .foregroundStyle(.black)
+                            .font(.title3)
+                            .padding()
+                    }
+                    .sheet(isPresented: $showCreditsView) {
+                        CreditsView()
+                    }
                 }
             }
             .tint(.black)
             .lineLimit(1)
         }
-//    }
-
-    var creditsButtonView: some View {
-        Button {
-            showCreditsView = true
-        } label: {
-            Image(systemName: "info.circle")
-                .foregroundStyle(.black)
-                .font(.title3)
-                .padding()
-        }
-        .sheet(isPresented: $showCreditsView) {
-            CreditsView()
-        }
     }
-
 }
 
 #Preview {
     MainView()
         .environmentObject(MatchManager())
         .environmentObject(GameLogic())
+        .environmentObject(Navigation.shared)
 }

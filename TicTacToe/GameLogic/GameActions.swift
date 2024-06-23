@@ -22,11 +22,11 @@ extension GameLogic {
             return
         }
 
-            if isOffline {
-                handleMoveOffline(index: index)
-            } else {
-                handleMoveOnline(index: index)
-            }
+        if Navigation.shared.value == .offline {
+            handleMoveOffline(index: index)
+        } else {
+            handleMoveOnline(index: index)
+        }
 
     }
 
@@ -91,7 +91,7 @@ extension GameLogic {
     ///   - index: the index we received
     ///   - player: the player that made the move
     func receiveMove(index: Int, player: Player) {
-        if !isOffline {
+        if Navigation.shared.value == .online {
             guard grid[index] == nil && winner == nil else {
                 return
             }
@@ -116,8 +116,7 @@ extension GameLogic {
         }
     }
 
-    /// This is the player that touched the label of the grid.
-    /// It just tells which symbol to apply according to the player
+    /// The symbol of the touched grid position element
     /// - Parameter index: index of touched label
     /// - Returns: the image name to be loaded in
     func buttonLabel(index: Int) -> String {
@@ -128,6 +127,9 @@ extension GameLogic {
 
     }
 
+    /// The color of the symbol of the touched grid position element
+    /// - Parameter index: index of touched label
+    /// - Returns: the color image of the name to be loaded in
     func buttonColor(index: Int) -> Color {
         if let player = grid[index] {
             return player == .X ? .red : .blue
@@ -188,5 +190,4 @@ extension GameLogic {
         degrees = 0.0
         offsetPosition = CGSize.zero
     }
-
 }

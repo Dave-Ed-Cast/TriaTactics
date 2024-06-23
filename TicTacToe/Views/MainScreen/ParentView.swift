@@ -16,11 +16,11 @@ struct ParentView: View {
             case .play:
                 PlayView()
             case .online:
-                GameView(isOffline: .constant(false))
+                GameView()
             case .offline:
-                GameView(isOffline: .constant(true))
+                GameView()
             case .bot:
-                GameView(isOffline: .constant(false))
+                EmptyView()
             case .tutorial:
                 TutorialView()
         }
@@ -29,4 +29,7 @@ struct ParentView: View {
 
 #Preview {
     ParentView()
+        .environmentObject(Navigation.shared)
+        .environmentObject(MatchManager())
+        .environmentObject(GameLogic())
 }

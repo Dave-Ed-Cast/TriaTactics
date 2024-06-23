@@ -9,10 +9,9 @@ import SwiftUI
 
 struct GameView: View {
 
-    @ObservedObject var matchManager: MatchManager = MatchManager()
-    @ObservedObject var gameLogic: GameLogic = GameLogic()
-
-    @Binding var isOffline: Bool
+    @EnvironmentObject var matchManager: MatchManager
+    @EnvironmentObject var gameLogic: GameLogic
+    @EnvironmentObject var changeViewTo: Navigation
 
     @State private var showAlert = false
 
@@ -20,6 +19,7 @@ struct GameView: View {
 
         CompatibilityNavigation {
             VStack(spacing: 25) {
+                Text("\(changeViewTo.value)")
                 Spacer()
                 VStack(spacing: 5) {
                     Text("Tria Tactics")
@@ -28,11 +28,11 @@ struct GameView: View {
                     Text("Time left: \(matchManager.remainingTime)")
                         .font(.title2)
                         .fontWeight(.semibold)
-                        .opacity(isOffline ? 0 : 1)
+                        .opacity((changeViewTo.value == .offline) ? 0 : 1)
                 }
 
                 HStack {
-                    if isOffline {
+                    if changeViewTo.value == .offline {
                         Text("Your turn: \(gameLogic.activePlayer == .X ? "X" : "O")")
                             .font(.headline)
                             .fontWeight(.bold)
@@ -57,7 +57,6 @@ struct GameView: View {
             .foregroundStyle(.black)
             .onAppear {
                 gameLogic.resetGame()
-                gameLogic.isOffline = isOffline
             }
             .onDisappear {
                 matchManager.gameOver()
@@ -65,7 +64,7 @@ struct GameView: View {
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                if !isOffline {
+                if !(changeViewTo.value == .offline) {
                     backToMenuView
                 }
             }
@@ -75,7 +74,7 @@ struct GameView: View {
     var winnerView: some View {
         Group {
             if let winner = gameLogic.winner {
-                if isOffline {
+                if changeViewTo.value == .offline {
                     Text("\(winner.rawValue) wins!")
                         .fontWeight(.bold)
                 } else if matchManager.localPlayerWin {
@@ -96,7 +95,7 @@ struct GameView: View {
 
     var scoreView: some View {
         HStack(spacing: 80) {
-            if !isOffline {
+            if !(changeViewTo.value == .offline) {
                 Text("Your wins: \(matchManager.localPlayerScore)")
                 Text("Opponent wins: \(matchManager.otherPlayerScore)")
             } else {
@@ -108,7 +107,7 @@ struct GameView: View {
 
     var buttonView: some View {
         Button {
-            if isOffline {
+            if changeViewTo.value == .offline {
                 if gameLogic.checkWinner() {
                     gameLogic.resetGame()
                 }
@@ -163,7 +162,25 @@ struct GameView: View {
     }
 }
 
-#Preview {
-    // setting offline = false crashes the preview due to Text(match manager)
-    GameView(isOffline: .constant(true))
+#Preview("Offline") {
+    GameView()
+        .environmentObject(MatchManager())
+        .environmentObject(GameLogic())
+        .environmentObject({
+            let navigation = Navigation.shared
+            navigation.value = .offline
+            return navigation
+        }())
+        .previewDisplayName("Offline Mode")
+}
+#Preview("Online") {
+    GameView()
+        .environmentObject(MatchManager())
+        .environmentObject(GameLogic())
+        .environmentObject({
+            let navigation = Navigation.shared
+            navigation.value = .online
+            return navigation
+        }())
+        .previewDisplayName("Online Mode")
 }

@@ -20,7 +20,6 @@ class MatchManager: NSObject, ObservableObject {
     @Published var isGameOver: Bool = false
     @Published var autheticationState: PlayerAuthState = .authenticating
     @Published var currentlyPlaying: Bool = false
-    @Published var matchFound: Bool = false
     @Published var localPlayerScore: Int = 0
     @Published var otherPlayerScore: Int = 0
     @Published var remainingTime = 10
@@ -71,7 +70,6 @@ class MatchManager: NSObject, ObservableObject {
     /// Start the timer of the match
     func startTimer() {
         remainingTime = 10
-//        isTimeKeeper = true
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             self?.handleTimerTick()
@@ -89,7 +87,6 @@ class MatchManager: NSObject, ObservableObject {
 
     /// Stop the timer of the match
     func stopTimer() {
-//        isTimeKeeper = false
         timer?.invalidate()
         timer = nil
     }
@@ -112,8 +109,10 @@ class MatchManager: NSObject, ObservableObject {
         match?.delegate = self
         otherPlayer = match?.players.first
         localPlayerSymbol = currentlyPlaying ? .X : .O
+        print("prima")
+        inGame = true
+        print("dopo")
         sendString("began:\(playerUUIDKey)")
-        matchFound = true
     }
 
     /// This is an exclusive function for online matches.
@@ -135,7 +134,6 @@ class MatchManager: NSObject, ObservableObject {
         match?.disconnect()
         match?.delegate = nil
         match = nil
-        matchFound = false
         gameLogic?.resetGame()
         stopTimer()
     }
@@ -174,8 +172,8 @@ class MatchManager: NSObject, ObservableObject {
             // the player lexicographically smaller goes first
             currentlyPlaying = (playerUUIDKey < parameter)
             print("\(playerUUIDKey) currently playing: \(currentlyPlaying)")
-            inGame = true
             startTimer()
+            Navigation.shared.value = .online
 
             // when the encoded message is "move" do some stuff
             // if you were to receive this move, who would win?
