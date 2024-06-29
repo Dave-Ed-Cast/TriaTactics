@@ -22,15 +22,13 @@ struct PlayView: View {
             PrimaryButton(label: "Play Online", action: {
                 matchManager.startMatchmaking()
                 if matchManager.inGame && matchManager.autheticationState == .authenticated {
-                    print("navigation: \(changeViewTo.value)")
-                    print("in game: \(matchManager.inGame)")
-                    print("authenticated: \(matchManager.autheticationState)")
+                    changeViewTo.value = .online
                 }
             })
             .opacity(matchManager.autheticationState != .authenticated ? 0.5 : 1)
             .disabled(matchManager.autheticationState != .authenticated)
 
-            //TODO: Provide a back button for this view
+            // TODO: Provide a back button for this view
             PrimaryButton(label: "Play Offline", action: { changeViewTo.value = .offline })
 
         }

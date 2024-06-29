@@ -8,25 +8,46 @@
 import SwiftUI
 
 extension View {
-    var asImage: UIImage {
-        let controller = UIHostingController(rootView: self.edgesIgnoringSafeArea(.top))
+    func asImage() -> UIImage {
+        let controller = UIHostingController(rootView: self.edgesIgnoringSafeArea(.all))
         let view = controller.view
+
         let targetSize = controller.view.intrinsicContentSize
-        view?.bounds = CGRect(origin: CGPoint(x: 0, y: 0), size: targetSize)
+        view?.bounds = CGRect(origin: .zero, size: targetSize)
         view?.backgroundColor = .clear
 
         let format = UIGraphicsImageRendererFormat()
-        format.scale = 3 // Ensures 3x-scale images. You can customise this however you like.
+        format.scale = 3
         let renderer = UIGraphicsImageRenderer(size: targetSize, format: format)
         return renderer.image { _ in
             view?.drawHierarchy(in: controller.view.bounds, afterScreenUpdates: true)
         }
     }
+
+    func snapshot() -> UIImage {
+            let controller = UIHostingController(rootView: self)
+            let view = controller.view
+
+            let targetSize = controller.view.intrinsicContentSize
+            view?.bounds = CGRect(origin: .zero, size: targetSize)
+            view?.backgroundColor = .clear
+
+            let renderer = UIGraphicsImageRenderer(size: targetSize)
+
+            return renderer.image { _ in
+                view?.drawHierarchy(in: controller.view.bounds, afterScreenUpdates: true)
+            }
+        }
+
 }
 
 struct BackgroundView: View {
     @State var yAnimation: Double = 100.0
     @State var xAnimation: Double = 100.0
+
+    let widthScreen: Double = UIScreen.main.bounds.width
+    let heightScreen: Double = UIScreen.main.bounds.height
+
     var body: some View {
         LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 13)) {
             ForEach(0..<999) { i in
@@ -38,7 +59,7 @@ struct BackgroundView: View {
                     .opacity(0.1)
             }
         }
-        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        .frame(width: widthScreen, height: heightScreen)
         .background(Color.yellow)
         .ignoresSafeArea()
         .rotationEffect(.degrees(-15))
@@ -50,10 +71,9 @@ struct BackgroundView: View {
             }
         }
         .offset(x: xAnimation, y: yAnimation)
-
     }
-}
 
+}
 #Preview {
     BackgroundView()
 }

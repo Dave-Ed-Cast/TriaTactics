@@ -173,7 +173,6 @@ class MatchManager: NSObject, ObservableObject {
             currentlyPlaying = (playerUUIDKey < parameter)
             print("\(playerUUIDKey) currently playing: \(currentlyPlaying)")
             startTimer()
-            Navigation.shared.value = .online
 
             // when the encoded message is "move" do some stuff
             // if you were to receive this move, who would win?

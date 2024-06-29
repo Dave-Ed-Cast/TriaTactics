@@ -19,7 +19,6 @@ struct GameView: View {
 
         CompatibilityNavigation {
             VStack(spacing: 25) {
-                Text("\(changeViewTo.value)")
                 Spacer()
                 VStack(spacing: 5) {
                     Text("Tria Tactics")
