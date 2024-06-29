@@ -32,6 +32,9 @@ struct PlayView: View {
             PrimaryButton(label: "Play Offline", action: { changeViewTo.value = .offline })
 
         }
+        .background {
+            BackgroundView()
+        }
         .padding(.top, 100)
         .onAppear {
             matchManager.authenticateUser()

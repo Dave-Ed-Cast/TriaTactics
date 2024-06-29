@@ -26,9 +26,6 @@ struct ParentView: View {
                 TutorialView()
             }
         }
-        .background {
-            BackgroundView()
-        }
     }
 }
 

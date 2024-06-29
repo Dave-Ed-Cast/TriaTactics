@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TutorialView: View {
 
-    @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var changeViewTo: Navigation
     var body: some View {
         VStack {
             Spacer(minLength: 20)
@@ -27,7 +27,7 @@ struct TutorialView: View {
             .lineLimit(nil)
 
             Button {
-                dismiss()
+                changeViewTo.value = .main
             } label: {
                 Text("OK!")
                     .fontWeight(.semibold)
