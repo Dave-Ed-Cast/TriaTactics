@@ -134,9 +134,9 @@ struct GameView: View {
     }
 
     var backToMenuView: some View {
-        Button(action: {
+        Button {
             showAlert = true
-        }) {
+        } label: {
             Text("X")
                 .foregroundStyle(.black)
                 .padding(.horizontal, 8)

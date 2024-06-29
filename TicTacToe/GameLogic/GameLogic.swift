@@ -9,8 +9,8 @@ import Foundation
 
 /// One player gets assigned one symbol
 enum Player: String {
-    case X = "X"
-    case O = "O"
+    case X
+    case O
 }
 
 /** 
