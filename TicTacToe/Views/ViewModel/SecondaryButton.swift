@@ -20,7 +20,8 @@ struct SecondaryButton: View {
         } label: {
             ZStack {
                 RoundedRectangle(cornerRadius: 15)
-                    .foregroundStyle(.yellow)
+                    .foregroundStyle(.white.opacity(0.6))
+//                    .foregroundStyle(.yellow)
                     .frame(minWidth: 50, idealWidth: 80, maxWidth: 130, minHeight: 30, idealHeight: 50, maxHeight: 50)
                 Text(label)
                     .fontWeight(.medium)
@@ -33,5 +34,10 @@ struct SecondaryButton: View {
 }
 
 #Preview {
-    SecondaryButton(label: "TEST")
+    ZStack {
+        Color.black
+        SecondaryButton(label: "TEST AAAA")
+            .background(.black)
+    }
+
 }

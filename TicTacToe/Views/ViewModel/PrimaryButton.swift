@@ -20,7 +20,7 @@ struct PrimaryButton: View {
         } label: {
             ZStack {
                 RoundedRectangle(cornerRadius: 15)
-                    .foregroundStyle(.yellow)
+                    .foregroundStyle(.white.opacity(0.6))
                     .frame(minWidth: 50, idealWidth: 200, maxWidth: 200, minHeight: 50, idealHeight: 70, maxHeight: 70)
                 Text(label)
                     .fontWeight(.bold)
@@ -33,5 +33,10 @@ struct PrimaryButton: View {
 }
 
 #Preview {
-    PrimaryButton(label: "TEST AAAAAA", action: {})
+    ZStack {
+        Color.black
+
+        PrimaryButton(label: "TEST AAAAAA", action: {})
+            .background(.black)
+    }
 }

@@ -18,7 +18,7 @@ struct GameView: View {
     var body: some View {
 
         CompatibilityNavigation {
-            VStack(spacing: 25) {
+            VStack(spacing: 15) {
                 Spacer()
                 VStack(spacing: 5) {
                     Text("Tria Tactics")
@@ -60,14 +60,11 @@ struct GameView: View {
             .onDisappear {
                 matchManager.gameOver()
             }
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                if !(changeViewTo.value == .offline) {
-                    backToMenuView
-                }
+            .toolbar {
+                backToMenuView
             }
         }
+
     }
 
     var winnerView: some View {
@@ -106,16 +103,11 @@ struct GameView: View {
 
     var buttonView: some View {
         Button {
+            guard gameLogic.checkWinner() else { return }
             if changeViewTo.value == .offline {
-                if gameLogic.checkWinner() {
-                    gameLogic.resetGame()
-                }
+                gameLogic.resetGame()
             } else {
-                if gameLogic.checkWinner() {
-                    withAnimation {
-                        matchManager.sendRematchRequest()
-                    }
-                }
+                matchManager.sendRematchRequest()
             }
         } label: {
             Text("Rematch")
@@ -137,22 +129,18 @@ struct GameView: View {
         Button {
             showAlert = true
         } label: {
-            Text("X")
-                .foregroundStyle(.black)
-                .padding(.horizontal, 8)
-                .padding(.vertical, 8)
-                .background(
-                    Circle()
-                        .foregroundStyle(.yellow)
-                )
-
+            Image(systemName: "xmark.circle.fill")
+                .scaleEffect(1.5)
+                .foregroundStyle(.black, .yellow)
         }
         .alert(isPresented: $showAlert) {
             Alert(
                 title: Text("Quit game?"),
                 message: Text("Are you sure you want to leave?"),
                 primaryButton: .destructive(Text("Yes")) {
-                    matchManager.gameOver()
+
+                    changeViewTo.value == .online ? (matchManager.gameOver()) : (changeViewTo.value = .offline)
+
                     showAlert = false
                 },
                 secondaryButton: .cancel()
@@ -170,7 +158,6 @@ struct GameView: View {
             navigation.value = .offline
             return navigation
         }())
-        .previewDisplayName("Offline Mode")
 }
 #Preview("Online") {
     GameView()
@@ -181,5 +168,4 @@ struct GameView: View {
             navigation.value = .online
             return navigation
         }())
-        .previewDisplayName("Online Mode")
 }

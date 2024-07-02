@@ -29,20 +29,31 @@ struct MainView: View {
                 NavigationView {
                     VStack(spacing: 10) {
                         VStack {
+                            Image("appicon")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxHeight: 120)
+                                .cornerRadius(20)
+                                .padding()
                             Text("Tria Tactics")
                                 .font(.largeTitle)
-                                .fontWeight(.black)
-
+                                .fontWeight(.bold)
                             Text("The game for true tacticians!")
                                 .font(.headline)
-                        }// end of 1st inner vstack
-                        .padding(.bottom, 200)
+                                .fontWeight(.semibold)
+                        }
+                        .foregroundStyle(.black)
+                        .padding()
+                        .background {
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(Color.white.opacity(0.6))
+                        }
+                        .padding(.bottom, 100)
 
                         VStack(spacing: 20) {
 
                             PrimaryButton(label: "Play", action: { changeViewTo.value = .play })
-
-                            SecondaryButton(label: "Tutorial", action: { changeViewTo.value = .tutorial })
+                            PrimaryButton(label: "Tutorial", action: { changeViewTo.value = .tutorial })
                         }// end of 2nd inner vstack
                     }// end of outer vstack
                     .toolbar {
@@ -52,7 +63,6 @@ struct MainView: View {
                             Image(systemName: "info.circle")
                                 .foregroundStyle(.black)
                                 .font(.title3)
-                                .padding()
                         }
                         .sheet(isPresented: $showCreditsView) {
                             CreditsView()
