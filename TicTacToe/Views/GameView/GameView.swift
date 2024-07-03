@@ -14,57 +14,61 @@ struct GameView: View {
     @EnvironmentObject var changeViewTo: Navigation
 
     @State private var showAlert = false
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
 
         CompatibilityNavigation {
-            VStack(spacing: 15) {
-                Spacer()
-                VStack(spacing: 5) {
-                    Text("Tria Tactics")
-                        .font(.largeTitle)
-                        .fontWeight(.black)
-                    Text("Time left: \(matchManager.remainingTime)")
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                        .opacity((changeViewTo.value == .offline) ? 0 : 1)
-                }
-
-                HStack {
-                    if changeViewTo.value == .offline {
-                        Text("Your turn: \(gameLogic.activePlayer == .X ? "X" : "O")")
-                            .font(.headline)
-                            .fontWeight(.bold)
-                    } else {
-                        Text("\(matchManager.currentlyPlaying ? matchManager.localPlayer.displayName : matchManager.otherPlayer?.displayName ?? "Other") turn")
-                            .font(.headline)
-                            .fontWeight(.bold)
-                            .foregroundStyle(matchManager.currentlyPlaying ? .blue : .red)
-                    }
-                }
-
-                VStack(spacing: 10) {
-                    winnerView
+            ZStack {
+                colorScheme == .dark ? (Color.gray.ignoresSafeArea()) : (Color.white.ignoresSafeArea())
+                VStack(spacing: 15) {
                     Spacer()
-                    scoreView
-                    GameGrid(gameLogic: gameLogic)
-                        .frame(maxWidth: 360)
-                    buttonView
+                    VStack(spacing: 5) {
+                        Text("Tria Tactics")
+                            .font(.largeTitle)
+                            .fontWeight(.black)
+                        Text("Time left: \(matchManager.remainingTime)")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                            .opacity((changeViewTo.value == .offline) ? 0 : 1)
+                    }
+                    .foregroundStyle(.textTheme)
+
+                    HStack {
+                        if changeViewTo.value == .offline {
+                            Text("Your turn: \(gameLogic.activePlayer == .X ? "X" : "O")")
+                                .font(.headline)
+                                .fontWeight(.bold)
+                        } else {
+                            Text("\(matchManager.currentlyPlaying ? matchManager.localPlayer.displayName : matchManager.otherPlayer?.displayName ?? "Other") turn")
+                                .font(.headline)
+                                .fontWeight(.bold)
+                                .foregroundStyle(matchManager.currentlyPlaying ? .blue : .red)
+                        }
+                    }
+
+                    VStack(spacing: 10) {
+                        winnerView
+                        Spacer()
+                        scoreView
+                        GameGrid(gameLogic: gameLogic)
+                            .frame(maxWidth: 360)
+                        buttonView
+                    }
+
                 }
 
-            }
-            .foregroundStyle(.black)
-            .onAppear {
-                gameLogic.resetGame()
-            }
-            .onDisappear {
-                matchManager.gameOver()
-            }
-            .toolbar {
-                backToMenuView
+                .onAppear {
+                    gameLogic.resetGame()
+                }
+                .onDisappear {
+                    matchManager.gameOver()
+                }
+                .toolbar {
+                    backToMenuView
+                }
             }
         }
-
     }
 
     var winnerView: some View {
