@@ -46,7 +46,7 @@ struct BackgroundView: View {
         VStack {
             animatedImage
                 .frame(width: widthScreen, height: heightScreen)
-                .background(Color.yellow)
+                .background(.backgroundTheme)
                 .rotationEffect(.degrees(-15))
                 .scaleEffect(1.8)
                 .onAppear {

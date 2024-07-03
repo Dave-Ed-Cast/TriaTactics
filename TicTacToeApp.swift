@@ -27,10 +27,11 @@ struct TicTacToeApp: App {
     @StateObject private var matchManager = MatchManager()
     @StateObject private var gameLogic = GameLogic()
     @StateObject private var navigation = Navigation.shared
+    @Environment(\.colorScheme) var colorScheme
+
     var body: some Scene {
         WindowGroup {
             ParentView()
-            .preferredColorScheme(.light)
             .environmentObject(matchManager)
             .environmentObject(gameLogic)
             .environmentObject(navigation)

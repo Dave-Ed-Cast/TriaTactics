@@ -643,6 +643,9 @@
         }
       }
     },
+    "Play vs AI" : {
+
+    },
     "Quit game?" : {
       "localizations" : {
         "de" : {
@@ -780,7 +783,7 @@
         }
       }
     },
-    "TEST" : {
+    "TEST AAAA" : {
 
     },
     "TEST AAAAAA" : {

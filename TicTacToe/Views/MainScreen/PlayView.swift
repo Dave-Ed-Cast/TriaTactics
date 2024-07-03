@@ -35,12 +35,12 @@ struct PlayView: View {
                     .font(.headline)
                     .fontWeight(.semibold)
             }
-            .foregroundStyle(.black)
+            .foregroundStyle(.textTheme)
             .padding()
             .background {
                 ZStack(alignment: .topTrailing) {
                     RoundedRectangle(cornerRadius: 20)
-                        .fill(Color.white.opacity(0.8))
+                        .fill(Color.buttonTheme.opacity(0.8))
                     infoButton
                 }
             }
@@ -99,6 +99,7 @@ struct PlayView: View {
             Image(systemName: "info.circle")
                 .foregroundStyle(.black)
                 .font(.title3)
+                .colorInvert()
         }
         .sheet(isPresented: $showCreditsView) {
             CreditsView()

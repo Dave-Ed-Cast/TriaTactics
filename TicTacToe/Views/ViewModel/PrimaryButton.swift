@@ -25,7 +25,7 @@ struct PrimaryButton: View {
                 Text(label)
                     .fontWeight(.bold)
                     .padding()
-                    .foregroundStyle(.black)
+                    .foregroundStyle(.textTheme)
                     .font(.title)
             }
         }

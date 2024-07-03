@@ -26,7 +26,7 @@ struct SecondaryButton: View {
                 Text(label)
                     .fontWeight(.medium)
                     .padding()
-                    .foregroundStyle(.black)
+                    .foregroundStyle(.textTheme)
                     .font(.title3)
             }
         }

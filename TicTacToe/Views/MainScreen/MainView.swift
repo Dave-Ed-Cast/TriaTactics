@@ -45,12 +45,12 @@ struct MainView: View {
                                 .font(.headline)
                                 .fontWeight(.semibold)
                         }
-                        .foregroundStyle(.black)
+                        .foregroundStyle(.textTheme)
                         .padding()
                         .background {
                             ZStack(alignment: .topTrailing) {
                                 RoundedRectangle(cornerRadius: 20)
-                                    .fill(Color.white.opacity(0.8))
+                                    .fill(.buttonTheme.opacity(0.8))
                                 infoButton
                             }
                         }
@@ -86,8 +86,9 @@ struct MainView: View {
             showCreditsView = true
         } label: {
             Image(systemName: "info.circle")
-                .foregroundStyle(.black)
+                .foregroundStyle(.buttonTheme)
                 .font(.title3)
+                .colorInvert()
         }
         .sheet(isPresented: $showCreditsView) {
             CreditsView()
