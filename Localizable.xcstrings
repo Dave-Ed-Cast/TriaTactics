@@ -30,6 +30,7 @@
       }
     },
     "%@ turn" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -96,6 +97,12 @@
           }
         }
       }
+    },
+    "%@'s turn" : {
+
+    },
+    "%lld" : {
+
     },
     "App icon" : {
       "localizations" : {
@@ -336,6 +343,9 @@
         }
       }
     },
+    "It's your turn" : {
+
+    },
     "Let's start!" : {
       "localizations" : {
         "de" : {
@@ -539,6 +549,7 @@
       }
     },
     "Opponent wins: %lld" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1171,6 +1182,7 @@
       }
     },
     "You lose!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1203,6 +1215,9 @@
           }
         }
       }
+    },
+    "You Lose!" : {
+
     },
     "You win!" : {
       "localizations" : {
@@ -1239,6 +1254,7 @@
       }
     },
     "Your turn: %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1273,6 +1289,7 @@
       }
     },
     "Your wins: %lld" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

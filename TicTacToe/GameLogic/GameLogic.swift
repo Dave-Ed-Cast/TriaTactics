@@ -25,6 +25,8 @@ class GameLogic: ObservableObject {
     @Published var winner: Player?
     @Published var isGameOver: Bool?
     @Published var isOffline: Bool = true
+    @Published var xScore: Int = 0
+    @Published var oScore: Int = 0
 
     // there needs to be a reference of the MatchManager
     var matchManager: MatchManager?

@@ -20,6 +20,7 @@ struct GameGrid: View {
             let cellSize = gridSize / 4
 
             ZStack {
+                Spacer()
                 VStack(spacing: gridSize * 0.075) {
                     ForEach(0..<3) { row in
                         HStack(spacing: gridSize * 0.081) {
@@ -50,6 +51,7 @@ struct GameGrid: View {
                             .frame(width: gridSize, height: gridSize)
                     }
                 }
+
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }

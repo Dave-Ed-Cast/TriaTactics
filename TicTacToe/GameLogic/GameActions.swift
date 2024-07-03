@@ -81,6 +81,9 @@ extension GameLogic {
         // did you win?
         if checkWinner() {
             winner = activePlayer
+            activePlayer == .X ? (xScore += 1) : (oScore += 1)
+            print("xScore: \(xScore)")
+            print("oScore: \(oScore)")
             isGameOver = true
         }
     }
@@ -189,5 +192,9 @@ extension GameLogic {
         isGameOver = false
         degrees = 0.0
         offsetPosition = CGSize.zero
+        if !(Navigation.shared.value == .offline) {
+            xScore = 0
+            oScore = 0
+        }
     }
 }

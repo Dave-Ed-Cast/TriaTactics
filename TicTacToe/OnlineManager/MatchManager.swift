@@ -22,6 +22,8 @@ class MatchManager: NSObject, ObservableObject {
     @Published var currentlyPlaying: Bool = false
     @Published var localPlayerScore: Int = 0
     @Published var otherPlayerScore: Int = 0
+    @Published var localPlayerImage: Data?
+    @Published var otherPlayerImage: Data?
     @Published var remainingTime = 10
     @Published var localPlayerWin: Bool = false
     @Published var waitingForRematchResponse: Bool = false

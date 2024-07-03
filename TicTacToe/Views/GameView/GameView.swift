@@ -22,11 +22,31 @@ struct GameView: View {
             ZStack {
                 colorScheme == .dark ? (Color.gray.ignoresSafeArea()) : (Color.white.ignoresSafeArea())
                 VStack(spacing: 15) {
+                    ZStack {
+                        Rectangle()
+                            .foregroundStyle(.backgroundTheme.opacity(0.5))
+                            .ignoresSafeArea()
+                            .frame(maxHeight: 100)
+                        HStack(alignment: .center) {
+                            Image("\(gameLogic.activePlayer == .X ? "X" : "O")")
+                                .resizable()
+                                .frame(maxWidth: 60, maxHeight: 60)
+                            Spacer()
+
+                            if changeViewTo.value == .offline {
+                                Text("It's your turn")
+                            } else {
+                                Text("\(matchManager.currentlyPlaying ? matchManager.localPlayer.displayName : matchManager.otherPlayer?.displayName ?? "Other")'s turn")
+                                    .multilineTextAlignment(.center)
+                            }
+                        }
+                        .foregroundStyle(.textTheme)
+                        .font(.title2)
+                        .padding(.horizontal, 60)
+                    }// end of inner ZStack
                     Spacer()
-                    VStack(spacing: 5) {
-                        Text("Tria Tactics")
-                            .font(.largeTitle)
-                            .fontWeight(.black)
+                    VStack {
+
                         Text("Time left: \(matchManager.remainingTime)")
                             .font(.title2)
                             .fontWeight(.semibold)
@@ -34,29 +54,23 @@ struct GameView: View {
                     }
                     .foregroundStyle(.textTheme)
 
-                    HStack {
-                        if changeViewTo.value == .offline {
-                            Text("Your turn: \(gameLogic.activePlayer == .X ? "X" : "O")")
-                                .font(.headline)
-                                .fontWeight(.bold)
-                        } else {
-                            Text("\(matchManager.currentlyPlaying ? matchManager.localPlayer.displayName : matchManager.otherPlayer?.displayName ?? "Other") turn")
-                                .font(.headline)
-                                .fontWeight(.bold)
-                                .foregroundStyle(matchManager.currentlyPlaying ? .blue : .red)
-                        }
-                    }
-
-                    VStack(spacing: 10) {
-                        winnerView
-                        Spacer()
-                        scoreView
+                    VStack {
                         GameGrid(gameLogic: gameLogic)
                             .frame(maxWidth: 360)
+                            .padding(.top, 30)
+                        Spacer()
+                        Text("Score")
+                            .fontWeight(.semibold)
+                            .padding(.vertical, -10)
+                            .font(.title3)
+                            .foregroundStyle(.textTheme)
+                        ScoreView()
+                            .frame(maxHeight: 0)
                         buttonView
                     }
+                    .padding()
 
-                }
+                }// end of outer VStack
 
                 .onAppear {
                     gameLogic.resetGame()
@@ -64,10 +78,7 @@ struct GameView: View {
                 .onDisappear {
                     matchManager.gameOver()
                 }
-                .toolbar {
-                    backToMenuView
-                }
-            }
+            }// end of outer ZStack
         }
     }
 
@@ -77,15 +88,10 @@ struct GameView: View {
                 if changeViewTo.value == .offline {
                     Text("\(winner.rawValue) wins!")
                         .fontWeight(.bold)
-                } else if matchManager.localPlayerWin {
-                    Text("You win!")
-                        .fontWeight(.bold)
                 } else {
-                    Text("You lose!")
+                    Text(matchManager.localPlayerWin ? "You win!" : "You Lose!")
                         .fontWeight(.bold)
                 }
-            } else {
-                Text("")
             }
         }
         .opacity(gameLogic.checkWinner() ? 1 : 0)
@@ -93,17 +99,24 @@ struct GameView: View {
 
     }
 
-    var scoreView: some View {
-        HStack(spacing: 80) {
-            if !(changeViewTo.value == .offline) {
-                Text("Your wins: \(matchManager.localPlayerScore)")
-                Text("Opponent wins: \(matchManager.otherPlayerScore)")
-            } else {
-                Text("")
-            }
-        }
-        .font(.callout)
-    }
+//    var scoreView: some View {
+//
+//        HStack(spacing: 80) {
+//            RoundedRectangle(cornerRadius: 20)
+//            Spacer()
+//            RoundedRectangle(cornerRadius: 20)
+//        }
+//        .frame(width: 200, height: 50)
+//        HStack(spacing: 80) {
+//            if !(changeViewTo.value == .offline) {
+//                Text("Your wins: \(matchManager.localPlayerScore)")
+//                Text("Opponent wins: \(matchManager.otherPlayerScore)")
+//            } else {
+//                Text("")
+//            }
+//        }
+//        .font(.callout)
+//    }
 
     var buttonView: some View {
         Button {

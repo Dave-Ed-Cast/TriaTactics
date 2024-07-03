@@ -7,6 +7,7 @@
 
 import Foundation
 import GameKit
+import SwiftUI
 
 /// This is the match delegate
 extension MatchManager: GKMatchDelegate {
@@ -120,5 +121,43 @@ extension MatchManager: GKMatchDelegate {
     func sendRematchRequest() {
         guard let data = "requestRematch".data(using: .utf8) else { return }
         sendData(data, mode: .reliable)
+    }
+
+    func loadImageFromData(_ data: Data?) -> UIImage? {
+        if let data = data {
+            return UIImage(data: data)
+        }
+        return nil
+    }
+
+    private func loadProfileImage(for player: GKLocalPlayer, completion: @escaping (UIImage?) -> Void) {
+        player.loadPhoto(for: .normal) { (image, error) in
+            if let error = error {
+                print("Error loading profile photo for \(player.displayName): \(error.localizedDescription)")
+                completion(nil)
+                return
+            }
+
+            DispatchQueue.main.async {
+                completion(image)
+            }
+        }
+    }
+
+    private func loadProfileImages() {
+        loadProfileImage(for: GKLocalPlayer.local) { image in
+            if let image = image {
+                self.localPlayerImage = image.pngData()
+            }
+        }
+
+        // Replace with the second player's GKLocalPlayer instance
+        // For demonstration purposes, using a placeholder GKLocalPlayer for player 2
+        let player2 = GKLocalPlayer()
+        loadProfileImage(for: player2) { image in
+            if let image = image {
+                self.otherPlayerImage = image.pngData()
+            }
+        }
     }
 }
