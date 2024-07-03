@@ -13,6 +13,7 @@ struct MainView: View {
     @EnvironmentObject var changeViewTo: Navigation
 
     @State private var showCreditsView: Bool = false
+    @Namespace private var animationNamespace
 
     var body: some View {
 
@@ -28,13 +29,15 @@ struct MainView: View {
             } else {
                 NavigationView {
                     VStack(spacing: 10) {
+
                         VStack {
+
                             Image("appicon")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(maxHeight: 120)
                                 .cornerRadius(20)
-                                .padding()
+
                             Text("Tria Tactics")
                                 .font(.largeTitle)
                                 .fontWeight(.bold)
@@ -45,29 +48,29 @@ struct MainView: View {
                         .foregroundStyle(.black)
                         .padding()
                         .background {
-                            RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.white.opacity(0.6))
+                            ZStack(alignment: .topTrailing) {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(Color.white.opacity(0.8))
+                                infoButton
+                            }
                         }
+                        .matchedGeometryEffect(id: "heroRectangle", in: animationNamespace)
                         .padding(.bottom, 100)
 
-                        VStack(spacing: 20) {
-
-                            PrimaryButton(label: "Play", action: { changeViewTo.value = .play })
-                            PrimaryButton(label: "Tutorial", action: { changeViewTo.value = .tutorial })
+                        VStack(spacing: 30) {
+                            PrimaryButton(label: "Play", action: {
+                                withAnimation {
+                                    changeViewTo.value = .play
+                                }
+                            })
+                            PrimaryButton(label: "Tutorial", action: {
+                                withAnimation {
+                                    changeViewTo.value = .tutorial
+                                }
+                            })
                         }// end of 2nd inner vstack
                     }// end of outer vstack
-                    .toolbar {
-                        Button {
-                            showCreditsView = true
-                        } label: {
-                            Image(systemName: "info.circle")
-                                .foregroundStyle(.black)
-                                .font(.title3)
-                        }
-                        .sheet(isPresented: $showCreditsView) {
-                            CreditsView()
-                        }
-                    }
+
                     .background {
                         BackgroundView()
                     }
@@ -76,6 +79,20 @@ struct MainView: View {
                 .lineLimit(1)
             }
         }
+    }
+
+    var infoButton: some View {
+        Button {
+            showCreditsView = true
+        } label: {
+            Image(systemName: "info.circle")
+                .foregroundStyle(.black)
+                .font(.title3)
+        }
+        .sheet(isPresented: $showCreditsView) {
+            CreditsView()
+        }
+        .padding()
     }
 }
 
