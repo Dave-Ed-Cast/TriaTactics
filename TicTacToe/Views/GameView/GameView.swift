@@ -13,18 +13,20 @@ struct GameView: View {
     @EnvironmentObject var gameLogic: GameLogic
     @EnvironmentObject var changeViewTo: Navigation
 
-    @State private var showAlert = false
     @Environment(\.colorScheme) var colorScheme
+
+    @State private var showAlert = false
+    @State private var showWinnerOverlay = false
 
     var body: some View {
 
         CompatibilityNavigation {
             ZStack {
-                colorScheme == .dark ? (Color.gray.ignoresSafeArea()) : (Color.white.ignoresSafeArea())
+                Color.buttonTheme.ignoresSafeArea()
                 VStack(spacing: 15) {
                     ZStack {
                         Rectangle()
-                            .foregroundStyle(.backgroundTheme.opacity(0.5))
+                            .foregroundStyle(.backgroundTheme.opacity(0.6))
                             .ignoresSafeArea()
                             .frame(maxHeight: 100)
                         HStack(alignment: .center) {
@@ -44,31 +46,31 @@ struct GameView: View {
                         .font(.title2)
                         .padding(.horizontal, 60)
                     }// end of inner ZStack
+
+                    VStack(spacing: 0) {
+                        Text("Score")
+                            .fontWeight(.semibold)
+
+                            .font(.title3)
+                            .foregroundStyle(.textTheme)
+
+                        ScoreView()
+                            .frame(maxHeight: 0)
+                    }
                     Spacer()
                     VStack {
-
                         Text("Time left: \(matchManager.remainingTime)")
                             .font(.title2)
                             .fontWeight(.semibold)
                             .opacity((changeViewTo.value == .offline) ? 0 : 1)
-                    }
-                    .foregroundStyle(.textTheme)
-
-                    VStack {
-                        GameGrid(gameLogic: gameLogic)
-                            .frame(maxWidth: 360)
-                            .padding(.top, 30)
-                        Spacer()
-                        Text("Score")
-                            .fontWeight(.semibold)
-                            .padding(.vertical, -10)
-                            .font(.title3)
                             .foregroundStyle(.textTheme)
-                        ScoreView()
-                            .frame(maxHeight: 0)
-                        buttonView
+                            .padding(.top, 80)
                     }
-                    .padding()
+
+                    Spacer()
+                    GameGrid(gameLogic: gameLogic)
+                        .frame(maxWidth: 360)
+                        .padding(.bottom, 60)
 
                 }// end of outer VStack
 
@@ -78,77 +80,81 @@ struct GameView: View {
                 .onDisappear {
                     matchManager.gameOver()
                 }
+                .onChange(of: gameLogic.winner) { newValue in
+                    if newValue != nil {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                            withAnimation(.easeIn(duration: 0.7)) {
+                                showWinnerOverlay = true
+                            }
+                        }
+                    }
+                }
+
+                if showWinnerOverlay {
+                    winnerOverlay
+                }
             }// end of outer ZStack
         }
     }
 
-    var winnerView: some View {
-        Group {
-            if let winner = gameLogic.winner {
-                if changeViewTo.value == .offline {
-                    Text("\(winner.rawValue) wins!")
-                        .fontWeight(.bold)
-                } else {
-                    Text(matchManager.localPlayerWin ? "You win!" : "You Lose!")
-                        .fontWeight(.bold)
+    var winnerOverlay: some View {
+        ZStack {
+            Color.black.opacity(0.6).ignoresSafeArea()
+
+            VStack(spacing: 20) {
+
+                VStack {
+                    Text("The winner is:")
+                        .font(.largeTitle)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.textTheme)
+
+                    if changeViewTo.value == .offline {
+                        Image(gameLogic.winner?.rawValue ?? "")
+                            .resizable()
+                            .frame(maxWidth: 130, maxHeight: 130)
+                    } else {
+                        Text(matchManager.localPlayerWin ? matchManager.localPlayer.displayName : matchManager.otherPlayer?.displayName ?? "Other")
+                            .fontWeight(.bold)
+                            .font(.largeTitle)
+                            .foregroundStyle(.textTheme)
+                    }
                 }
+                .padding(.horizontal, 50)
+                .padding(.vertical, 30)
+                .background {
+                    RoundedRectangle(cornerRadius: 20)
+                        .foregroundColor(Color.buttonTheme.opacity(0.8))
+                        .shadow(radius: 10)
+                }
+                .padding(.top, 150)
+
+                buttonView
+                backToMenuView
+
             }
         }
-        .opacity(gameLogic.checkWinner() ? 1 : 0)
-        .font(.title)
-
     }
 
-//    var scoreView: some View {
-//
-//        HStack(spacing: 80) {
-//            RoundedRectangle(cornerRadius: 20)
-//            Spacer()
-//            RoundedRectangle(cornerRadius: 20)
-//        }
-//        .frame(width: 200, height: 50)
-//        HStack(spacing: 80) {
-//            if !(changeViewTo.value == .offline) {
-//                Text("Your wins: \(matchManager.localPlayerScore)")
-//                Text("Opponent wins: \(matchManager.otherPlayerScore)")
-//            } else {
-//                Text("")
-//            }
-//        }
-//        .font(.callout)
-//    }
-
     var buttonView: some View {
-        Button {
+
+        PrimaryButton(label: "Rematch", action: {
             guard gameLogic.checkWinner() else { return }
             if changeViewTo.value == .offline {
                 gameLogic.resetGame()
             } else {
                 matchManager.sendRematchRequest()
             }
-        } label: {
-            Text("Rematch")
-                .fontWeight(.medium)
-                .foregroundStyle(.black)
-                .font(.title3)
-                .padding()
-                .background(
-                    RoundedRectangle(cornerRadius: 15)
-                        .foregroundStyle(.yellow)
-                )
-        }
-        .opacity(gameLogic.checkWinner() ? 1 : 0)
-        .disabled(!gameLogic.checkWinner())
-        .padding(.vertical, 20)
+            withAnimation(.easeIn(duration: 0.5)) {
+                showWinnerOverlay = false
+            }
+        }, color: .buttonTheme)
     }
 
     var backToMenuView: some View {
-        Button {
+
+        PrimaryButton(label: "Menu") {
             showAlert = true
-        } label: {
-            Image(systemName: "xmark.circle.fill")
-                .scaleEffect(1.5)
-                .foregroundStyle(.black, .yellow)
         }
         .alert(isPresented: $showAlert) {
             Alert(
@@ -156,13 +162,14 @@ struct GameView: View {
                 message: Text("Are you sure you want to leave?"),
                 primaryButton: .destructive(Text("Yes")) {
 
-                    changeViewTo.value == .online ? (matchManager.gameOver()) : (changeViewTo.value = .offline)
+                    changeViewTo.value == .online ? (matchManager.gameOver()) : (changeViewTo.value = .play)
 
                     showAlert = false
                 },
                 secondaryButton: .cancel()
             )
         }
+        .preferredColorScheme(colorScheme)
     }
 }
 

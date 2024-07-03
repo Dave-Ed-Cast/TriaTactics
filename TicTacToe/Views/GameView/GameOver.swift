@@ -24,17 +24,17 @@ struct GameOver: View {
                 offset: gameLogic.offsetPosition
             )
 
-            if showLottieAnimation {
-                LottieAnimation(
-                    name: "GameOver",
-                    contentMode: .center,
-                    playbackMode: .playing(.toProgress(1, loopMode: .playOnce)),
-                    scaleFactor: 1
-                )
-                    .background(Color.black.opacity(0.65))
-                    .cornerRadius(20)
-                    .padding()
-            }
+//            if showLottieAnimation {
+//                LottieAnimation(
+//                    name: "GameOver",
+//                    contentMode: .center,
+//                    playbackMode: .playing(.toProgress(1, loopMode: .playOnce)),
+//                    scaleFactor: 1
+//                )
+//                    .background(Color.black.opacity(0.65))
+//                    .cornerRadius(20)
+//                    .padding()
+//            }
         }
         .onAppear {
             Timer.scheduledTimer(withTimeInterval: 0.7, repeats: false) { _ in

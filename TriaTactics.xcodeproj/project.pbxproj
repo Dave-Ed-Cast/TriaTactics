@@ -67,7 +67,7 @@
 		3E5108582C175855001B4B33 /* YouWin.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = YouWin.json; sourceTree = "<group>"; };
 		3E5630822BF822BC0009B48B /* OnboardingPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewModel.swift; sourceTree = "<group>"; };
 		3E5630862BF827AF0009B48B /* LottieAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieAnimation.swift; sourceTree = "<group>"; };
-		3E56308A2BF82BBF0009B48B /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		3E56308A2BF82BBF0009B48B /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; usesTabs = 0; };
 		3E5EF2DA2BF812E2001B6D22 /* GameGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameGrid.swift; sourceTree = "<group>"; };
 		3E6C13B32BF7F82400373047 /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E6C13B62BF7F82400373047 /* TicTacToeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeApp.swift; sourceTree = "<group>"; };
