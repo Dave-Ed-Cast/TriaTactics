@@ -69,7 +69,7 @@ struct PlayView: View {
                 })
                 PrimaryButton(label: "Play vs AI", action: {
                     withAnimation {
-                        changeViewTo.value = .offline
+                        changeViewTo.value = .bot
                     }
                 })
             }

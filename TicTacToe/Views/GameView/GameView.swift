@@ -30,27 +30,37 @@ struct GameView: View {
                             .ignoresSafeArea()
                             .frame(maxHeight: 100)
                         HStack(alignment: .center) {
-                            Image("\(gameLogic.activePlayer == .X ? "X" : "O")")
-                                .resizable()
-                                .frame(maxWidth: 60, maxHeight: 60)
-                            Spacer()
 
                             if changeViewTo.value == .offline {
+                                Image("\(gameLogic.activePlayer == .X ? "X" : "O")")
+                                    .resizable()
+                                    .frame(maxWidth: 60, maxHeight: 60)
+                                Spacer()
                                 Text("It's your turn")
-                            } else {
-                                Text("\(matchManager.currentlyPlaying ? matchManager.localPlayer.displayName : matchManager.otherPlayer?.displayName ?? "Other")'s turn")
-                                    .multilineTextAlignment(.center)
+                            } else if changeViewTo.value == .online {
+                                if let imageData = matchManager.localPlayerImage, let uiImage = UIImage(data: imageData) {
+                                    Image(uiImage: uiImage)
+                                        .resizable()
+                                        .frame(maxWidth: 50, maxHeight: 50)
+                                    Text("\(matchManager.currentlyPlaying ? matchManager.localPlayer.displayName : matchManager.otherPlayer?.displayName ?? "Other")'s turn")
+                                        .multilineTextAlignment(.center)
+                                }
+                            } else if changeViewTo.value == .bot {
+                                Image("\(gameLogic.activePlayer == .X ? "X" : "O")")
+                                    .resizable()
+                                    .frame(maxWidth: 60, maxHeight: 60)
+                                Spacer()
+                                Text(gameLogic.activePlayer == .X ? "It's your turn" : "AI's turn")
                             }
-                        }
+                        }// end of HStack
                         .foregroundStyle(.textTheme)
                         .font(.title2)
                         .padding(.horizontal, 60)
-                    }// end of inner ZStack
+                    }// end of inner ZStack, this is the top HUD
 
                     VStack(spacing: 0) {
                         Text("Score")
                             .fontWeight(.semibold)
-
                             .font(.title3)
                             .foregroundStyle(.textTheme)
 
@@ -59,12 +69,16 @@ struct GameView: View {
                     }
                     Spacer()
                     VStack {
-                        Text("Time left: \(matchManager.remainingTime)")
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                            .opacity((changeViewTo.value == .offline) ? 0 : 1)
-                            .foregroundStyle(.textTheme)
-                            .padding(.top, 80)
+                        if changeViewTo.value == .online {
+                            Text("Time left: \(matchManager.remainingTime)")
+                                .font(.title2)
+                                .fontWeight(.semibold)
+                                .opacity((changeViewTo.value == .offline) ? 0 : 1)
+                                .foregroundStyle(.textTheme)
+                                .padding(.top, 80)
+                        } else if changeViewTo.value == .bot {
+                            // TODO: picker for difficulty
+                        }
                     }
 
                     Spacer()
@@ -109,7 +123,7 @@ struct GameView: View {
                         .fontWeight(.semibold)
                         .foregroundStyle(.textTheme)
 
-                    if changeViewTo.value == .offline {
+                    if changeViewTo.value == .offline || changeViewTo.value == .bot {
                         Image(gameLogic.winner?.rawValue ?? "")
                             .resizable()
                             .frame(maxWidth: 130, maxHeight: 130)
@@ -133,14 +147,22 @@ struct GameView: View {
                 backToMenuView
 
             }
+            .onChange(of: gameLogic.activePlayer) { activePlayer in
+                if activePlayer == .O && changeViewTo.value == .bot {
+                    // AI's turn (assuming AI plays as O)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        gameLogic.computerMove()
+                    }
+                }
+            }
         }
     }
 
     var buttonView: some View {
 
         PrimaryButton(label: "Rematch", action: {
-            guard gameLogic.checkWinner() else { return }
-            if changeViewTo.value == .offline {
+
+            if changeViewTo.value == .offline || changeViewTo.value == .bot {
                 gameLogic.resetGame()
             } else {
                 matchManager.sendRematchRequest()
@@ -162,9 +184,12 @@ struct GameView: View {
                 message: Text("Are you sure you want to leave?"),
                 primaryButton: .destructive(Text("Yes")) {
 
-                    changeViewTo.value == .online ? (matchManager.gameOver()) : (changeViewTo.value = .play)
+                    withAnimation(.easeOut(duration: 0.5)) {
+                        changeViewTo.value == .online ? (matchManager.gameOver()) : (changeViewTo.value = .play)
+                    }
 
                     showAlert = false
+
                 },
                 secondaryButton: .cancel()
             )
@@ -190,6 +215,17 @@ struct GameView: View {
         .environmentObject({
             let navigation = Navigation.shared
             navigation.value = .online
+            return navigation
+        }())
+}
+
+#Preview("AI") {
+    GameView()
+        .environmentObject(MatchManager())
+        .environmentObject(GameLogic())
+        .environmentObject({
+            let navigation = Navigation.shared
+            navigation.value = .bot
             return navigation
         }())
 }

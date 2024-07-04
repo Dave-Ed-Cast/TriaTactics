@@ -38,4 +38,6 @@ class GameLogic: ObservableObject {
     var rotate: Bool = false
     var degrees: Double = 0.0
     var offsetPosition: CGSize = CGSize.zero
+    var computerTurn: Bool = false
+    var isPlayerTurn: Bool = true
 }

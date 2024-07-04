@@ -21,7 +21,7 @@ struct ParentView: View {
             case .offline:
                 GameView()
             case .bot:
-                EmptyView()
+                GameView()
             case .tutorial:
                 TutorialView()
             }

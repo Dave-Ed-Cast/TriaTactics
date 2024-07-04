@@ -22,12 +22,82 @@ extension GameLogic {
             return
         }
 
-        if Navigation.shared.value == .offline {
+        switch Navigation.shared.value {
+        case .offline:
             handleMoveOffline(index: index)
-        } else {
+        case .online:
             handleMoveOnline(index: index)
+        case .bot:
+            handleMoveAgainstBot(index: index)
+        default:
+            return
+        }
+    }
+
+//    private func handleMoveAgainstBot(index: Int) {
+//        // Finalize the move for the player (human)
+//
+//        guard activePlayer == .X else {
+//            print("It's the computer's turn, from guard active player")
+//            return
+//        }
+//        guard computerTurn == false else {
+//            print("It's the player turn")
+//            return
+//        }
+//        finalizeMove(index: index)
+//        activePlayer = (activePlayer == .X ? .O : .X)
+//        print("active player is: \(activePlayer.rawValue)")
+//        computerTurn = true
+//        // Check if the game is over after the player's move
+//        if !checkWinner() {
+//            // If the game is not over, let the AI (bot) make its move
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
+//
+//                guard computerTurn == true else {
+//                    print("it's the player's turn, from guard computer turn")
+//                    return
+//                }
+//
+//                print("computer turn: \(computerTurn)")
+//
+//                print("active player inside: \(activePlayer.rawValue)")
+//
+//                computerMove()
+//                activePlayer = (activePlayer == .X ? .O : .X)
+//                computerTurn = false
+//                print("computer turn after: \(computerTurn)")
+//
+//            }
+//        }
+//    }
+    private func handleMoveAgainstBot(index: Int) {
+            // Finalize the move for the player (human)
+        guard isPlayerTurn else {
+            print("It's not the player's turn")
+            return
         }
 
+        finalizeMove(index: index)
+        activePlayer = (activePlayer == .X ? .O : .X)
+        isPlayerTurn = false // Switch to AI's turn
+        print("Player turn: \(isPlayerTurn)")
+
+            // Check if the game is over after the player's move
+        if !checkWinner() {
+                // If the game is not over, let the AI (bot) make its move
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
+                guard !isPlayerTurn else {
+                    print("It's the player's turn, from guard isPlayerTurn")
+                    return
+                }
+
+                print("AI's move")
+                computerMove()
+                isPlayerTurn = true // Switch back to player's turn
+                print("Player turn: \(isPlayerTurn)")
+            }
+        }
     }
 
     /// Defines the actions for an online match
@@ -70,7 +140,7 @@ extension GameLogic {
 
     /// Finalizes the move in the grid
     /// - Parameter index: the grid spot
-    private func finalizeMove(index: Int) {
+    func finalizeMove(index: Int) {
         // this player occupied the grid at this index
         grid[index] = activePlayer
         print("Player \(activePlayer) moved at index \(index)")
@@ -82,8 +152,6 @@ extension GameLogic {
         if checkWinner() {
             winner = activePlayer
             activePlayer == .X ? (xScore += 1) : (oScore += 1)
-            print("xScore: \(xScore)")
-            print("oScore: \(oScore)")
             isGameOver = true
         }
     }
@@ -170,10 +238,16 @@ extension GameLogic {
 
     /// prevent online stalling from someone not making a move
     func makeRandomMove() {
+        print("random")
         guard !matchManager!.isGameOver else { return }
 
         if let index = grid.firstIndex(of: nil) {
             buttonTap(index: index)
+            if Navigation.shared.value == .bot {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.activePlayer = .X
+                }
+            }
         }
         matchManager?.currentlyPlaying = false
         matchManager?.remainingTime = 10
@@ -192,6 +266,8 @@ extension GameLogic {
         isGameOver = false
         degrees = 0.0
         offsetPosition = CGSize.zero
+        computerTurn = false
+        isPlayerTurn = true
         if !(Navigation.shared.value == .offline) {
             xScore = 0
             oScore = 0

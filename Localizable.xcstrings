@@ -65,6 +65,7 @@
       }
     },
     "%@ wins!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -102,6 +103,9 @@
 
     },
     "%lld" : {
+
+    },
+    "AI's turn" : {
 
     },
     "App icon" : {
@@ -725,6 +729,9 @@
         }
       }
     },
+    "Score" : {
+
+    },
     "Skip" : {
       "localizations" : {
         "de" : {
@@ -800,6 +807,9 @@
     "TEST AAAAAA" : {
 
     },
+    "TEST BBBBBB" : {
+
+    },
     "The game for true tacticians!" : {
       "localizations" : {
         "de" : {
@@ -833,6 +843,9 @@
           }
         }
       }
+    },
+    "The winner is:" : {
+
     },
     "Their page" : {
       "localizations" : {
@@ -1216,10 +1229,8 @@
         }
       }
     },
-    "You Lose!" : {
-
-    },
     "You win!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
