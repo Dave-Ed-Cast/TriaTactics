@@ -18,11 +18,14 @@ struct GameGrid: View {
         GeometryReader { geometry in
             let gridSize = min(geometry.size.width, geometry.size.height)
             let cellSize = gridSize / 4
+            let borderEdge = 0.90
+            let gridFactorY = 0.081
+            let gridFactorX = 0.085
 
             ZStack {
-                VStack(spacing: gridSize * 0.075) {
+                VStack(spacing: gridSize * gridFactorY * borderEdge) {
                     ForEach(0..<3) { row in
-                        HStack(spacing: gridSize * 0.081) {
+                        HStack(spacing: gridSize * gridFactorX * borderEdge) {
                             ForEach(0..<3) { col in
                                 let index = row * 3 + col
                                 Button {
@@ -32,7 +35,7 @@ struct GameGrid: View {
                                         .renderingMode(.template)
                                         .interpolation(.none)
                                         .resizable()
-                                        .frame(width: cellSize, height: cellSize)
+                                        .frame(width: cellSize * borderEdge, height: cellSize * borderEdge)
                                         .foregroundColor(gameLogic.buttonColor(index: index))
 
                                 }
@@ -40,7 +43,7 @@ struct GameGrid: View {
                         }
                     }
                 }
-                .frame(width: gridSize, height: gridSize)
+                .frame(width: gridSize * borderEdge, height: gridSize * borderEdge)
                 .background(
                     BackgroundGridViewModel()
                 )
@@ -60,4 +63,15 @@ struct GameGrid: View {
 
 #Preview {
     GameGrid(gameLogic: GameLogic())
+}
+
+#Preview("Gameview") {
+    GameView()
+        .environmentObject(MatchManager())
+        .environmentObject(GameLogic())
+        .environmentObject({
+            let navigation = Navigation.shared
+            navigation.value = .offline
+            return navigation
+        }())
 }
