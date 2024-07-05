@@ -15,7 +15,7 @@ struct PlayView: View {
     @State private var isOffline: Bool = false
     @State private var showGameView: Bool = false
     @State private var showCreditsView: Bool = false
-    @Namespace private var animationNamespace
+    @Namespace private var namespace
 
     var body: some View {
         VStack {
@@ -25,15 +25,18 @@ struct PlayView: View {
                 Image("appicon")
                     .resizable()
                     .scaledToFit()
-                    .frame(maxHeight: 120)
                     .cornerRadius(20)
+                    .matchedGeometryEffect(id: "icon", in: namespace)
+                    .frame(maxHeight: 120)
 
                 Text("Tria Tactics")
                     .font(.largeTitle)
                     .fontWeight(.bold)
+                    .matchedGeometryEffect(id: "title", in: namespace)
                 Text("The game for true tacticians!")
                     .font(.headline)
                     .fontWeight(.semibold)
+                    .matchedGeometryEffect(id: "subtitle", in: namespace)
             }
             .foregroundStyle(.textTheme)
             .padding()
@@ -44,7 +47,7 @@ struct PlayView: View {
                     infoButton
                 }
             }
-            .matchedGeometryEffect(id: "heroRectangle", in: animationNamespace)
+            .matchedGeometryEffect(id: "heroRectangle", in: namespace)
             .padding(.top, 100)
 
             Spacer()
@@ -94,10 +97,12 @@ struct PlayView: View {
 
     var infoButton: some View {
         Button {
-            changeViewTo.value = .collaborators
+            withAnimation {
+                changeViewTo.value = .collaborators
+            }
         } label: {
             Image(systemName: "info.circle")
-                .foregroundStyle(.black)
+                .foregroundStyle(.buttonTheme)
                 .font(.title3)
                 .colorInvert()
         }

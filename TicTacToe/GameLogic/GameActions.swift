@@ -34,43 +34,6 @@ extension GameLogic {
         }
     }
 
-//    private func handleMoveAgainstBot(index: Int) {
-//        // Finalize the move for the player (human)
-//
-//        guard activePlayer == .X else {
-//            print("It's the computer's turn, from guard active player")
-//            return
-//        }
-//        guard computerTurn == false else {
-//            print("It's the player turn")
-//            return
-//        }
-//        finalizeMove(index: index)
-//        activePlayer = (activePlayer == .X ? .O : .X)
-//        print("active player is: \(activePlayer.rawValue)")
-//        computerTurn = true
-//        // Check if the game is over after the player's move
-//        if !checkWinner() {
-//            // If the game is not over, let the AI (bot) make its move
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
-//
-//                guard computerTurn == true else {
-//                    print("it's the player's turn, from guard computer turn")
-//                    return
-//                }
-//
-//                print("computer turn: \(computerTurn)")
-//
-//                print("active player inside: \(activePlayer.rawValue)")
-//
-//                computerMove()
-//                activePlayer = (activePlayer == .X ? .O : .X)
-//                computerTurn = false
-//                print("computer turn after: \(computerTurn)")
-//
-//            }
-//        }
-//    }
     private func handleMoveAgainstBot(index: Int) {
             // Finalize the move for the player (human)
         guard isPlayerTurn else {

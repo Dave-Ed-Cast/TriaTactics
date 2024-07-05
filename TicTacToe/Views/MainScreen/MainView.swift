@@ -13,7 +13,7 @@ struct MainView: View {
     @EnvironmentObject var changeViewTo: Navigation
 
     @State private var showCreditsView: Bool = false
-    @Namespace private var animationNamespace
+    @Namespace private var namespace
 
     var body: some View {
 
@@ -35,15 +35,18 @@ struct MainView: View {
                         Image("appicon")
                             .resizable()
                             .scaledToFit()
-                            .frame(maxHeight: 120)
                             .cornerRadius(20)
+                            .matchedGeometryEffect(id: "icon", in: namespace)
+                            .frame(maxHeight: 120)
 
                         Text("Tria Tactics")
                             .font(.largeTitle)
                             .fontWeight(.bold)
+                            .matchedGeometryEffect(id: "title", in: namespace)
                         Text("The game for true tacticians!")
                             .font(.headline)
                             .fontWeight(.semibold)
+                            .matchedGeometryEffect(id: "subtitle", in: namespace)
                     }
                     .foregroundStyle(.textTheme)
                     .padding()
@@ -54,7 +57,7 @@ struct MainView: View {
                             infoButton
                         }
                     }
-                    .matchedGeometryEffect(id: "heroRectangle", in: animationNamespace)
+
                     .padding(.bottom, 100)
 
                     VStack(spacing: 30) {
@@ -99,6 +102,5 @@ struct MainView: View {
 #Preview {
     MainView()
         .environmentObject(MatchManager())
-        .environmentObject(GameLogic())
         .environmentObject(Navigation.shared)
 }

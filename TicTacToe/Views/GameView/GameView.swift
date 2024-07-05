@@ -115,7 +115,6 @@ struct GameView: View {
             }
             .onChange(of: gameLogic.activePlayer) { activePlayer in
                 if activePlayer == .O && changeViewTo.value == .bot {
-                    // AI's turn (assuming AI plays as O)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         gameLogic.computerMove()
                     }

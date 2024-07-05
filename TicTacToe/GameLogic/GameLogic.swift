@@ -13,6 +13,13 @@ enum Player: String {
     case O
 }
 
+/// Defines difficulty
+enum Difficulty {
+    case easy
+    case medium
+    case hard
+}
+
 /** 
  This is the class that takes care of the game behaviour.
  It is indipendent from the match manager for mantainability, scalability, and testing purposes.
@@ -40,4 +47,9 @@ class GameLogic: ObservableObject {
     var offsetPosition: CGSize = CGSize.zero
     var computerTurn: Bool = false
     var isPlayerTurn: Bool = true
+
+    var difficulty: Difficulty {
+        // TODO: Implement logic to determine current difficulty level
+        return .hard  // Default to medium for example
+    }
 }
