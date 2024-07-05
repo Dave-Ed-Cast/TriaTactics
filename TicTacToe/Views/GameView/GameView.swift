@@ -115,9 +115,7 @@ struct GameView: View {
             }
             .onChange(of: gameLogic.activePlayer) { activePlayer in
                 if activePlayer == .O && changeViewTo.value == .bot {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        gameLogic.computerMove()
-                    }
+                    gameLogic.computerMove()
                 }
             }
         }

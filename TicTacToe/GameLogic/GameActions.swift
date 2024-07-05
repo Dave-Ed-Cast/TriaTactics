@@ -48,8 +48,8 @@ extension GameLogic {
 
             // Check if the game is over after the player's move
         if !checkWinner() {
-                // If the game is not over, let the AI (bot) make its move
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
+                // If the game is not over, let the AI (bot) make its move
                 guard !isPlayerTurn else {
                     print("It's the player's turn, from guard isPlayerTurn")
                     return
@@ -57,6 +57,7 @@ extension GameLogic {
 
                 print("AI's move")
                 computerMove()
+
                 isPlayerTurn = true // Switch back to player's turn
                 print("Player turn: \(isPlayerTurn)")
             }
