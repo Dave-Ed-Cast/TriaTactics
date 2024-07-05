@@ -24,7 +24,10 @@ struct ParentView: View {
                 GameView()
             case .tutorial:
                 TutorialView()
+            case .collaborators:
+                CollaboratorsView()
             }
+
         }
     }
 }
