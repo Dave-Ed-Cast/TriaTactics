@@ -50,7 +50,7 @@ struct PlayView: View {
             Spacer()
 
             // buttons
-            VStack(spacing: 15) {
+            VStack(spacing: 20) {
                 PrimaryButton(label: "Play Online", action: {
                     matchManager.startMatchmaking()
                     if matchManager.inGame && matchManager.autheticationState == .authenticated {
@@ -58,7 +58,7 @@ struct PlayView: View {
                             changeViewTo.value = .online
                         }
                     }
-                })
+                }, color: .buttonTheme.opacity(0.8))
                 .opacity(matchManager.autheticationState != .authenticated ? 0.5 : 1)
                 .disabled(matchManager.autheticationState != .authenticated)
 
@@ -66,12 +66,12 @@ struct PlayView: View {
                     withAnimation {
                         changeViewTo.value = .offline
                     }
-                })
+                }, color: .buttonTheme.opacity(0.8))
                 PrimaryButton(label: "Play vs AI", action: {
                     withAnimation {
                         changeViewTo.value = .bot
                     }
-                })
+                }, color: .buttonTheme.opacity(0.8))
             }
             .padding(.top, 50)
 
@@ -82,7 +82,7 @@ struct PlayView: View {
                 withAnimation {
                     changeViewTo.value = .main
                 }
-            })
+            }, color: .buttonTheme.opacity(0.8))
         }
         .background {
             BackgroundView()
@@ -94,15 +94,12 @@ struct PlayView: View {
 
     var infoButton: some View {
         Button {
-            showCreditsView = true
+            changeViewTo.value = .collaborators
         } label: {
             Image(systemName: "info.circle")
                 .foregroundStyle(.black)
                 .font(.title3)
                 .colorInvert()
-        }
-        .sheet(isPresented: $showCreditsView) {
-            CreditsView()
         }
         .padding()
     }
