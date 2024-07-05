@@ -36,7 +36,8 @@ struct GameGrid: View {
                                         .interpolation(.none)
                                         .resizable()
                                         .frame(width: cellSize * borderEdge, height: cellSize * borderEdge)
-                                        .foregroundColor(gameLogic.buttonColor(index: index))
+//                                        .foregroundColor(gameLogic.buttonColor(index: index))
+                                        .foregroundStyle(.textTheme)
 
                                 }
                             }

@@ -268,7 +268,7 @@ extension GameLogic {
         offsetPosition = CGSize.zero
         computerTurn = false
         isPlayerTurn = true
-        if !(Navigation.shared.value == .offline) {
+        if !(Navigation.shared.value == .offline || Navigation.shared.value == .bot) {
             xScore = 0
             oScore = 0
         }

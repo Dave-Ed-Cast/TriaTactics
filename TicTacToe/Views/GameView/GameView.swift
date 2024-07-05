@@ -23,50 +23,13 @@ struct GameView: View {
         CompatibilityNavigation {
             ZStack {
                 Color.buttonTheme.ignoresSafeArea()
-                VStack(spacing: 15) {
-                    ZStack {
-                        Rectangle()
-                            .foregroundStyle(.backgroundTheme.opacity(0.6))
-                            .ignoresSafeArea()
-                            .frame(maxHeight: 100)
-                        HStack(alignment: .center) {
 
-                            if changeViewTo.value == .offline {
-                                Image("\(gameLogic.activePlayer == .X ? "X" : "O")")
-                                    .resizable()
-                                    .frame(maxWidth: 60, maxHeight: 60)
-                                Spacer()
-                                Text("It's your turn")
-                            } else if changeViewTo.value == .online {
-                                if let imageData = matchManager.localPlayerImage, let uiImage = UIImage(data: imageData) {
-                                    Image(uiImage: uiImage)
-                                        .resizable()
-                                        .frame(maxWidth: 50, maxHeight: 50)
-                                    Text("\(matchManager.currentlyPlaying ? matchManager.localPlayer.displayName : matchManager.otherPlayer?.displayName ?? "Other")'s turn")
-                                        .multilineTextAlignment(.center)
-                                }
-                            } else if changeViewTo.value == .bot {
-                                Image("\(gameLogic.activePlayer == .X ? "X" : "O")")
-                                    .resizable()
-                                    .frame(maxWidth: 60, maxHeight: 60)
-                                Spacer()
-                                Text(gameLogic.activePlayer == .X ? "It's your turn" : "AI's turn")
-                            }
-                        }// end of HStack
-                        .foregroundStyle(.textTheme)
-                        .font(.title2)
-                        .padding(.horizontal, 60)
-                    }// end of inner ZStack, this is the top HUD
+                VStack(spacing: 0) {
 
-                    VStack(spacing: 0) {
-                        Text("Score")
-                            .fontWeight(.semibold)
-                            .font(.title3)
-                            .foregroundStyle(.textTheme)
+                    TopHUD()
 
-                        ScoreView()
-                            .frame(maxHeight: 0)
-                    }
+                    ScoreView()
+                        .padding(.vertical, 0)
                     Spacer()
                     VStack {
                         if changeViewTo.value == .online {
@@ -75,17 +38,20 @@ struct GameView: View {
                                 .fontWeight(.semibold)
                                 .opacity((changeViewTo.value == .offline) ? 0 : 1)
                                 .foregroundStyle(.textTheme)
-                                .padding(.top, 80)
-                        } else if changeViewTo.value == .bot {
+                                .padding(.bottom, 10)
+                        } else if changeViewTo.value == .offline || changeViewTo.value == .bot {
                             // TODO: picker for difficulty
+                            Text("placeholder")
+                                .font(.title2)
+                                .fontWeight(.semibold)
+                                .foregroundStyle(.textTheme)
+                                .padding(.bottom, 10)
+                                .opacity(0)
                         }
                     }
 
-                    Spacer()
                     GameGrid(gameLogic: gameLogic)
-                        .frame(maxWidth: 360)
-                        .padding(.bottom, 60)
-
+                    Spacer()
                 }// end of outer VStack
 
                 .onAppear {
@@ -170,14 +136,14 @@ struct GameView: View {
             withAnimation(.easeIn(duration: 0.5)) {
                 showWinnerOverlay = false
             }
-        }, color: .buttonTheme)
+        }, color: .buttonTheme.opacity(0.8))
     }
 
     var backToMenuView: some View {
 
-        PrimaryButton(label: "Menu") {
+        PrimaryButton(label: "Menu", action: {
             showAlert = true
-        }
+        }, color: .buttonTheme.opacity(0.8))
         .alert(isPresented: $showAlert) {
             Alert(
                 title: Text("Quit game?"),
@@ -208,7 +174,7 @@ struct GameView: View {
             return navigation
         }())
 }
-#Preview("Online") {
+ #Preview("Online") {
     GameView()
         .environmentObject(MatchManager())
         .environmentObject(GameLogic())
@@ -217,9 +183,9 @@ struct GameView: View {
             navigation.value = .online
             return navigation
         }())
-}
+ }
 
-#Preview("AI") {
+ #Preview("AI") {
     GameView()
         .environmentObject(MatchManager())
         .environmentObject(GameLogic())
@@ -228,4 +194,4 @@ struct GameView: View {
             navigation.value = .bot
             return navigation
         }())
-}
+ }
