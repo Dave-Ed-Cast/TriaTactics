@@ -24,38 +24,30 @@ struct OnboardingPageViewModel: View {
             LottieAnimation(name: onboardingImage, contentMode: .scaleAspectFit, playbackMode: onboardingImage != "Done" ? (.playing(.toProgress(1, loopMode: .loop))) : (.playing(.fromFrame(87, toFrame: 140, loopMode: .autoReverse))), width: animationSize, height: animationSize, scaleFactor: scaleFactor)
 
             Text(onboardingTitle)
-                .font(.title2)
+                .font(.title)
                 .fontWeight(.bold)
 
             Text(onboardingText)
-                .font(.body)
+                .font(.title3)
                 .fontWeight(.semibold)
                 .multilineTextAlignment(.center)
             Spacer()
 
         }
+        .foregroundStyle(.textTheme)
         .padding()
         .overlay(alignment: .bottom, content: {
-
             if showDoneButton {
-                Button {
-                    withAnimation {
-                        onboardingIsCompleted = true
-                    }
-                } label: {
-                    Text("Let's start!")
-                        .fontWeight(.semibold)
-                        .foregroundStyle(.black)
-                        .font(.body)
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.yellow)
-                        )
-                }
+                SecondaryButton(label: "Lets' start!", action: {
+                    onboardingIsCompleted = true
+                }, color: .buttonTheme.opacity(0.8))
+                .padding(.bottom, 10)
             }
         })
         .padding(.bottom, 50)
+//        .background {
+//            BackgroundView()
+//        }
     }
 }
 
