@@ -14,6 +14,7 @@ enum NavigationValue {
     case offline
     case bot
     case tutorial
+    case collaborators
 }
 class Navigation: ObservableObject {
     static var shared = Navigation()
@@ -43,10 +44,12 @@ struct TicTacToeApp: App {
     }
 }
 
-extension Image {
-    init?(base64String: String) {
-        guard let data = Data(base64Encoded: base64String) else { return nil }
-        guard let uiImage = UIImage(data: data) else { return nil }
-        self = Image(uiImage: uiImage)
+extension View {
+    @ViewBuilder func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
+        if condition {
+            transform(self)
+        } else {
+            self
+        }
     }
 }
