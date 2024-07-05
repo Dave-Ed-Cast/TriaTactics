@@ -18,7 +18,7 @@ class MatchManager: NSObject, ObservableObject {
     // these variables are all needed for the management of the matches
     @Published var inGame: Bool = false
     @Published var isGameOver: Bool = false
-    @Published var autheticationState: PlayerAuthState = .authenticating
+    @Published var authenticationState: PlayerAuthState = .authenticating
     @Published var currentlyPlaying: Bool = false
     @Published var localPlayerScore: Int = 0
     @Published var otherPlayerScore: Int = 0
@@ -51,21 +51,21 @@ class MatchManager: NSObject, ObservableObject {
             }
 
             if let error = error {
-                self?.autheticationState = .error
+                self?.authenticationState = .error
                 print(error)
                 return
             } else {
-                self?.autheticationState = .unauthenticated
+                self?.authenticationState = .unauthenticated
             }
 
             if let localPlayer = self?.localPlayer, localPlayer.isAuthenticated {
                 if localPlayer.isMultiplayerGamingRestricted {
-                    self?.autheticationState = .restricted
+                    self?.authenticationState = .restricted
                 } else {
-                    self?.autheticationState = .authenticated
+                    self?.authenticationState = .authenticated
                 }
             } else {
-                self?.autheticationState = .unauthenticated
+                self?.authenticationState = .unauthenticated
             }
         }
     }

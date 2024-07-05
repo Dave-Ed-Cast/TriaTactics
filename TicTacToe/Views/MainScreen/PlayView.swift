@@ -53,14 +53,14 @@ struct PlayView: View {
             VStack(spacing: 20) {
                 PrimaryButton(label: "Play Online", action: {
                     matchManager.startMatchmaking()
-                    if matchManager.inGame && matchManager.autheticationState == .authenticated {
+                    if matchManager.inGame && matchManager.authenticationState == .authenticated {
                         withAnimation {
                             changeViewTo.value = .online
                         }
                     }
                 }, color: .buttonTheme.opacity(0.8))
-                .opacity(matchManager.autheticationState != .authenticated ? 0.5 : 1)
-                .disabled(matchManager.autheticationState != .authenticated)
+                .opacity(matchManager.authenticationState != .authenticated ? 0.5 : 1)
+                .disabled(matchManager.authenticationState != .authenticated)
 
                 PrimaryButton(label: "Play Offline", action: {
                     withAnimation {
