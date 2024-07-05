@@ -1,5 +1,5 @@
 //
-//  CreditsView.swift
+//  CollaboratorsView.swift
 //  TicTacToe
 //
 //  Created by Davide Castaldi on 04/06/24.
@@ -7,15 +7,17 @@
 
 import SwiftUI
 
-struct CreditsView: View {
+struct CollaboratorsView: View {
 
-    var collaborator: [Collaborator] = Collaborator.list
-    @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var changeViewTo: Navigation
+
+    var collaborators: [Collaborator] = Collaborator.list
+
     var body: some View {
-        Group {
-            ForEach(collaborator) { collab in
+        VStack {
+            ForEach(collaborators) { collab in
                 HStack {
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: 0) {
                         Text(collab.name)
                             .font(.title2)
                             .fontWeight(.bold)
@@ -24,6 +26,7 @@ struct CreditsView: View {
                         Text(collab.contribute)
                             .font(.callout)
                     }
+                    .foregroundStyle(.textTheme)
                     .padding()
 
                     Spacer()
@@ -31,24 +34,29 @@ struct CreditsView: View {
                     Link(destination: URL(string: collab.contactInfo)!, label: {
                         Text("Their page")
                             .font(.subheadline)
+                            .fontWeight(.semibold)
                             .foregroundColor(.blue)
                             .underline(true)
                     })
                     .padding()
                 }
-                .background(.yellow)
+                .background {
+                    RoundedRectangle(cornerRadius: 20)
+                        .foregroundStyle(.buttonTheme.opacity(0.8))
+                }
                 .lineLimit(nil)
                 .padding()
 
             }
-            .toolbar(content: {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button("Cancel") {
-                        dismiss()
-                    }
-
+            Spacer()
+            SecondaryButton(label: "Menu", action: {
+                withAnimation {
+                    changeViewTo.value = .main
                 }
-            })
+            }, color: .buttonTheme.opacity(0.8))
+        }
+        .background {
+            BackgroundView()
         }
 
     }
@@ -57,7 +65,7 @@ struct CreditsView: View {
 
 #Preview("English") {
 
-    CreditsView()
+    CollaboratorsView()
         .environment(\.locale, Locale(identifier: "EN"))
 
 }

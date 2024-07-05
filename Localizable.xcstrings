@@ -142,6 +142,9 @@
         }
       }
     },
+    "App icon, UX design" : {
+
+    },
     "Are you sure you want to leave?" : {
       "localizations" : {
         "de" : {
@@ -210,7 +213,11 @@
         }
       }
     },
+    "Assets, UI/UX design" : {
+
+    },
     "Cancel" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -243,6 +250,9 @@
           }
         }
       }
+    },
+    "Code refactoring, navigation system, background animation skeleton" : {
+
     },
     "Creator, Developer, UX Designer" : {
       "localizations" : {
@@ -313,6 +323,12 @@
         }
       }
     },
+    "Developer" : {
+
+    },
+    "Game logic, Online logic, Development and design" : {
+
+    },
     "Here comes the multiplayer! Challenge your friends in a strategic battle. Log into Game Center and enjoy!" : {
       "localizations" : {
         "de" : {
@@ -351,6 +367,7 @@
 
     },
     "Let's start!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -383,6 +400,9 @@
           }
         }
       }
+    },
+    "Lets' start!" : {
+
     },
     "Localization" : {
       "extractionState" : "stale",
@@ -447,7 +467,11 @@
         }
       }
     },
+    "Making your fourth move of the game will cost the first one! And it keeps going after that! This is Tria Tactics..." : {
+
+    },
     "Making your fourth move of the game will make the first one disappear! And it keeps going after that! This is Tria Tactics..." : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -807,7 +831,13 @@
     "TEST AAAAAA" : {
 
     },
+    "TEST BBBB" : {
+
+    },
     "TEST BBBBBB" : {
+
+    },
+    "TEST CCCCCC" : {
 
     },
     "The game for true tacticians!" : {
