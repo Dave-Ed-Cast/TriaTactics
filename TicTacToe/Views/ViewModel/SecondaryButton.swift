@@ -9,20 +9,31 @@ import SwiftUI
 
 struct SecondaryButton: View {
 
-    @State private var showSomething: Bool = false
+    @State private var doSomething: Bool = false
     let label: LocalizedStringKey
-    var action: (() -> Void)?
+    let action: (() -> Void)?
+    let color: Color
+    let invertColor: Bool
+
+    init(label: LocalizedStringKey, action: (() -> Void)? = nil, color: Color = .buttonTheme, invertColor: Bool = false) {
+        self.label = label
+        self.action = action
+        self.color = color
+        self.invertColor = invertColor
+    }
 
     var body: some View {
         Button {
-            action!()
-            showSomething = true
+            action?()
+            doSomething = true
         } label: {
             ZStack {
                 RoundedRectangle(cornerRadius: 15)
-                    .foregroundStyle(.buttonTheme.opacity(0.8))
-//                    .foregroundStyle(.yellow)
+                    .foregroundStyle(color)
                     .frame(minWidth: 50, idealWidth: 80, maxWidth: 130, minHeight: 30, idealHeight: 50, maxHeight: 50)
+                    .if(invertColor) { view in
+                        view.colorInvert()
+                    }
                 Text(label)
                     .fontWeight(.medium)
                     .padding()
@@ -36,8 +47,11 @@ struct SecondaryButton: View {
 #Preview {
     ZStack {
         Color.black
-        SecondaryButton(label: "TEST AAAA")
-            .background(.black)
+
+        VStack(spacing: 20) {
+            SecondaryButton(label: "TEST AAAA")
+            SecondaryButton(label: "TEST BBBB", color: .yellow)
+        }
     }
 
 }
