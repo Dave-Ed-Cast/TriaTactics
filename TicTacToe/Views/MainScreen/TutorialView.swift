@@ -12,10 +12,6 @@ struct TutorialView: View {
     @EnvironmentObject var changeViewTo: Navigation
     var body: some View {
         VStack {
-            Spacer(minLength: 20)
-            RoundedRectangle(cornerRadius: 20)
-                .frame(width: 50, height: 5)
-                .foregroundStyle(.gray.opacity(0.5))
 
             OnboardingPageViewModel(
                 onboardingIsCompleted: .constant(false),
@@ -26,23 +22,16 @@ struct TutorialView: View {
             )
             .lineLimit(nil)
 
-            Button {
-                changeViewTo.value = .main
-            } label: {
-                Text("OK!")
-                    .fontWeight(.semibold)
-                    .padding(.horizontal, 40)
-                    .padding(.vertical, 10)
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.yellow)
-                    )
-                    .foregroundStyle(.black)
-                    .font(.body)
-            }
+            SecondaryButton(label: "OK!", action: {
+                withAnimation {
+                    changeViewTo.value = .main
+                }
+            }, color: .buttonTheme.opacity(0.8))
             .padding()
         }
-
+        .background {
+            BackgroundView()
+        }
     }
 }
 

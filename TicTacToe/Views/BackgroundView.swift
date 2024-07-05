@@ -64,7 +64,7 @@ struct BackgroundView: View {
                     .resizable()
                     .frame(width: gridSize, height: gridSize)
                     .padding(.vertical, -2)
-                    .opacity(0.1)
+                    .opacity(0.08)
             }
         }
         .offset(y: yOffset)
