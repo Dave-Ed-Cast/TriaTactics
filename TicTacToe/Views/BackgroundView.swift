@@ -5,13 +5,6 @@
 //  Created by Giuseppe Francione on 21/06/24.
 //
 
-//
-//  BackgroundView.swift
-//  TicTacToe
-//
-//  Created by Giuseppe Francione on 21/06/24.
-//
-
 import SwiftUI
 
 extension View {
@@ -35,6 +28,8 @@ extension View {
 
 struct BackgroundView: View {
 
+    @EnvironmentObject var animationSettings: AnimationSettings
+
     let widthScreen: CGFloat = UIScreen.main.bounds.width
     let heightScreen: CGFloat = UIScreen.main.bounds.height
     let gridSize: CGFloat = 30
@@ -50,7 +45,12 @@ struct BackgroundView: View {
                 .rotationEffect(.degrees(-15))
                 .scaleEffect(1.8)
                 .onAppear {
-                    startScrolling()
+                    if animationSettings.isAnimationEnabled {
+                        startScrolling()
+                    }
+                }
+                .onChange(of: animationSettings.isAnimationEnabled) { newValue in
+                    newValue ? startScrolling() : stopScrolling()
                 }
         }
         .edgesIgnoringSafeArea(.all)
@@ -75,10 +75,15 @@ struct BackgroundView: View {
             yOffset = -68
         }
     }
+
+    private func stopScrolling() {
+        withAnimation(.easeOut(duration: 1)) {
+            yOffset = 0
+        }
+    }
 }
 
-struct BackgroundView_Previews: PreviewProvider {
-    static var previews: some View {
-        BackgroundView()
-    }
+#Preview {
+    BackgroundView()
+        .environmentObject(AnimationSettings(isAnimationEnabled: .constant(true)))
 }

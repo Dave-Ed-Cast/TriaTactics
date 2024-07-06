@@ -67,11 +67,19 @@ struct MainView: View {
                             }
                         }, color: .buttonTheme.opacity(0.8))
 
-                        PrimaryButton(label: "Tutorial", action: {
-                            withAnimation {
-                                changeViewTo.value = .tutorial
-                            }
-                        }, color: .buttonTheme.opacity(0.8))
+                        VStack(spacing: 10) {
+                            SecondaryButton(label: "Tutorial", action: {
+                                withAnimation {
+                                    changeViewTo.value = .tutorial
+                                }
+                            }, color: .buttonTheme.opacity(0.8))
+
+                            SecondaryButton(label: "Settings", action: {
+                                withAnimation {
+                                    changeViewTo.value = .settings
+                                }
+                            }, color: .buttonTheme.opacity(0.8))
+                        }
                     }// end of 2nd inner vstack
                 }// end of outer vstack
 

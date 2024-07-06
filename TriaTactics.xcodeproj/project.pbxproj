@@ -44,6 +44,8 @@
 		3ED67FAB2BF9072600B2F400 /* Rule.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ED67FAA2BF9072600B2F400 /* Rule.json */; };
 		3ED6BF562C0242C400A53C29 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED6BF552C0242C400A53C29 /* GameOver.swift */; };
 		3ED8C3D02C380AE40093CDD7 /* ResponsiveScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED8C3CF2C380AE40093CDD7 /* ResponsiveScore.swift */; };
+		3ED8C3D22C396B900093CDD7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED8C3D12C396B900093CDD7 /* SettingsView.swift */; };
+		3ED8C3D42C3971800093CDD7 /* AnimationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED8C3D32C3971800093CDD7 /* AnimationSettings.swift */; };
 		3EDF8B812BF7FBAB00957F89 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDF8B802BF7FBAB00957F89 /* GameLogic.swift */; };
 		3EDF8B832BF80D1A00957F89 /* GameLogicConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDF8B822BF80D1A00957F89 /* GameLogicConditions.swift */; };
 		9D9D239E2C25A53A00382D9C /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D239D2C25A53A00382D9C /* BackgroundView.swift */; };
@@ -92,6 +94,8 @@
 		3ED67FAA2BF9072600B2F400 /* Rule.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Rule.json; sourceTree = "<group>"; };
 		3ED6BF552C0242C400A53C29 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		3ED8C3CF2C380AE40093CDD7 /* ResponsiveScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsiveScore.swift; sourceTree = "<group>"; };
+		3ED8C3D12C396B900093CDD7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		3ED8C3D32C3971800093CDD7 /* AnimationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationSettings.swift; sourceTree = "<group>"; };
 		3EDF8B802BF7FBAB00957F89 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 		3EDF8B822BF80D1A00957F89 /* GameLogicConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogicConditions.swift; sourceTree = "<group>"; };
 		9D9D239D2C25A53A00382D9C /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 				9D9DC8302C257BB8004EFDFF /* ParentView.swift */,
 				3E6C13B82BF7F82400373047 /* MainView.swift */,
 				3E3D4B3C2C249AB200CC6F1A /* PlayView.swift */,
+				3ED8C3D12C396B900093CDD7 /* SettingsView.swift */,
 				3E4350482C0F875600FDFADC /* CollaboratorsView.swift */,
 				3EBCE0822BFCEED600D5D37C /* TutorialView.swift */,
 			);
@@ -153,6 +158,7 @@
 			children = (
 				3E5630862BF827AF0009B48B /* LottieAnimation.swift */,
 				3EC8FE182C0908570014BBC0 /* OnboardingParameters.swift */,
+				3ED8C3D32C3971800093CDD7 /* AnimationSettings.swift */,
 				3E3D4B3F2C24A55500CC6F1A /* PrimaryButton.swift */,
 				3E3D4B412C24A62900CC6F1A /* SecondaryButton.swift */,
 				3E5630822BF822BC0009B48B /* OnboardingPageViewModel.swift */,
@@ -394,6 +400,7 @@
 				3E5630872BF827AF0009B48B /* LottieAnimation.swift in Sources */,
 				3E56308B2BF82BBF0009B48B /* GameView.swift in Sources */,
 				3EBCE0832BFCEED600D5D37C /* TutorialView.swift in Sources */,
+				3ED8C3D22C396B900093CDD7 /* SettingsView.swift in Sources */,
 				3E4350492C0F875600FDFADC /* CollaboratorsView.swift in Sources */,
 				3E18D38F2C14B4010003B39B /* MatchManager+GKMatchDelegate.swift in Sources */,
 				3ED8C3D02C380AE40093CDD7 /* ResponsiveScore.swift in Sources */,
@@ -403,6 +410,7 @@
 				3E90784D2C013E5000F34BA3 /* MatchManager+GKMatchManagerVCDelegate.swift in Sources */,
 				3E4CC0E22C35F08A00DA0407 /* GameLogicAI.swift in Sources */,
 				3E6C13B72BF7F82400373047 /* TicTacToeApp.swift in Sources */,
+				3ED8C3D42C3971800093CDD7 /* AnimationSettings.swift in Sources */,
 				3E3925C92BFD351F0033F0E2 /* BackgroundGridViewModel.swift in Sources */,
 				3E3925C32BFD2F2A0033F0E2 /* GameActions.swift in Sources */,
 			);

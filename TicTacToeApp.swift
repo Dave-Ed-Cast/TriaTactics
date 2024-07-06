@@ -15,6 +15,7 @@ enum NavigationValue {
     case bot
     case tutorial
     case collaborators
+    case settings
 }
 class Navigation: ObservableObject {
     static var shared = Navigation()
@@ -29,6 +30,13 @@ struct TicTacToeApp: App {
     @StateObject private var gameLogic = GameLogic()
     @StateObject private var navigation = Navigation.shared
     @Environment(\.colorScheme) var colorScheme
+
+    init() {
+        if UserDefaults.standard.object(forKey: "hasLaunchedBefore") == nil {
+            UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
+            UserDefaults.standard.set(true, forKey: "animationStatus")
+        }
+    }
 
     var body: some Scene {
         WindowGroup {
@@ -51,5 +59,9 @@ extension View {
         } else {
             self
         }
+    }
+
+    func halfModal<ModalContent: View>(isPresented: Binding<Bool>, @ViewBuilder content: @escaping () -> ModalContent) -> some View {
+        self.modifier(HalfModalView(isPresented: isPresented, modalContent: content))
     }
 }
