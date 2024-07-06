@@ -40,7 +40,7 @@ struct TutorialView: View {
         TutorialView()
             .environment(\.locale, Locale(identifier: "EN"))
     }
-        
+
 }
 
 #Preview("Italian"){
