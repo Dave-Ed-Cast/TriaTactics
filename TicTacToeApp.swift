@@ -50,10 +50,6 @@ struct TicTacToeApp: App {
                     OnboardView(viewModel: parameters)
                 } else {
                     ParentView()
-                        .onAppear {
-                            matchManager.gameLogic = gameLogic
-                            gameLogic.matchManager = matchManager
-                        }
                 }
             }
             .environmentObject(matchManager)
