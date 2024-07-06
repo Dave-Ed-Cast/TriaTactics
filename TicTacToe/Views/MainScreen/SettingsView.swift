@@ -14,15 +14,15 @@ struct SettingsView: View {
     var body: some View {
         ZStack {
             Toggle("Toggle Animation", isOn: $toggleAnimation)
-            .padding()
-            .background {
-                RoundedRectangle(cornerRadius: 20)
-                    .foregroundStyle(Color.buttonTheme.opacity(0.8))
-            }
-            .padding()
-            .onChange(of: toggleAnimation) { newValue in
-                UserDefaults.standard.set(newValue, forKey: "animationStatus")
-            }
+                .padding()
+                .background {
+                    RoundedRectangle(cornerRadius: 20)
+                        .foregroundStyle(Color.buttonTheme.opacity(0.8))
+                }
+                .padding()
+                .onChange(of: toggleAnimation) { newValue in
+                    UserDefaults.standard.set(newValue, forKey: "animationStatus")
+                }
         }
     }
 }
@@ -86,9 +86,7 @@ struct HalfModalView<ModalContent: View>: ViewModifier {
                 }
                 .edgesIgnoringSafeArea(.bottom)
             }
-
         }
-
     }
 }
 

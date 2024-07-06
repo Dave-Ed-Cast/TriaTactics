@@ -10,7 +10,7 @@ import SwiftUI
 struct OnboardView: View {
 
     @ObservedObject var viewModel: OnboardingParameters
-
+    @AppStorage("animationStatus") private var animationEnabled = true
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
@@ -39,6 +39,10 @@ struct OnboardView: View {
             )
         }
 
+        // this probably has to do with TabView component, but this needs a background otherwise it won't work
+        .background {
+            BackgroundView(savedValueForAnimation: $animationEnabled)
+        }
         .tabViewStyle(.page(indexDisplayMode: .automatic))
         .indexViewStyle(.page(backgroundDisplayMode: .always))
         .overlay(alignment: .topTrailing, content: {
@@ -54,9 +58,7 @@ struct OnboardView: View {
             .buttonBorderShape(.automatic)
             .padding()
         })
-        .background {
-            BackgroundView()
-        }
+
         .onDisappear {
             if viewModel.completed {
                 viewModel.saveCompletionValue()

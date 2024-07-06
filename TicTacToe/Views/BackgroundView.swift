@@ -33,8 +33,7 @@ struct BackgroundView: View {
     let gridSize: CGFloat = 30
     let columns: Array = Array(repeating: GridItem(.flexible()), count: 13)
 
-    let savedValueForAnimation = UserDefaults.standard.bool(forKey: "animationStatus")
-
+    @Binding var savedValueForAnimation: Bool
     @State private var yOffset: CGFloat = 0
 
     var body: some View {
@@ -84,5 +83,5 @@ struct BackgroundView: View {
 }
 
 #Preview {
-    BackgroundView()
+    BackgroundView(savedValueForAnimation: .constant(true))
 }

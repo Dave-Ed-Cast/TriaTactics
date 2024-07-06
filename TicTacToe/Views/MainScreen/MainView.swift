@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
 
     @EnvironmentObject var changeViewTo: Navigation
+    @AppStorage("animationStatus") private var animationEnabled = true
 
     @State private var showCreditsView: Bool = false
     @State private var isSettingsPresented = false
@@ -76,10 +77,6 @@ struct MainView: View {
                 }// end of 2nd inner vstack
 
             }// end of outer vstack
-
-            .background {
-                BackgroundView()
-            }
             .lineLimit(1)
 
         }
@@ -107,7 +104,7 @@ struct MainView: View {
 }
 
 #Preview {
-    MainView()
-        .environmentObject(MatchManager())
-        .environmentObject(Navigation.shared)
+    PreviewWrapper {
+        MainView()
+    }
 }

@@ -10,6 +10,8 @@ import SwiftUI
 struct TutorialView: View {
 
     @EnvironmentObject var changeViewTo: Navigation
+    @AppStorage("animationStatus") private var animationEnabled = true
+
     var body: some View {
         VStack {
 
@@ -29,18 +31,21 @@ struct TutorialView: View {
             }, color: .buttonTheme.opacity(0.8))
             .padding()
         }
-        .background {
-            BackgroundView()
-        }
+
     }
 }
 
 #Preview("English") {
-    TutorialView()
-        .environment(\.locale, Locale(identifier: "EN"))
+    PreviewWrapper {
+        TutorialView()
+            .environment(\.locale, Locale(identifier: "EN"))
+    }
+        
 }
 
 #Preview("Italian"){
-    TutorialView()
-        .environment(\.locale, Locale(identifier: "IT"))
+    PreviewWrapper {
+        TutorialView()
+            .environment(\.locale, Locale(identifier: "IT"))
+    }
 }

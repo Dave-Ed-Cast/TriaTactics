@@ -31,7 +31,9 @@ struct TicTacToeApp: App {
     @StateObject private var gameLogic = GameLogic()
     @StateObject private var navigation = Navigation.shared
 
-    @State private var animationEnabled = UserDefaults.standard.bool(forKey: "animationStatus")
+//    @State private var animationEnabled = UserDefaults.standard.bool(forKey: "animationStatus")
+    @AppStorage("animationStatus") private var animationEnabled = true
+//    @AppStorage("animationStatus") private var animationEnabled = UserDefaults.standard.bool(forKey: "animationStatus")
 
     @Environment(\.colorScheme) var colorScheme
 

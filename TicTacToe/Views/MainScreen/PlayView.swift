@@ -9,6 +9,8 @@ import SwiftUI
 
 struct PlayView: View {
 
+    @AppStorage("animationStatus") private var animationEnabled = true
+
     @EnvironmentObject var matchManager: MatchManager
     @EnvironmentObject var changeViewTo: Navigation
 
@@ -86,9 +88,7 @@ struct PlayView: View {
                 }
             }, color: .buttonTheme.opacity(0.8))
         }
-        .background {
-            BackgroundView()
-        }
+
         .onAppear {
             matchManager.authenticateUser()
         }
@@ -96,7 +96,7 @@ struct PlayView: View {
 }
 
 #Preview {
-    PlayView()
-        .environmentObject(MatchManager())
-        .environmentObject(Navigation.shared)
+    PreviewWrapper {
+        PlayView()
+    }
 }

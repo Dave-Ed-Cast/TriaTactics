@@ -10,6 +10,7 @@ import SwiftUI
 struct CollaboratorsView: View {
 
     @EnvironmentObject var changeViewTo: Navigation
+    @AppStorage("animationStatus") private var animationEnabled = true
 
     var collaborators: [Collaborator] = Collaborator.list
 
@@ -51,9 +52,7 @@ struct CollaboratorsView: View {
 
                 }
             }
-            .background {
-                BackgroundView()
-            }
+
         }
         .overlay(alignment: .topTrailing) {
             TertiaryButton {
@@ -69,6 +68,9 @@ struct CollaboratorsView: View {
 
 #Preview("English") {
 
-    CollaboratorsView()
-        .environment(\.locale, Locale(identifier: "EN"))
+    PreviewWrapper {
+        CollaboratorsView()
+            .environment(\.locale, Locale(identifier: "EN"))
+    }
+
 }

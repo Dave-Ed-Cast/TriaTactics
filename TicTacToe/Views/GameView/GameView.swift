@@ -69,6 +69,9 @@ struct GameView: View {
                         }
                     }
                 }
+                .background {
+                    Color.clear
+                }
 
                 if showWinnerOverlay {
                     winnerOverlay
