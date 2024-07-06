@@ -26,7 +26,7 @@ class Navigation: ObservableObject {
 @main
 struct TicTacToeApp: App {
 
-    @StateObject private var parameters = OnboardingParameters()
+    @StateObject private var onboarding = OnboardingParameters()
     @StateObject private var matchManager = MatchManager()
     @StateObject private var gameLogic = GameLogic()
     @StateObject private var navigation = Navigation.shared
@@ -46,16 +46,15 @@ struct TicTacToeApp: App {
 
         WindowGroup {
             Group {
-                if !parameters.onboardingIsCompleted && !parameters.skipOnboarding {
-                    OnboardView(viewModel: parameters)
-                } else {
+                if onboarding.completed || onboarding.skipped {
                     ParentView()
+                } else {
+                    OnboardView(viewModel: onboarding)
                 }
             }
             .environmentObject(matchManager)
             .environmentObject(gameLogic)
             .environmentObject(navigation)
-            .environmentObject(AnimationSettings(isAnimationEnabled: $animationEnabled))
         }
     }
 }

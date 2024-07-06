@@ -71,6 +71,4 @@ struct CollaboratorsView: View {
 
     CollaboratorsView()
         .environment(\.locale, Locale(identifier: "EN"))
-        .environmentObject(AnimationSettings(isAnimationEnabled: .constant(true)))
-
 }

@@ -99,5 +99,4 @@ struct PlayView: View {
     PlayView()
         .environmentObject(MatchManager())
         .environmentObject(Navigation.shared)
-        .environmentObject(AnimationSettings(isAnimationEnabled: .constant(true)))
 }

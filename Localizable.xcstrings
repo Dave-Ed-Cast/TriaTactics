@@ -188,9 +188,6 @@
     "Developer" : {
 
     },
-    "Enable Animation" : {
-
-    },
     "Game logic, Online logic, Development and design" : {
 
     },
@@ -637,6 +634,9 @@
           }
         }
       }
+    },
+    "Toggle Animation" : {
+
     },
     "Tria Tactics" : {
       "localizations" : {

@@ -38,11 +38,9 @@ struct TutorialView: View {
 #Preview("English") {
     TutorialView()
         .environment(\.locale, Locale(identifier: "EN"))
-        .environmentObject(AnimationSettings(isAnimationEnabled: .constant(true)))
 }
 
 #Preview("Italian"){
     TutorialView()
         .environment(\.locale, Locale(identifier: "IT"))
-        .environmentObject(AnimationSettings(isAnimationEnabled: .constant(true)))
 }

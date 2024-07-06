@@ -41,5 +41,4 @@ struct ParentView: View {
         .environmentObject(Navigation.shared)
         .environmentObject(MatchManager())
         .environmentObject(GameLogic())
-        .environmentObject(AnimationSettings(isAnimationEnabled: .constant(true)))
 }

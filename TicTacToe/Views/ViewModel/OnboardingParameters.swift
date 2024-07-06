@@ -9,24 +9,24 @@ import SwiftUI
 import Combine
 
 class OnboardingParameters: ObservableObject {
-    @Published var onboardingIsCompleted: Bool
-    @Published var skipOnboarding: Bool
+    @Published var completed: Bool
+    @Published var skipped: Bool
     @Published var currentStep: Int
 
     private let onboardingStatusKey = "OnboardingStatus"
 
     init() {
-        self.onboardingIsCompleted = UserDefaults.standard.bool(forKey: onboardingStatusKey)
-        self.skipOnboarding = false
+        self.completed = UserDefaults.standard.bool(forKey: onboardingStatusKey)
+        self.skipped = false
         self.currentStep = 0
     }
 
-    func completeOnboarding() {
-        self.onboardingIsCompleted = true
+    func saveCompletionValue() {
+        self.completed = true
         UserDefaults.standard.set(true, forKey: onboardingStatusKey)
     }
 
     func skip() {
-        self.skipOnboarding = true
+        self.skipped = true
     }
 }

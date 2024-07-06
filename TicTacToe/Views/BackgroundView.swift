@@ -28,12 +28,12 @@ extension View {
 
 struct BackgroundView: View {
 
-    @EnvironmentObject var animationSettings: AnimationSettings
-
     let widthScreen: CGFloat = UIScreen.main.bounds.width
     let heightScreen: CGFloat = UIScreen.main.bounds.height
     let gridSize: CGFloat = 30
     let columns: Array = Array(repeating: GridItem(.flexible()), count: 13)
+
+    let savedValueForAnimation = UserDefaults.standard.bool(forKey: "animationStatus")
 
     @State private var yOffset: CGFloat = 0
 
@@ -45,11 +45,11 @@ struct BackgroundView: View {
                 .rotationEffect(.degrees(-15))
                 .scaleEffect(1.8)
                 .onAppear {
-                    if animationSettings.isAnimationEnabled {
+                    if savedValueForAnimation {
                         startScrolling()
                     }
                 }
-                .onChange(of: animationSettings.isAnimationEnabled) { newValue in
+                .onChange(of: savedValueForAnimation) { newValue in
                     newValue ? startScrolling() : stopScrolling()
                 }
         }
@@ -85,5 +85,4 @@ struct BackgroundView: View {
 
 #Preview {
     BackgroundView()
-        .environmentObject(AnimationSettings(isAnimationEnabled: .constant(true)))
 }

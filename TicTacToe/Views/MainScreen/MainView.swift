@@ -10,7 +10,6 @@ import SwiftUI
 struct MainView: View {
 
     @EnvironmentObject var changeViewTo: Navigation
-    @EnvironmentObject var animationSettings: AnimationSettings
 
     @State private var showCreditsView: Bool = false
     @State private var isSettingsPresented = false
@@ -85,7 +84,7 @@ struct MainView: View {
 
         }
         .halfModal(isPresented: $isSettingsPresented) {
-            SettingsView()
+            SettingsView(toggleAnimation: $isAnimationEnabled)
                 .onDisappear {
                     isSettingsPresented = false
                 }
@@ -111,5 +110,4 @@ struct MainView: View {
     MainView()
         .environmentObject(MatchManager())
         .environmentObject(Navigation.shared)
-        .environmentObject(AnimationSettings(isAnimationEnabled: .constant(true)))
 }
