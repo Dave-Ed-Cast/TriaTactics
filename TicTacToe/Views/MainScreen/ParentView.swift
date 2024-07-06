@@ -10,6 +10,8 @@ import SwiftUI
 struct ParentView: View {
 
     @EnvironmentObject var navigation: Navigation
+    @EnvironmentObject var matchManager: MatchManager
+    @EnvironmentObject var gameLogic: GameLogic
 
     var body: some View {
         Group {
@@ -30,7 +32,10 @@ struct ParentView: View {
                 CollaboratorsView()
             }
         }
-
+        .onAppear {
+            matchManager.gameLogic = gameLogic
+            gameLogic.matchManager = matchManager
+        }
     }
 }
 

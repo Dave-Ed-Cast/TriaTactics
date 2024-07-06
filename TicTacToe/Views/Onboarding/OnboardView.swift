@@ -56,6 +56,11 @@ struct OnboardView: View {
         .background {
             BackgroundView()
         }
+        .onDisappear {
+            if viewModel.onboardingIsCompleted {
+                viewModel.completeOnboarding()
+            }
+        }
     }
 }
 

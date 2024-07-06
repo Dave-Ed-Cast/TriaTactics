@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MainView: View {
 
-    @StateObject private var parameters = OnboardingParameters()
     @EnvironmentObject var changeViewTo: Navigation
     @EnvironmentObject var animationSettings: AnimationSettings
 
@@ -24,15 +23,6 @@ struct MainView: View {
     var body: some View {
 
         ZStack {
-
-            if !parameters.onboardingIsCompleted && !parameters.skipOnboarding {
-                OnboardView(viewModel: parameters)
-                    .onDisappear {
-                        if parameters.onboardingIsCompleted {
-                            parameters.completeOnboarding()
-                        }
-                    }
-            } else {
 
                 VStack(spacing: 10) {
                     VStack {
@@ -92,7 +82,7 @@ struct MainView: View {
                     BackgroundView()
                 }
                 .lineLimit(1)
-            }
+
         }
         .halfModal(isPresented: $isSettingsPresented) {
             SettingsView(isAnimationEnabled: $isAnimationEnabled)
