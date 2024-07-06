@@ -9,18 +9,18 @@ import SwiftUI
 
 struct SettingsView: View {
 
-    @Binding var isAnimationEnabled: Bool
+    @EnvironmentObject var animationSettings: AnimationSettings
 
     var body: some View {
         ZStack {
-            Toggle("Enable Animation", isOn: $isAnimationEnabled)
+            Toggle("Enable Animation", isOn: $animationSettings.isAnimationEnabled)
             .padding()
             .background {
                 RoundedRectangle(cornerRadius: 20)
                     .foregroundStyle(Color.buttonTheme.opacity(0.8))
             }
             .padding()
-            .onChange(of: isAnimationEnabled) { newValue in
+            .onChange(of: animationSettings.isAnimationEnabled) { newValue in
                 UserDefaults.standard.set(newValue, forKey: "animationStatus")
             }
         }
@@ -93,6 +93,6 @@ struct HalfModalView<ModalContent: View>: ViewModifier {
 }
 
 #Preview {
-    SettingsView(isAnimationEnabled: .constant(true))
+    SettingsView()
         .environmentObject(AnimationSettings(isAnimationEnabled: .constant(true)))
 }

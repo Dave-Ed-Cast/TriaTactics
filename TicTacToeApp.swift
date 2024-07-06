@@ -30,6 +30,9 @@ struct TicTacToeApp: App {
     @StateObject private var matchManager = MatchManager()
     @StateObject private var gameLogic = GameLogic()
     @StateObject private var navigation = Navigation.shared
+
+    @State private var animationEnabled = UserDefaults.standard.bool(forKey: "animationStatus")
+
     @Environment(\.colorScheme) var colorScheme
 
     init() {
@@ -47,13 +50,16 @@ struct TicTacToeApp: App {
                     OnboardView(viewModel: parameters)
                 } else {
                     ParentView()
-
+                        .onAppear {
+                            matchManager.gameLogic = gameLogic
+                            gameLogic.matchManager = matchManager
+                        }
                 }
             }
             .environmentObject(matchManager)
             .environmentObject(gameLogic)
             .environmentObject(navigation)
-            .environmentObject(AnimationSettings(isAnimationEnabled: .constant(true)))
+            .environmentObject(AnimationSettings(isAnimationEnabled: $animationEnabled))
         }
     }
 }

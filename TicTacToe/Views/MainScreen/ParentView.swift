@@ -32,10 +32,7 @@ struct ParentView: View {
                 CollaboratorsView()
             }
         }
-        .onAppear {
-            matchManager.gameLogic = gameLogic
-            gameLogic.matchManager = matchManager
-        }
+
     }
 }
 
