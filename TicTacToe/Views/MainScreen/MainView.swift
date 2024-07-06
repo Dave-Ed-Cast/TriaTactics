@@ -11,9 +11,15 @@ struct MainView: View {
 
     @StateObject private var parameters = OnboardingParameters()
     @EnvironmentObject var changeViewTo: Navigation
+    @EnvironmentObject var animationSettings: AnimationSettings
 
     @State private var showCreditsView: Bool = false
+    @State private var isSettingsPresented = false
+    @State private var isAnimationEnabled = UserDefaults.standard.bool(forKey: "animationStatus")
+
     @Namespace private var namespace
+
+    let size = UIScreen.main.bounds
 
     var body: some View {
 
@@ -29,15 +35,13 @@ struct MainView: View {
             } else {
 
                 VStack(spacing: 10) {
-
                     VStack {
-
                         Image("appicon")
                             .resizable()
                             .scaledToFit()
                             .cornerRadius(20)
                             .matchedGeometryEffect(id: "icon", in: namespace)
-                            .frame(maxHeight: 120)
+                            .frame(height: size.height / 7.5)
 
                         Text("Tria Tactics")
                             .font(.largeTitle)
@@ -76,11 +80,12 @@ struct MainView: View {
 
                             SecondaryButton(label: "Settings", action: {
                                 withAnimation {
-                                    changeViewTo.value = .settings
+                                    isSettingsPresented.toggle()
                                 }
                             }, color: .buttonTheme.opacity(0.8))
                         }
                     }// end of 2nd inner vstack
+
                 }// end of outer vstack
 
                 .background {
@@ -89,7 +94,12 @@ struct MainView: View {
                 .lineLimit(1)
             }
         }
-
+        .halfModal(isPresented: $isSettingsPresented) {
+            SettingsView(isAnimationEnabled: $isAnimationEnabled)
+                .onDisappear {
+                    isSettingsPresented = false
+                }
+        }
     }
 
     var infoButton: some View {
@@ -111,4 +121,5 @@ struct MainView: View {
     MainView()
         .environmentObject(MatchManager())
         .environmentObject(Navigation.shared)
+        .environmentObject(AnimationSettings(isAnimationEnabled: .constant(true)))
 }

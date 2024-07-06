@@ -14,6 +14,8 @@ struct PrimaryButton: View {
     let color: Color
     let invertColor: Bool
 
+    let size = UIScreen.main.bounds
+
     init(label: LocalizedStringKey, action: (() -> Void)? = nil, color: Color = .buttonTheme, invertColor: Bool = false) {
         self.label = label
         self.action = action
@@ -28,7 +30,7 @@ struct PrimaryButton: View {
             ZStack {
                 RoundedRectangle(cornerRadius: 15)
                     .foregroundStyle(color)
-                    .frame(minWidth: 50, idealWidth: 200, maxWidth: 200, minHeight: 50, idealHeight: 70, maxHeight: 70)
+                    .frame(width: size.width / 2.1, height: size.height / 12)
                     .if(invertColor) { view in
                         view.colorInvert()
                     }
@@ -46,10 +48,11 @@ struct PrimaryButton: View {
     ZStack {
         Color.black.ignoresSafeArea()
 
-        VStack(spacing: 20) {
-            PrimaryButton(label: "TEST AAAAAA", action: {})
-            PrimaryButton(label: "TEST BBBBBB", action: {}, color: .red)
-            PrimaryButton(label: "TEST CCCCCC", action: {}, color: .red, invertColor: true)
+        VStack(spacing: 30) {
+            PrimaryButton(label: "TEST AAAA", action: {})
+            PrimaryButton(label: "TEST BBBB", action: {}, color: .red)
+            PrimaryButton(label: "TEST CCCC", action: {}, color: .red, invertColor: true)
+
         }
     }
 }

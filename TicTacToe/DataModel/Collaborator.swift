@@ -43,6 +43,13 @@ struct Collaborator: Identifiable {
             role: "Developer",
             contribute: "Code refactoring, navigation system, background animation skeleton",
             contactInfo: "https://www.linkedin.com/in/giuseppe-francione-69008125a/"
+        ),
+
+        Collaborator(
+            name: "Fernanda Lozoya",
+            role: "UI/UX Designer",
+            contribute: "Localisation: Spanish (Latin America)",
+            contactInfo: "https://www.linkedin.com/in/fernanda-lozoya-495521314/"
         )
     ]
 }

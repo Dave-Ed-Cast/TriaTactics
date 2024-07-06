@@ -10,8 +10,6 @@ import SwiftUI
 struct ParentView: View {
 
     @EnvironmentObject var navigation: Navigation
-    @State private var isSettingsPresented = false
-    @State private var isAnimationEnabled = UserDefaults.standard.bool(forKey: "animationStatus")
 
     var body: some View {
         Group {
@@ -30,22 +28,9 @@ struct ParentView: View {
                 TutorialView()
             case .collaborators:
                 CollaboratorsView()
-            case .settings:
-                MainView()
             }
+        }
 
-        }
-        .halfModal(isPresented: $isSettingsPresented) {
-            SettingsView(isAnimationEnabled: $isAnimationEnabled)
-        }
-        .onChange(of: navigation.value) { newValue in
-            if newValue == .settings {
-                withAnimation {
-                    isSettingsPresented = true
-                }
-            }
-        }
-        .environmentObject(AnimationSettings(isAnimationEnabled: $isAnimationEnabled))
     }
 }
 
@@ -54,4 +39,5 @@ struct ParentView: View {
         .environmentObject(Navigation.shared)
         .environmentObject(MatchManager())
         .environmentObject(GameLogic())
+        .environmentObject(AnimationSettings(isAnimationEnabled: .constant(true)))
 }

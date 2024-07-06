@@ -17,6 +17,8 @@ struct PlayView: View {
     @State private var showCreditsView: Bool = false
     @Namespace private var namespace
 
+    let size = UIScreen.main.bounds
+
     var body: some View {
         VStack {
             Spacer()
@@ -27,7 +29,7 @@ struct PlayView: View {
                     .scaledToFit()
                     .cornerRadius(20)
                     .matchedGeometryEffect(id: "icon", in: namespace)
-                    .frame(maxHeight: 120)
+                    .frame(height: size.height / 7.5)
 
                 Text("Tria Tactics")
                     .font(.largeTitle)
@@ -41,11 +43,8 @@ struct PlayView: View {
             .foregroundStyle(.textTheme)
             .padding()
             .background {
-                ZStack(alignment: .topTrailing) {
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(Color.buttonTheme.opacity(0.8))
-                    infoButton
-                }
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(Color.buttonTheme.opacity(0.8))
             }
             .matchedGeometryEffect(id: "heroRectangle", in: namespace)
             .padding(.top, 100)
@@ -94,24 +93,11 @@ struct PlayView: View {
             matchManager.authenticateUser()
         }
     }
-
-    var infoButton: some View {
-        Button {
-            withAnimation {
-                changeViewTo.value = .collaborators
-            }
-        } label: {
-            Image(systemName: "info.circle")
-                .foregroundStyle(.buttonTheme)
-                .font(.title3)
-                .colorInvert()
-        }
-        .padding()
-    }
 }
 
 #Preview {
     PlayView()
         .environmentObject(MatchManager())
         .environmentObject(Navigation.shared)
+        .environmentObject(AnimationSettings(isAnimationEnabled: .constant(true)))
 }

@@ -28,12 +28,28 @@ struct SettingsView: View {
 }
 
 struct HalfModalView<ModalContent: View>: ViewModifier {
+
     @Binding var isPresented: Bool
+    @Environment(\.dismiss) var dismiss
+
     let modalContent: () -> ModalContent
 
     func body(content: Content) -> some View {
         ZStack {
             content
+                .onDisappear {
+                    isPresented = false
+                }
+                .gesture(
+                    DragGesture()
+                        .onEnded { value in
+                            if value.translation.height > 50 {
+                                withAnimation {
+                                    isPresented = false
+                                }
+                            }
+                        }
+                )
 
             if isPresented {
                 Color.black.opacity(0.4)
@@ -54,13 +70,29 @@ struct HalfModalView<ModalContent: View>: ViewModifier {
                         .shadow(radius: 20)
                         .offset(y: isPresented ? 0 : UIScreen.main.bounds.height)
                         .animation(.spring(), value: isPresented)
+                        .onDisappear {
+                            isPresented = false
+                        }
+                        .gesture(
+                            DragGesture()
+                                .onEnded { value in
+                                    if value.translation.height > 50 {
+                                        withAnimation {
+                                            isPresented = false
+                                        }
+                                    }
+                                }
+                        )
                 }
                 .edgesIgnoringSafeArea(.bottom)
             }
+
         }
+
     }
 }
 
 #Preview {
     SettingsView(isAnimationEnabled: .constant(true))
+        .environmentObject(AnimationSettings(isAnimationEnabled: .constant(true)))
 }

@@ -39,6 +39,7 @@
 
     },
     "App icon" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -110,6 +111,7 @@
       }
     },
     "Assets" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -230,6 +232,9 @@
 
     },
     "Lets' start!" : {
+
+    },
+    "Localisation: Spanish (Latin America)" : {
 
     },
     "Making a fourth move will cost the first one. The next one follows the same logic. Tria Tactics is about choosing wisely!" : {
@@ -522,16 +527,10 @@
     "TEST AAAA" : {
 
     },
-    "TEST AAAAAA" : {
-
-    },
     "TEST BBBB" : {
 
     },
-    "TEST BBBBBB" : {
-
-    },
-    "TEST CCCCCC" : {
+    "TEST CCCC" : {
 
     },
     "The game for true tacticians!" : {

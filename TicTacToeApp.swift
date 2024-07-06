@@ -15,8 +15,8 @@ enum NavigationValue {
     case bot
     case tutorial
     case collaborators
-    case settings
 }
+
 class Navigation: ObservableObject {
     static var shared = Navigation()
     @Published public var value: NavigationValue = .main
@@ -44,6 +44,7 @@ struct TicTacToeApp: App {
             .environmentObject(matchManager)
             .environmentObject(gameLogic)
             .environmentObject(navigation)
+            .environmentObject(AnimationSettings(isAnimationEnabled: .constant(true)))
             .onAppear {
                 matchManager.gameLogic = gameLogic
                 gameLogic.matchManager = matchManager
