@@ -80,15 +80,14 @@ extension GameLogic {
         matchManager.sendMove(index: index, player: activePlayer)
         finalizeMove(index: index)
 
-        if !checkWinner() {
-            matchManager.localPlayerSymbol = activePlayer
+        matchManager.localPlayerSymbol = activePlayer
+        if checkWinner() {
+            matchManager.sendString("winner")
+            matchManager.stopTimer()
+        } else {
             matchManager.currentlyPlaying = false
             matchManager.remainingTime = 10
             activePlayer = (activePlayer == .X) ? .O : .X
-        } else {
-            matchManager.sendString("winner")
-            matchManager.localPlayerSymbol = activePlayer
-            matchManager.stopTimer()
         }
     }
 

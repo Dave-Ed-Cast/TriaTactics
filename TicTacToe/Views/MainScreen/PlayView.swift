@@ -57,11 +57,6 @@ struct PlayView: View {
             VStack(spacing: 20) {
                 PrimaryButton(label: "Play Online", action: {
                     matchManager.startMatchmaking()
-                    if matchManager.inGame && matchManager.authenticationState == .authenticated {
-                        withAnimation {
-                            changeViewTo.value = .online
-                        }
-                    }
                 }, color: .buttonTheme.opacity(0.8))
                 .opacity(matchManager.authenticationState != .authenticated ? 0.5 : 1)
                 .disabled(matchManager.authenticationState != .authenticated)
@@ -87,6 +82,7 @@ struct PlayView: View {
                     changeViewTo.value = .main
                 }
             }, color: .buttonTheme.opacity(0.8))
+
         }
 
         .onAppear {

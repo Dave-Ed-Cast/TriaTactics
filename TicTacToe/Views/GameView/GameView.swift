@@ -20,64 +20,60 @@ struct GameView: View {
 
     var body: some View {
 
-        CompatibilityNavigation {
-            ZStack {
-                Color.buttonTheme.ignoresSafeArea()
+        ZStack {
+            Color.buttonTheme.ignoresSafeArea()
 
-                VStack(spacing: 0) {
+            VStack(spacing: 0) {
 
-                    TopHUD()
+                TopHUD()
 
-                    ScoreView()
-                        .padding(.vertical, 0)
-                    Spacer()
-                    VStack {
-                        if changeViewTo.value == .online {
-                            Text("Time left: \(matchManager.remainingTime)")
-                                .font(.title2)
-                                .fontWeight(.semibold)
-                                .opacity((changeViewTo.value == .offline) ? 0 : 1)
-                                .foregroundStyle(.textTheme)
-                                .padding(.bottom, 10)
-                        } else if changeViewTo.value == .offline || changeViewTo.value == .bot {
-                            // TODO: picker for difficulty
-                            Text("placeholder")
-                                .font(.title2)
-                                .fontWeight(.semibold)
-                                .foregroundStyle(.textTheme)
-                                .padding(.bottom, 10)
-                                .opacity(0)
-                        }
-                    }
-
-                    GameGrid(gameLogic: gameLogic)
-                    Spacer()
-                }// end of outer VStack
-
-                .onAppear {
-                    gameLogic.resetGame()
-                }
-                .onDisappear {
-                    matchManager.gameOver()
-                }
-                .onChange(of: gameLogic.winner) { newValue in
-                    if newValue != nil {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-                            withAnimation(.easeIn(duration: 0.7)) {
-                                showWinnerOverlay = true
-                            }
-                        }
+                ScoreView()
+                    .padding(.vertical, 0)
+                Spacer()
+                VStack {
+                    if changeViewTo.value == .online {
+                        Text("Time left: \(matchManager.remainingTime)")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                            .opacity((changeViewTo.value == .offline) ? 0 : 1)
+                            .foregroundStyle(.textTheme)
+                            .padding(.bottom, 10)
+                    } else if changeViewTo.value == .offline || changeViewTo.value == .bot {
+                        // TODO: picker for difficulty
+                        Text("placeholder")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.textTheme)
+                            .padding(.bottom, 10)
+                            .opacity(0)
                     }
                 }
-                .background {
-                    Color.clear
-                }
 
-                if showWinnerOverlay {
-                    winnerOverlay
+                GameGrid(gameLogic: gameLogic)
+                Spacer()
+            }// end of outer VStack
+
+            .onAppear {
+                gameLogic.resetGame()
+            }
+            .onDisappear {
+                matchManager.gameOver()
+            }
+            .onChange(of: gameLogic.winner) { newValue in
+                if newValue != nil {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                        withAnimation(.easeIn(duration: 0.7)) {
+                            showWinnerOverlay = true
+                        }
+                    }
                 }
-            }// end of outer ZStack
-        }
+            }
+
+            if showWinnerOverlay {
+                winnerOverlay
+            }
+        }// end of outer ZStack
+
     }
 
     var winnerOverlay: some View {
@@ -174,7 +170,7 @@ struct GameView: View {
             return navigation
         }())
 }
- #Preview("Online") {
+#Preview("Online") {
     GameView()
         .environmentObject(MatchManager())
         .environmentObject(GameLogic())
@@ -183,9 +179,9 @@ struct GameView: View {
             navigation.value = .online
             return navigation
         }())
- }
+}
 
- #Preview("AI") {
+#Preview("AI") {
     GameView()
         .environmentObject(MatchManager())
         .environmentObject(GameLogic())
@@ -194,4 +190,4 @@ struct GameView: View {
             navigation.value = .bot
             return navigation
         }())
- }
+}

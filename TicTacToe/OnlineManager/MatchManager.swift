@@ -111,9 +111,9 @@ class MatchManager: NSObject, ObservableObject {
         match?.delegate = self
         otherPlayer = match?.players.first
         localPlayerSymbol = currentlyPlaying ? .X : .O
-        print("prima")
         inGame = true
-        print("dopo")
+        loadProfileImages()
+        Navigation.shared.value = .online
         sendString("began:\(playerUUIDKey)")
     }
 
@@ -160,8 +160,7 @@ class MatchManager: NSObject, ObservableObject {
         // MARK: split message example - ["move", "2", "X"]
 
         switch messagePrefix {
-
-            // when the encoded message is "began"
+        // when the encoded message is "began"
         case "began":
             if playerUUIDKey == parameter {
                 // determine which playerID to give this player

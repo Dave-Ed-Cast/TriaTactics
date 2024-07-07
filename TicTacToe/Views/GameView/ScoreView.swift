@@ -81,7 +81,7 @@ struct ScoreView: View {
                                         .frame(width: xSize * 0.1, height: xSize * 0.1)
                                 } else {
 
-                                    Image(systemName: "person.circle")
+                                    Image(systemName: "person.circle.fill")
                                         .resizable()
                                         .frame(width: xSize * 0.1, height: xSize * 0.1)
                                 }

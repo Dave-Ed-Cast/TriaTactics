@@ -130,7 +130,7 @@ extension MatchManager: GKMatchDelegate {
         return nil
     }
 
-    private func loadProfileImage(for player: GKLocalPlayer, completion: @escaping (UIImage?) -> Void) {
+    private func loadProfileImage(for player: GKPlayer, completion: @escaping (UIImage?) -> Void) {
         player.loadPhoto(for: .normal) { (image, error) in
             if let error = error {
                 print("Error loading profile photo for \(player.displayName): \(error.localizedDescription)")
@@ -144,17 +144,18 @@ extension MatchManager: GKMatchDelegate {
         }
     }
 
-    private func loadProfileImages() {
+    func loadProfileImages() {
         loadProfileImage(for: GKLocalPlayer.local) { image in
             if let image = image {
                 self.localPlayerImage = image.pngData()
             }
         }
+        guard let otherPlayer = otherPlayer else {
+            print("Other player is not set")
+            return
+        }
 
-        // Replace with the second player's GKLocalPlayer instance
-        // For demonstration purposes, using a placeholder GKLocalPlayer for player 2
-        let player2 = GKLocalPlayer()
-        loadProfileImage(for: player2) { image in
+        loadProfileImage(for: otherPlayer) { image in
             if let image = image {
                 self.otherPlayerImage = image.pngData()
             }
