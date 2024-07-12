@@ -14,9 +14,6 @@ struct PlayView: View {
     @EnvironmentObject var matchManager: MatchManager
     @EnvironmentObject var changeViewTo: Navigation
 
-    @State private var isOffline: Bool = false
-    @State private var showGameView: Bool = false
-    @State private var showCreditsView: Bool = false
     @Namespace private var namespace
 
     let size = UIScreen.main.bounds

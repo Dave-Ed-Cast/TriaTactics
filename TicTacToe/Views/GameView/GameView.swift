@@ -38,6 +38,9 @@ struct GameView: View {
                             .opacity((changeViewTo.value == .offline) ? 0 : 1)
                             .foregroundStyle(.textTheme)
                             .padding(.bottom, 10)
+                            .onAppear {
+                                print("matchManager: \(matchManager)")
+                            }
                     } else if changeViewTo.value == .offline || changeViewTo.value == .bot {
                         // TODO: picker for difficulty
                         Text("placeholder")

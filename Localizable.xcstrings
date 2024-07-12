@@ -35,44 +35,6 @@
     "%lld" : {
 
     },
-    "AI's turn" : {
-
-    },
-    "App icon" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "App-Symbol"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Icono de app"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Icône de l'application"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Icona app"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Uygulama simgesi"
-          }
-        }
-      }
-    },
     "App icon, UX design" : {
 
     },
@@ -106,41 +68,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Çıkmak istediğinizden emin misiniz?"
-          }
-        }
-      }
-    },
-    "Assets" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ressourcen"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "activos"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ressources"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Risorse"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Varlıklar"
           }
         }
       }
@@ -224,9 +151,6 @@
           }
         }
       }
-    },
-    "It's your turn" : {
-
     },
     "Lets' start!" : {
 

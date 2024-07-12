@@ -9,10 +9,12 @@ import SwiftUI
 
 struct MainView: View {
 
+    @EnvironmentObject var matchManager: MatchManager
+    @EnvironmentObject var gameLogic: GameLogic
     @EnvironmentObject var changeViewTo: Navigation
+
     @AppStorage("animationStatus") private var animationEnabled = true
 
-    @State private var showCreditsView: Bool = false
     @State private var isSettingsPresented = false
     @State private var isAnimationEnabled = UserDefaults.standard.bool(forKey: "animationStatus")
 
@@ -51,8 +53,7 @@ struct MainView: View {
                         infoButton
                     }
                 }
-
-                .padding(.bottom, 100)
+                .padding(.bottom, 50)
 
                 VStack(spacing: 30) {
                     PrimaryButton(label: "Play", action: {
@@ -75,10 +76,8 @@ struct MainView: View {
                         }, color: .buttonTheme.opacity(0.8))
                     }
                 }// end of 2nd inner vstack
-
             }// end of outer vstack
             .lineLimit(1)
-
         }
         .halfModal(isPresented: $isSettingsPresented) {
             SettingsView(toggleAnimation: $isAnimationEnabled)

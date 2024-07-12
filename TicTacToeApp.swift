@@ -31,9 +31,7 @@ struct TicTacToeApp: App {
     @StateObject private var gameLogic = GameLogic()
     @StateObject private var navigation = Navigation.shared
 
-//    @State private var animationEnabled = UserDefaults.standard.bool(forKey: "animationStatus")
     @AppStorage("animationStatus") private var animationEnabled = true
-//    @AppStorage("animationStatus") private var animationEnabled = UserDefaults.standard.bool(forKey: "animationStatus")
 
     @Environment(\.colorScheme) var colorScheme
 
@@ -47,16 +45,14 @@ struct TicTacToeApp: App {
     var body: some Scene {
 
         WindowGroup {
-            Group {
-                if onboarding.completed || onboarding.skipped {
-                    ParentView()
-                } else {
-                    OnboardView(viewModel: onboarding)
-                }
+            if onboarding.completed || onboarding.skipped {
+                ParentView()
+                    .environmentObject(matchManager)
+                    .environmentObject(gameLogic)
+                    .environmentObject(navigation)
+            } else {
+                OnboardView(viewModel: onboarding)
             }
-            .environmentObject(matchManager)
-            .environmentObject(gameLogic)
-            .environmentObject(navigation)
         }
     }
 }

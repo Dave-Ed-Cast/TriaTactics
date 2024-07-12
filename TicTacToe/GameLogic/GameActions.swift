@@ -34,44 +34,25 @@ extension GameLogic {
         }
     }
 
-    private func handleMoveAgainstBot(index: Int) {
-            // Finalize the move for the player (human)
-        guard isPlayerTurn else {
-            print("It's not the player's turn")
-            return
-        }
-
+    /// Defines the actions for an offline match
+    /// - Parameter index: the grid spot
+    private func handleMoveOffline(index: Int) {
         finalizeMove(index: index)
-        activePlayer = (activePlayer == .X ? .O : .X)
-        isPlayerTurn = false // Switch to AI's turn
-        print("Player turn: \(isPlayerTurn)")
 
-            // Check if the game is over after the player's move
         if !checkWinner() {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
-                // If the game is not over, let the AI (bot) make its move
-                guard !isPlayerTurn else {
-                    print("It's the player's turn, from guard isPlayerTurn")
-                    return
-                }
-
-                print("AI's move")
-                computerMove()
-
-                isPlayerTurn = true // Switch back to player's turn
-                print("Player turn: \(isPlayerTurn)")
-            }
+            activePlayer = (activePlayer == .X) ? .O : .X
         }
     }
 
     /// Defines the actions for an online match
     /// - Parameter index: the grid spot
     private func handleMoveOnline(index: Int) {
+
         guard let matchManager = matchManager else {
-            print("match manager is nil")
+            print("match manager is nil, from handleMoveOnline")
             return
         }
-
+        
         guard matchManager.currentlyPlaying else {
             print("not your turn")
             return
@@ -91,13 +72,33 @@ extension GameLogic {
         }
     }
 
-    /// Defines the actions for an offline match
-    /// - Parameter index: the grid spot
-    private func handleMoveOffline(index: Int) {
-        finalizeMove(index: index)
+    private func handleMoveAgainstBot(index: Int) {
+        // Finalize the move for the player (human)
+        guard isPlayerTurn else {
+            print("It's not the player's turn")
+            return
+        }
 
+        finalizeMove(index: index)
+        activePlayer = (activePlayer == .X ? .O : .X)
+        isPlayerTurn = false // Switch to AI's turn
+        print("Player turn: \(isPlayerTurn)")
+
+        // Check if the game is over after the player's move
         if !checkWinner() {
-            activePlayer = (activePlayer == .X) ? .O : .X
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
+                // If the game is not over, let the AI (bot) make its move
+                guard !isPlayerTurn else {
+                    print("It's the player's turn, from guard isPlayerTurn")
+                    return
+                }
+
+                print("AI's move")
+                computerMove()
+
+                isPlayerTurn = true // Switch back to player's turn
+                print("Player turn: \(isPlayerTurn)")
+            }
         }
     }
 
@@ -125,29 +126,39 @@ extension GameLogic {
     ///   - index: the index we received
     ///   - player: the player that made the move
     func receiveMove(index: Int, player: Player) {
-        if Navigation.shared.value == .online {
-            guard grid[index] == nil && winner == nil else {
-                return
-            }
-
-            grid[index] = player
-            print("Received move from player \(player) at index \(index)")
-
-            gameActions(index: index)
-
-            if checkWinner() {
-                winner = player
-                matchManager?.sendString("winner")
-                isGameOver = true
-            } else {
-                matchManager!.currentlyPlaying = !(matchManager!.currentlyPlaying)
-                activePlayer = (activePlayer == .X) ? .O : .X
-
-                if matchManager!.currentlyPlaying {
-                    matchManager?.remainingTime = 10
-                }
+        
+        guard Navigation.shared.value == .online else {
+            print("not online")
+            return
+        }
+        
+        guard let matchManager = matchManager else {
+            print("match manager is nil, from receiveMove")
+            return
+        }
+        
+        guard grid[index] == nil && winner == nil else {
+            return
+        }
+        
+        grid[index] = player
+        print("Received move from player \(player) at index \(index)")
+        
+        gameActions(index: index)
+        
+        if checkWinner() {
+            winner = player
+            matchManager.sendString("winner")
+            isGameOver = true
+        } else {
+            matchManager.currentlyPlaying = !(matchManager.currentlyPlaying)
+            activePlayer = (activePlayer == .X) ? .O : .X
+            
+            if matchManager.currentlyPlaying {
+                matchManager.remainingTime = 10
             }
         }
+        
     }
 
     /// The symbol of the touched grid position element
@@ -202,7 +213,13 @@ extension GameLogic {
     /// prevent online stalling from someone not making a move
     func makeRandomMove() {
         print("random")
-        guard !matchManager!.isGameOver else { return }
+        
+        guard let matchManager = matchManager else {
+            print("match manager is nil, from makeRandomMove")
+            return
+        }
+
+        guard !matchManager.isGameOver else { return }
 
         if let index = grid.firstIndex(of: nil) {
             buttonTap(index: index)
@@ -212,8 +229,8 @@ extension GameLogic {
                 }
             }
         }
-        matchManager?.currentlyPlaying = false
-        matchManager?.remainingTime = 10
+        matchManager.currentlyPlaying = false
+        matchManager.remainingTime = 10
     }
 
     /// put everything back in place
