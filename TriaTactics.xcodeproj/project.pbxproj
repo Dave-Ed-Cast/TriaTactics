@@ -21,7 +21,7 @@
 		3E4342662C0B48A90093FA80 /* Done.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E4342652C0B48A90093FA80 /* Done.json */; };
 		3E4350492C0F875600FDFADC /* CollaboratorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4350482C0F875600FDFADC /* CollaboratorsView.swift */; };
 		3E43504B2C0F876D00FDFADC /* Collaborator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43504A2C0F876D00FDFADC /* Collaborator.swift */; };
-		3E4CC0E02C35EC7500DA0407 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3E4CC0DF2C35EC7500DA0407 /* Lottie */; };
+		3E493BD82C42EF3000C37419 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3E493BD72C42EF3000C37419 /* Lottie */; };
 		3E4CC0E22C35F08A00DA0407 /* GameLogicAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4CC0E12C35F08A00DA0407 /* GameLogicAI.swift */; };
 		3E5108592C175856001B4B33 /* YouWin.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E5108582C175855001B4B33 /* YouWin.json */; };
 		3E5630832BF822BC0009B48B /* OnboardingPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5630822BF822BC0009B48B /* OnboardingPageViewModel.swift */; };
@@ -111,7 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E4CC0E02C35EC7500DA0407 /* Lottie in Frameworks */,
+				3E493BD82C42EF3000C37419 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +168,7 @@
 				3E5630822BF822BC0009B48B /* OnboardingPageViewModel.swift */,
 				3E3925C82BFD351F0033F0E2 /* BackgroundGridViewModel.swift */,
 				9DDE10362C24665500A89215 /* CompatibilityNavigation.swift */,
+				3ED8C3CF2C380AE40093CDD7 /* ResponsiveScore.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -185,7 +186,6 @@
 			children = (
 				3E56308A2BF82BBF0009B48B /* GameView.swift */,
 				3ED2CBA62C37F773004587BE /* TopHUD.swift */,
-				3ED8C3CF2C380AE40093CDD7 /* ResponsiveScore.swift */,
 				3E5EF2DA2BF812E2001B6D22 /* GameGrid.swift */,
 				3EA6505F2C358C8F003E9707 /* ScoreView.swift */,
 				3ED6BF552C0242C400A53C29 /* GameOver.swift */,
@@ -286,7 +286,7 @@
 			);
 			name = TicTacToe;
 			packageProductDependencies = (
-				3E4CC0DF2C35EC7500DA0407 /* Lottie */,
+				3E493BD72C42EF3000C37419 /* Lottie */,
 			);
 			productName = TicTacToe;
 			productReference = 3E6C13B32BF7F82400373047 /* TicTacToe.app */;
@@ -323,7 +323,7 @@
 			);
 			mainGroup = 3E6C13AA2BF7F82400373047;
 			packageReferences = (
-				3E4CC0DE2C35EC7500DA0407 /* XCRemoteSwiftPackageReference "lottie-spm" */,
+				3E493BD62C42EF3000C37419 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
 			productRefGroup = 3E6C13B42BF7F82400373047 /* Products */;
 			projectDirPath = "";
@@ -646,20 +646,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3E4CC0DE2C35EC7500DA0407 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+		3E493BD62C42EF3000C37419 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-spm";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 4.4.3;
+				minimumVersion = 4.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3E4CC0DF2C35EC7500DA0407 /* Lottie */ = {
+		3E493BD72C42EF3000C37419 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3E4CC0DE2C35EC7500DA0407 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			package = 3E493BD62C42EF3000C37419 /* XCRemoteSwiftPackageReference "lottie-spm" */;
 			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */

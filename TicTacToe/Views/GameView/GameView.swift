@@ -17,7 +17,8 @@ struct GameView: View {
 
     @State private var showAlert = false
     @State private var showWinnerOverlay = false
-
+    @State private var scale: CGFloat = 1.0
+    @State private var timer: Timer?
     var body: some View {
 
         ZStack {
@@ -53,12 +54,36 @@ struct GameView: View {
                 }
 
                 GameGrid(gameLogic: gameLogic)
+
                 Spacer()
+                Group {
+                    if changeViewTo.value == .online {
+                        Text("\(matchManager.localPlayerScore >= 3 ? (matchManager.localPlayer.displayName) : (matchManager.otherPlayer?.displayName ?? "other")) is on a roll!")
+                            .fontWeight(.bold)
+                    } else if changeViewTo.value == .offline {
+                        Text("\(gameLogic.xScore >= 3 ? "X player" : "O player") is on a roll!")
+                            .fontWeight(.bold)
+                    } else {
+                        Text("\(gameLogic.xScore >= 3 ? "Player" : "AI") is on a roll!")
+                            .fontWeight(.bold)
+                    }
+                }
+                .foregroundStyle(.textTheme)
+                .font(.title3)
+                .scaleEffect(scale)
+                .opacity(showPlayerRoll())
+                .onAppear {
+                    startScalingAnimation()
+                }
+                .onDisappear {
+                    timer?.invalidate()
+                }
+
             }// end of outer VStack
 
             .onAppear {
                 gameLogic.resetGame()
-                gameLogic.xScore = 0
+//                gameLogic.xScore = 0
                 gameLogic.oScore = 0
             }
             .onDisappear {
@@ -78,7 +103,9 @@ struct GameView: View {
                 winnerOverlay
             }
         }// end of outer ZStack
-
+        .onAppear {
+            gameLogic.xScore = 3
+        }
     }
 
     var winnerOverlay: some View {
@@ -162,6 +189,27 @@ struct GameView: View {
             )
         }
         .preferredColorScheme(colorScheme)
+    }
+
+    func showPlayerRoll() -> Double {
+
+        let offlineDifference = abs(gameLogic.xScore - gameLogic.oScore)
+        let onlineDifference = abs(matchManager.localPlayerScore - matchManager.otherPlayerScore)
+
+        if changeViewTo.value == .online {
+            return onlineDifference >= 3 ? 1 : 0
+        } else {
+            return offlineDifference >= 3 ? 1 : 0
+        }
+    }
+
+    func startScalingAnimation() {
+
+        timer = Timer.scheduledTimer(withTimeInterval: 0.35, repeats: true) { _ in
+            withAnimation {
+                scale = (scale == 1.0) ? 0.85 : 1.0
+            }
+        }
     }
 }
 
