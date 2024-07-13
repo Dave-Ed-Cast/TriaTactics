@@ -24,12 +24,12 @@ struct GameView: View {
         ZStack {
             Color.buttonTheme.ignoresSafeArea()
 
-            VStack(spacing: 0) {
+            VStack(spacing: -15) {
 
                 TopHUD()
 
                 ScoreView()
-                    .padding(.vertical, 0)
+//                    .padding(.bottom, 20)
                 Spacer()
                 VStack {
                     if changeViewTo.value == .online {
@@ -44,12 +44,11 @@ struct GameView: View {
                             }
                     } else if changeViewTo.value == .offline || changeViewTo.value == .bot {
                         // TODO: picker for difficulty
-                        Text("placeholder")
+                        Text("")
                             .font(.title2)
                             .fontWeight(.semibold)
                             .foregroundStyle(.textTheme)
                             .padding(.bottom, 10)
-                            .opacity(0)
                     }
                 }
 

@@ -27,35 +27,37 @@ struct TopHUD: View {
     var body: some View {
 
         VStack {
-            ZStack {
+
+            ZStack(alignment: .bottom) {
                 Rectangle()
                     .foregroundStyle(.backgroundTheme.opacity(0.6))
 
                 HStack(alignment: .center) {
+                    Group {
+                        if changeViewTo.value == .online {
+                            playerImageView()
+                                .frame(width: xSize * 0.17, height: xSize * 0.17)
 
-                    if changeViewTo.value == .online {
-                        playerImageView()
-                            .frame(width: xSize * 0.17, height: xSize * 0.17)
+                            playerTurnText()
+                                .frame(width: xSize * 0.5, height: xSize * 0.2)
+                        } else {
+                            offlineImageView()
+                                .frame(width: xSize * 0.17, height: xSize * 0.17)
 
-                        playerTurnText()
-                            .frame(width: xSize * 0.5, height: xSize * 0.2)
-                    } else {
-                        offlineImageView()
-                            .frame(width: xSize * 0.17, height: xSize * 0.17)
-
-                        offlineText()
-                            .frame(width: xSize * 0.5, height: xSize * 0.2)
+                            offlineText()
+                                .frame(width: xSize * 0.5, height: xSize * 0.2)
+                        }
                     }
+                    .padding(.bottom, 15)
                 } // end of HStack
                 .foregroundStyle(.textTheme)
                 .font(.title)
                 .multilineTextAlignment(.center)
                 .lineLimit(2)
-                .padding(.top, 50)
             }
             .frame(width: xSize, height: xSize * 0.38)
         }
-        .ignoresSafeArea()
+        .ignoresSafeArea(.all)
     }
 
     func playerImageView() -> some View {

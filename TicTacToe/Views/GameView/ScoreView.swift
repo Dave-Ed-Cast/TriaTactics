@@ -27,7 +27,6 @@ struct ScoreView: View {
                 ResponsiveScore(player: "right", invert: true)
             }
             .frame(width: xSize)
-
         }
         .edgesIgnoringSafeArea(.all)
     }
