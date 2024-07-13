@@ -19,12 +19,19 @@ struct ResponsiveScore: View {
     let player: String
     let invert: Bool
 
+    @State private var gameTurns = 0
+
+    private var animationTriggerValue: Int {
+        let trigger = gameLogic.xScore + gameLogic.oScore + matchManager.localPlayerScore + matchManager.otherPlayerScore
+        return trigger <= 20 ? trigger : 0
+    }
+
     var body: some View {
         Group {
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
                     .offset(x: moveWinner(for: xSize))
-                    .animation(.snappy(duration: 1))
+                    .animation(.snappy(duration: 1), value: animationTriggerValue)
                     .overlay {
                         Group {
                             if gameLogic.xScore - gameLogic.oScore >= 3 {
