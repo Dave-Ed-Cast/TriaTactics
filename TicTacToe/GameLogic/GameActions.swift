@@ -52,7 +52,7 @@ extension GameLogic {
             print("match manager is nil, from handleMoveOnline")
             return
         }
-        
+
         guard matchManager.currentlyPlaying else {
             print("not your turn")
             return
@@ -126,26 +126,26 @@ extension GameLogic {
     ///   - index: the index we received
     ///   - player: the player that made the move
     func receiveMove(index: Int, player: Player) {
-        
+
         guard Navigation.shared.value == .online else {
             print("not online")
             return
         }
-        
+
         guard let matchManager = matchManager else {
             print("match manager is nil, from receiveMove")
             return
         }
-        
+
         guard grid[index] == nil && winner == nil else {
             return
         }
-        
+
         grid[index] = player
         print("Received move from player \(player) at index \(index)")
-        
+
         gameActions(index: index)
-        
+
         if checkWinner() {
             winner = player
             matchManager.sendString("winner")
@@ -153,12 +153,12 @@ extension GameLogic {
         } else {
             matchManager.currentlyPlaying = !(matchManager.currentlyPlaying)
             activePlayer = (activePlayer == .X) ? .O : .X
-            
+
             if matchManager.currentlyPlaying {
                 matchManager.remainingTime = 10
             }
         }
-        
+
     }
 
     /// The symbol of the touched grid position element
@@ -213,7 +213,7 @@ extension GameLogic {
     /// prevent online stalling from someone not making a move
     func makeRandomMove() {
         print("random")
-        
+
         guard let matchManager = matchManager else {
             print("match manager is nil, from makeRandomMove")
             return

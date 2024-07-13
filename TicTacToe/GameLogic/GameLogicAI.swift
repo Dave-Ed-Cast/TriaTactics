@@ -105,19 +105,19 @@ extension GameLogic {
     /// - Returns: the bestScore after evaluating all possible moves.
     private func minimax(depth: Int, isMaximizing: Bool) -> Int {
         if let winner = checkWinnerOnGrid() {
-            return winner == .O ? 10 - depth : depth - 10
+            return winner == .O ? Int.random(in: 10...15) - depth : depth - Int.random(in: 5...10)
         }
 
         if depth >= maxDepthForDifficulty() {
             return 0
         }
-        print("depth: \(depth)")
 
         if isMaximizing {
             var bestScore = Int.min
             for index in 0..<grid.count where grid[index] == nil {
                 grid[index] = .O
                 let score = minimax(depth: depth + 1, isMaximizing: false)
+                print("at depth \(depth), for the index \(index), the AI assigns \(score) as score")
                 grid[index] = nil
                 bestScore = max(score, bestScore)
             }

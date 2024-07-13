@@ -58,6 +58,8 @@ struct GameView: View {
 
             .onAppear {
                 gameLogic.resetGame()
+                gameLogic.xScore = 0
+                gameLogic.oScore = 0
             }
             .onDisappear {
                 matchManager.gameOver()

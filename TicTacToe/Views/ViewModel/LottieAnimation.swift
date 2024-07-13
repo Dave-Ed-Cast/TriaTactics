@@ -31,23 +31,25 @@ struct LottieAnimation: View {
     var offset: CGSize?
 
     var body: some View {
-        LottieView(animation: .named(name))
-            .configure({ configuration in
-                configuration.contentMode = contentMode
-            })
-            .playbackMode(playbackMode)
-            .animationDidFinish({ _ in
-                didFinish?()
-            })
-            .frame(width: width, height: height)
-            .scaleEffect(scaleFactor ?? 1)
-            .cornerRadius(cornerRadiusFactor ?? 0)
-            .rotationEffect(.degrees(degrees ?? 0))
-            .offset(offset ?? CGSize.zero)
+        Group {
+            LottieView(animation: .named(name))
+                .configure({ configuration in
+                    configuration.contentMode = contentMode
+                })
+                .playbackMode(playbackMode)
+                .animationDidFinish({ _ in
+                    didFinish?()
+                })
+        }
+        .frame(width: width, height: height)
+        .scaleEffect(scaleFactor ?? 1)
+        .cornerRadius(cornerRadiusFactor ?? 0)
+        .rotationEffect(.degrees(degrees ?? 0))
+        .offset(offset ?? CGSize.zero)
 
     }
 }
 
 #Preview {
-    LottieAnimation(name: "Cool2", contentMode: .scaleAspectFit, playbackMode: .playing(.toProgress(1, loopMode: .loop)), scaleFactor: 1)
+    LottieAnimation(name: "Fire", contentMode: .scaleAspectFit, playbackMode: .playing(.toProgress(1, loopMode: .loop)), width: 80, scaleFactor: 1, degrees: -90)
 }

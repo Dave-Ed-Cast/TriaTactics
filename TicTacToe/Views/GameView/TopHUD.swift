@@ -52,9 +52,8 @@ struct TopHUD: View {
                 .multilineTextAlignment(.center)
                 .lineLimit(2)
                 .padding(.top, 50)
-                .frame(width: .infinity)
             }
-            .frame(height: xSize * 0.38)
+            .frame(width: xSize, height: xSize * 0.38)
         }
         .ignoresSafeArea()
     }
