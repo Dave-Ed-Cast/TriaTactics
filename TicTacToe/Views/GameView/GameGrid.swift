@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 /// This is the game grid, here go all modifications relating to cell position of symbols
 struct GameGrid: View {
@@ -30,13 +31,15 @@ struct GameGrid: View {
                                 let index = row * 3 + col
                                 Button {
                                     gameLogic.buttonTap(index: index)
+                                    performHapticFeedback()
                                 } label: {
                                     Image(gameLogic.buttonLabel(index: index))
                                         .renderingMode(.template)
                                         .interpolation(.none)
                                         .resizable()
                                         .frame(width: cellSize * borderEdge, height: cellSize * borderEdge)
-//                                        .foregroundColor(gameLogic.buttonColor(index: index))
+                                        .animation(.default, value: gameLogic.buttonLabel(index: index))
+//                                        .foregroundStyle(gameLogic.buttonColor(index: index))
                                         .foregroundStyle(.textTheme)
 
                                 }
@@ -59,6 +62,16 @@ struct GameGrid: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .aspectRatio(1, contentMode: .fit)
+    }
+
+    func performHapticFeedback() {
+        var generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+
+        generator = UIImpactFeedbackGenerator(style: .rigid)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            generator.impactOccurred()
+        }
     }
 }
 

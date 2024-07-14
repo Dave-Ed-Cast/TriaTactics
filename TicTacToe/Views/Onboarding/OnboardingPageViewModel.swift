@@ -11,6 +11,8 @@ struct OnboardingPageViewModel: View {
 
     @Binding var onboardingIsCompleted: Bool
 
+    @Environment(\.colorScheme) var colorScheme
+
     var onboardingTitle: LocalizedStringKey
     var onboardingImage: String
     var onboardingText: LocalizedStringKey
@@ -21,7 +23,14 @@ struct OnboardingPageViewModel: View {
     var body: some View {
         VStack(spacing: 30) {
             Spacer()
-            LottieAnimation(name: onboardingImage, contentMode: .scaleAspectFit, playbackMode: onboardingImage != "Done" ? (.playing(.toProgress(1, loopMode: .loop))) : (.playing(.fromFrame(87, toFrame: 140, loopMode: .autoReverse))), width: animationSize, height: animationSize, scaleFactor: scaleFactor)
+            LottieAnimation(
+                name: onboardingImage,
+                contentMode: .scaleAspectFit,
+                playbackMode: onboardingImage != "Done" ? (.playing(.toProgress(1, loopMode: .loop))) : (.playing(.fromFrame(87, toFrame: 140, loopMode: .autoReverse))),
+                width: animationSize,
+                height: animationSize,
+                scaleFactor: scaleFactor
+            )
 
             Text(onboardingTitle)
                 .font(.title)
@@ -31,6 +40,8 @@ struct OnboardingPageViewModel: View {
                 .font(.title3)
                 .fontWeight(.semibold)
                 .multilineTextAlignment(.center)
+                .shadow(color: .black.opacity(0.7), radius: 10)
+
             Spacer()
 
         }

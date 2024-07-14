@@ -53,7 +53,7 @@ struct TicTacToeApp: App {
                     .environmentObject(gameLogic)
                     .environmentObject(navigation)
             } else {
-                OnboardView(viewModel: onboarding)
+                OnboardView(onboarding: onboarding)
             }
         }
     }
