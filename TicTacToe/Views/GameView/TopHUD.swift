@@ -14,13 +14,8 @@ struct TopHUD: View {
     @EnvironmentObject var gameLogic: GameLogic
     @EnvironmentObject var changeViewTo: Navigation
 
-    @Environment(\.colorScheme) var colorScheme
-
     @State private var showAlert = false
     @State private var showWinnerOverlay = false
-
-    @State private var localPlayerUIImage: UIImage?
-    @State private var localPlayerImageData: Data?
 
     let xSize: CGFloat = UIScreen.main.bounds.width
 

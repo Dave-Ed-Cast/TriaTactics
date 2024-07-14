@@ -37,7 +37,7 @@ struct GameView: View {
                             .font(.title2)
                             .fontWeight(.semibold)
                             .opacity((changeViewTo.value == .offline) ? 0 : 1)
-                            .foregroundStyle(matchManager.timer?.timeInterval ?? 10 <= 3 ? .red : .textTheme)
+                            .foregroundStyle(matchManager.remainingTime <= 3 ? .red : .textTheme)
                             .padding(.top, 10)
                             .onAppear {
                                 print("matchManager: \(matchManager)")
