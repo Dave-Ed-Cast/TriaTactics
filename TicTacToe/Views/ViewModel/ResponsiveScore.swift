@@ -130,8 +130,8 @@ struct ResponsiveScore: View {
         ResponsiveScore(player: "left", invert: false)
         ResponsiveScore(player: "right", invert: true)
     }
-    .environmentObject(MatchManager())
-    .environmentObject(GameLogic())
+    .environmentObject(MatchManager.shared)
+    .environmentObject(GameLogic.shared)
     .environmentObject({
         let navigation = Navigation.shared
         navigation.value = .offline
@@ -143,8 +143,8 @@ struct ResponsiveScore: View {
         ResponsiveScore(player: "left", invert: false)
         ResponsiveScore(player: "right", invert: true)
     }
-    .environmentObject(MatchManager())
-    .environmentObject(GameLogic())
+    .environmentObject(MatchManager.shared)
+    .environmentObject(GameLogic.shared)
     .environmentObject({
         let navigation = Navigation.shared
         navigation.value = .online
@@ -157,8 +157,8 @@ struct ResponsiveScore: View {
         ResponsiveScore(player: "left", invert: false)
         ResponsiveScore(player: "right", invert: true)
     }
-    .environmentObject(MatchManager())
-    .environmentObject(GameLogic())
+    .environmentObject(MatchManager.shared)
+    .environmentObject(GameLogic.shared)
     .environmentObject({
         let navigation = Navigation.shared
         navigation.value = .bot

@@ -25,7 +25,8 @@ enum Difficulty {
  It is indipendent from the match manager for mantainability, scalability, and testing purposes.
  */
 class GameLogic: ObservableObject {
-
+    private init() {}
+    static let shared = GameLogic()
     // these variables are all needed for the management of the game logic
     @Published var grid: [Player?] = Array(repeating: nil, count: 9)
     @Published var activePlayer: Player = .X

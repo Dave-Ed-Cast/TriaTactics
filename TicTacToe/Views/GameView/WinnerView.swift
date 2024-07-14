@@ -95,8 +95,8 @@ struct WinnerView: View {
 
 #Preview("offline") {
     WinnerView()
-        .environmentObject(MatchManager())
-        .environmentObject(GameLogic())
+        .environmentObject(MatchManager.shared)
+        .environmentObject(GameLogic.shared)
         .environmentObject({
             let navigation = Navigation.shared
             navigation.value = .offline
@@ -105,8 +105,8 @@ struct WinnerView: View {
 }
 #Preview("AI") {
     WinnerView()
-        .environmentObject(MatchManager())
-        .environmentObject(GameLogic())
+        .environmentObject(MatchManager.shared)
+        .environmentObject(GameLogic.shared)
         .environmentObject({
             let navigation = Navigation.shared
             navigation.value = .bot

@@ -48,5 +48,5 @@ struct GameOver: View {
 }
 
 #Preview {
-    GameOver(gameLogic: GameLogic(), showLottieAnimation: .constant(true))
+    GameOver(gameLogic: GameLogic.shared, showLottieAnimation: .constant(true))
 }

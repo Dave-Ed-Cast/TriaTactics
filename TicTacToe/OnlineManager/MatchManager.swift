@@ -14,7 +14,8 @@ import SwiftUI
  It is indipendent from the game logic  for mantainability, scalability, and testing purposes.
  */
 class MatchManager: NSObject, ObservableObject {
-
+    static let shared = MatchManager()
+    private override init() {}
     // these variables are all needed for the management of the matches
     @Published var inGame: Bool = false
     @Published var isGameOver: Bool = false

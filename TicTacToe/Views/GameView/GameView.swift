@@ -131,8 +131,8 @@ struct GameView: View {
 
 #Preview("Offline") {
     GameView()
-        .environmentObject(MatchManager())
-        .environmentObject(GameLogic())
+        .environmentObject(MatchManager.shared)
+        .environmentObject(GameLogic.shared)
         .environmentObject({
             let navigation = Navigation.shared
             navigation.value = .offline
@@ -141,8 +141,8 @@ struct GameView: View {
 }
 #Preview("Online") {
     GameView()
-        .environmentObject(MatchManager())
-        .environmentObject(GameLogic())
+        .environmentObject(MatchManager.shared)
+        .environmentObject(GameLogic.shared)
         .environmentObject({
             let navigation = Navigation.shared
             navigation.value = .online
@@ -152,8 +152,8 @@ struct GameView: View {
 
 #Preview("AI") {
     GameView()
-        .environmentObject(MatchManager())
-        .environmentObject(GameLogic())
+        .environmentObject(MatchManager.shared)
+        .environmentObject(GameLogic.shared)
         .environmentObject({
             let navigation = Navigation.shared
             navigation.value = .bot

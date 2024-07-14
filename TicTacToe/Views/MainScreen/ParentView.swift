@@ -52,9 +52,9 @@ struct PreviewWrapper<Content: View>: View {
     var body: some View {
         ZStack {
             content()
-                .environmentObject(MatchManager())
+                .environmentObject(MatchManager.shared)
                 .environmentObject(Navigation.shared)
-                .environmentObject(GameLogic())
+                .environmentObject(GameLogic.shared)
                 .background {
                     BackgroundView(savedValueForAnimation: $isPreviewAnimationEnabled)
                 }
@@ -70,6 +70,6 @@ struct PreviewWrapper<Content: View>: View {
 #Preview {
     ParentView()
         .environmentObject(Navigation.shared)
-        .environmentObject(MatchManager())
-        .environmentObject(GameLogic())
+        .environmentObject(MatchManager.shared)
+        .environmentObject(GameLogic.shared)
 }

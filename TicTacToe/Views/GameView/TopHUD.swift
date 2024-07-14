@@ -100,8 +100,8 @@ struct TopHUD: View {
 
 #Preview("Offline") {
     TopHUD()
-        .environmentObject(MatchManager())
-        .environmentObject(GameLogic())
+        .environmentObject(MatchManager.shared)
+        .environmentObject(GameLogic.shared)
         .environmentObject({
             let navigation = Navigation.shared
             navigation.value = .offline
@@ -110,8 +110,8 @@ struct TopHUD: View {
 }
 #Preview("Online") {
     TopHUD()
-        .environmentObject(MatchManager())
-        .environmentObject(GameLogic())
+        .environmentObject(MatchManager.shared)
+        .environmentObject(GameLogic.shared)
         .environmentObject({
             let navigation = Navigation.shared
             navigation.value = .online
@@ -121,8 +121,8 @@ struct TopHUD: View {
 
 #Preview("AI") {
     TopHUD()
-        .environmentObject(MatchManager())
-        .environmentObject(GameLogic())
+        .environmentObject(MatchManager.shared)
+        .environmentObject(GameLogic.shared)
         .environmentObject({
             let navigation = Navigation.shared
             navigation.value = .bot

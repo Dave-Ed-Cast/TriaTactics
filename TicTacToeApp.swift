@@ -27,8 +27,8 @@ class Navigation: ObservableObject {
 struct TicTacToeApp: App {
 
     @StateObject private var onboarding = OnboardingParameters()
-    @StateObject private var matchManager = MatchManager()
-    @StateObject private var gameLogic = GameLogic()
+    @StateObject private var matchManager = MatchManager.shared
+    @StateObject private var gameLogic = GameLogic.shared
     @StateObject private var navigation = Navigation.shared
 
     @AppStorage("animationStatus") private var animationEnabled = true
@@ -40,6 +40,8 @@ struct TicTacToeApp: App {
             UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
             UserDefaults.standard.set(true, forKey: "animationStatus")
         }
+        GameLogic.shared.matchManager = MatchManager.shared
+        MatchManager.shared.gameLogic = GameLogic.shared
     }
 
     var body: some Scene {

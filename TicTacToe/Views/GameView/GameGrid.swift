@@ -63,13 +63,13 @@ struct GameGrid: View {
 }
 
 #Preview {
-    GameGrid(gameLogic: GameLogic())
+    GameGrid(gameLogic: GameLogic.shared)
 }
 
 #Preview("Gameview") {
     GameView()
-        .environmentObject(MatchManager())
-        .environmentObject(GameLogic())
+        .environmentObject(MatchManager.shared)
+        .environmentObject(GameLogic.shared)
         .environmentObject({
             let navigation = Navigation.shared
             navigation.value = .offline

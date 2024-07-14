@@ -34,8 +34,8 @@ struct ScoreView: View {
 
 #Preview("Offline") {
     ScoreView()
-        .environmentObject(MatchManager())
-        .environmentObject(GameLogic())
+        .environmentObject(MatchManager.shared)
+        .environmentObject(GameLogic.shared)
         .environmentObject({
             let navigation = Navigation.shared
             navigation.value = .offline
@@ -45,8 +45,8 @@ struct ScoreView: View {
 }
 #Preview("Online") {
     ScoreView()
-        .environmentObject(MatchManager())
-        .environmentObject(GameLogic())
+        .environmentObject(MatchManager.shared)
+        .environmentObject(GameLogic.shared)
         .environmentObject({
             let navigation = Navigation.shared
             navigation.value = .online
@@ -56,8 +56,8 @@ struct ScoreView: View {
 
 #Preview("Game") {
     GameView()
-        .environmentObject(MatchManager())
-        .environmentObject(GameLogic())
+        .environmentObject(MatchManager.shared)
+        .environmentObject(GameLogic.shared)
         .environmentObject({
             let navigation = Navigation.shared
             navigation.value = .offline
