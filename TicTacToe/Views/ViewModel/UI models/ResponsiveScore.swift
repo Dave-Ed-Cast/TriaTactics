@@ -101,11 +101,8 @@ struct ResponsiveScore: View {
                 .font(.title)
             }
             .foregroundStyle(.backgroundTheme)
-            // change width to adjust symbol and text
+            //change width to adjust symbol and text
             .frame(width: xSize / 1.42, height: ySize * 0.1)
-        }
-        .onAppear {
-            gameLogic.xScore = 5
         }
         .ignoresSafeArea(.all)
     }
