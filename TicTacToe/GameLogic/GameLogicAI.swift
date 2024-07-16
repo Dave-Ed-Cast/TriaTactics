@@ -79,15 +79,16 @@ extension GameLogic {
         var bestScore = Int.min
         var move: Int?
 
-        // Iterate over all possible moves on the grid
+        // iterate over all possible moves on the grid
         for index in 0..<grid.count where grid[index] == nil {
-            // Try both players' symbols at the empty spot
+            // try both players' symbols at the empty spot
             for player in [Player.X, Player.O] {
                 grid[index] = player
+                // define the score if that player were to fill the spot
                 let score = minimax(depth: 0, isMaximizing: false)
                 grid[index] = nil
 
-                // Update best move if this move has a better score
+                // update best move if this move has a better score
                 if score > bestScore {
                     bestScore = score
                     move = index
@@ -105,7 +106,7 @@ extension GameLogic {
     /// - Returns: the bestScore after evaluating all possible moves.
     private func minimax(depth: Int, isMaximizing: Bool) -> Int {
         if let winner = checkWinnerOnGrid() {
-            return winner == .O ? Int.random(in: 10...15) - depth : depth - Int.random(in: 5...10)
+            return winner == .O ? 25 - depth : depth - 15
         }
 
         if depth >= maxDepthForDifficulty() {
@@ -127,6 +128,7 @@ extension GameLogic {
             for index in 0..<grid.count where grid[index] == nil {
                 grid[index] = .X
                 let score = minimax(depth: depth + 1, isMaximizing: true)
+                print("at depth \(depth), for the index \(index), the player assigns \(score) as score")
                 grid[index] = nil
                 bestScore = min(score, bestScore)
             }

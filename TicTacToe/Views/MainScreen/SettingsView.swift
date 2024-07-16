@@ -11,28 +11,45 @@ struct SettingsView: View {
 
     @Binding var toggleAnimation: Bool
 
+    @Environment(\.colorScheme) var colorScheme
+
     var body: some View {
         ZStack {
-            Toggle("Toggle Animation", isOn: $toggleAnimation)
-                .padding()
-                .background {
-                    RoundedRectangle(cornerRadius: 20)
-                        .foregroundStyle(Color.buttonTheme.opacity(0.8))
-                }
-                .padding()
-                .onChange(of: toggleAnimation) { newValue in
-                    UserDefaults.standard.set(newValue, forKey: "animationStatus")
-                }
+            VStack(spacing: 20) {
+                RoundedRectangle(cornerRadius: 50)
+                    .frame(width: UIScreen.main.bounds.width / 8, height: UIScreen.main.bounds.height / 256)
+                    .foregroundStyle(Color(.systemGray3))
+                Toggle("Toggle Animation", isOn: $toggleAnimation)
+                    .padding()
+                    .background {
+                        RoundedRectangle(cornerRadius: 20)
+                            .foregroundStyle(colorScheme == .dark ? Color(.systemGray5) : .white)
+                           
+                    }
+
+                    .onChange(of: toggleAnimation) { newValue in
+                        UserDefaults.standard.set(newValue, forKey: "animationStatus")
+                    }
+            }
+            .background(colorScheme == .dark ? .black : .gray)
+            .padding()
+            .padding(.bottom, 40)
         }
+        .background(colorScheme == .dark ? .black : .white)
     }
 }
 
 struct HalfModalView<ModalContent: View>: ViewModifier {
 
-    @Binding var isPresented: Bool
     @Environment(\.dismiss) var dismiss
 
+    @Binding var isPresented: Bool
+
+    @State private var offset: CGSize = .zero
+    @State private var isDragging = false
+
     let modalContent: () -> ModalContent
+    let maxHeight: CGFloat = UIScreen.main.bounds.height / 256
 
     func body(content: Content) -> some View {
         ZStack {
@@ -40,16 +57,6 @@ struct HalfModalView<ModalContent: View>: ViewModifier {
                 .onDisappear {
                     isPresented = false
                 }
-                .gesture(
-                    DragGesture()
-                        .onEnded { value in
-                            if value.translation.height > 50 {
-                                withAnimation {
-                                    isPresented = false
-                                }
-                            }
-                        }
-                )
 
             if isPresented {
                 Color.black.opacity(0.4)
@@ -59,7 +66,7 @@ struct HalfModalView<ModalContent: View>: ViewModifier {
                             isPresented = false
                         }
                     }
-
+                
                 VStack {
                     Spacer()
 
@@ -68,22 +75,28 @@ struct HalfModalView<ModalContent: View>: ViewModifier {
                         .background(Color.white)
                         .cornerRadius(20)
                         .shadow(radius: 20)
-                        .offset(y: isPresented ? 0 : UIScreen.main.bounds.height)
-                        .animation(.spring(), value: isPresented)
-                        .onDisappear {
-                            isPresented = false
+                        .offset(y: isPresented ? max(0, offset.height) : UIScreen.main.bounds.height)
+                        .onAppear {
+                            offset.height = 0
                         }
                         .gesture(
                             DragGesture()
+                                .onChanged { value in
+                                    print(value)
+                                    offset = value.translation
+                                    print(offset)
+                                    isDragging = true
+                                }
                                 .onEnded { value in
-                                    if value.translation.height > 50 {
-                                        withAnimation {
+                                    withAnimation {
+                                        if value.translation.height > 0 {
                                             isPresented = false
                                         }
                                     }
                                 }
                         )
                 }
+                .transition(.move(edge: .bottom))
                 .edgesIgnoringSafeArea(.bottom)
             }
         }
@@ -92,4 +105,10 @@ struct HalfModalView<ModalContent: View>: ViewModifier {
 
 #Preview {
     SettingsView(toggleAnimation: .constant(true))
+}
+
+#Preview {
+    PreviewWrapper {
+        MainView()
+    }
 }
