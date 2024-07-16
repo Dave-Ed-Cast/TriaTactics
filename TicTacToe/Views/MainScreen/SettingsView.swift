@@ -24,7 +24,7 @@ struct SettingsView: View {
                     .background {
                         RoundedRectangle(cornerRadius: 20)
                             .foregroundStyle(colorScheme == .dark ? Color(.systemGray5) : .white)
-                           
+
                     }
 
                     .onChange(of: toggleAnimation) { newValue in
@@ -66,7 +66,7 @@ struct HalfModalView<ModalContent: View>: ViewModifier {
                             isPresented = false
                         }
                     }
-                
+
                 VStack {
                     Spacer()
 

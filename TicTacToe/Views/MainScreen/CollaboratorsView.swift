@@ -12,15 +12,16 @@ struct CollaboratorsView: View {
     @EnvironmentObject var changeViewTo: Navigation
     @AppStorage("animationStatus") private var animationEnabled = true
 
+    @Environment(\.colorScheme) var colorScheme
     var collaborators: [Collaborator] = Collaborator.list
 
     var body: some View {
 
-            VStack {
-                ScrollView {
+        VStack {
+            ScrollView {
                 ForEach(collaborators) { collab in
                     HStack {
-                        VStack(alignment: .leading, spacing: 0) {
+                        VStack(alignment: .leading, spacing: 10) {
                             Text(collab.name)
                                 .font(.title2)
                                 .fontWeight(.bold)
@@ -30,7 +31,6 @@ struct CollaboratorsView: View {
                                 .font(.callout)
                         }
                         .foregroundStyle(.textTheme)
-                        .padding()
 
                         Spacer()
 
@@ -38,21 +38,24 @@ struct CollaboratorsView: View {
                             Text("Their page")
                                 .font(.subheadline)
                                 .fontWeight(.semibold)
-                                .foregroundColor(.blue)
                                 .underline(true)
+                                .foregroundStyle(.blue)
+                                .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                                .background {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .foregroundStyle(colorScheme == .dark ?  .white.opacity(0.05) : .clear)
+                                }
                         })
-                        .padding()
                     }
+                    .padding()
                     .background {
                         RoundedRectangle(cornerRadius: 20)
                             .foregroundStyle(.buttonTheme.opacity(0.8))
                     }
                     .lineLimit(nil)
-                    .padding()
-
                 }
+                .padding()
             }
-
         }
         .overlay(alignment: .topTrailing) {
             TertiaryButton {
