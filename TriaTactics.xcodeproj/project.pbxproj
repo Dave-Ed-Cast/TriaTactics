@@ -42,7 +42,6 @@
 		3ED67F932BF8C09600B2F400 /* MetalLibrary.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3ED67F922BF8C09600B2F400 /* MetalLibrary.metal */; };
 		3ED67F952BF8EEFE00B2F400 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 3ED67F942BF8EEFE00B2F400 /* Localizable.xcstrings */; };
 		3ED67F9B2BF8FB6900B2F400 /* TicTacToe.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ED67F9A2BF8FB6900B2F400 /* TicTacToe.json */; };
-		3ED67F9D2BF8FBDA00B2F400 /* GameOver.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ED67F9C2BF8FBDA00B2F400 /* GameOver.json */; };
 		3ED67FAB2BF9072600B2F400 /* Rule.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ED67FAA2BF9072600B2F400 /* Rule.json */; };
 		3ED6BF562C0242C400A53C29 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED6BF552C0242C400A53C29 /* GameOver.swift */; };
 		3ED8C3D02C380AE40093CDD7 /* ResponsiveScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED8C3CF2C380AE40093CDD7 /* ResponsiveScore.swift */; };
@@ -94,7 +93,6 @@
 		3ED67F922BF8C09600B2F400 /* MetalLibrary.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = MetalLibrary.metal; sourceTree = "<group>"; };
 		3ED67F942BF8EEFE00B2F400 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		3ED67F9A2BF8FB6900B2F400 /* TicTacToe.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TicTacToe.json; sourceTree = "<group>"; };
-		3ED67F9C2BF8FBDA00B2F400 /* GameOver.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GameOver.json; sourceTree = "<group>"; };
 		3ED67FAA2BF9072600B2F400 /* Rule.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Rule.json; sourceTree = "<group>"; };
 		3ED6BF552C0242C400A53C29 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		3ED8C3CF2C380AE40093CDD7 /* ResponsiveScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsiveScore.swift; sourceTree = "<group>"; };
@@ -166,7 +164,6 @@
 				3ED67FAA2BF9072600B2F400 /* Rule.json */,
 				3E5108582C175855001B4B33 /* YouWin.json */,
 				3ED67F9A2BF8FB6900B2F400 /* TicTacToe.json */,
-				3ED67F9C2BF8FBDA00B2F400 /* GameOver.json */,
 			);
 			name = Animations;
 			sourceTree = "<group>";
@@ -352,7 +349,6 @@
 			files = (
 				9D9DC82F2C2579ED004EFDFF /* .swiftlint.yml in Resources */,
 				3E6C13BE2BF7F82500373047 /* Preview Assets.xcassets in Resources */,
-				3ED67F9D2BF8FBDA00B2F400 /* GameOver.json in Resources */,
 				3E6C13BB2BF7F82500373047 /* Assets.xcassets in Resources */,
 				3ED67F952BF8EEFE00B2F400 /* Localizable.xcstrings in Resources */,
 				3E3EFA842C42B5AD000B4E97 /* Fire.json in Resources */,

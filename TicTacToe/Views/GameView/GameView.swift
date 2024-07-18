@@ -59,10 +59,10 @@ struct GameView: View {
                         Text("\(matchManager.localPlayerScore >= 3 ? (matchManager.localPlayer.displayName) : (matchManager.otherPlayer?.displayName ?? "other")) is on a roll!")
                             .fontWeight(.bold)
                     } else if changeViewTo.value == .offline {
-                        Text("\(gameLogic.xScore >= 3 ? "X player" : "O player") is on a roll!")
+                        Text("\(gameLogic.xScore >= 2 ? "X player" : "O player") is on a roll!")
                             .fontWeight(.bold)
                     } else {
-                        Text("\(gameLogic.xScore >= 3 ? "Player" : "AI") is on a roll!")
+                        Text("\(gameLogic.xScore >= 2 ? "Player" : "AI") is on a roll!")
                             .fontWeight(.bold)
                     }
                 }

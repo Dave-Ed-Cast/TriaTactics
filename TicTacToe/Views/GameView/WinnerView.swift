@@ -18,6 +18,8 @@ struct WinnerView: View {
     @State private var showAlert = false
     @State private var showWinnerOverlay = false
 
+    let xSize = UIScreen.main.bounds.width
+
     var body: some View {
         ZStack {
             Color.black.opacity(0.6).ignoresSafeArea()
@@ -35,10 +37,20 @@ struct WinnerView: View {
                             .resizable()
                             .frame(maxWidth: 130, maxHeight: 130)
                     } else {
-                        Text(matchManager.localPlayerWin ? matchManager.localPlayer.displayName : matchManager.otherPlayer?.displayName ?? "Other")
-                            .fontWeight(.bold)
-                            .font(.largeTitle)
-                            .foregroundStyle(.textTheme)
+                        VStack {
+                            let localPlayer = matchManager.localPlayerImage
+                            let otherPlayer = matchManager.otherPlayerImage
+                            let data = matchManager.localPlayerWin ? localPlayer : otherPlayer
+                            let uiImage = UIImage(data: (data ?? systemImageData(systemName: gameLogic.winner?.rawValue == "X" ? "person.circle" : "person.circle.fill"))!)
+
+                            Image(uiImage: uiImage!)
+                                .resizable()
+                                .frame(width: xSize * 0.265, height: xSize * 0.265)
+
+                            Text(matchManager.localPlayerWin ? matchManager.localPlayer.displayName : matchManager.otherPlayer?.displayName ?? "Other")
+                                .font(.headline)
+                                .foregroundStyle(.textTheme)
+                        }
                     }
                 }
                 .padding(.horizontal, 50)
@@ -91,6 +103,10 @@ struct WinnerView: View {
         }
     }
 
+    func systemImageData(systemName: String) -> Data? {
+        let image = UIImage(systemName: systemName)
+        return image?.pngData()
+    }
 }
 
 #Preview("offline") {
@@ -100,6 +116,16 @@ struct WinnerView: View {
         .environmentObject({
             let navigation = Navigation.shared
             navigation.value = .offline
+            return navigation
+        }())
+}
+#Preview("online") {
+    WinnerView()
+        .environmentObject(MatchManager.shared)
+        .environmentObject(GameLogic.shared)
+        .environmentObject({
+            let navigation = Navigation.shared
+            navigation.value = .online
             return navigation
         }())
 }

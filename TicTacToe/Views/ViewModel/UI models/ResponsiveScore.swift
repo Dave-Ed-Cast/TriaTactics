@@ -34,18 +34,19 @@ struct ResponsiveScore: View {
                 .animation(.snappy(duration: 1), value: animationTriggerValue)
                 .overlay {
                     Group {
-                        if abs(gameLogic.xScore - gameLogic.oScore) >= 3 {
+                        let absDifference = Double(abs(gameLogic.xScore - gameLogic.oScore))
+                        let scaleFactor = (absDifference < 3 ? absDifference : 3) * 0.33
+                        let yOffset = ySize * -0.003 * (absDifference < 3 ? absDifference : 3)
+                        if  absDifference >= 1.0 {
                             withAnimation {
                                 LottieAnimation(
                                     name: "Fire",
                                     contentMode: .scaleAspectFit,
                                     playbackMode: (.playing(.fromFrame(1, toFrame: 25, loopMode: .loop))),
-                                    width: xSize / 3.3,
-                                    scaleFactor: 1,
-                                    degrees: (gameLogic.xScore > gameLogic.oScore ? -90 : 90)
+                                    scaleFactor: CGFloat(min(scaleFactor, 0.99))
                                 )
-                                .scaledToFill()
-                                .offset(x: (gameLogic.xScore > gameLogic.oScore ? xSize : -xSize) / 6.7 + moveWinner(for: xSize), y: 6)
+                                .offset(x: (gameLogic.xScore > gameLogic.oScore ? xSize : -xSize) * 0.25 + moveWinner(for: xSize), y: yOffset)
+                                .animation(.snappy(duration: 1), value: absDifference)
                             }
                         }
                     }
@@ -102,9 +103,13 @@ struct ResponsiveScore: View {
             }
             .foregroundStyle(.backgroundTheme)
             // change width to adjust symbol and text
-            .frame(width: xSize / 1.42, height: ySize * 0.1)
+            .frame(width: xSize / 1.42, height: ySize * 0.08)
         }
         .ignoresSafeArea(.all)
+        .onAppear {
+            gameLogic.xScore = 14
+        }
+
     }
 
     func moveWinner(for value: CGFloat) -> CGFloat {
