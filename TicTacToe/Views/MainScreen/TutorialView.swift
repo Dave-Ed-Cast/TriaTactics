@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TutorialView: View {
 
-    @EnvironmentObject var changeViewTo: Navigation
+    @EnvironmentObject var view: Navigation
     @AppStorage("animationStatus") private var animationEnabled = true
 
     var body: some View {
@@ -26,7 +26,7 @@ struct TutorialView: View {
 
             SecondaryButton(label: "OK!", action: {
                 withAnimation {
-                    changeViewTo.value = .main
+                    view.value = .main
                 }
             }, color: .buttonTheme.opacity(0.8))
             .padding()

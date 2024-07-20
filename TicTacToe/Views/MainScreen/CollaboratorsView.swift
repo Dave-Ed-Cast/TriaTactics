@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CollaboratorsView: View {
 
-    @EnvironmentObject var changeViewTo: Navigation
+    @EnvironmentObject var view: Navigation
     @AppStorage("animationStatus") private var animationEnabled = true
 
     @Environment(\.colorScheme) var colorScheme
@@ -60,7 +60,7 @@ struct CollaboratorsView: View {
         .overlay(alignment: .topTrailing) {
             TertiaryButton {
                 withAnimation {
-                    changeViewTo.value = .main
+                    view.value = .main
                 }
             }
         }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ResponsiveScore: View {
 
-    @EnvironmentObject var changeViewTo: Navigation
+    @EnvironmentObject var view: Navigation
     @EnvironmentObject var matchManager: MatchManager
     @EnvironmentObject var gameLogic: GameLogic
 
@@ -54,7 +54,7 @@ struct ResponsiveScore: View {
 
                 HStack(spacing: 5) {
                     if !invert {
-                        if changeViewTo.value == .offline || changeViewTo.value == .bot {
+                        if view.value == .offline || view.value == .bot {
                             Image(player == "left" ? "X" : "O")
                                 .resizable()
                                 .frame(width: xSize * 0.13, height: xSize * 0.13)
@@ -80,7 +80,7 @@ struct ResponsiveScore: View {
                             .multilineTextAlignment(.trailing)
                             .frame(width: xSize * 0.1)
 
-                        if changeViewTo.value == .offline || changeViewTo.value == .bot {
+                        if view.value == .offline || view.value == .bot {
                             Image(player == "left" ? "X" : "O")
                                 .resizable()
                                 .frame(width: xSize * 0.13, height: xSize * 0.13)
@@ -129,7 +129,7 @@ struct ResponsiveScore: View {
 
     func playerScore() -> Int {
 
-        if changeViewTo.value == .online {
+        if view.value == .online {
             return player == "left" ? matchManager.localPlayerScore : matchManager.otherPlayerScore
         } else {
             return player == "left" ? gameLogic.xScore : gameLogic.oScore

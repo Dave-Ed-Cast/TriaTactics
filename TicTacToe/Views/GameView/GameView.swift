@@ -11,7 +11,7 @@ struct GameView: View {
 
     @EnvironmentObject var matchManager: MatchManager
     @EnvironmentObject var gameLogic: GameLogic
-    @EnvironmentObject var changeViewTo: Navigation
+    @EnvironmentObject var view: Navigation
 
     @Environment(\.colorScheme) var colorScheme
 
@@ -19,6 +19,8 @@ struct GameView: View {
     @State private var showWinnerOverlay = false
     @State private var scale: CGFloat = 1.0
     @State private var timer: Timer?
+    @State private var start: Date = Date.now
+
     var body: some View {
 
         ZStack {
@@ -27,20 +29,19 @@ struct GameView: View {
             VStack(spacing: -15) {
 
                 TopHUD()
-
                 ScoreView()
-//                    .padding(.bottom, 20)
+
                 Spacer()
                 VStack {
-                    if changeViewTo.value == .online {
+                    if view.value == .online {
                         Text("Time left: \(matchManager.remainingTime)")
                             .font(.title2)
                             .fontWeight(.semibold)
-                            .opacity((changeViewTo.value == .offline) ? 0 : 1)
+                            .opacity((view.value == .offline) ? 0 : 1)
                             .foregroundStyle(matchManager.remainingTime <= 3 ? .red : .textTheme)
                             .padding(.top, 10)
 
-                    } else if changeViewTo.value == .offline || changeViewTo.value == .bot {
+                    } else if view.value == .offline || view.value == .bot {
                         // TODO: picker for difficulty
                         Text("Ascanio placeholder")
                             .font(.title2)
@@ -55,17 +56,25 @@ struct GameView: View {
 
                 Spacer()
                 Group {
-                    if changeViewTo.value == .online {
-                        Text("\(matchManager.localPlayerScore >= 3 ? (matchManager.localPlayer.displayName) : (matchManager.otherPlayer?.displayName ?? "other")) is on a roll!")
+
+                    let localPlayer = matchManager.localPlayer.displayName
+                    let otherPlayer = matchManager.otherPlayer?.displayName
+                    let localPlayerScore = matchManager.localPlayerScore
+
+                    if view.value == .online {
+                        Text("\(localPlayerScore >= 3 ? (localPlayer) : (otherPlayer ?? "other")) is on a roll!")
                             .fontWeight(.bold)
-                    } else if changeViewTo.value == .offline {
+                    } else if view.value == .offline {
                         Text("\(gameLogic.xScore >= 2 ? "X player" : "O player") is on a roll!")
                             .fontWeight(.bold)
                     } else {
                         Text("\(gameLogic.xScore >= 2 ? "Player" : "AI") is on a roll!")
                             .fontWeight(.bold)
+
                     }
+
                 }
+
                 .foregroundStyle(.textTheme)
                 .font(.title3)
                 .scaleEffect(scale)
@@ -76,42 +85,42 @@ struct GameView: View {
                 .onDisappear {
                     timer?.invalidate()
                 }
-
-            }// end of outer VStack
-
-            .onAppear {
-                gameLogic.resetGame()
-                gameLogic.xScore = 0
-                gameLogic.oScore = 0
             }
-            .onDisappear {
-                matchManager.gameOver()
-            }
-            .onChange(of: gameLogic.winner) { newValue in
-                if newValue != nil {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-                        withAnimation(.easeIn(duration: 0.7)) {
-                            showWinnerOverlay = true
-                        }
+
+        }// end of outer VStack
+
+        .onAppear {
+            gameLogic.resetGame()
+            gameLogic.xScore = 0
+            gameLogic.oScore = 0
+        }
+        .onDisappear {
+            matchManager.gameOver()
+        }
+        .onChange(of: gameLogic.winner) { newValue in
+            if newValue != nil {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                    withAnimation(.easeIn(duration: 0.7)) {
+                        showWinnerOverlay = true
                     }
                 }
             }
+        }
 
-            if showWinnerOverlay {
-                WinnerView()
-                    .onChange(of: gameLogic.winner) { newValue in
-                        if newValue == nil { showWinnerOverlay = false }
-                    }
-            }
-        }// end of outer ZStack
-    }
+        if showWinnerOverlay {
+            WinnerView()
+                .onChange(of: gameLogic.winner) { newValue in
+                    if newValue == nil { showWinnerOverlay = false }
+                }
+        }
+    }// end of outer ZStack
 
     func showPlayerRoll() -> Double {
 
         let offlineDifference = abs(gameLogic.xScore - gameLogic.oScore)
         let onlineDifference = abs(matchManager.localPlayerScore - matchManager.otherPlayerScore)
 
-        if changeViewTo.value == .online {
+        if view.value == .online {
             return onlineDifference >= 3 ? 1 : 0
         } else {
             return offlineDifference >= 3 ? 1 : 0
@@ -125,6 +134,11 @@ struct GameView: View {
                 scale = (scale == 1.0) ? 0.85 : 1.0
             }
         }
+    }
+
+    func iOSVersion() -> Bool {
+        if #available(iOS 17.0, *) { return true }
+        return false
     }
 }
 

@@ -12,7 +12,7 @@ struct PlayView: View {
     @AppStorage("animationStatus") private var animationEnabled = true
 
     @EnvironmentObject var matchManager: MatchManager
-    @EnvironmentObject var changeViewTo: Navigation
+    @EnvironmentObject var view: Navigation
 
     @Namespace private var namespace
 
@@ -60,12 +60,12 @@ struct PlayView: View {
 
                 PrimaryButton(label: "Play Offline", action: {
                     withAnimation {
-                        changeViewTo.value = .offline
+                        view.value = .offline
                     }
                 }, color: .buttonTheme.opacity(0.8))
                 PrimaryButton(label: "Play vs AI", action: {
                     withAnimation {
-                        changeViewTo.value = .bot
+                        view.value = .bot
                     }
                 }, color: .buttonTheme.opacity(0.8))
             }
@@ -76,7 +76,7 @@ struct PlayView: View {
             // menu
             SecondaryButton(label: "Menu", action: {
                 withAnimation {
-                    changeViewTo.value = .main
+                    view.value = .main
                 }
             }, color: .buttonTheme.opacity(0.8))
 

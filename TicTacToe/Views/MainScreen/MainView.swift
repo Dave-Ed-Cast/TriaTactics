@@ -11,7 +11,7 @@ struct MainView: View {
 
     @EnvironmentObject var matchManager: MatchManager
     @EnvironmentObject var gameLogic: GameLogic
-    @EnvironmentObject var changeViewTo: Navigation
+    @EnvironmentObject var view: Navigation
 
     @AppStorage("animationStatus") private var animationEnabled = true
 
@@ -58,14 +58,14 @@ struct MainView: View {
                 VStack(spacing: 30) {
                     PrimaryButton(label: "Play", action: {
                         withAnimation {
-                            changeViewTo.value = .play
+                            view.value = .play
                         }
                     }, color: .buttonTheme.opacity(0.8))
 
                     VStack(spacing: 10) {
                         SecondaryButton(label: "Tutorial", action: {
                             withAnimation {
-                                changeViewTo.value = .tutorial
+                                view.value = .tutorial
                             }
                         }, color: .buttonTheme.opacity(0.8))
 
@@ -90,7 +90,7 @@ struct MainView: View {
     var infoButton: some View {
         Button {
             withAnimation {
-                changeViewTo.value = .collaborators
+                view.value = .collaborators
             }
         } label: {
             Image(systemName: "info.circle")

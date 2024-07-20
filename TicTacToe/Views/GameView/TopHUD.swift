@@ -12,7 +12,7 @@ struct TopHUD: View {
 
     @EnvironmentObject var matchManager: MatchManager
     @EnvironmentObject var gameLogic: GameLogic
-    @EnvironmentObject var changeViewTo: Navigation
+    @EnvironmentObject var view: Navigation
 
     @State private var showAlert = false
     @State private var showWinnerOverlay = false
@@ -29,7 +29,7 @@ struct TopHUD: View {
 
                 HStack(alignment: .center) {
                     Group {
-                        if changeViewTo.value == .online {
+                        if view.value == .online {
                             playerImageView()
                                 .frame(width: xSize * 0.17, height: xSize * 0.17)
 
@@ -82,7 +82,7 @@ struct TopHUD: View {
 
     func offlineText() -> some View {
         let turnText: String
-        if changeViewTo.value == .bot {
+        if view.value == .bot {
             turnText = gameLogic.activePlayer == .X ? "It's your turn" : "AI's turn"
         } else {
             turnText = "It's your turn"

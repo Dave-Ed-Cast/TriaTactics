@@ -11,12 +11,13 @@ struct WinnerView: View {
 
     @EnvironmentObject var matchManager: MatchManager
     @EnvironmentObject var gameLogic: GameLogic
-    @EnvironmentObject var changeViewTo: Navigation
+    @EnvironmentObject var view: Navigation
 
     @Environment(\.colorScheme) var colorScheme
 
     @State private var showAlert = false
     @State private var showWinnerOverlay = false
+    @State private var pressed = false
 
     let xSize = UIScreen.main.bounds.width
 
@@ -32,7 +33,7 @@ struct WinnerView: View {
                         .fontWeight(.semibold)
                         .foregroundStyle(.textTheme)
 
-                    if changeViewTo.value == .offline || changeViewTo.value == .bot {
+                    if view.value == .offline || view.value == .bot {
                         Image(gameLogic.winner?.rawValue ?? "")
                             .resizable()
                             .frame(maxWidth: 130, maxHeight: 130)
@@ -63,11 +64,15 @@ struct WinnerView: View {
                 .padding(.top, 150)
 
                 PrimaryButton(label: "Rematch", action: {
-
-                    if changeViewTo.value == .offline || changeViewTo.value == .bot {
+                    guard pressed else {
+                        print("pressed")
+                        return
+                    }
+                    if view.value == .offline || view.value == .bot {
                         gameLogic.resetGame()
                     } else {
                         matchManager.sendRematchRequest()
+                        pressed = true
                     }
                     withAnimation(.easeIn(duration: 0.5)) {
                         showWinnerOverlay = false
@@ -84,22 +89,24 @@ struct WinnerView: View {
                         primaryButton: .destructive(Text("Yes")) {
 
                             withAnimation(.easeOut(duration: 0.5)) {
-                                changeViewTo.value == .online ? (matchManager.gameOver()) : (changeViewTo.value = .play)
+                                view.value == .online ? (matchManager.gameOver()) : (view.value = .play)
                             }
 
                             showAlert = false
 
-                        },
-                        secondaryButton: .cancel()
+                        }, secondaryButton: .cancel()
                     )
                 }
                 .preferredColorScheme(colorScheme)
             }
-            .onChange(of: gameLogic.activePlayer) { activePlayer in
-                if activePlayer == .O && changeViewTo.value == .bot {
+            .onChange(of: gameLogic.activePlayer) { player in
+                if player == .O && view.value == .bot {
                     gameLogic.computerMove()
                 }
             }
+        }
+        .onDisappear {
+            pressed = false
         }
     }
 

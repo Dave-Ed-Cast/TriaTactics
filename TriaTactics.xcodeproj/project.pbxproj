@@ -37,6 +37,7 @@
 		3E990CA52C448257004797C3 /* CustomRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E990CA42C448257004797C3 /* CustomRectangle.swift */; };
 		3EA650602C358C8F003E9707 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA6505F2C358C8F003E9707 /* ScoreView.swift */; };
 		3EBCE0832BFCEED600D5D37C /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBCE0822BFCEED600D5D37C /* TutorialView.swift */; };
+		3EC1F1C02C49C1BC0017C836 /* VisualEffectWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC1F1BF2C49C1BC0017C836 /* VisualEffectWrapper.swift */; };
 		3EC8FE192C0908570014BBC0 /* OnboardingParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC8FE182C0908570014BBC0 /* OnboardingParameters.swift */; };
 		3ED2CBA72C37F773004587BE /* TopHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED2CBA62C37F773004587BE /* TopHUD.swift */; };
 		3ED67F932BF8C09600B2F400 /* MetalLibrary.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3ED67F922BF8C09600B2F400 /* MetalLibrary.metal */; };
@@ -88,6 +89,7 @@
 		3EA6505E2C355747003E9707 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3EA6505F2C358C8F003E9707 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		3EBCE0822BFCEED600D5D37C /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
+		3EC1F1BF2C49C1BC0017C836 /* VisualEffectWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectWrapper.swift; sourceTree = "<group>"; };
 		3EC8FE182C0908570014BBC0 /* OnboardingParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingParameters.swift; sourceTree = "<group>"; };
 		3ED2CBA62C37F773004587BE /* TopHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHUD.swift; sourceTree = "<group>"; };
 		3ED67F922BF8C09600B2F400 /* MetalLibrary.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = MetalLibrary.metal; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				3E56308A2BF82BBF0009B48B /* GameView.swift */,
 				3E2928E62C43180000892F04 /* WinnerView.swift */,
 				3ED2CBA62C37F773004587BE /* TopHUD.swift */,
+				3EC1F1BF2C49C1BC0017C836 /* VisualEffectWrapper.swift */,
 				3E5EF2DA2BF812E2001B6D22 /* GameGrid.swift */,
 				3EA6505F2C358C8F003E9707 /* ScoreView.swift */,
 				3ED6BF552C0242C400A53C29 /* GameOver.swift */,
@@ -424,6 +427,7 @@
 				3ED8C3D42C3971800093CDD7 /* AnimationSettings.swift in Sources */,
 				3E3925C92BFD351F0033F0E2 /* BackgroundGridViewModel.swift in Sources */,
 				3E3925C32BFD2F2A0033F0E2 /* GameActions.swift in Sources */,
+				3EC1F1C02C49C1BC0017C836 /* VisualEffectWrapper.swift in Sources */,
 				3ED8C3D62C397DBC0093CDD7 /* TertiaryButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

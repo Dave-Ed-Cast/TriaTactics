@@ -11,13 +11,13 @@ struct ParentView: View {
 
     @AppStorage("animationStatus") private var animationEnabled = true
 
-    @EnvironmentObject var navigation: Navigation
+    @EnvironmentObject var view: Navigation
     @EnvironmentObject var matchManager: MatchManager
     @EnvironmentObject var gameLogic: GameLogic
 
     var body: some View {
         Group {
-            switch navigation.value {
+            switch view.value {
             case .main:
                 MainView()
             case .play:
@@ -40,11 +40,10 @@ struct ParentView: View {
     }
 }
 
-// ParentView has the background.
-// with this we can control the background on the previews.
-// If needed, call PreviewWrapper { SomeView() }
-// to see what would happen with a background that you can either move or not
-
+/// ParentView has the background.
+/// with this we can control the background on the previews.
+/// If needed, call `PreviewWrapper { SomeView() }`
+/// to see what would happen with a background that you can either move or not
 struct PreviewWrapper<Content: View>: View {
     @State private var isPreviewAnimationEnabled = true
     let content: () -> Content

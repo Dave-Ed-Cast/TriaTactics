@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ScoreView: View {
 
-    @EnvironmentObject var changeViewTo: Navigation
     @EnvironmentObject var matchManager: MatchManager
     @EnvironmentObject var gameLogic: GameLogic
 
