@@ -5,16 +5,16 @@
 //  Created by Davide Castaldi on 20/06/24.
 //
 
-import SwiftUI
+ import SwiftUI
 
-struct PlayView: View {
+ struct PlayView: View {
 
     @AppStorage("animationStatus") private var animationEnabled = true
 
     @EnvironmentObject var matchManager: MatchManager
     @EnvironmentObject var view: Navigation
 
-    @Namespace private var namespace
+    var namespace: Namespace.ID
 
     let size = UIScreen.main.bounds
 
@@ -27,31 +27,28 @@ struct PlayView: View {
                     .resizable()
                     .scaledToFit()
                     .cornerRadius(20)
-                    .matchedGeometryEffect(id: "icon", in: namespace)
                     .frame(height: size.height / 7.5)
 
                 Text("Tria Tactics")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                    .matchedGeometryEffect(id: "title", in: namespace)
+
                 Text("The game for true tacticians!")
                     .font(.headline)
                     .fontWeight(.semibold)
-                    .matchedGeometryEffect(id: "subtitle", in: namespace)
             }
             .foregroundStyle(.textTheme)
             .padding()
+
             .background {
                 RoundedRectangle(cornerRadius: 20)
                     .fill(Color.buttonTheme.opacity(0.8))
             }
-            .matchedGeometryEffect(id: "heroRectangle", in: namespace)
-            .padding(.top, 100)
-
+            .matchedGeometryEffect(id: "icon", in: namespace)
             Spacer()
 
-            // buttons
-            VStack(spacing: 20) {
+            VStack(spacing: 30) {
+
                 PrimaryButton(label: "Play Online", action: {
                     matchManager.startMatchmaking()
                 }, color: .buttonTheme.opacity(0.8))
@@ -70,7 +67,6 @@ struct PlayView: View {
                 }, color: .buttonTheme.opacity(0.8))
             }
             .padding(.top, 50)
-
             Spacer()
 
             // menu
@@ -79,17 +75,19 @@ struct PlayView: View {
                     view.value = .main
                 }
             }, color: .buttonTheme.opacity(0.8))
+            Spacer()
 
         }
+        .animation(.none, value: view.value)
 
         .onAppear {
             matchManager.authenticateUser()
         }
     }
-}
+ }
 
-#Preview {
+ #Preview {
     PreviewWrapper {
-        PlayView()
+        PlayView(namespace: Namespace().wrappedValue)
     }
-}
+ }

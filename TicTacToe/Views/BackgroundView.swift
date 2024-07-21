@@ -42,7 +42,7 @@ struct BackgroundView: View {
                 .frame(width: widthScreen, height: heightScreen)
                 .background(.backgroundTheme)
                 .rotationEffect(.degrees(-15))
-                .scaleEffect(1.8)
+                .scaleEffect(1.47)
                 .onAppear {
                     if savedValueForAnimation {
                         startScrolling()
@@ -57,7 +57,7 @@ struct BackgroundView: View {
 
     var animatedImage: some View {
         LazyVGrid(columns: columns) {
-            ForEach(0..<259) { i in
+            ForEach(0..<283) { i in
                 Image(i % 2 == 0 ? "X" : "O")
                     .interpolation(.none)
                     .resizable()

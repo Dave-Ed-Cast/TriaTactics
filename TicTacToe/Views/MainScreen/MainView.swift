@@ -5,9 +5,9 @@
 //  Created by Davide Castaldi on 17/05/24.
 //
 
-import SwiftUI
+ import SwiftUI
 
-struct MainView: View {
+ struct MainView: View {
 
     @EnvironmentObject var matchManager: MatchManager
     @EnvironmentObject var gameLogic: GameLogic
@@ -18,7 +18,7 @@ struct MainView: View {
     @State private var isSettingsPresented = false
     @State private var isAnimationEnabled = UserDefaults.standard.bool(forKey: "animationStatus")
 
-    @Namespace private var namespace
+    var namespace: Namespace.ID
 
     let size = UIScreen.main.bounds
 
@@ -32,17 +32,15 @@ struct MainView: View {
                         .resizable()
                         .scaledToFit()
                         .cornerRadius(20)
-                        .matchedGeometryEffect(id: "icon", in: namespace)
                         .frame(height: size.height / 7.5)
 
                     Text("Tria Tactics")
                         .font(.largeTitle)
                         .fontWeight(.bold)
-                        .matchedGeometryEffect(id: "title", in: namespace)
+
                     Text("The game for true tacticians!")
                         .font(.headline)
                         .fontWeight(.semibold)
-                        .matchedGeometryEffect(id: "subtitle", in: namespace)
                 }
                 .foregroundStyle(.textTheme)
                 .padding()
@@ -53,6 +51,8 @@ struct MainView: View {
                         infoButton
                     }
                 }
+                .matchedGeometryEffect(id: "icon", in: namespace)
+
                 .padding(.bottom, 50)
 
                 VStack(spacing: 30) {
@@ -77,6 +77,7 @@ struct MainView: View {
                     }
                 }// end of 2nd inner vstack
             }// end of outer vstack
+
             .lineLimit(1)
         }
         .halfModal(isPresented: $isSettingsPresented) {
@@ -85,6 +86,7 @@ struct MainView: View {
                     isSettingsPresented = false
                 }
         }
+        .animation(.none, value: view.value)
     }
 
     var infoButton: some View {
@@ -100,10 +102,10 @@ struct MainView: View {
         }
         .padding()
     }
-}
+ }
 
-#Preview {
+ #Preview {
     PreviewWrapper {
-        MainView()
+        MainView(namespace: Namespace().wrappedValue)
     }
-}
+ }

@@ -37,6 +37,7 @@ struct ResponsiveScore: View {
                         let absDifference = Double(abs(gameLogic.xScore - gameLogic.oScore))
                         let scaleFactor = (absDifference < 3 ? absDifference : 3) * 0.33
                         let yOffset = ySize * -0.003 * (absDifference < 3 ? absDifference : 3)
+
                         if  absDifference >= 1.0 {
                             withAnimation {
                                 LottieAnimation(
@@ -106,10 +107,6 @@ struct ResponsiveScore: View {
             .frame(width: xSize / 1.42, height: ySize * 0.08)
         }
         .ignoresSafeArea(.all)
-        .onAppear {
-            gameLogic.xScore = 14
-        }
-
     }
 
     func moveWinner(for value: CGFloat) -> CGFloat {

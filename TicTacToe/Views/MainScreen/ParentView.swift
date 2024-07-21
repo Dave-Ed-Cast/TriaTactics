@@ -15,27 +15,23 @@ struct ParentView: View {
     @EnvironmentObject var matchManager: MatchManager
     @EnvironmentObject var gameLogic: GameLogic
 
+    @Namespace private var namespace
+
     var body: some View {
-        Group {
+        ZStack {
+            BackgroundView(savedValueForAnimation: $animationEnabled)
             switch view.value {
             case .main:
-                MainView()
+                MainView(namespace: namespace)
             case .play:
-                PlayView()
-            case .online:
-                GameView()
-            case .offline:
-                GameView()
-            case .bot:
+                PlayView(namespace: namespace)
+            case .online, .offline, .bot:
                 GameView()
             case .tutorial:
                 TutorialView()
             case .collaborators:
                 CollaboratorsView()
             }
-        }
-        .background {
-            BackgroundView(savedValueForAnimation: $animationEnabled)
         }
     }
 }

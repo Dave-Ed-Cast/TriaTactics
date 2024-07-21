@@ -109,6 +109,6 @@ struct HalfModalView<ModalContent: View>: ViewModifier {
 
 #Preview {
     PreviewWrapper {
-        MainView()
+        MainView(namespace: Namespace().wrappedValue)
     }
 }
