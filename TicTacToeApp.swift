@@ -72,3 +72,28 @@ extension View {
         self.modifier(HalfModalView(isPresented: isPresented, modalContent: content))
     }
 }
+
+struct CustomPushTransitionModifier: ViewModifier {
+    let isActive: Bool
+    let direction: Edge
+
+    func body(content: Content) -> some View {
+        content
+            .offset(x: isActive ? 0 : direction == .leading ? -UIScreen.main.bounds.width : UIScreen.main.bounds.width, y: 0)
+            .opacity(isActive ? 1 : 0)
+            .animation(.easeInOut, value: isActive)
+    }
+}
+
+extension AnyTransition {
+    static func customPush(from edge: Edge) -> AnyTransition {
+        if #available(iOS 16.0, *) {
+            return .push(from: edge)
+        } else {
+            return .modifier(
+                active: CustomPushTransitionModifier(isActive: true, direction: edge),
+                identity: CustomPushTransitionModifier(isActive: false, direction: edge)
+            )
+        }
+    }
+}

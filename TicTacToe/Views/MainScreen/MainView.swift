@@ -5,9 +5,9 @@
 //  Created by Davide Castaldi on 17/05/24.
 //
 
- import SwiftUI
+import SwiftUI
 
- struct MainView: View {
+struct MainView: View {
 
     @EnvironmentObject var matchManager: MatchManager
     @EnvironmentObject var gameLogic: GameLogic
@@ -24,8 +24,7 @@
 
     var body: some View {
 
-        ZStack {
-
+        Group {
             VStack(spacing: 10) {
                 VStack {
                     Image("appicon")
@@ -52,48 +51,79 @@
                     }
                 }
                 .matchedGeometryEffect(id: "icon", in: namespace)
-
-                .padding(.bottom, 50)
-
+                .padding(.vertical, 50)
                 VStack(spacing: 30) {
-                    PrimaryButton(label: "Play", action: {
-                        withAnimation {
-                            view.value = .play
-                        }
-                    }, color: .buttonTheme.opacity(0.8))
-
-                    VStack(spacing: 10) {
-                        SecondaryButton(label: "Tutorial", action: {
+                    if view.value == .main {
+                        PrimaryButton(label: "Play", action: {
                             withAnimation {
-                                view.value = .tutorial
+                                view.value = .play
                             }
                         }, color: .buttonTheme.opacity(0.8))
 
-                        SecondaryButton(label: "Settings", action: {
+                        VStack(spacing: 10) {
+                            SecondaryButton(label: "Tutorial", action: {
+                                withAnimation {
+                                    view.value = .tutorial
+                                }
+                            }, color: .buttonTheme.opacity(0.8))
+
+                            SecondaryButton(label: "Settings", action: {
+                                withAnimation {
+                                    isSettingsPresented.toggle()
+                                }
+                            }, color: .buttonTheme.opacity(0.8))
+                        }
+                    } else if view.value == .play {
+
+                        VStack(spacing: 30) {
+                            PrimaryButton(label: "Play Online", action: {
+                                matchManager.startMatchmaking()
+                            }, color: .buttonTheme.opacity(0.8))
+                            .opacity(matchManager.authenticationState != .authenticated ? 0.5 : 1)
+                            .disabled(matchManager.authenticationState != .authenticated)
+
+                            PrimaryButton(label: "Play Offline", action: {
+                                withAnimation {
+                                    view.value = .offline
+                                }
+                            }, color: .buttonTheme.opacity(0.8))
+                            PrimaryButton(label: "Play vs AI", action: {
+                                withAnimation {
+                                    view.value = .bot
+                                }
+                            }, color: .buttonTheme.opacity(0.8))
+                        }
+                        .padding(.top, 50)
+                        .onAppear {
+                            matchManager.authenticateUser()
+                        }
+
+                        // menu
+                        SecondaryButton(label: "Menu", action: {
                             withAnimation {
-                                isSettingsPresented.toggle()
+                                view.value = .main
                             }
                         }, color: .buttonTheme.opacity(0.8))
                     }
-                }// end of 2nd inner vstack
-            }// end of outer vstack
+                }
+            }
+        }// end of outer vstack
 
-            .lineLimit(1)
-        }
+        .lineLimit(1)
+
         .halfModal(isPresented: $isSettingsPresented) {
             SettingsView(toggleAnimation: $isAnimationEnabled)
                 .onDisappear {
                     isSettingsPresented = false
                 }
         }
-        .animation(.none, value: view.value)
     }
 
     var infoButton: some View {
         Button {
-            withAnimation {
+
                 view.value = .collaborators
-            }
+
         } label: {
             Image(systemName: "info.circle")
                 .foregroundStyle(.buttonTheme)
@@ -102,10 +132,24 @@
         }
         .padding()
     }
- }
+}
 
- #Preview {
+#Preview {
     PreviewWrapper {
         MainView(namespace: Namespace().wrappedValue)
     }
- }
+}
+
+#Preview("Play part") {
+    MainView(namespace: Namespace().wrappedValue)
+        .environmentObject(MatchManager.shared)
+        .environmentObject(GameLogic.shared)
+        .environmentObject({
+            let navigation = Navigation.shared
+            navigation.value = .play
+            return navigation
+        }())
+        .background {
+            BackgroundView(savedValueForAnimation: .constant(true))
+        }
+}

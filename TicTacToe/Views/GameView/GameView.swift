@@ -21,17 +21,32 @@ struct GameView: View {
     @State private var timer: Timer?
     @State private var start: Date = Date.now
 
+    private var localPlayer: String { matchManager.localPlayer.displayName }
+    private var otherPlayer: String { matchManager.otherPlayer?.displayName ?? "Other" }
+    private var localPlayerScore: Int { matchManager.localPlayerScore }
+    private var xScore: Int { gameLogic.xScore }
+
+    private var resultingPlayer: String {
+        switch view.value {
+        case .online:
+            return localPlayerScore >= 3 ? localPlayer : (otherPlayer)
+        case .offline:
+            return xScore >= 2 ? "X Player" : "O Player"
+        case .bot:
+            return xScore >= 2 ? "Player" : "AI"
+        default:
+            return ""
+        }
+    }
+
     var body: some View {
 
-        ZStack {
-            Color.buttonTheme.ignoresSafeArea()
-
+        Group {
             VStack(spacing: -15) {
 
                 TopHUD()
                 ScoreView()
 
-                Spacer()
                 VStack {
                     if view.value == .online {
                         Text("Time left: \(matchManager.remainingTime)")
@@ -51,43 +66,35 @@ struct GameView: View {
                             .opacity(0)
                     }
                 }
-
+                VStack {
+                    Spacer()
                 GameGrid(gameLogic: gameLogic)
-
-                Spacer()
-                Group {
-
-                    let localPlayer = matchManager.localPlayer.displayName
-                    let otherPlayer = matchManager.otherPlayer?.displayName
-                    let localPlayerScore = matchManager.localPlayerScore
-
-                    if view.value == .online {
-                        Text("\(localPlayerScore >= 3 ? (localPlayer) : (otherPlayer ?? "other")) is on a roll!")
-                            .fontWeight(.bold)
-                    } else if view.value == .offline {
-                        Text("\(gameLogic.xScore >= 2 ? "X player" : "O player") is on a roll!")
-                            .fontWeight(.bold)
-                    } else {
-                        Text("\(gameLogic.xScore >= 2 ? "Player" : "AI") is on a roll!")
-                            .fontWeight(.bold)
-
-                    }
-
+                    Spacer()
+                    Text("\(resultingPlayer) is on a roll!")
+                        .fontWeight(.bold)
+                        .foregroundStyle(.textTheme)
+                        .font(.title3)
+                        .scaleEffect(scale)
+                        .opacity(showPlayerRoll())
+                        .onAppear {
+                            startScalingAnimation()
+                        }
+                        .onDisappear {
+                            timer?.invalidate()
+                        }
                 }
 
-                .foregroundStyle(.textTheme)
-                .font(.title3)
-                .scaleEffect(scale)
-                .opacity(showPlayerRoll())
-                .onAppear {
-                    startScalingAnimation()
-                }
-                .onDisappear {
-                    timer?.invalidate()
-                }
             }
-
+            if showWinnerOverlay {
+                WinnerView()
+                    .onChange(of: gameLogic.winner) { newValue in
+                        if newValue == nil { showWinnerOverlay = false }
+                    }
+            }
         }// end of outer VStack
+        .background {
+            Color.buttonTheme.ignoresSafeArea()
+        }
 
         .onAppear {
             gameLogic.resetGame()
@@ -107,13 +114,7 @@ struct GameView: View {
             }
         }
 
-        if showWinnerOverlay {
-            WinnerView()
-                .onChange(of: gameLogic.winner) { newValue in
-                    if newValue == nil { showWinnerOverlay = false }
-                }
-        }
-    }// end of outer ZStack
+    }
 
     func showPlayerRoll() -> Double {
 
@@ -134,11 +135,6 @@ struct GameView: View {
                 scale = (scale == 1.0) ? 0.85 : 1.0
             }
         }
-    }
-
-    func iOSVersion() -> Bool {
-        if #available(iOS 17.0, *) { return true }
-        return false
     }
 }
 

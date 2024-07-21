@@ -21,44 +21,38 @@ struct OnboardingPageViewModel: View {
     var scaleFactor: CGFloat = 1.0
 
     var body: some View {
-        VStack(spacing: 30) {
-            Spacer()
-            LottieAnimation(
-                name: onboardingImage,
-                contentMode: .scaleAspectFit,
-                playbackMode: onboardingImage != "Done" ? (.playing(.toProgress(1, loopMode: .loop))) : (.playing(.fromFrame(87, toFrame: 140, loopMode: .autoReverse))),
-                width: animationSize,
-                height: animationSize,
-                scaleFactor: scaleFactor
-            )
+        VStack(spacing: 50) {
+            //            Spacer()
+            Group {
+                LottieAnimation(
+                    name: onboardingImage,
+                    contentMode: .scaleAspectFit,
+                    playbackMode: onboardingImage != "Done" ? (.playing(.toProgress(1, loopMode: .loop))) : (.playing(.fromFrame(87, toFrame: 140, loopMode: .autoReverse))),
+                    width: animationSize,
+                    height: animationSize,
+                    scaleFactor: scaleFactor
+                )
 
-            Text(onboardingTitle)
-                .font(.title)
-                .fontWeight(.bold)
+                Text(onboardingTitle)
+                    .font(.title)
+                    .fontWeight(.bold)
 
-            Text(onboardingText)
-                .font(.title3)
-                .fontWeight(.semibold)
-                .multilineTextAlignment(.center)
-                .shadow(color: .black.opacity(0.7), radius: 10)
+                Text(onboardingText)
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .multilineTextAlignment(.center)
+                    .shadow(color: .black.opacity(0.7), radius: 10)
 
-            Spacer()
-
-        }
-        .foregroundStyle(.textTheme)
-        .padding()
-        .overlay(alignment: .bottom, content: {
-            if showDoneButton {
-                SecondaryButton(label: "Lets' start!", action: {
-                    onboardingIsCompleted = true
-                }, color: .buttonTheme.opacity(0.8))
-                .padding(.bottom, 10)
             }
-        })
-        .padding(.bottom, 50)
-//        .background {
-//            BackgroundView()
-//        }
+            .lineLimit(nil)
+            SecondaryButton(label: "Lets' start!", action: {
+                onboardingIsCompleted = true
+            }, color: .buttonTheme.opacity(0.8))
+            .padding(.bottom, 40)
+            .opacity(showDoneButton ? 1 : 0)
+        }
+        .padding()
+        .foregroundStyle(.textTheme)
     }
 }
 

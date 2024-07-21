@@ -13,25 +13,36 @@ struct TutorialView: View {
     @AppStorage("animationStatus") private var animationEnabled = true
 
     var body: some View {
-        VStack {
 
-            OnboardingPageViewModel(
-                onboardingIsCompleted: .constant(false),
-                onboardingTitle: "Tria Tactics rule",
-                onboardingImage: "Rule",
-                onboardingText: "Making a fourth move will cost the first one. The next one follows the same logic. Tria Tactics is about choosing wisely!",
-                animationSize: CGFloat(300)
+        VStack(spacing: 30) {
+            Spacer()
+            LottieAnimation(
+                name: "Rule",
+                contentMode: .scaleAspectFit,
+                playbackMode: .playing(.toFrame(1, loopMode: .loop)),
+                scaleFactor: 1.0
             )
-            .lineLimit(nil)
 
+            Text("Tria Tactics rule")
+                .font(.title)
+                .fontWeight(.bold)
+
+            Text("Making a fourth move will cost the first one. The next one follows the same logic. Choose wisely!")
+                .font(.title3)
+                .fontWeight(.semibold)
+                .multilineTextAlignment(.center)
+                .shadow(color: .black.opacity(0.7), radius: 10)
+
+            Spacer()
             SecondaryButton(label: "OK!", action: {
                 withAnimation {
                     view.value = .main
                 }
             }, color: .buttonTheme.opacity(0.8))
-            .padding()
-        }
 
+            .padding(.bottom, 70)
+        }
+        .padding()
     }
 }
 

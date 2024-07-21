@@ -64,15 +64,11 @@ struct WinnerView: View {
                 .padding(.top, 150)
 
                 PrimaryButton(label: "Rematch", action: {
-                    guard pressed else {
-                        print("pressed")
-                        return
-                    }
+
                     if view.value == .offline || view.value == .bot {
                         gameLogic.resetGame()
                     } else {
                         matchManager.sendRematchRequest()
-                        pressed = true
                     }
                     withAnimation(.easeIn(duration: 0.5)) {
                         showWinnerOverlay = false
@@ -105,9 +101,7 @@ struct WinnerView: View {
                 }
             }
         }
-        .onDisappear {
-            pressed = false
-        }
+
     }
 
     func systemImageData(systemName: String) -> Data? {

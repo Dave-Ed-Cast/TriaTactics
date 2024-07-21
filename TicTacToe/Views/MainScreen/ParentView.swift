@@ -17,18 +17,20 @@ struct ParentView: View {
 
     @Namespace private var namespace
 
+    let size = UIScreen.main.bounds
+
     var body: some View {
-        ZStack {
+        ZStack(alignment: .center) {
             BackgroundView(savedValueForAnimation: $animationEnabled)
             switch view.value {
-            case .main:
+            case .main, .play:
                 MainView(namespace: namespace)
-            case .play:
-                PlayView(namespace: namespace)
+                    .transition(.customPush(from: .top))
             case .online, .offline, .bot:
                 GameView()
             case .tutorial:
                 TutorialView()
+                    .transition(.customPush(from: .bottom))
             case .collaborators:
                 CollaboratorsView()
             }
