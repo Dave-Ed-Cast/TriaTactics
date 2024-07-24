@@ -30,14 +30,14 @@ struct TertiaryButton: View {
             ZStack {
                 Circle()
                     .foregroundStyle(color)
-                    .frame(width: size.width / 10, height: size.height / 10)
+                    .frame(width: size.width / 12, height: size.height / 12)
                     .if(invertColor) { view in
                         view.colorInvert()
                     }
                 Image(systemName: "xmark")
                     .padding()
                     .foregroundStyle(.textTheme)
-                    .font(.title3)
+                    .font(.headline)
             }
         }
     }

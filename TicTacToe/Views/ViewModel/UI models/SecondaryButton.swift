@@ -37,7 +37,7 @@ struct SecondaryButton: View {
                         view.colorInvert()
                     }
                 Text(label)
-                    .fontWeight(.medium)
+                    .fontWeight(.light)
                     .padding()
                     .foregroundStyle(.textTheme)
                     .font(.title3)

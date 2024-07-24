@@ -27,7 +27,7 @@ struct ScoreView: View {
             }
             .frame(width: xSize)
         }
-        .edgesIgnoringSafeArea(.all)
+        .ignoresSafeArea(.all)
     }
 }
 

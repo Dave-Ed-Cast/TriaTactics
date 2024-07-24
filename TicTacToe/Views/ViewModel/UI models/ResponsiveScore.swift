@@ -27,9 +27,8 @@ struct ResponsiveScore: View {
     }
 
     var body: some View {
-        Group {
-            ZStack {
-                CustomRectangle(invert: invert)
+        ZStack {
+            CustomRectangle(invert: invert)
                 .offset(x: moveWinner(for: xSize))
                 .animation(.snappy(duration: 1), value: animationTriggerValue)
                 .overlay {
@@ -53,59 +52,59 @@ struct ResponsiveScore: View {
                     }
                 }
 
-                HStack(spacing: 5) {
-                    if !invert {
-                        if view.value == .offline || view.value == .bot {
-                            Image(player == "left" ? "X" : "O")
-                                .resizable()
-                                .frame(width: xSize * 0.13, height: xSize * 0.13)
-                        } else {
-
-                            let localPlayer = matchManager.localPlayerImage
-                            let otherPlayer = matchManager.otherPlayerImage
-
-                            let uiImage = UIImage(data: ((player == "left" ? localPlayer : otherPlayer) ?? systemImageData(systemName: player == "left" ? "person.circle" : "person.circle.fill"))!)
-
-                            Image(uiImage: uiImage!)
-                                .resizable()
-                                .frame(width: xSize * 0.13, height: xSize * 0.13)
-                        }
-                        Text("\(playerScore())")
-                            .fontWeight(.bold)
-                            .multilineTextAlignment(.trailing)
-                            .frame(width: xSize * 0.1)
-
+            HStack(spacing: 5) {
+                if !invert {
+                    if view.value == .offline || view.value == .bot {
+                        Image(player == "left" ? "X" : "O")
+                            .resizable()
+                            .frame(width: xSize * 0.13, height: xSize * 0.13)
                     } else {
-                        Text("\(playerScore())")
-                            .fontWeight(.bold)
-                            .multilineTextAlignment(.trailing)
-                            .frame(width: xSize * 0.1)
 
-                        if view.value == .offline || view.value == .bot {
-                            Image(player == "left" ? "X" : "O")
-                                .resizable()
-                                .frame(width: xSize * 0.13, height: xSize * 0.13)
-                        } else {
+                        let localPlayer = matchManager.localPlayerImage
+                        let otherPlayer = matchManager.otherPlayerImage
 
-                            let localPlayer = matchManager.localPlayerImage
-                            let otherPlayer = matchManager.otherPlayerImage
+                        let uiImage = UIImage(data: ((player == "left" ? localPlayer : otherPlayer) ?? systemImageData(systemName: player == "left" ? "person.circle" : "person.circle.fill"))!)
 
-                            let uiImage = UIImage(data: ((player == "left" ? localPlayer : otherPlayer) ?? systemImageData(systemName: player == "left" ? "person.circle" : "person.circle.fill"))!)
-
-                            Image(uiImage: uiImage!)
-                                .resizable()
-                                .frame(width: xSize * 0.13, height: xSize * 0.13)
-                        }
-
+                        Image(uiImage: uiImage!)
+                            .resizable()
+                            .frame(width: xSize * 0.13, height: xSize * 0.13)
                     }
+                    Text("\(playerScore())")
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.trailing)
+                        .frame(width: xSize * 0.1)
+
+                } else {
+                    Text("\(playerScore())")
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.trailing)
+                        .frame(width: xSize * 0.1)
+
+                    if view.value == .offline || view.value == .bot {
+                        Image(player == "left" ? "X" : "O")
+                            .resizable()
+                            .frame(width: xSize * 0.13, height: xSize * 0.13)
+                    } else {
+
+                        let localPlayer = matchManager.localPlayerImage
+                        let otherPlayer = matchManager.otherPlayerImage
+
+                        let uiImage = UIImage(data: ((player == "left" ? localPlayer : otherPlayer) ?? systemImageData(systemName: player == "left" ? "person.circle" : "person.circle.fill"))!)
+
+                        Image(uiImage: uiImage!)
+                            .resizable()
+                            .frame(width: xSize * 0.13, height: xSize * 0.13)
+                    }
+
                 }
-                .foregroundStyle(.textTheme)
-                .font(.title)
             }
-            .foregroundStyle(.backgroundTheme)
-            // change width to adjust symbol and text
-            .frame(width: xSize / 1.42, height: ySize * 0.08)
+            .foregroundStyle(.textTheme)
+            .font(.title)
         }
+        .foregroundStyle(.backgroundTheme)
+        // change width to adjust symbol and text
+        .frame(width: xSize / 1.42, height: ySize * 0.08)
+
         .ignoresSafeArea(.all)
     }
 

@@ -35,7 +35,7 @@ struct PrimaryButton: View {
             ZStack {
                 RoundedRectangle(cornerRadius: 15)
                     .foregroundStyle(color)
-                    .frame(width: size.width / 2, height: size.height / 12)
+                    .frame(width: size.width / 2, height: size.height / 14)
                     .if(invertColor) { view in
                         view.colorInvert()
                     }
@@ -45,12 +45,11 @@ struct PrimaryButton: View {
                     .fontWeight(.bold)
                     .padding()
                     .foregroundStyle(.textTheme)
-                    .font(.title)
+                    .font(.title2)
                     .multilineTextAlignment(.center)
 
             }
         }
-        .frame(width: size.width / 2.1, height: size.height / 12)
     }
 }
 
@@ -59,7 +58,7 @@ struct PrimaryButton: View {
         Color.black.ignoresSafeArea()
 
         VStack(spacing: 30) {
-            PrimaryButton(label: "TEST AAAA", action: {})
+            PrimaryButton(label: "orland shbienen", action: {})
             PrimaryButton(label: "TEST BBBB", action: {}, color: .red)
             PrimaryButton(label: "TEST CCCC", action: {}, color: .red, invertColor: true)
 

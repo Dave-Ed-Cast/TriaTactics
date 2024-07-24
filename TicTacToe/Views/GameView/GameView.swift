@@ -29,7 +29,7 @@ struct GameView: View {
     private var resultingPlayer: String {
         switch view.value {
         case .online:
-            return localPlayerScore >= 3 ? localPlayer : (otherPlayer)
+            return localPlayerScore >= 2 ? localPlayer : (otherPlayer)
         case .offline:
             return xScore >= 2 ? "X Player" : "O Player"
         case .bot:
@@ -42,10 +42,12 @@ struct GameView: View {
     var body: some View {
 
         Group {
-            VStack(spacing: -15) {
+            VStack(spacing: 15) {
 
                 TopHUD()
+                    .padding(.horizontal)
                 ScoreView()
+                    .padding(.horizontal)
 
                 VStack {
                     if view.value == .online {
@@ -63,13 +65,13 @@ struct GameView: View {
                             .fontWeight(.semibold)
                             .foregroundStyle(.textTheme)
                             .padding(.top, 10)
-                            .opacity(0)
+                        //                            .opacity(0)
                     }
                 }
+                .frame(alignment: .center)
                 VStack {
-                    Spacer()
-                GameGrid(gameLogic: gameLogic)
-                    Spacer()
+                    GameGrid(gameLogic: gameLogic)
+                        .padding()
                     Text("\(resultingPlayer) is on a roll!")
                         .fontWeight(.bold)
                         .foregroundStyle(.textTheme)
@@ -83,22 +85,25 @@ struct GameView: View {
                             timer?.invalidate()
                         }
                 }
+                Spacer()
 
             }
+
+        }// end of outer VStack
+        .background {
+            Color.buttonTheme.ignoresSafeArea()
+        }
+        .overlay {
             if showWinnerOverlay {
                 WinnerView()
                     .onChange(of: gameLogic.winner) { newValue in
                         if newValue == nil { showWinnerOverlay = false }
                     }
             }
-        }// end of outer VStack
-        .background {
-            Color.buttonTheme.ignoresSafeArea()
         }
-
         .onAppear {
             gameLogic.resetGame()
-            gameLogic.xScore = 0
+            gameLogic.xScore = 3
             gameLogic.oScore = 0
         }
         .onDisappear {
