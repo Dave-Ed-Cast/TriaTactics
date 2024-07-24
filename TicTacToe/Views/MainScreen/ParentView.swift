@@ -48,7 +48,7 @@ struct ParentView: View {
                 CollaboratorsView()
 
             }
-            
+
             if let location = touchLocation {
                 LottieAnimation(
                     name: "Sparkle",
