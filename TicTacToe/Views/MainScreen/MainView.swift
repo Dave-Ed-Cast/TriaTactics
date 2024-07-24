@@ -12,6 +12,7 @@ struct MainView: View {
     @EnvironmentObject var matchManager: MatchManager
     @EnvironmentObject var gameLogic: GameLogic
     @EnvironmentObject var view: Navigation
+    @EnvironmentObject var animation: AnimationTap
 
     @AppStorage("animationStatus") private var animationEnabled = true
 
@@ -55,6 +56,7 @@ struct MainView: View {
                 VStack(spacing: 30) {
                     if view.value == .main {
                         PrimaryButton(label: "Play", action: {
+                            animation.shouldAnimate = true
                             withAnimation {
                                 view.value = .play
                             }
@@ -62,12 +64,14 @@ struct MainView: View {
 
                         VStack(spacing: 10) {
                             SecondaryButton(label: "Tutorial", action: {
+                                animation.shouldAnimate = true
                                 withAnimation {
                                     view.value = .tutorial
                                 }
                             }, color: .buttonTheme.opacity(0.8))
 
                             SecondaryButton(label: "Settings", action: {
+                                animation.shouldAnimate = true
                                 withAnimation {
                                     isSettingsPresented.toggle()
                                 }
@@ -77,17 +81,20 @@ struct MainView: View {
 
                         VStack(spacing: 30) {
                             PrimaryButton(label: "Play Online", action: {
+                                animation.shouldAnimate = true
                                 matchManager.startMatchmaking()
                             }, color: .buttonTheme.opacity(0.8))
                             .opacity(matchManager.authenticationState != .authenticated ? 0.5 : 1)
                             .disabled(matchManager.authenticationState != .authenticated)
 
                             PrimaryButton(label: "Play Offline", action: {
+                                animation.shouldAnimate = true
                                 withAnimation {
                                     view.value = .offline
                                 }
                             }, color: .buttonTheme.opacity(0.8))
                             PrimaryButton(label: "Play vs AI", action: {
+                                animation.shouldAnimate = true
                                 withAnimation {
                                     view.value = .bot
                                 }
@@ -100,6 +107,7 @@ struct MainView: View {
 
                         // menu
                         SecondaryButton(label: "Menu", action: {
+                            animation.shouldAnimate = true
                             withAnimation {
                                 view.value = .main
                             }
@@ -121,8 +129,8 @@ struct MainView: View {
 
     var infoButton: some View {
         Button {
-
-                view.value = .collaborators
+            animation.shouldAnimate = true
+            view.value = .collaborators
 
         } label: {
             Image(systemName: "info.circle")
@@ -137,18 +145,19 @@ struct MainView: View {
 #Preview {
     PreviewWrapper {
         MainView(namespace: Namespace().wrappedValue)
+            .environmentObject(AnimationTap())
     }
 }
 
 #Preview("Play part") {
-    MainView(namespace: Namespace().wrappedValue)
-        .environmentObject(MatchManager.shared)
+    MainView(namespace: Namespace().wrappedValue)        .environmentObject(MatchManager.shared)
         .environmentObject(GameLogic.shared)
         .environmentObject({
             let navigation = Navigation.shared
             navigation.value = .play
             return navigation
         }())
+        .environmentObject(AnimationTap())
         .background {
             BackgroundView(savedValueForAnimation: .constant(true))
         }

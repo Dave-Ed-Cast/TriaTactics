@@ -7,7 +7,13 @@
 
 import SwiftUI
 
+class AnimationTap: ObservableObject {
+    @Published var shouldAnimate: Bool = false
+}
+
 struct ParentView: View {
+
+    @StateObject private var animation = AnimationTap()
 
     @AppStorage("animationStatus") private var animationEnabled = true
 
@@ -17,6 +23,9 @@ struct ParentView: View {
 
     @Namespace private var namespace
 
+    @State private var animateSparkle: Bool = false
+    @State var touchLocation: CGPoint?
+
     let size = UIScreen.main.bounds
 
     var body: some View {
@@ -25,18 +34,48 @@ struct ParentView: View {
             switch view.value {
             case .main, .play:
                 MainView(namespace: namespace)
+                    .environmentObject(animation)
                     .transition(.customPush(from: .top))
+
             case .online, .offline, .bot:
                 GameView()
+
             case .tutorial:
                 TutorialView()
                     .transition(.customPush(from: .bottom))
+
             case .collaborators:
                 CollaboratorsView()
+
+            }
+            
+            if let location = touchLocation {
+                LottieAnimation(
+                    name: "Sparkle",
+                    contentMode: .scaleAspectFit,
+                    playbackMode: .playing(.toProgress(1, loopMode: .playOnce)),
+                    scaleFactor: 8
+                )
+                .position(location)
+                .onAppear {
+                    print("on appear x: \(location.x)")
+                    print("on appear y: \(location.y)")
+                }
+                .onDisappear {
+                    print("disappear: \(animateSparkle)")
+                    animateSparkle = false
+                }
             }
         }
+        .gesture(
+            DragGesture(minimumDistance: 0)
+                .onEnded { value in
+                    touchLocation = value.location
+                }
+        )
+
+        }
     }
-}
 
 /// ParentView has the background.
 /// with this we can control the background on the previews.
@@ -69,4 +108,5 @@ struct PreviewWrapper<Content: View>: View {
         .environmentObject(Navigation.shared)
         .environmentObject(MatchManager.shared)
         .environmentObject(GameLogic.shared)
+        .environmentObject(AnimationTap())
 }
