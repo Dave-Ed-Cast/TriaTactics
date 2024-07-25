@@ -26,10 +26,10 @@ struct PrimaryButton: View {
 
     var body: some View {
         Button {
-            if let animation = animation {
-                print("aaa")
-                animation.shouldAnimate = true
-            }
+//            if let animation = animation {
+//                print("aaa")
+//                animation.shouldAnimate = true
+//            }
             action?()
         } label: {
             ZStack {

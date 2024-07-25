@@ -51,5 +51,8 @@ struct LottieAnimation: View {
 }
 
 #Preview {
-    LottieAnimation(name: "Fire", contentMode: .scaleAspectFit, playbackMode: .playing(.toProgress(1, loopMode: .loop)), width: 80, scaleFactor: 1, degrees: -90)
+    LottieAnimation(name: "Sparkle", contentMode: .scaleAspectFit, playbackMode: .playing(.toProgress(1, loopMode: .loop)), scaleFactor: 2)
+        .background {
+            BackgroundView(savedValueForAnimation: .constant(true))
+        }
 }

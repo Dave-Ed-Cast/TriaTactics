@@ -22,8 +22,37 @@ struct ResponsiveScore: View {
     let invert: Bool
 
     private var animationTriggerValue: Int {
-        let trigger = gameLogic.xScore + gameLogic.oScore + matchManager.localPlayerScore + matchManager.otherPlayerScore
-        return trigger <= 100 ? trigger : 0
+        let trigger = xScore + oScore + localPlayerScore + otherPlayerScore
+        return Int(trigger <= 100 ? trigger : 0)
+    }
+
+    private var localPlayerImage: Data? { matchManager.localPlayerImage }
+    private var otherPlayerImage: Data? { matchManager.localPlayerImage }
+    private var xScore: Int { gameLogic.xScore }
+    private var oScore: Int { gameLogic.oScore }
+    private var localPlayerScore: Int { matchManager.localPlayerScore }
+    private var otherPlayerScore: Int { matchManager.otherPlayerScore }
+    private var offlineDifference: Double { Double(xScore - oScore) }
+    private var onlineDifference: Double { Double(localPlayerScore - otherPlayerScore) }
+
+    private var scaleFactor: Double {
+
+        if view.value == .online {
+            return abs(onlineDifference) < 3 ? abs(onlineDifference) : 3 * 0.33
+        } else {
+            return abs(offlineDifference) < 3 ? abs(offlineDifference) : 3 * 0.33
+        }
+    }
+
+    private var yOffset: CGFloat {
+
+        if abs(onlineDifference) <= 3 || abs(offlineDifference) <= 3 {
+
+            ySize * -0.003 * (view.value == .online ? abs(onlineDifference) : abs(offlineDifference))
+        } else {
+            ySize * -0.003 * 3
+        }
+
     }
 
     var body: some View {
@@ -33,21 +62,18 @@ struct ResponsiveScore: View {
                 .animation(.snappy(duration: 1), value: animationTriggerValue)
                 .overlay {
                     Group {
-                        let absDifference = Double(abs(gameLogic.xScore - gameLogic.oScore))
-                        let scaleFactor = (absDifference < 3 ? absDifference : 3) * 0.33
-                        let yOffset = ySize * -0.003 * (absDifference < 3 ? absDifference : 3)
-
-                        if  absDifference >= 1.0 {
-                            withAnimation {
-                                LottieAnimation(
-                                    name: "Fire",
-                                    contentMode: .scaleAspectFit,
-                                    playbackMode: (.playing(.fromFrame(1, toFrame: 25, loopMode: .loop))),
-                                    scaleFactor: CGFloat(min(scaleFactor, 0.99))
-                                )
-                                .offset(x: (gameLogic.xScore > gameLogic.oScore ? xSize : -xSize) * 0.25 + moveWinner(for: xSize), y: yOffset)
-                                .animation(.snappy(duration: 1), value: absDifference)
-                            }
+                        if abs(onlineDifference) >= 2.0 || abs(offlineDifference) >= 2.0 {
+                            LottieAnimation(
+                                name: "Fire",
+                                contentMode: .scaleAspectFit,
+                                playbackMode: (.playing(.fromFrame(1, toFrame: 25, loopMode: .loop))),
+                                scaleFactor: CGFloat(min(scaleFactor, 0.99))
+                            )
+                            .offset(
+                                x: (gameModeScore() ? xSize : -xSize) * 0.25 + moveWinner(for: xSize),
+                                y: yOffset
+                            )
+                            .animation(.snappy(duration: 1), value: animationTriggerValue)
                         }
                     }
                 }
@@ -55,33 +81,37 @@ struct ResponsiveScore: View {
             HStack(spacing: 5) {
                 if !invert {
                     if view.value == .offline || view.value == .bot {
-                        Image(player == "left" ? "X" : "O")
+                        Image("X")
                             .resizable()
                             .frame(width: xSize * 0.13, height: xSize * 0.13)
-                    } else {
+                    } else if view.value == .online {
 
                         let localPlayer = matchManager.localPlayerImage
                         let otherPlayer = matchManager.otherPlayerImage
+                        let uiImage = UIImage(data: ((player == "left" ? localPlayer : otherPlayer) ?? systemImageData(systemName: player == "left" ? "person.circle" : "person.circle.fill"))!)!
 
-                        let uiImage = UIImage(data: ((player == "left" ? localPlayer : otherPlayer) ?? systemImageData(systemName: player == "left" ? "person.circle" : "person.circle.fill"))!)
-
-                        Image(uiImage: uiImage!)
+                        Image(uiImage: uiImage)
                             .resizable()
                             .frame(width: xSize * 0.13, height: xSize * 0.13)
+                            .onAppear {
+                                print(String(describing: uiImage))
+                            }
                     }
+
                     Text("\(playerScore())")
                         .fontWeight(.bold)
                         .multilineTextAlignment(.trailing)
                         .frame(width: xSize * 0.1)
 
                 } else {
+
                     Text("\(playerScore())")
                         .fontWeight(.bold)
                         .multilineTextAlignment(.trailing)
                         .frame(width: xSize * 0.1)
 
                     if view.value == .offline || view.value == .bot {
-                        Image(player == "left" ? "X" : "O")
+                        Image("O")
                             .resizable()
                             .frame(width: xSize * 0.13, height: xSize * 0.13)
                     } else {
@@ -89,13 +119,12 @@ struct ResponsiveScore: View {
                         let localPlayer = matchManager.localPlayerImage
                         let otherPlayer = matchManager.otherPlayerImage
 
-                        let uiImage = UIImage(data: ((player == "left" ? localPlayer : otherPlayer) ?? systemImageData(systemName: player == "left" ? "person.circle" : "person.circle.fill"))!)
+                        let uiImage = UIImage(data: ((player == "left" ? localPlayer : otherPlayer) ?? systemImageData(systemName: player == "left" ? "person.circle" : "person.circle.fill"))!)!
 
-                        Image(uiImage: uiImage!)
+                        Image(uiImage: uiImage)
                             .resizable()
                             .frame(width: xSize * 0.13, height: xSize * 0.13)
                     }
-
                 }
             }
             .foregroundStyle(.textTheme)
@@ -108,14 +137,34 @@ struct ResponsiveScore: View {
         .ignoresSafeArea(.all)
     }
 
+    func gameModeScore() -> Bool {
+        if view.value == .online {
+            return (localPlayerScore > otherPlayerScore) ? true : false
+        } else {
+            return (xScore > oScore) ? true : false
+        }
+    }
+
     func moveWinner(for value: CGFloat) -> CGFloat {
         let multiplyingFactor = 0.042
-        let difference = abs(gameLogic.xScore - gameLogic.oScore)
-        if difference >= 0 && difference <= 5 {
-            return CGFloat(gameLogic.xScore - gameLogic.oScore) * value * multiplyingFactor
+        let absOfflineDifference = abs(offlineDifference)
+        let absOnlineDifference = abs(onlineDifference)
+
+        let onlineCondition = (absOnlineDifference >= 0 && absOnlineDifference <= 5)
+        let offlineCondition = (absOfflineDifference >= 0 && absOfflineDifference <= 5)
+
+        let offlineScore = CGFloat(xScore - oScore) * value * multiplyingFactor
+        let onlineScore = CGFloat(localPlayerScore - otherPlayerScore) * value * multiplyingFactor
+
+        let maxOfflineDifference = CGFloat(xScore > oScore ? 5 : -5) * value * multiplyingFactor
+        let maxOnlineDifference = CGFloat(localPlayerScore > otherPlayerScore ? 5 : -5) * value * multiplyingFactor
+
+        if view.value == .online {
+            return onlineCondition ? onlineScore : maxOnlineDifference
         } else {
-            return CGFloat(gameLogic.xScore > gameLogic.oScore ? 5 : -5) * value * multiplyingFactor
+            return offlineCondition ? offlineScore : maxOfflineDifference
         }
+
     }
 
     func systemImageData(systemName: String) -> Data? {
@@ -126,9 +175,9 @@ struct ResponsiveScore: View {
     func playerScore() -> Int {
 
         if view.value == .online {
-            return player == "left" ? matchManager.localPlayerScore : matchManager.otherPlayerScore
+            return player == "left" ? localPlayerScore : otherPlayerScore
         } else {
-            return player == "left" ? gameLogic.xScore : gameLogic.oScore
+            return player == "left" ? xScore : oScore
         }
     }
 }

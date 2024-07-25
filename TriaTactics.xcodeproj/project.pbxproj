@@ -22,6 +22,7 @@
 		3E4342662C0B48A90093FA80 /* Done.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E4342652C0B48A90093FA80 /* Done.json */; };
 		3E4350492C0F875600FDFADC /* CollaboratorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4350482C0F875600FDFADC /* CollaboratorsView.swift */; };
 		3E43504B2C0F876D00FDFADC /* Collaborator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E43504A2C0F876D00FDFADC /* Collaborator.swift */; };
+		3E4889FA2C4D878F0030584D /* Sparkle.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E4889F92C4D878F0030584D /* Sparkle.json */; };
 		3E4CC0E22C35F08A00DA0407 /* GameLogicAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4CC0E12C35F08A00DA0407 /* GameLogicAI.swift */; };
 		3E5108592C175856001B4B33 /* YouWin.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E5108582C175855001B4B33 /* YouWin.json */; };
 		3E5630832BF822BC0009B48B /* OnboardingPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5630822BF822BC0009B48B /* OnboardingPageViewModel.swift */; };
@@ -41,7 +42,6 @@
 		3EC8FE192C0908570014BBC0 /* OnboardingParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC8FE182C0908570014BBC0 /* OnboardingParameters.swift */; };
 		3ED2CBA72C37F773004587BE /* TopHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED2CBA62C37F773004587BE /* TopHUD.swift */; };
 		3ED67F932BF8C09600B2F400 /* MetalLibrary.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3ED67F922BF8C09600B2F400 /* MetalLibrary.metal */; };
-		3ED67F952BF8EEFE00B2F400 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 3ED67F942BF8EEFE00B2F400 /* Localizable.xcstrings */; };
 		3ED67F9B2BF8FB6900B2F400 /* TicTacToe.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ED67F9A2BF8FB6900B2F400 /* TicTacToe.json */; };
 		3ED67FAB2BF9072600B2F400 /* Rule.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ED67FAA2BF9072600B2F400 /* Rule.json */; };
 		3ED6BF562C0242C400A53C29 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED6BF552C0242C400A53C29 /* GameOver.swift */; };
@@ -51,6 +51,7 @@
 		3ED8C3D62C397DBC0093CDD7 /* TertiaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED8C3D52C397DBC0093CDD7 /* TertiaryButton.swift */; };
 		3EDF8B812BF7FBAB00957F89 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDF8B802BF7FBAB00957F89 /* GameLogic.swift */; };
 		3EDF8B832BF80D1A00957F89 /* GameLogicConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDF8B822BF80D1A00957F89 /* GameLogicConditions.swift */; };
+		3EF7830B2C524D27008D75D2 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 3EF7830A2C524D27008D75D2 /* Localizable.xcstrings */; };
 		9D9D239E2C25A53A00382D9C /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D239D2C25A53A00382D9C /* BackgroundView.swift */; };
 		9D9DC82F2C2579ED004EFDFF /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9D9DC82E2C2579ED004EFDFF /* .swiftlint.yml */; };
 		9D9DC8312C257BB8004EFDFF /* ParentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9DC8302C257BB8004EFDFF /* ParentView.swift */; };
@@ -72,6 +73,7 @@
 		3E4342652C0B48A90093FA80 /* Done.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Done.json; sourceTree = "<group>"; };
 		3E4350482C0F875600FDFADC /* CollaboratorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorsView.swift; sourceTree = "<group>"; };
 		3E43504A2C0F876D00FDFADC /* Collaborator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collaborator.swift; sourceTree = "<group>"; };
+		3E4889F92C4D878F0030584D /* Sparkle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Sparkle.json; sourceTree = "<group>"; };
 		3E4CC0E12C35F08A00DA0407 /* GameLogicAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogicAI.swift; sourceTree = "<group>"; };
 		3E5108582C175855001B4B33 /* YouWin.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = YouWin.json; sourceTree = "<group>"; };
 		3E5630822BF822BC0009B48B /* OnboardingPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewModel.swift; sourceTree = "<group>"; };
@@ -93,7 +95,6 @@
 		3EC8FE182C0908570014BBC0 /* OnboardingParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingParameters.swift; sourceTree = "<group>"; };
 		3ED2CBA62C37F773004587BE /* TopHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHUD.swift; sourceTree = "<group>"; };
 		3ED67F922BF8C09600B2F400 /* MetalLibrary.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = MetalLibrary.metal; sourceTree = "<group>"; };
-		3ED67F942BF8EEFE00B2F400 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		3ED67F9A2BF8FB6900B2F400 /* TicTacToe.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TicTacToe.json; sourceTree = "<group>"; };
 		3ED67FAA2BF9072600B2F400 /* Rule.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Rule.json; sourceTree = "<group>"; };
 		3ED6BF552C0242C400A53C29 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
@@ -103,6 +104,7 @@
 		3ED8C3D52C397DBC0093CDD7 /* TertiaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TertiaryButton.swift; sourceTree = "<group>"; };
 		3EDF8B802BF7FBAB00957F89 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 		3EDF8B822BF80D1A00957F89 /* GameLogicConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogicConditions.swift; sourceTree = "<group>"; };
+		3EF7830A2C524D27008D75D2 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		9D9D239D2C25A53A00382D9C /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		9D9DC82E2C2579ED004EFDFF /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		9D9DC8302C257BB8004EFDFF /* ParentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentView.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				3E4342652C0B48A90093FA80 /* Done.json */,
+				3E4889F92C4D878F0030584D /* Sparkle.json */,
 				3E3925C42BFD303D0033F0E2 /* Line.json */,
 				3E3EFA832C42B5AD000B4E97 /* Fire.json */,
 				3ED67FAA2BF9072600B2F400 /* Rule.json */,
@@ -218,8 +221,8 @@
 			isa = PBXGroup;
 			children = (
 				9D9DC82E2C2579ED004EFDFF /* .swiftlint.yml */,
-				3ED67F942BF8EEFE00B2F400 /* Localizable.xcstrings */,
 				3E6C13B62BF7F82400373047 /* TicTacToeApp.swift */,
+				3EF7830A2C524D27008D75D2 /* Localizable.xcstrings */,
 				3E6C13B52BF7F82400373047 /* TicTacToe */,
 				3E6C13B42BF7F82400373047 /* Products */,
 			);
@@ -353,13 +356,14 @@
 				9D9DC82F2C2579ED004EFDFF /* .swiftlint.yml in Resources */,
 				3E6C13BE2BF7F82500373047 /* Preview Assets.xcassets in Resources */,
 				3E6C13BB2BF7F82500373047 /* Assets.xcassets in Resources */,
-				3ED67F952BF8EEFE00B2F400 /* Localizable.xcstrings in Resources */,
 				3E3EFA842C42B5AD000B4E97 /* Fire.json in Resources */,
 				3ED67F9B2BF8FB6900B2F400 /* TicTacToe.json in Resources */,
+				3EF7830B2C524D27008D75D2 /* Localizable.xcstrings in Resources */,
 				3E3925C52BFD303D0033F0E2 /* Line.json in Resources */,
 				3ED67FAB2BF9072600B2F400 /* Rule.json in Resources */,
 				3E5108592C175856001B4B33 /* YouWin.json in Resources */,
 				3E4342662C0B48A90093FA80 /* Done.json in Resources */,
+				3E4889FA2C4D878F0030584D /* Sparkle.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

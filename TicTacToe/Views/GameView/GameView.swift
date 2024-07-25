@@ -24,7 +24,9 @@ struct GameView: View {
     private var localPlayer: String { matchManager.localPlayer.displayName }
     private var otherPlayer: String { matchManager.otherPlayer?.displayName ?? "Other" }
     private var localPlayerScore: Int { matchManager.localPlayerScore }
+    private var otherPlayerScore: Int { matchManager.otherPlayerScore }
     private var xScore: Int { gameLogic.xScore }
+    private var oScore: Int { gameLogic.oScore }
 
     private var resultingPlayer: String {
         switch view.value {
@@ -65,12 +67,14 @@ struct GameView: View {
                             .fontWeight(.semibold)
                             .foregroundStyle(.textTheme)
                             .padding(.top, 10)
-                        //                            .opacity(0)
+                            .opacity(0)
+
                     }
                 }
                 .frame(alignment: .center)
                 VStack {
                     GameGrid(gameLogic: gameLogic)
+                        .environmentObject(matchManager)
                         .padding()
                     Text("\(resultingPlayer) is on a roll!")
                         .fontWeight(.bold)
@@ -103,8 +107,8 @@ struct GameView: View {
         }
         .onAppear {
             gameLogic.resetGame()
-            gameLogic.xScore = 3
-            gameLogic.oScore = 0
+//            gameLogic.xScore = 0
+//            gameLogic.oScore = 0
         }
         .onDisappear {
             matchManager.gameOver()
@@ -123,8 +127,8 @@ struct GameView: View {
 
     func showPlayerRoll() -> Double {
 
-        let offlineDifference = abs(gameLogic.xScore - gameLogic.oScore)
-        let onlineDifference = abs(matchManager.localPlayerScore - matchManager.otherPlayerScore)
+        let offlineDifference = abs(xScore - oScore)
+        let onlineDifference = abs(localPlayerScore - otherPlayerScore)
 
         if view.value == .online {
             return onlineDifference >= 3 ? 1 : 0

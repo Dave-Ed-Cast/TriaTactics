@@ -86,7 +86,7 @@ struct CustomPushTransitionModifier: ViewModifier {
 }
 
 extension AnyTransition {
-    static func customPush(from edge: Edge) -> AnyTransition {
+    static func customPush(cfrom edge: Edge) -> AnyTransition {
         if #available(iOS 16.0, *) {
             return .push(from: edge)
         } else {

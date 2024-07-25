@@ -1,818 +1,559 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "" : {
-      "localizations" : {
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
+    "sourceLanguage" : "en",
+    "strings" : {
+        "%@ is on a roll!" : {
+            "localizations" : {
+                "de" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "%@ ist in Fahrt!"
+                    }
+                },
+                "es-419" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "%@ está en racha!"
+                    }
+                },
+                "fr" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "%@ est en pleine forme !"
+                    }
+                },
+                "it" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "%@ è in gran forma!"
+                    }
+                },
+                "pt" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "%@ está em alta!"
+                    }
+                },
+                "ru" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "%@ на взлете!"
+                    }
+                },
+                "tr" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "%@ formda!"
+                    }
+                }
+            }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
+        "%@'s turn" : {
+            "localizations" : {
+                "de" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Der Zug von %@"
+                    }
+                },
+                "es-419" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Es el turno de %@"
+                    }
+                },
+                "fr" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "C'est le tour de %@"
+                    }
+                },
+                "it" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "È il turno di %@"
+                    }
+                },
+                "pt" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "É a vez de %@"
+                    }
+                },
+                "ru" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Ход %@"
+                    }
+                },
+                "tr" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "%@'nın sırası"
+                    }
+                }
+            }
         },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
+        "%lld" : {
+            "localizations" : {
+                "de" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "%lld"
+                    }
+                },
+                "es-419" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "%lld"
+                    }
+                },
+                "fr" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "%lld"
+                    }
+                },
+                "it" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "%lld"
+                    }
+                },
+                "pt" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "%lld"
+                    }
+                },
+                "ru" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "%lld"
+                    }
+                },
+                "tr" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "%lld"
+                    }
+                }
+            }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
+        "App icon, UX design" : {
+            "localizations" : {
+                "de" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "App-Icon, UX-Design"
+                    }
+                },
+                "es-419" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Ícono de la app, diseño UX"
+                    }
+                },
+                "fr" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Icône de l'app, design UX"
+                    }
+                },
+                "it" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Icona dell'app, design UX"
+                    }
+                },
+                "pt" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Ícone do app, design UX"
+                    }
+                },
+                "ru" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Иконка приложения, UX-дизайн"
+                    }
+                },
+                "tr" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Uygulama simgesi, UX tasarımı"
+                    }
+                }
+            }
+        },
+        "Are you sure you want to leave?" : {
+            "localizations" : {
+                "de" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Sind Sie sicher, dass Sie gehen möchten?"
+                    }
+                },
+                "es-419" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "¿Seguro que quieres salir?"
+                    }
+                },
+                "fr" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Êtes-vous sûr de vouloir partir?"
+                    }
+                },
+                "it" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Sei sicuro di voler abbandonare?"
+                    }
+                },
+                "pt" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Tem certeza de que deseja sair?"
+                    }
+                },
+                "ru" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Вы уверены, что хотите уйти?"
+                    }
+                },
+                "tr" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Ayrılmak istediğinizden emin misiniz?"
+                    }
+                }
+            }
+        },
+        "Ascanio placeholder" : {
+            "localizations" : {
+                "de" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Platzhalter Ascanio"
+                    }
+                },
+                "es-419" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Marcador de posición Ascanio"
+                    }
+                },
+                "fr" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Placeholder Ascanio"
+                    }
+                },
+                "it" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Segnaposto Ascanio"
+                    }
+                },
+                "pt" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Marcador de posição Ascanio"
+                    }
+                },
+                "ru" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Заполнитель Ascanio"
+                    }
+                },
+                "tr" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Ascanio yer tutucu"
+                    }
+                }
+            }
+        },
+        "Assets, UX design" : {
+            "localizations" : {
+                "de" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Assets, UX-Design"
+                    }
+                },
+                "es-419" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Recursos, diseño UX"
+                    }
+                },
+                "fr" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Actifs, design UX"
+                    }
+                },
+                "it" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Risorse, design UX"
+                    }
+                },
+                "pt" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Recursos, design UX"
+                    }
+                },
+                "ru" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Ресурсы, UX-дизайн"
+                    }
+                },
+                "tr" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Varlıklar, UX tasarımı"
+                    }
+                }
+            }
+        },
+        "Clear" : {
+            "localizations" : {
+                "de" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Löschen"
+                    }
+                },
+                "es-419" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Borrar"
+                    }
+                },
+                "fr" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Effacer"
+                    }
+                },
+                "it" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Cancella"
+                    }
+                },
+                "pt" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Limpar"
+                    }
+                },
+                "ru" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Очистить"
+                    }
+                },
+                "tr" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Temizle"
+                    }
+                }
+            }
+        },
+        "Design" : {
+            "localizations" : {
+                "de" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Design"
+                    }
+                },
+                "es-419" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Diseño"
+                    }
+                },
+                "fr" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Conception"
+                    }
+                },
+                "it" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Design"
+                    }
+                },
+                "pt" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Design"
+                    }
+                },
+                "ru" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Дизайн"
+                    }
+                },
+                "tr" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Tasarım"
+                    }
+                }
+            }
+        },
+        "Help" : {
+            "localizations" : {
+                "de" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Hilfe"
+                    }
+                },
+                "es-419" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Ayuda"
+                    }
+                },
+                "fr" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Aide"
+                    }
+                },
+                "it" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Aiuto"
+                    }
+                },
+                "pt" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Ajuda"
+                    }
+                },
+                "ru" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Помощь"
+                    }
+                },
+                "tr" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Yardım"
+                    }
+                }
+            }
+        },
+        "New" : {
+            "localizations" : {
+                "de" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Neu"
+                    }
+                },
+                "es-419" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Nuevo"
+                    }
+                },
+                "fr" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Nouveau"
+                    }
+                },
+                "it" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Nuovo"
+                    }
+                },
+                "pt" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Novo"
+                    }
+                },
+                "ru" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Новый"
+                    }
+                },
+                "tr" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Yeni"
+                    }
+                }
+            }
+        },
+        "Settings" : {
+            "localizations" : {
+                "de" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Einstellungen"
+                    }
+                },
+                "es-419" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Configuración"
+                    }
+                },
+                "fr" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Paramètres"
+                    }
+                },
+                "it" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Impostazioni"
+                    }
+                },
+                "pt" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Configurações"
+                    }
+                },
+                "ru" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Настройки"
+                    }
+                },
+                "tr" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Ayarlar"
+                    }
+                }
+            }
         }
-      }
     },
-    "%@ is on a roll!" : {
-
-    },
-    "%@'s turn" : {
-
-    },
-    "%lld" : {
-
-    },
-    "App icon, UX design" : {
-
-    },
-    "Are you sure you want to leave?" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sind Sie sicher, dass Sie gehen möchten?"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¿Seguro que quieres salir?"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Êtes-vous sûr de vouloir partir?"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sei sicuro di voler abbandonare?"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Çıkmak istediğinizden emin misiniz?"
-          }
-        }
-      }
-    },
-    "Ascanio placeholder" : {
-
-    },
-    "Assets, UI/UX design" : {
-
-    },
-    "Code refactoring, navigation system, background animation skeleton" : {
-
-    },
-    "Creator, Developer, UX Designer" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ersteller, Entwickler, UX-Designer"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Creador, Desarrollador, Diseñador de UX"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Créateur, Développeur, Concepteur UX"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Creatore, Sviluppatore, Progettista UX"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yapımcı, Geliştirici, UX Tasarımcısı"
-          }
-        }
-      }
-    },
-    "Developer" : {
-
-    },
-    "Game logic, Online logic, Development and design" : {
-
-    },
-    "Here comes the multiplayer! Challenge your friends in a strategic battle. Log into Game Center and enjoy!" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Genießen Sie vorerst die lokale Version, denn der Mehrspielermodus kommt bald!"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¡Aquí esta multijugador! Desafía a tus amigos en una batalla estratégica. ¡Inicia sesión en Game Center y disfruta!"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Voici le multijoueur! Défiez vos amis dans une bataille stratégique. Connectez-vous à Game Center et profitez-en!"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "È arrivato il multigiocatore! Sfida i tuoi amici in una battaglia strategica. Accedi nel Game Center e divertiti!"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Çok oyunculu geliyor! Arkadaşlarınıza stratejik bir savaşta meydan okuyun. Game Center'a giriş yapın ve tadını çıkarın!"
-          }
-        }
-      }
-    },
-    "Lets' start!" : {
-
-    },
-    "Localisation: Spanish (Latin America)" : {
-
-    },
-    "Making a fourth move will cost the first one. The next one follows the same logic. Choose wisely!" : {
-
-    },
-    "Making a fourth move will cost the first one. The next one follows the same logic. Tria Tactics is about choosing wisely!" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Der vierte Zug kostet den ersten. Der nächste folgt der gleichen Logik. Bei Tria Tactics geht es darum, klug zu wählen!"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Faire un quatrième mouvement coûtera le premier. Le suivant suit la même logique. Tria Tactics consiste à choisir judicieusement!"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fare la quarta mossa della partita farà scomparire la prima! E continuerà così! Questo è Tria Tactics..."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dördüncü hamleyi yapmak birincisini kaybettirir. Bir sonraki aynı mantıkla devam eder. Tria Tactics, akıllıca seçim yapmakla ilgilidir!"
-          }
-        }
-      }
-    },
-    "Making your fourth move of the game will cost the first one! And it keeps going after that! This is Tria Tactics..." : {
-
-    },
-    "Menu" : {
-
-    },
-    "Multiplayer is finally here!" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Der Mehrspieler-Modus ist endlich da!"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¡Multijugador finalmente está aquí!"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Le multijoueur est enfin là!"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Il multigiocatore è qui!"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Çok oyunculu nihayet burada!"
-          }
-        }
-      }
-    },
-    "OK!" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OK!"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¡OK!"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OK!"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OK!"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tamam!"
-          }
-        }
-      }
-    },
-    "Play" : {
-
-    },
-    "Play Offline" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Offline spielen"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Juega Offline"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jouer hors ligne"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gioca Offline"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Çevrimdışı oyna"
-          }
-        }
-      }
-    },
-    "Play Online" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Online spielen"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Juega Online"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jouer en ligne"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gioca Online"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Çevrimiçi oyna"
-          }
-        }
-      }
-    },
-    "Play vs AI" : {
-
-    },
-    "Quit game?" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Spiel beenden?"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¿Salir del juego?"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quitter le jeu?"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Abbandona?"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Oyunu bırak?"
-          }
-        }
-      }
-    },
-    "Rematch" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rückspiel"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Revanche"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Revanche"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rivincita"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rövanş"
-          }
-        }
-      }
-    },
-    "Score" : {
-
-    },
-    "Settings" : {
-
-    },
-    "Skip" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Überspringen"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Omitir"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Passer"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Salta"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Geç"
-          }
-        }
-      }
-    },
-    "TEST AAAA" : {
-
-    },
-    "TEST BBBB" : {
-
-    },
-    "TEST CCCC" : {
-
-    },
-    "The game for true tacticians!" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Das Spiel für wahre Taktiker!"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¡El juego para verdaderos estrategas! "
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Le jeu pour de vrais tacticiens!"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Il gioco per veri tattici!"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gerçek taktikçiler için oyun!"
-          }
-        }
-      }
-    },
-    "The winner is:" : {
-
-    },
-    "Their page" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ihre Seite"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Su página"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Leur page"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "La loro pagina"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Onların sayfası"
-          }
-        }
-      }
-    },
-    "Time left: %lld" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Verbleibende Zeit: %lld"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tiempo restante: %lld"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Temps restant: %lld"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tempo: %lld"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kalan zaman: %lld"
-          }
-        }
-      }
-    },
-    "Toggle Animation" : {
-
-    },
-    "Tria Tactics" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tria Tactics"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tria Tactics"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tria Tactics"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tria Tactics"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tria Tactics"
-          }
-        }
-      }
-    },
-    "Tria Tactics is a revisited version of Tic Tac Toe. Play the classic game until something new will happen!" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tria Tactics ist eine überarbeitete Version von Tic Tac Toe. Spielen Sie das klassische Spiel, bis etwas Neues passiert!"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tria Tactics es una versión innovadora de Tic Tac Toe. ¡Juega el modo clásico hasta que algo nuevo suceda!"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tria Tactics est une version revisitée du Tic Tac Toe. Jouez au jeu classique jusqu'à ce que quelque chose de nouveau se produise!"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tuffati nel classico Tris finché non succede qualcosa di nuovo con Tria Tactics!"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tria Tactics, Tic Tac Toe'nun yeniden gözden geçirilmiş bir versiyonudur. Yeni bir şey olana kadar klasik oyunu oynayın!"
-          }
-        }
-      }
-    },
-    "Tria Tactics rule" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tria Tactics-Regel"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reglas de Tria Tactics"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Règle de Tria Tactics"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "La regola Tria Tactics"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tria Tactics kuralı"
-          }
-        }
-      }
-    },
-    "Tutorial" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tutorial"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tutorial"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tutoriel"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tutorial"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eğitim"
-          }
-        }
-      }
-    },
-    "UI/UX Designer" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "UI/UX-Designer"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "UI/UX Diseñador"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Concepteur UI/UX"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Progettista UI/UX"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "UI/UX Tasarımcısı"
-          }
-        }
-      }
-    },
-    "Welcome to Tria Tactics!" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Willkommen bei Tria Tactics!"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Welcome to Tria Tactics!"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¡Bienvenido a Tria Tactics!"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bienvenue à Tria Tactics!"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Benvenuto in Tria Tactics!"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tria Tactics'e hoş geldiniz!"
-          }
-        }
-      }
-    },
-    "Yes" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ja"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Si"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Oui"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sì"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Evet"
-          }
-        }
-      }
-    }
-  },
-  "version" : "1.0"
+    "version" : "1.0"
 }
+            

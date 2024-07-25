@@ -35,44 +35,44 @@ struct ParentView: View {
             case .main, .play:
                 MainView(namespace: namespace)
                     .environmentObject(animation)
-                    .transition(.customPush(from: .top))
+                    .transition(.customPush(cfrom: .top))
 
             case .online, .offline, .bot:
                 GameView()
 
             case .tutorial:
                 TutorialView()
-                    .transition(.customPush(from: .bottom))
+                    .transition(.customPush(cfrom: .bottom))
 
             case .collaborators:
                 CollaboratorsView()
 
             }
 
-            if let location = touchLocation {
-                LottieAnimation(
-                    name: "Sparkle",
-                    contentMode: .scaleAspectFit,
-                    playbackMode: .playing(.toProgress(1, loopMode: .playOnce)),
-                    scaleFactor: 8
-                )
-                .position(location)
-                .onAppear {
-                    print("on appear x: \(location.x)")
-                    print("on appear y: \(location.y)")
-                }
-                .onDisappear {
-                    print("disappear: \(animateSparkle)")
-                    animateSparkle = false
-                }
-            }
+//            if let location = touchLocation {
+//                LottieAnimation(
+//                    name: "Sparkle",
+//                    contentMode: .scaleAspectFit,
+//                    playbackMode: .playing(.toProgress(1, loopMode: .playOnce)),
+//                    scaleFactor: 8
+//                )
+//                .position(location)
+//                .onAppear {
+//                    print("on appear x: \(location.x)")
+//                    print("on appear y: \(location.y)")
+//                }
+//                .onDisappear {
+//                    print("disappear: \(animateSparkle)")
+//                    animateSparkle = false
+//                }
+//            }
         }
-        .gesture(
-            DragGesture(minimumDistance: 0)
-                .onEnded { value in
-                    touchLocation = value.location
-                }
-        )
+//        .gesture(
+//            DragGesture(minimumDistance: 0)
+//                .onEnded { value in
+//                    touchLocation = value.location
+//                }
+//        )
 
         }
     }
