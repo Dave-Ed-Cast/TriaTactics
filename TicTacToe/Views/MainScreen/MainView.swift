@@ -34,7 +34,7 @@ struct MainView: View {
                         .cornerRadius(20)
                         .frame(height: size.height / 7.5)
 
-                    Text("Tria Tactics")
+                    Text(verbatim: "Tria Tactics")
                         .font(.largeTitle)
                         .fontWeight(.bold)
 

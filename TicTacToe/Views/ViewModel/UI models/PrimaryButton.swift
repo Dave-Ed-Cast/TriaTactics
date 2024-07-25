@@ -58,9 +58,9 @@ struct PrimaryButton: View {
         Color.black.ignoresSafeArea()
 
         VStack(spacing: 30) {
-            PrimaryButton(label: "orland shbienen", action: {})
-            PrimaryButton(label: "TEST BBBB", action: {}, color: .red)
-            PrimaryButton(label: "TEST CCCC", action: {}, color: .red, invertColor: true)
+//            PrimaryButton(label: "orland shbienen", action: {})
+//            PrimaryButton(label: "TEST BBBB", action: {}, color: .red)
+//            PrimaryButton(label: "TEST CCCC", action: {}, color: .red, invertColor: true)
 
         }
     }

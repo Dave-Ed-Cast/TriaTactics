@@ -62,7 +62,7 @@ struct GameView: View {
 
                     } else if view.value == .offline || view.value == .bot {
                         // TODO: picker for difficulty
-                        Text("Ascanio placeholder")
+                        Text(verbatim: "Ascanio placeholder")
                             .font(.title2)
                             .fontWeight(.semibold)
                             .foregroundStyle(.textTheme)

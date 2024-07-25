@@ -51,10 +51,10 @@ struct SecondaryButton: View {
         Color.black
 
         VStack(spacing: 20) {
-            PrimaryButton(label: "TEST AAAA")
-            PrimaryButton(label: "TEST BBBB")
-            SecondaryButton(label: "TEST AAAA")
-            SecondaryButton(label: "TEST BBBB", color: .yellow)
+//            PrimaryButton(label: "TEST AAAA")
+//            PrimaryButton(label: "TEST BBBB")
+//            SecondaryButton(label: "TEST AAAA")
+//            SecondaryButton(label: "TEST BBBB", color: .yellow)
         }
     }
 

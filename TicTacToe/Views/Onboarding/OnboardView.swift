@@ -72,10 +72,17 @@ struct OnboardView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             OnboardView(onboarding: OnboardingParameters())
-            .environment(\.locale, Locale(identifier: "en"))
+                .environment(\.locale, Locale(identifier: "en"))
 
             OnboardView(onboarding: OnboardingParameters())
                 .environment(\.locale, Locale(identifier: "it"))
+
+            OnboardView(onboarding: OnboardingParameters())
+                .environment(\.locale, Locale(identifier: "es"))
+
+            OnboardView(onboarding: OnboardingParameters())
+                .environment(\.locale, Locale(identifier: "de"))
+
         }
     }
 }
