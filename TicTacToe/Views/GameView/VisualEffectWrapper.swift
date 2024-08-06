@@ -38,6 +38,25 @@ extension View {
     }
 }
 
+struct SampleView: View {
+    var time: TimeInterval = 0.0
+
+    var body: some View {
+        Text("Rainbow Effect!")
+            .font(.largeTitle)
+            .padding()
+            .rainbowEffect(time: time)
+    }
+}
+
+struct VisualEffectWrapper_Previews: PreviewProvider {
+    static var previews: some View {
+        SampleView(time: 0.0)
+            .previewLayout(.sizeThatFits)
+            .background(Color.clear)
+    }
+}
+
 #Preview("Offline") {
     GameView()
         .environmentObject(MatchManager.shared)

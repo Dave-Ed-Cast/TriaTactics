@@ -60,7 +60,7 @@ struct GameView: View {
                             .foregroundStyle(matchManager.remainingTime <= 3 ? .red : .textTheme)
                             .padding(.top, 10)
 
-                    } else if view.value == .offline || view.value == .bot {
+                    } else {
                         // TODO: picker for difficulty
                         Text(verbatim: "Ascanio placeholder")
                             .font(.title2)
@@ -76,27 +76,29 @@ struct GameView: View {
                     GameGrid(gameLogic: gameLogic)
                         .environmentObject(matchManager)
                         .padding()
-                    Text("\(resultingPlayer) is on a roll!")
-                        .fontWeight(.bold)
-                        .foregroundStyle(.textTheme)
-                        .font(.title3)
-                        .scaleEffect(scale)
-                        .opacity(showPlayerRoll())
-                        .onAppear {
-                            startScalingAnimation()
-                        }
-                        .onDisappear {
-                            timer?.invalidate()
-                        }
+//                    TimelineView(.animation) { tl in
+//                        let time = start.distance(to: tl.date)
+                        Text("\(resultingPlayer) is on a roll!")
+                            .fontWeight(.bold)
+                            .foregroundStyle(.textTheme)
+                            .font(.title3)
+                            .scaleEffect(scale)
+                            .opacity(showPlayerRoll())
+                            .onAppear {
+                                startScalingAnimation()
+                            }
+                            .onDisappear {
+                                timer?.invalidate()
+                            }
+//                            .rainbowEffect(time: time)
+//                    }
                 }
                 Spacer()
 
             }
 
         }// end of outer VStack
-        .background {
-            Color.buttonTheme.ignoresSafeArea()
-        }
+        .background(.buttonTheme).ignoresSafeArea()
         .overlay {
             if showWinnerOverlay {
                 WinnerView()
@@ -107,7 +109,7 @@ struct GameView: View {
         }
         .onAppear {
             gameLogic.resetGame()
-//            gameLogic.xScore = 0
+            gameLogic.xScore = 3
 //            gameLogic.oScore = 0
         }
         .onDisappear {

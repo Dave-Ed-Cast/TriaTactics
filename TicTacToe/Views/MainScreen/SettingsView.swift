@@ -31,7 +31,7 @@ struct SettingsView: View {
                         UserDefaults.standard.set(newValue, forKey: "animationStatus")
                     }
             }
-            .background(colorScheme == .dark ? .black : .gray)
+            .background(colorScheme == .dark ? .black : .white)
             .padding()
             .padding(.bottom, 40)
         }
@@ -46,7 +46,6 @@ struct HalfModalView<ModalContent: View>: ViewModifier {
     @Binding var isPresented: Bool
 
     @State private var offset: CGSize = .zero
-    @State private var isDragging = false
 
     let modalContent: () -> ModalContent
     let maxHeight: CGFloat = UIScreen.main.bounds.height / 256
@@ -72,7 +71,6 @@ struct HalfModalView<ModalContent: View>: ViewModifier {
 
                     modalContent()
                         .frame(maxWidth: .infinity)
-                        .background(Color.white)
                         .cornerRadius(20)
                         .shadow(radius: 20)
                         .offset(y: isPresented ? max(0, offset.height) : UIScreen.main.bounds.height)
@@ -82,10 +80,7 @@ struct HalfModalView<ModalContent: View>: ViewModifier {
                         .gesture(
                             DragGesture()
                                 .onChanged { value in
-                                    print(value)
                                     offset = value.translation
-                                    print(offset)
-                                    isDragging = true
                                 }
                                 .onEnded { value in
                                     withAnimation {

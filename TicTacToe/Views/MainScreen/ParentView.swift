@@ -91,6 +91,7 @@ struct PreviewWrapper<Content: View>: View {
                 .environmentObject(MatchManager.shared)
                 .environmentObject(Navigation.shared)
                 .environmentObject(GameLogic.shared)
+                .environmentObject(AnimationTap())
                 .background {
                     BackgroundView(savedValueForAnimation: $isPreviewAnimationEnabled)
                 }
