@@ -63,6 +63,7 @@ struct CollaboratorsView: View {
                 }
             }
         }
+        .padding(.top, 60)
     }
 
 }
@@ -74,4 +75,12 @@ struct CollaboratorsView: View {
             .environment(\.locale, Locale(identifier: "EN"))
     }
 
+}
+
+#Preview {
+    ParentView()
+        .environmentObject(Navigation.shared)
+        .environmentObject(MatchManager.shared)
+        .environmentObject(GameLogic.shared)
+        .environmentObject(AnimationTap())
 }
