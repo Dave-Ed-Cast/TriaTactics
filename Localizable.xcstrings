@@ -323,48 +323,48 @@
         }
       }
     },
-    "Code refactoring, navigation system, background animation skeleton" : {
+    "Code contribution, background animation skeleton" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Code-Refaktorisierung, Navigationssystem, Hintergrundanimations-Skelett"
+            "value" : "Hintergrundanimations-Skelett"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Refactorización de código, sistema de navegación, esqueleto de animación de fondo"
+            "value" : "Contribución de código, esqueleto de animación de fondo"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Refactorisation du code, système de navigation, squelette d’animation de fond"
+            "value" : "Contribution au code, squelette d’animation en arrière-plan"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Contributo al codice, sistema di navigazione, scheletro dell’animazione di sfondo"
+            "value" : "Contributo al codice, scheletro animazione"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Refatoração de código, sistema de navegação, esqueleto de animação de fundo"
+            "value" : "Contribuição de código, esqueleto de animação de fundo"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Рефакторинг кода, система навигации, скелет анимации фона"
+            "value" : "Вклад в код, каркас фона анимации"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kod yeniden düzenleme, navigasyon sistemi, arka plan animasyon iskeleti"
+            "value" : "Kod katkısı, arka plan animasyon iskeleti"
           }
         }
       }
@@ -1104,9 +1104,6 @@
           }
         }
       }
-    },
-    "Rainbow Effect!" : {
-
     },
     "Rematch" : {
       "localizations" : {

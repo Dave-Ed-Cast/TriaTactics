@@ -41,7 +41,7 @@ struct Collaborator: Identifiable {
         Collaborator(
             name: "Giuseppe Francione",
             role: "Developer",
-            contribute: "Code refactoring, navigation system, background animation skeleton",
+            contribute: "Code contribution, background animation skeleton",
             contactInfo: "https://www.linkedin.com/in/giuseppe-francione-69008125a/"
         ),
 

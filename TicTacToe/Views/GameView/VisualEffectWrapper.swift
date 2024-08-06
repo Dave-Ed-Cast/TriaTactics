@@ -42,7 +42,7 @@ struct SampleView: View {
     var time: TimeInterval = 0.0
 
     var body: some View {
-        Text("Rainbow Effect!")
+        Text(verbatim: "Rainbow Effect!")
             .font(.largeTitle)
             .padding()
             .rainbowEffect(time: time)
