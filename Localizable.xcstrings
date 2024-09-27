@@ -55,6 +55,12 @@
             "value" : "%@ ist in Fahrt!"
           }
         },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ is on a roll!"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
@@ -101,6 +107,12 @@
             "value" : "Der Zug von %@"
           }
         },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@'s turn"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
@@ -142,6 +154,12 @@
     "%lld" : {
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        },
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld"
@@ -193,6 +211,12 @@
             "value" : "App-Icon, UX-Design"
           }
         },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App icon, UX design"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
@@ -237,6 +261,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bist du sicher, dass du das Spiel verlassen möchtest?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to leave?"
           }
         },
         "es-419" : {
@@ -285,6 +315,12 @@
             "value" : "Ressourcen, UI/UX-Design"
           }
         },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assets, UI/UX design"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
@@ -329,6 +365,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hintergrundanimations-Skelett"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Code contribution, background animation skeleton"
           }
         },
         "es-419" : {
@@ -377,6 +419,12 @@
             "value" : "Ersteller, Entwickler, UX-Designer"
           }
         },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Creator, Developer, UX Designer"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
@@ -421,6 +469,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Entwickler"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Developer"
           }
         },
         "es-419" : {
@@ -469,6 +523,12 @@
             "value" : "Spiel-Logik, Online-Logik, Entwicklung und Design"
           }
         },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Game logic, Online logic, Development and design"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
@@ -513,6 +573,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hier kommt der Mehrspielermodus! Fordere deine Freunde in einem strategischen Kampf heraus. Melde dich bei Game Center an und genieße es!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Here comes the multiplayer! Challenge your friends in a strategic battle. Log into Game Center and enjoy!"
           }
         },
         "es-419" : {
@@ -561,6 +627,12 @@
             "value" : "Lass uns anfangen!"
           }
         },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lets' start!"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
@@ -605,6 +677,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lokalisierung: Spanisch (Lateinamerika)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Localisation: Spanish (Latin America)"
           }
         },
         "es-419" : {
@@ -653,6 +731,12 @@
             "value" : "Der vierte Zug kostet den ersten. Der nächste folgt der gleichen Logik. Wähle weise!"
           }
         },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Making a fourth move will cost the first one. The next one follows the same logic. Choose wisely!"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
@@ -697,6 +781,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dein vierter Zug im Spiel wird den ersten kosten! Und es geht so weiter! Das ist Tria Tactics…"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Making your fourth move of the game will cost the first one! And it keeps going after that! This is Tria Tactics..."
           }
         },
         "es-419" : {
@@ -745,6 +835,12 @@
             "value" : "Menü"
           }
         },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menu"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
@@ -791,6 +887,12 @@
             "value" : "Der Mehrspielermodus ist endlich da!"
           }
         },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Multiplayer is finally here!"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
@@ -832,6 +934,12 @@
     "OK!" : {
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK!"
+          }
+        },
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "OK!"
@@ -883,6 +991,12 @@
             "value" : "Spielen"
           }
         },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
@@ -927,6 +1041,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Offline Spielen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play Offline"
           }
         },
         "es-419" : {
@@ -975,6 +1095,12 @@
             "value" : "Online Spielen"
           }
         },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play Online"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1019,6 +1145,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gegen die KI spielen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play vs AI"
           }
         },
         "es-419" : {
@@ -1067,6 +1199,12 @@
             "value" : "Spiel beenden?"
           }
         },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quit game?"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1111,6 +1249,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rückspiel"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rematch"
           }
         },
         "es-419" : {
@@ -1159,6 +1303,12 @@
             "value" : "Punktestand"
           }
         },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Score"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1203,6 +1353,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Einstellungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
           }
         },
         "es-419" : {
@@ -1251,6 +1407,12 @@
             "value" : "Überspringen"
           }
         },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1295,6 +1457,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Das Spiel für echte Taktiker!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The game for true tacticians!"
           }
         },
         "es-419" : {
@@ -1343,6 +1511,12 @@
             "value" : "Der Gewinner ist:"
           }
         },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The winner is:"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1387,6 +1561,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ihre Seite"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Their page"
           }
         },
         "es-419" : {
@@ -1435,6 +1615,12 @@
             "value" : "Verbleibende Zeit: %lld"
           }
         },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time left: %lld"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1479,6 +1665,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Animation ein-/ausschalten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toggle Animation"
           }
         },
         "es-419" : {
@@ -1527,6 +1719,12 @@
             "value" : "Tria Tactics ist eine überarbeitete Version von Tic Tac Toe. Spiele das klassische Spiel, bis etwas Neues passiert!"
           }
         },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tria Tactics is a revisited version of Tic Tac Toe. Play the classic game until something new will happen!"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1573,6 +1771,12 @@
             "value" : "Regel von Tria Tactics"
           }
         },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tria Tactics rule"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1614,6 +1818,12 @@
     "Tutorial" : {
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutorial"
+          }
+        },
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tutorial"
@@ -1665,6 +1875,12 @@
             "value" : "UI/UX-Designer"
           }
         },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UI/UX Designer"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1711,6 +1927,12 @@
             "value" : "Willkommen bei Tria Tactics"
           }
         },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome to Tria Tactics!"
+          }
+        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1755,6 +1977,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ja"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes"
           }
         },
         "es-419" : {
