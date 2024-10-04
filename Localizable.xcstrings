@@ -723,6 +723,9 @@
         }
       }
     },
+    "locally" : {
+
+    },
     "Making a fourth move will cost the first one. The next one follows the same logic. Choose wisely!" : {
       "localizations" : {
         "de" : {

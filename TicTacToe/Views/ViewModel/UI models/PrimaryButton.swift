@@ -10,14 +10,16 @@ import SwiftUI
 struct PrimaryButton: View {
 
     let label: LocalizedStringKey
+    let subtitle: LocalizedStringKey?
     let action: (() -> Void)?
     let color: Color
     let invertColor: Bool
     let animation: AnimationTap?
     let size = UIScreen.main.bounds
 
-    init(label: LocalizedStringKey, action: (() -> Void)? = nil, color: Color = .buttonTheme, invertColor: Bool = false, animation: AnimationTap = AnimationTap.init()) {
+    init(label: LocalizedStringKey, subtitle: LocalizedStringKey? = nil, action: (() -> Void)? = nil, color: Color = .buttonTheme, invertColor: Bool = false, animation: AnimationTap = AnimationTap.init()) {
         self.label = label
+        self.subtitle = subtitle
         self.action = action
         self.color = color
         self.invertColor = invertColor
@@ -40,14 +42,33 @@ struct PrimaryButton: View {
                         view.colorInvert()
                     }
                     .contentShape(RoundedRectangle(cornerRadius: 15))
+                VStack {
+                    Text(label)
+                        .fontWeight(.bold)
+                        .font(.title2)
+                        .if(subtitle != nil) { view in
+                            view.overlay {
+                                if subtitle != nil {
+                                    HStack(spacing: 0) {
+                                        Text(verbatim: "(")
+                                            .fontWeight(.semibold)
+                                        Text(subtitle!)
+                                            .fontWeight(.semibold)
+                                        Text(verbatim: ")")
+                                            .fontWeight(.semibold)
+                                    }
+                                    .font(.callout)
+                                    .fixedSize(horizontal: true, vertical: false)
+                                    .multilineTextAlignment(.center)
+                                    .padding(.top, 40)
+                                }
+                            }
+                        }
 
-                Text(label)
-                    .fontWeight(.bold)
-                    .padding()
-                    .foregroundStyle(.textTheme)
-                    .font(.title2)
-                    .multilineTextAlignment(.center)
-
+                }
+                .foregroundStyle(.textTheme)
+                .padding()
+                .multilineTextAlignment(.center)
             }
         }
     }
