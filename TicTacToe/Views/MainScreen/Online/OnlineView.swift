@@ -14,7 +14,7 @@ struct OnlineView: View {
 
     @Binding var showLottieAnimation: Bool
     @Binding var isOffline: Bool
-    @Environment (\.dismiss) var dismiss
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         Group {
             if matchManager.autheticationState == .authenticated {

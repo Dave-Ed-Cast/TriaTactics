@@ -84,17 +84,43 @@ struct GameView: View {
                             .font(.title3)
                             .scaleEffect(scale)
                             .opacity(showPlayerRoll())
-                            .onAppear {
-                                startScalingAnimation()
-                            }
-                            .onDisappear {
-                                timer?.invalidate()
-                            }
+                            .onAppear { startScalingAnimation() }
+                            .onDisappear { timer?.invalidate() }
 //                            .rainbowEffect(time: time)
 //                    }
                 }
                 Spacer()
 
+            }
+            .overlay(alignment: .topTrailing) {
+
+                TertiaryButton { showAlert = true }
+                .alert(isPresented: $showAlert) {
+                    if view.value == .online {
+                        Alert(
+                            title: Text("Quit?"),
+                            message: Text("Do you want to quit the game?"),
+                            primaryButton: .destructive(Text("Yes"), action: {
+                                matchManager.match?.disconnect()
+                                matchManager.resetGame()
+                                matchManager.gameOver()
+                                view.value = .play
+                            }),
+                            secondaryButton: .cancel(Text("No"))
+                        )
+                    } else {
+                        Alert(
+                            title: Text("Quit?"),
+                            message: Text("Do you want to quit the game?"),
+                            primaryButton: .destructive(Text("Yes"), action: {
+                                gameLogic.resetGame()
+                                view.value = .play
+                            }),
+                            secondaryButton: .cancel(Text("No"))
+                        )
+                    }
+                }
+                .padding(25)
             }
 
         }// end of outer VStack
@@ -124,7 +150,6 @@ struct GameView: View {
                 }
             }
         }
-
     }
 
     func showPlayerRoll() -> Double {

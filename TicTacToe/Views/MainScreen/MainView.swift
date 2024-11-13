@@ -87,7 +87,7 @@ struct MainView: View {
                             .opacity(matchManager.authenticationState != .authenticated ? 0.5 : 1)
                             .disabled(matchManager.authenticationState != .authenticated)
 
-                            PrimaryButton(label: "Play Offline", subtitle: "locally", action: {
+                            PrimaryButton(label: "Play Offline", subtitle: "2P same device", action: {
                                 animation.shouldAnimate = true
                                 withAnimation {
                                     view.value = .offline

@@ -51,11 +51,11 @@ struct PrimaryButton: View {
                                 if subtitle != nil {
                                     HStack(spacing: 0) {
                                         Text(verbatim: "(")
-                                            .fontWeight(.semibold)
+                                            .fontWeight(.light)
                                         Text(subtitle!)
-                                            .fontWeight(.semibold)
+                                            .fontWeight(.light)
                                         Text(verbatim: ")")
-                                            .fontWeight(.semibold)
+                                            .fontWeight(.light)
                                     }
                                     .font(.callout)
                                     .fixedSize(horizontal: true, vertical: false)
@@ -79,7 +79,7 @@ struct PrimaryButton: View {
         Color.black.ignoresSafeArea()
 
         VStack(spacing: 30) {
-//            PrimaryButton(label: "orland shbienen", action: {})
+            PrimaryButton(label: "orland shbienen", subtitle: "ciao", action: {})
 //            PrimaryButton(label: "TEST BBBB", action: {}, color: .red)
 //            PrimaryButton(label: "TEST CCCC", action: {}, color: .red, invertColor: true)
 
