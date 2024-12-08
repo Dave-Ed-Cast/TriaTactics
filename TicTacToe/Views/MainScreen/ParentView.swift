@@ -14,7 +14,6 @@ class AnimationTap: ObservableObject {
 struct ParentView: View {
 
     @StateObject private var animation = AnimationTap()
-
     @AppStorage("animationStatus") private var animationEnabled = true
 
     @EnvironmentObject var view: Navigation
@@ -31,51 +30,44 @@ struct ParentView: View {
     var body: some View {
         ZStack(alignment: .center) {
             BackgroundView(savedValueForAnimation: $animationEnabled)
+
             switch view.value {
             case .main, .play:
-                MainView(namespace: namespace)
-                    .environmentObject(animation)
-                    .transition(.customPush(cfrom: .top))
+                VStack {
+                    Spacer()
+                    MainView(namespace: namespace)
+                        .environmentObject(animation)
+
+                    Spacer()
+                }
+                .transition(.customPush(cfrom: .top))
 
             case .online, .offline, .bot:
-                GameView()
+                VStack {
+                    Spacer()
+                    GameView()
+                    Spacer()
+                }
 
             case .tutorial:
-                TutorialView()
-                    .transition(.customPush(cfrom: .bottom))
+                VStack {
+                    Spacer()
+                    TutorialView()
+
+                    Spacer()
+                }
+                .transition(.customPush(cfrom: .bottom))
 
             case .collaborators:
+
                 CollaboratorsView()
+                    .padding(.top, 40)
+                    .transition(.customPush(cfrom: .bottom))
 
             }
-
-//            if let location = touchLocation {
-//                LottieAnimation(
-//                    name: "Sparkle",
-//                    contentMode: .scaleAspectFit,
-//                    playbackMode: .playing(.toProgress(1, loopMode: .playOnce)),
-//                    scaleFactor: 8
-//                )
-//                .position(location)
-//                .onAppear {
-//                    print("on appear x: \(location.x)")
-//                    print("on appear y: \(location.y)")
-//                }
-//                .onDisappear {
-//                    print("disappear: \(animateSparkle)")
-//                    animateSparkle = false
-//                }
-//            }
-        }
-//        .gesture(
-//            DragGesture(minimumDistance: 0)
-//                .onEnded { value in
-//                    touchLocation = value.location
-//                }
-//        )
-
         }
     }
+}
 
 /// ParentView has the background.
 /// with this we can control the background on the previews.

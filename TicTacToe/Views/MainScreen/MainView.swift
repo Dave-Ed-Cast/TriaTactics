@@ -21,11 +21,10 @@ struct MainView: View {
 
     var namespace: Namespace.ID
 
-    let size = UIScreen.main.bounds
-
     var body: some View {
+        GeometryReader { geometry in
+            let size = geometry.size
 
-        Group {
             VStack(spacing: 10) {
                 VStack {
                     Image("appicon")
@@ -52,8 +51,9 @@ struct MainView: View {
                     }
                 }
                 .matchedGeometryEffect(id: "icon", in: namespace)
-                .padding(.vertical, 50)
-                VStack(spacing: 30) {
+                .padding(.vertical, size.height * 0.05)
+
+                VStack(spacing: size.height * 0.03) {
                     if view.value == .main {
                         PrimaryButton(label: "Play", action: {
                             animation.shouldAnimate = true
@@ -62,7 +62,7 @@ struct MainView: View {
                             }
                         }, color: .buttonTheme.opacity(0.8))
 
-                        VStack(spacing: 10) {
+                        VStack(spacing: size.height * 0.01) {
                             SecondaryButton(label: "Tutorial", action: {
                                 animation.shouldAnimate = true
                                 withAnimation {
@@ -79,7 +79,7 @@ struct MainView: View {
                         }
                     } else if view.value == .play {
 
-                        VStack(spacing: 30) {
+                        VStack(spacing: size.height * 0.03) {
                             PrimaryButton(label: "Play Online", action: {
                                 animation.shouldAnimate = true
                                 matchManager.startMatchmaking()
@@ -93,6 +93,7 @@ struct MainView: View {
                                     view.value = .offline
                                 }
                             }, color: .buttonTheme.opacity(0.8))
+
                             PrimaryButton(label: "Play vs AI", action: {
                                 animation.shouldAnimate = true
                                 withAnimation {
@@ -100,7 +101,7 @@ struct MainView: View {
                                 }
                             }, color: .buttonTheme.opacity(0.8))
                         }
-                        .padding(.top, 50)
+                        .padding(.top, size.height * 0.05)
                         .onAppear {
                             matchManager.authenticateUser()
                         }
@@ -115,15 +116,15 @@ struct MainView: View {
                     }
                 }
             }
-        }// end of outer vstack
-
-        .lineLimit(1)
-
-        .halfModal(isPresented: $isSettingsPresented) {
-            SettingsView(toggleAnimation: $isAnimationEnabled)
-                .onDisappear {
-                    isSettingsPresented = false
-                }
+            .frame(maxWidth: size.width, maxHeight: size.height)
+            .position(x: size.width / 2, y: size.height / 2)
+            .lineLimit(1)
+            .halfModal(isPresented: $isSettingsPresented) {
+                SettingsView(toggleAnimation: $isAnimationEnabled)
+                    .onDisappear {
+                        isSettingsPresented = false
+                    }
+            }
         }
     }
 
@@ -150,7 +151,8 @@ struct MainView: View {
 }
 
 #Preview("Play part") {
-    MainView(namespace: Namespace().wrappedValue)        .environmentObject(MatchManager.shared)
+    MainView(namespace: Namespace().wrappedValue)
+        .environmentObject(MatchManager.shared)
         .environmentObject(GameLogic.shared)
         .environmentObject({
             let navigation = Navigation.shared
