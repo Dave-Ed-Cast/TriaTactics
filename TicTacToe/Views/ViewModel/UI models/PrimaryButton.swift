@@ -15,7 +15,8 @@ struct PrimaryButton: View {
     let color: Color
     let invertColor: Bool
     let animation: AnimationTap?
-    let size = UIScreen.main.bounds
+
+    let device = UIDevice.current.userInterfaceIdiom
 
     init(label: LocalizedStringKey, subtitle: LocalizedStringKey? = nil, action: (() -> Void)? = nil, color: Color = .buttonTheme, invertColor: Bool = false, animation: AnimationTap = AnimationTap.init()) {
         self.label = label
@@ -27,62 +28,58 @@ struct PrimaryButton: View {
     }
 
     var body: some View {
-        Button {
-//            if let animation = animation {
-//                print("aaa")
-//                animation.shouldAnimate = true
-//            }
-            action?()
-        } label: {
-            ZStack {
-                RoundedRectangle(cornerRadius: 15)
-                    .foregroundStyle(color)
-                    .frame(width: size.width / 2, height: size.height / 14)
-                    .if(invertColor) { view in
-                        view.colorInvert()
-                    }
-                    .contentShape(RoundedRectangle(cornerRadius: 15))
-                VStack {
-                    Text(label)
-                        .fontWeight(.bold)
-                        .font(.title2)
-                        .if(subtitle != nil) { view in
-                            view.overlay {
-                                if subtitle != nil {
-                                    HStack(spacing: 0) {
-                                        Text(verbatim: "(")
-                                            .fontWeight(.light)
-                                        Text(subtitle!)
-                                            .fontWeight(.light)
-                                        Text(verbatim: ")")
-                                            .fontWeight(.light)
+        GeometryReader { geometry in
+            let size = geometry.size
+
+            Button {
+                action?()
+            } label: {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 15)
+                        .foregroundStyle(color)
+                        .frame(width: size.width * 0.5, height: size.height * 0.1)
+                        .if(invertColor) { view in
+                            view.colorInvert()
+                        }
+                        .contentShape(RoundedRectangle(cornerRadius: 15))
+                    VStack {
+                        Text(label)
+                            .fontWeight(.bold)
+                            .font(device == .pad ? .title : .title2)
+                            .if(subtitle != nil) { view in
+                                view.overlay {
+                                    if subtitle != nil {
+                                        HStack(spacing: 0) {
+                                            Text(verbatim: "(")
+                                                .fontWeight(.light)
+                                            Text(subtitle!)
+                                                .fontWeight(.light)
+                                            Text(verbatim: ")")
+                                                .fontWeight(.light)
+                                        }
+                                        .font(device == .pad ? .title2 : .callout)
+                                        .multilineTextAlignment(.center)
+                                        .padding(.top, 50)
                                     }
-                                    .font(.callout)
-                                    .fixedSize(horizontal: true, vertical: false)
-                                    .multilineTextAlignment(.center)
-                                    .padding(.top, 40)
                                 }
                             }
-                        }
 
+                    }
+                    .foregroundStyle(.textTheme)
+                    .padding()
+                    .multilineTextAlignment(.center)
                 }
-                .foregroundStyle(.textTheme)
-                .padding()
-                .multilineTextAlignment(.center)
             }
         }
     }
 }
 
 #Preview {
-    ZStack {
-        Color.black.ignoresSafeArea()
 
-        VStack(spacing: 30) {
-            PrimaryButton(label: "orland shbienen", subtitle: "ciao", action: {})
-//            PrimaryButton(label: "TEST BBBB", action: {}, color: .red)
-//            PrimaryButton(label: "TEST CCCC", action: {}, color: .red, invertColor: true)
+    VStack(spacing: 30) {
+        PrimaryButton(label: "orland shbienen", subtitle: "ciao", action: {})
+        //            PrimaryButton(label: "TEST BBBB", action: {}, color: .red)
+        //            PrimaryButton(label: "TEST CCCC", action: {}, color: .red, invertColor: true)
 
-        }
     }
 }
