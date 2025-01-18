@@ -40,11 +40,9 @@ struct TutorialView: View {
 
                 Spacer()
 
-                SecondaryButton(label: "OK!", action: {
-                    withAnimation {
-                        view.value = .main
-                    }
-                }, color: .buttonTheme.opacity(0.8))
+                SecondaryButton("OK!") {
+                    view.value = .main
+                }
                 .padding(.bottom, size.height * 0.05)
             }
             .padding()

@@ -12,134 +12,68 @@ struct MainView: View {
     @EnvironmentObject var matchManager: MatchManager
     @EnvironmentObject var gameLogic: GameLogic
     @EnvironmentObject var view: Navigation
-    @EnvironmentObject var animation: AnimationTap
 
     @AppStorage("animationStatus") private var animationEnabled = true
 
     @State private var isSettingsPresented = false
     @State private var isAnimationEnabled = UserDefaults.standard.bool(forKey: "animationStatus")
 
+    let sizeOfBounds = UIScreen.main.bounds
     var namespace: Namespace.ID
 
     var body: some View {
-        GeometryReader { geometry in
-            let size = geometry.size
 
-            VStack(spacing: 10) {
-                VStack {
-                    Image("appicon")
-                        .resizable()
-                        .scaledToFit()
-                        .cornerRadius(20)
-                        .frame(height: size.height / 7.5)
-
-                    Text(verbatim: "Tria Tactics")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-
-                    Text("The game for true tacticians!")
-                        .font(.headline)
-                        .fontWeight(.semibold)
+        VStack(spacing: 30) {
+            Spacer()
+            TriaLogo(namespace: namespace)
+            if view.value == .main {
+                PrimaryButton("Play") {
+                    view.value = .play
                 }
-                .foregroundStyle(.textTheme)
                 .padding()
-                .background {
-                    ZStack(alignment: .topTrailing) {
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(.buttonTheme.opacity(0.8))
-                        infoButton
+                VStack(spacing: 15) {
+                    SecondaryButton("Tutorial") {
+                        view.value = .tutorial
+                    }
+                    SecondaryButton("Settings") {
+                        withAnimation {
+                            isSettingsPresented.toggle()
+                        }
                     }
                 }
-                .matchedGeometryEffect(id: "icon", in: namespace)
-                .padding(.vertical, size.height * 0.05)
+                Spacer()
 
-                VStack(spacing: size.height * 0.03) {
-                    if view.value == .main {
-                        PrimaryButton(label: "Play", action: {
-                            animation.shouldAnimate = true
-                            withAnimation {
-                                view.value = .play
-                            }
-                        }, color: .buttonTheme.opacity(0.8))
-
-                        VStack(spacing: size.height * 0.01) {
-                            SecondaryButton(label: "Tutorial", action: {
-                                animation.shouldAnimate = true
-                                withAnimation {
-                                    view.value = .tutorial
-                                }
-                            }, color: .buttonTheme.opacity(0.8))
-
-                            SecondaryButton(label: "Settings", action: {
-                                animation.shouldAnimate = true
-                                withAnimation {
-                                    isSettingsPresented.toggle()
-                                }
-                            }, color: .buttonTheme.opacity(0.8))
-                        }
-                    } else if view.value == .play {
-
-                        VStack(spacing: size.height * 0.03) {
-                            PrimaryButton(label: "Play Online", action: {
-                                animation.shouldAnimate = true
-                                matchManager.startMatchmaking()
-                            }, color: .buttonTheme.opacity(0.8))
-                            .opacity(matchManager.authenticationState != .authenticated ? 0.5 : 1)
-                            .disabled(matchManager.authenticationState != .authenticated)
-
-                            PrimaryButton(label: "Play Offline", subtitle: "2P same device", action: {
-                                animation.shouldAnimate = true
-                                withAnimation {
-                                    view.value = .offline
-                                }
-                            }, color: .buttonTheme.opacity(0.8))
-
-                            PrimaryButton(label: "Play vs AI", action: {
-                                animation.shouldAnimate = true
-                                withAnimation {
-                                    view.value = .bot
-                                }
-                            }, color: .buttonTheme.opacity(0.8))
-                        }
-                        .padding(.top, size.height * 0.05)
-                        .onAppear {
-                            matchManager.authenticateUser()
-                        }
-
-                        // menu
-                        SecondaryButton(label: "Menu", action: {
-                            animation.shouldAnimate = true
-                            withAnimation {
-                                view.value = .main
-                            }
-                        }, color: .buttonTheme.opacity(0.8))
-                    }
+            } else if view.value == .play {
+                Spacer()
+                PrimaryButton("Play Online") {
+                    matchManager.startMatchmaking()
                 }
-            }
-            .frame(maxWidth: size.width, maxHeight: size.height)
-            .position(x: size.width / 2, y: size.height / 2)
-            .lineLimit(1)
-            .halfModal(isPresented: $isSettingsPresented) {
-                SettingsView(toggleAnimation: $isAnimationEnabled)
-                    .onDisappear {
-                        isSettingsPresented = false
-                    }
-            }
-        }
-    }
+                .opacity(matchManager.authenticationState != .authenticated ? 0.5 : 1)
+                .disabled(matchManager.authenticationState != .authenticated)
 
-    var infoButton: some View {
-        Button {
-            animation.shouldAnimate = true
-            view.value = .collaborators
+                PrimaryButton("Play Offline", subtitle: "2P same device") {
+                    view.value = .offline
+                }
+                PrimaryButton("Play vs AI") {
+                    view.value = .bot
+                }
+                SecondaryButton("Menu") {
+                    view.value = .main
+                }
 
-        } label: {
-            Image(systemName: "info.circle")
-                .foregroundStyle(.buttonTheme)
-                .font(.title3)
-                .colorInvert()
+            }
+
         }
-        .padding()
+        .halfModal(isPresented: $isSettingsPresented) {
+            SettingsView(toggleAnimation: $isAnimationEnabled)
+                .onDisappear {
+                    isSettingsPresented = false
+                }
+        }
+        .onAppear {
+            matchManager.authenticateUser()
+        }
+        .lineLimit(1)
     }
 }
 

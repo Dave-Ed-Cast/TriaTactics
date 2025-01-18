@@ -12,6 +12,9 @@ struct SettingsView: View {
     @Binding var toggleAnimation: Bool
     @Environment(\.colorScheme) var colorScheme
 
+    let device = UIDevice.current.userInterfaceIdiom
+    let size = UIDevice.current.userInterfaceIdiom
+
     var body: some View {
         GeometryReader { geometry in
             let size = geometry.size

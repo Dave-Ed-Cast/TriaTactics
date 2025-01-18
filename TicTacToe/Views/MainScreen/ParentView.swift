@@ -33,12 +33,10 @@ struct ParentView: View {
 
             switch view.value {
             case .main, .play:
-                VStack {
-                    Spacer()
+                VStack(alignment: .center) {
                     MainView(namespace: namespace)
                         .environmentObject(animation)
-
-                    Spacer()
+                        .frame(alignment: .center)
                 }
                 .transition(.customPush(cfrom: .top))
 
@@ -66,6 +64,7 @@ struct ParentView: View {
 
             }
         }
+
     }
 }
 

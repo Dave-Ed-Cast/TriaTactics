@@ -28,45 +28,44 @@ extension View {
 
 struct BackgroundView: View {
 
+    let device = UIDevice.current.userInterfaceIdiom
     let widthScreen: CGFloat = UIScreen.main.bounds.width
     let heightScreen: CGFloat = UIScreen.main.bounds.height
     let gridSize: CGFloat = 30
-    let columns: Array = Array(repeating: GridItem(.flexible()), count: 13)
+    let numberOfIterations = 283
 
     @Binding var savedValueForAnimation: Bool
     @State private var yOffset: CGFloat = 0
 
     var body: some View {
         VStack {
-            animatedImage
-                .frame(width: widthScreen, height: heightScreen)
-                .background(.backgroundTheme)
-                .rotationEffect(.degrees(-15))
-                .scaleEffect(1.47)
-                .onAppear {
-                    if savedValueForAnimation {
-                        startScrolling()
-                    }
+            let columns: Array = Array(repeating: GridItem(.flexible()), count: device == .pad ? 27 : 13)
+            let iterations = device == .pad ? numberOfIterations * 3 : numberOfIterations
+            LazyVGrid(columns: columns) {
+                ForEach(0..<iterations) { i in
+                    Image(i % 2 == 0 ? "X" : "O")
+                        .interpolation(.none)
+                        .resizable()
+                        .frame(width: gridSize, height: gridSize)
+                        .padding(.vertical, -2)
+                        .opacity(0.08)
                 }
-                .onChange(of: savedValueForAnimation) { newValue in
-                    newValue ? startScrolling() : stopScrolling()
+            }
+            .offset(y: yOffset)
+            .frame(width: widthScreen, height: heightScreen)
+            .background(.backgroundTheme)
+            .rotationEffect(.degrees(-15))
+            .scaleEffect(1.47)
+            .onAppear {
+                if savedValueForAnimation {
+                    startScrolling()
                 }
-        }
-        .edgesIgnoringSafeArea(.all)
-    }
-
-    var animatedImage: some View {
-        LazyVGrid(columns: columns) {
-            ForEach(0..<283) { i in
-                Image(i % 2 == 0 ? "X" : "O")
-                    .interpolation(.none)
-                    .resizable()
-                    .frame(width: gridSize, height: gridSize)
-                    .padding(.vertical, -2)
-                    .opacity(0.08)
+            }
+            .onChange(of: savedValueForAnimation) { newValue in
+                newValue ? startScrolling() : stopScrolling()
             }
         }
-        .offset(y: yOffset)
+        .edgesIgnoringSafeArea(.all)
     }
 
     private func startScrolling() {

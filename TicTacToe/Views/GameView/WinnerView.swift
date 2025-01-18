@@ -63,7 +63,7 @@ struct WinnerView: View {
                 }
                 .padding(.top, 150)
 
-                PrimaryButton(label: "Rematch", action: {
+                PrimaryButton("Rematch") {
 
                     if view.value == .offline || view.value == .bot {
                         gameLogic.resetGame()
@@ -73,11 +73,11 @@ struct WinnerView: View {
                     withAnimation(.easeIn(duration: 0.5)) {
                         showWinnerOverlay = false
                     }
-                }, color: .buttonTheme.opacity(0.8))
+                }
 
-                PrimaryButton(label: "Menu", action: {
+                PrimaryButton("Menu") {
                     showAlert = true
-                }, color: .buttonTheme.opacity(0.8))
+                }
                 .alert(isPresented: $showAlert) {
                     Alert(
                         title: Text("Quit game?"),
