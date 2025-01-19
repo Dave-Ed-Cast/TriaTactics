@@ -24,7 +24,7 @@ struct MainView: View {
 
     var body: some View {
 
-        VStack(spacing: 35) {
+        VStack(spacing: device == .pad ? 35 : 35) {
             Spacer()
             TriaLogo(namespace: namespace)
             if view.value == .main {
@@ -32,7 +32,7 @@ struct MainView: View {
                     view.value = .play
                 }
                 .padding()
-                VStack(spacing: 15) {
+                VStack(spacing: device == .pad ? 15 : 20) {
                     SecondaryButton("Tutorial") {
                         view.value = .tutorial
                     }
@@ -44,7 +44,7 @@ struct MainView: View {
 
             } else if view.value == .play {
                 Spacer()
-                Group {
+                VStack(spacing: device == .pad ? 35 : 20) {
                     PrimaryButton("Play Online") {
                         matchManager.startMatchmaking()
                     }
@@ -61,7 +61,7 @@ struct MainView: View {
                         view.value = .main
                     }
                 }
-                .padding(.bottom, 15)
+                .padding(.bottom, 25)
 
             }
         }
@@ -70,7 +70,7 @@ struct MainView: View {
         }
         .lineLimit(1)
         .padding()
-        
+
         .if(device == .phone) { view in
             view.halfModal(isPresented: $isSettingsPresented) {
                 SettingsView(toggleAnimation: $isAnimationEnabled)

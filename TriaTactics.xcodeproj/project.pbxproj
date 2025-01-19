@@ -47,7 +47,6 @@
 		3ED6BF562C0242C400A53C29 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED6BF552C0242C400A53C29 /* GameOver.swift */; };
 		3ED8C3D02C380AE40093CDD7 /* ResponsiveScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED8C3CF2C380AE40093CDD7 /* ResponsiveScore.swift */; };
 		3ED8C3D22C396B900093CDD7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED8C3D12C396B900093CDD7 /* SettingsView.swift */; };
-		3ED8C3D42C3971800093CDD7 /* AnimationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED8C3D32C3971800093CDD7 /* AnimationSettings.swift */; };
 		3ED8C3D62C397DBC0093CDD7 /* TertiaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED8C3D52C397DBC0093CDD7 /* TertiaryButton.swift */; };
 		3EDF8B812BF7FBAB00957F89 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDF8B802BF7FBAB00957F89 /* GameLogic.swift */; };
 		3EDF8B832BF80D1A00957F89 /* GameLogicConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDF8B822BF80D1A00957F89 /* GameLogicConditions.swift */; };
@@ -56,6 +55,7 @@
 		3EE6534A2D3BD79300FB3016 /* CustomPushTransitionModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE653492D3BD79300FB3016 /* CustomPushTransitionModifier.swift */; };
 		3EE6534E2D3BEB4400FB3016 /* HalfModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6534D2D3BEB4400FB3016 /* HalfModalView.swift */; };
 		3EE653502D3C27A600FB3016 /* DeviceNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6534F2D3C27A600FB3016 /* DeviceNames.swift */; };
+		3EE653562D3D70BF00FB3016 /* AnyTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE653552D3D70BF00FB3016 /* AnyTransition.swift */; };
 		3EF7830B2C524D27008D75D2 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 3EF7830A2C524D27008D75D2 /* Localizable.xcstrings */; };
 		9D9D239E2C25A53A00382D9C /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D239D2C25A53A00382D9C /* BackgroundView.swift */; };
 		9D9DC82F2C2579ED004EFDFF /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9D9DC82E2C2579ED004EFDFF /* .swiftlint.yml */; };
@@ -105,7 +105,6 @@
 		3ED6BF552C0242C400A53C29 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		3ED8C3CF2C380AE40093CDD7 /* ResponsiveScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsiveScore.swift; sourceTree = "<group>"; };
 		3ED8C3D12C396B900093CDD7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		3ED8C3D32C3971800093CDD7 /* AnimationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationSettings.swift; sourceTree = "<group>"; };
 		3ED8C3D52C397DBC0093CDD7 /* TertiaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TertiaryButton.swift; sourceTree = "<group>"; };
 		3EDF8B802BF7FBAB00957F89 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 		3EDF8B822BF80D1A00957F89 /* GameLogicConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogicConditions.swift; sourceTree = "<group>"; };
@@ -114,6 +113,7 @@
 		3EE653492D3BD79300FB3016 /* CustomPushTransitionModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushTransitionModifier.swift; sourceTree = "<group>"; };
 		3EE6534D2D3BEB4400FB3016 /* HalfModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfModalView.swift; sourceTree = "<group>"; };
 		3EE6534F2D3C27A600FB3016 /* DeviceNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceNames.swift; sourceTree = "<group>"; };
+		3EE653552D3D70BF00FB3016 /* AnyTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTransition.swift; sourceTree = "<group>"; };
 		3EF7830A2C524D27008D75D2 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		9D9D239D2C25A53A00382D9C /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		9D9DC82E2C2579ED004EFDFF /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -188,7 +188,6 @@
 			isa = PBXGroup;
 			children = (
 				3E5630862BF827AF0009B48B /* LottieAnimation.swift */,
-				3ED8C3D32C3971800093CDD7 /* AnimationSettings.swift */,
 				3E2928EE2C4451BA00892F04 /* UI models */,
 			);
 			path = ViewModel;
@@ -279,6 +278,7 @@
 			children = (
 				3EE653472D3BD77B00FB3016 /* ViewExtension.swift */,
 				3EE6534F2D3C27A600FB3016 /* DeviceNames.swift */,
+				3EE653552D3D70BF00FB3016 /* AnyTransition.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -464,7 +464,7 @@
 				3E90784D2C013E5000F34BA3 /* MatchManager+GKMatchManagerVCDelegate.swift in Sources */,
 				3E4CC0E22C35F08A00DA0407 /* GameLogicAI.swift in Sources */,
 				3E6C13B72BF7F82400373047 /* TicTacToeApp.swift in Sources */,
-				3ED8C3D42C3971800093CDD7 /* AnimationSettings.swift in Sources */,
+				3EE653562D3D70BF00FB3016 /* AnyTransition.swift in Sources */,
 				3E3925C92BFD351F0033F0E2 /* BackgroundGridViewModel.swift in Sources */,
 				3E3925C32BFD2F2A0033F0E2 /* GameActions.swift in Sources */,
 				3EC1F1C02C49C1BC0017C836 /* VisualEffectWrapper.swift in Sources */,
@@ -628,7 +628,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -666,7 +666,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

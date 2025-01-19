@@ -9,20 +9,24 @@ import SwiftUI
 
 struct WinnerView: View {
 
-    @EnvironmentObject var matchManager: MatchManager
-    @EnvironmentObject var gameLogic: GameLogic
-    @EnvironmentObject var view: Navigation
+    @EnvironmentObject private var matchManager: MatchManager
+    @EnvironmentObject private var gameLogic: GameLogic
+    @EnvironmentObject private var view: Navigation
 
-    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.device) private var device
 
     @State private var showAlert = false
     @State private var showWinnerOverlay = false
     @State private var pressed = false
 
-    let xSize = UIScreen.main.bounds.width
+    let size = UIScreen.main.bounds.size
 
     var body: some View {
         ZStack {
+
+            let imageSize = size.width * 0.265
+            let imageSizePad = size.width * 0.32
             Color.black.opacity(0.6).ignoresSafeArea()
 
             VStack(spacing: 20) {
@@ -30,13 +34,13 @@ struct WinnerView: View {
                 VStack {
                     Text("The winner is:")
                         .font(.largeTitle)
-                        .fontWeight(.semibold)
+                        .fontWeight(.bold)
                         .foregroundStyle(.textTheme)
 
                     if view.value == .offline || view.value == .bot {
                         Image(gameLogic.winner?.rawValue ?? "")
                             .resizable()
-                            .frame(maxWidth: 130, maxHeight: 130)
+                            .frame(maxWidth: device == .pad ? imageSizePad : imageSize, maxHeight: device == .pad ? imageSizePad : imageSize)
                     } else {
                         VStack {
                             let localPlayer = matchManager.localPlayerImage
@@ -46,7 +50,7 @@ struct WinnerView: View {
 
                             Image(uiImage: uiImage!)
                                 .resizable()
-                                .frame(width: xSize * 0.265, height: xSize * 0.265)
+                                .frame(width: device == .pad ? imageSizePad : imageSize, height: device == .pad ? imageSizePad : imageSize)
 
                             Text(matchManager.localPlayerWin ? matchManager.localPlayer.displayName : matchManager.otherPlayer?.displayName ?? "Other")
                                 .font(.headline)

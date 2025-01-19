@@ -17,19 +17,21 @@ struct TriaLogo: View {
     var namespace: Namespace.ID
 
     var body: some View {
-        let containerWidth = device == .pad ? size.height * 0.5 : size.height * 0.134
-        let containerHeight = device == .pad ? size.height * 0.3 : size.height * 0.134
+        let containerWidth = device == .pad ? size.width * 0.5 : size.width * 0.65
+        let containerHeight = device == .pad ? size.height * 0.3 : size.height * 0.25
+
+        let imageSize = device == .pad ? size.width * 0.3 : size.width * 0.3
 
         VStack(spacing: 5) {
 
             Image("appicon")
                 .resizable()
-                .scaledToFit()
                 .cornerRadius(20)
-                .padding(30)
+                .padding(device == .pad ? 30 : 15)
+                .frame(width: imageSize, height: imageSize)
             VStack(spacing: 5) {
                 Text(verbatim: "Tria Tactics")
-                    .font(.largeTitle)
+                    .font(device == .pad ? .largeTitle : .title)
                     .fontWeight(.bold)
 
                 Text("The game for true tacticians!")
