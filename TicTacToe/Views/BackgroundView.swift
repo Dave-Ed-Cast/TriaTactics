@@ -7,28 +7,10 @@
 
 import SwiftUI
 
-extension View {
-    func asImage() -> UIImage {
-        let controller = UIHostingController(rootView: self.edgesIgnoringSafeArea(.all))
-        let view = controller.view
-
-        let targetSize = controller.view.intrinsicContentSize
-        view?.bounds = CGRect(origin: .zero, size: targetSize)
-        view?.backgroundColor = .clear
-
-        let format = UIGraphicsImageRendererFormat()
-        format.scale = UIScreen.main.scale
-        let renderer = UIGraphicsImageRenderer(size: targetSize, format: format)
-
-        return renderer.image { _ in
-            view?.drawHierarchy(in: view!.bounds, afterScreenUpdates: true)
-        }
-    }
-}
-
 struct BackgroundView: View {
 
-    let device = UIDevice.current.userInterfaceIdiom
+    @Environment(\.device) private var device
+
     let widthScreen: CGFloat = UIScreen.main.bounds.width
     let heightScreen: CGFloat = UIScreen.main.bounds.height
     let gridSize: CGFloat = 30
@@ -38,9 +20,11 @@ struct BackgroundView: View {
     @State private var yOffset: CGFloat = 0
 
     var body: some View {
+        let count = device == .pad ? 28 : 13
+        let columns: Array = Array(repeating: GridItem(.flexible()), count: count)
+        let iterations = device == .pad ? numberOfIterations * 3 : numberOfIterations
+
         VStack {
-            let columns: Array = Array(repeating: GridItem(.flexible()), count: device == .pad ? 27 : 13)
-            let iterations = device == .pad ? numberOfIterations * 3 : numberOfIterations
             LazyVGrid(columns: columns) {
                 ForEach(0..<iterations) { i in
                     Image(i % 2 == 0 ? "X" : "O")
@@ -55,7 +39,7 @@ struct BackgroundView: View {
             .frame(width: widthScreen, height: heightScreen)
             .background(.backgroundTheme)
             .rotationEffect(.degrees(-15))
-            .scaleEffect(1.47)
+            .scaleEffect(device == .pad ? 1.8 : 1.47)
             .onAppear {
                 if savedValueForAnimation {
                     startScrolling()

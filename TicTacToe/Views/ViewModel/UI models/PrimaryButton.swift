@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct PrimaryButton: View {
+
+    @Environment(\.device) private var device
+
     let label: LocalizedStringKey
     let subtitle: LocalizedStringKey?
     let action: (() -> Void)?
@@ -15,7 +18,6 @@ struct PrimaryButton: View {
     let invertColor: Bool
     let animation: Bool
 
-    let device = UIDevice.current.userInterfaceIdiom
     let size = UIScreen.main.bounds.size
 
     init(_ label: LocalizedStringKey, subtitle: LocalizedStringKey? = nil, color: Color = .buttonTheme.opacity(0.8), invertColor: Bool = false, animation: Bool = true, action: (() -> Void)? = nil) {
@@ -48,8 +50,9 @@ struct PrimaryButton: View {
                         Text(label)
                             .fontWeight(.bold)
                             .font(device == .pad ? .largeTitle : .title)
+
                         if let subtitle = subtitle {
-                            Text("(\(subtitle))")
+                            Text(subtitle)
                                 .fontWeight(.light)
                                 .font(device == .pad ? .title2 : .callout)
                                 .multilineTextAlignment(.center)
@@ -76,6 +79,20 @@ struct PrimaryButton: View {
 
     PreviewWrapper {
         MainView(namespace: Namespace().wrappedValue)
-            .environmentObject(AnimationTap())
+    }
+}
+
+#Preview("IT") {
+
+    //    VStack(spacing: 30) {
+    //        PrimaryButton(label: "orland shbienen", subtitle: "ciao", action: {})
+    //        //            PrimaryButton(label: "TEST BBBB", action: {}, color: .red)
+    //        //            PrimaryButton(label: "TEST CCCC", action: {}, color: .red, invertColor: true)
+    //
+    //    }
+
+    PreviewWrapper {
+        MainView(namespace: Namespace().wrappedValue)
+
     }
 }

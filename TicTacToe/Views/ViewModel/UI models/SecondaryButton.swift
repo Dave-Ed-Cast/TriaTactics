@@ -9,13 +9,14 @@ import SwiftUI
 
 struct SecondaryButton: View {
 
+    @Environment(\.device) private var device
+
     let label: LocalizedStringKey
     let action: (() -> Void)?
     let color: Color
     let invertColor: Bool
     let animation: Bool
 
-    let device = UIDevice.current.userInterfaceIdiom
     let size = UIScreen.main.bounds.size
 
     init(_ label: LocalizedStringKey, color: Color = .buttonTheme.opacity(0.8), invertColor: Bool = false, animation: Bool = true, action: (() -> Void)? = nil) {
@@ -68,6 +69,5 @@ struct SecondaryButton: View {
     //    }
     PreviewWrapper {
         MainView(namespace: Namespace().wrappedValue)
-            .environmentObject(AnimationTap())
     }
 }

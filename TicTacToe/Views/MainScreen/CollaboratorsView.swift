@@ -11,7 +11,9 @@ struct CollaboratorsView: View {
 
     @EnvironmentObject var view: Navigation
     @AppStorage("animationStatus") private var animationEnabled = true
-    @Environment(\.colorScheme) var colorScheme
+
+    @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.device) private var device
 
     var collaborators: [Collaborator] = Collaborator.list
 
@@ -26,12 +28,12 @@ struct CollaboratorsView: View {
                         HStack {
                             VStack(alignment: .leading, spacing: 10) {
                                 Text(collab.name)
-                                    .font(.title2)
+                                    .font(device == .pad ? .largeTitle : .title2)
                                     .fontWeight(.bold)
                                 Text(collab.role)
-                                    .font(.headline)
+                                    .font(device == .pad ? .title : .headline)
                                 Text(collab.contribute)
-                                    .font(.callout)
+                                    .font(device == .pad ? .title3 : .callout)
                             }
                             .foregroundStyle(.textTheme)
 
@@ -39,7 +41,7 @@ struct CollaboratorsView: View {
 
                             Link(destination: URL(string: collab.contactInfo)!, label: {
                                 Text("Their page")
-                                    .font(.subheadline)
+                                    .font(device == .pad ? .callout : .subheadline)
                                     .fontWeight(.semibold)
                                     .underline(true)
                                     .foregroundStyle(.blue)
@@ -61,7 +63,7 @@ struct CollaboratorsView: View {
                 .frame(width: size.width)
             }
 
-            .overlay(
+            .overlay(alignment: .topTrailing) {
                 HStack {
                     Spacer()
                     TertiaryButton {
@@ -70,9 +72,8 @@ struct CollaboratorsView: View {
                         }
                     }
                     .padding()
-                },
-                alignment: .topTrailing
-            )
+                }
+            }
         }
     }
 }
@@ -91,5 +92,4 @@ struct CollaboratorsView: View {
         .environmentObject(Navigation.shared)
         .environmentObject(MatchManager.shared)
         .environmentObject(GameLogic.shared)
-        .environmentObject(AnimationTap())
 }

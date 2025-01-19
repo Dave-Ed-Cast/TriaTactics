@@ -9,11 +9,12 @@ import SwiftUI
 
 struct TertiaryButton: View {
 
+    @Environment(\.device) private var device
+
     let action: (() -> Void)?
     let color: Color
     let invertColor: Bool
 
-    let device = UIDevice.current.userInterfaceIdiom
     let size = UIScreen.main.bounds.size
 
     init(color: Color = .buttonTheme, invertColor: Bool = false, action: (() -> Void)? = nil) {

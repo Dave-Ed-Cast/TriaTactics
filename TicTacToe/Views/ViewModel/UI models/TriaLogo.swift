@@ -11,13 +11,14 @@ struct TriaLogo: View {
 
     @EnvironmentObject private var view: Navigation
 
-    let device = UIDevice.current.userInterfaceIdiom
+    @Environment(\.device) private var device
     let size = UIScreen.main.bounds.size
 
     var namespace: Namespace.ID
 
     var body: some View {
-        let containerSize = device == .pad ? size.height * 0.4 : size.height * 0.134
+        let containerWidth = device == .pad ? size.height * 0.5 : size.height * 0.134
+        let containerHeight = device == .pad ? size.height * 0.3 : size.height * 0.134
 
         VStack(spacing: 5) {
 
@@ -37,6 +38,9 @@ struct TriaLogo: View {
             }
             Spacer()
         }
+        .onAppear {
+            print(device)
+        }
         .foregroundStyle(.textTheme)
         .padding()
         .background {
@@ -44,7 +48,9 @@ struct TriaLogo: View {
                 RoundedRectangle(cornerRadius: 20)
                     .fill(.buttonTheme.opacity(0.8))
                 Button {
-                    view.value = .collaborators
+                    withAnimation {
+                        view.value = .collaborators
+                    }
                 } label: {
                     Image(systemName: "info.circle")
                         .foregroundStyle(.buttonTheme)
@@ -55,7 +61,7 @@ struct TriaLogo: View {
             }
         }
         .matchedGeometryEffect(id: "icon", in: namespace)
-        .frame(width: containerSize, height: containerSize)
+        .frame(width: containerWidth, height: containerHeight)
     }
 
 }

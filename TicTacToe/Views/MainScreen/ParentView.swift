@@ -7,18 +7,13 @@
 
 import SwiftUI
 
-class AnimationTap: ObservableObject {
-    @Published var shouldAnimate: Bool = false
-}
-
 struct ParentView: View {
 
-    @StateObject private var animation = AnimationTap()
     @AppStorage("animationStatus") private var animationEnabled = true
 
-    @EnvironmentObject var view: Navigation
-    @EnvironmentObject var matchManager: MatchManager
-    @EnvironmentObject var gameLogic: GameLogic
+    @EnvironmentObject private var view: Navigation
+    @EnvironmentObject private var matchManager: MatchManager
+    @EnvironmentObject private var gameLogic: GameLogic
 
     @Namespace private var namespace
 
@@ -35,8 +30,6 @@ struct ParentView: View {
             case .main, .play:
                 VStack(alignment: .center) {
                     MainView(namespace: namespace)
-                        .environmentObject(animation)
-                        .frame(alignment: .center)
                 }
                 .transition(.customPush(cfrom: .top))
 
@@ -51,17 +44,17 @@ struct ParentView: View {
                 VStack {
                     Spacer()
                     TutorialView()
-
                     Spacer()
                 }
                 .transition(.customPush(cfrom: .bottom))
 
             case .collaborators:
 
-                CollaboratorsView()
-                    .padding(.top, 40)
-                    .transition(.customPush(cfrom: .bottom))
-
+                Group {
+                    CollaboratorsView()
+                }
+                .padding(.top, 40)
+                .transition(.customPush(cfrom: .bottom))
             }
         }
 
@@ -82,7 +75,6 @@ struct PreviewWrapper<Content: View>: View {
                 .environmentObject(MatchManager.shared)
                 .environmentObject(Navigation.shared)
                 .environmentObject(GameLogic.shared)
-                .environmentObject(AnimationTap())
                 .background {
                     BackgroundView(savedValueForAnimation: $isPreviewAnimationEnabled)
                 }
@@ -100,5 +92,4 @@ struct PreviewWrapper<Content: View>: View {
         .environmentObject(Navigation.shared)
         .environmentObject(MatchManager.shared)
         .environmentObject(GameLogic.shared)
-        .environmentObject(AnimationTap())
 }
