@@ -133,7 +133,7 @@ struct GameView: View {
                         )
                     }
                 }
-                .padding(device == .pad ? 45 : 25)
+                .padding(device == .pad ? 60 : 45)
             }
 
         }// end of outer VStack

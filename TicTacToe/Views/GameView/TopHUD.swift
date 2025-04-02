@@ -51,6 +51,7 @@ struct TopHUD: View {
                     }
                     .padding(.bottom, 15)
                 } // end of HStack
+                .padding(.top, 25)
                 .foregroundStyle(.textTheme)
                 .font(.title)
                 .multilineTextAlignment(.center)
