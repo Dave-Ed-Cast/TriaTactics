@@ -9,9 +9,11 @@ import SwiftUI
 
 struct ResponsiveScore: View {
 
-    @EnvironmentObject var view: Navigation
-    @EnvironmentObject var matchManager: MatchManager
-    @EnvironmentObject var gameLogic: GameLogic
+    @EnvironmentObject private var view: Navigation
+    @EnvironmentObject private var matchManager: MatchManager
+    @EnvironmentObject private var gameLogic: GameLogic
+
+    @Environment(\.device) private var device
 
     @State private var gameTurns = 0
 
@@ -82,7 +84,9 @@ struct ResponsiveScore: View {
                 if !invert {
                     if view.value == .offline || view.value == .bot {
                         Image("X")
-                            .resizable()
+                            .if(device == .phone) { image in
+                                image.resizable()
+                            }
                             .frame(width: xSize * 0.13, height: xSize * 0.13)
                     } else if view.value == .online {
 
@@ -100,6 +104,7 @@ struct ResponsiveScore: View {
 
                     Text("\(playerScore())")
                         .fontWeight(.bold)
+                        .font(device == .pad ? .largeTitle : .title)
                         .multilineTextAlignment(.trailing)
                         .frame(width: xSize * 0.1)
 
@@ -107,12 +112,15 @@ struct ResponsiveScore: View {
 
                     Text("\(playerScore())")
                         .fontWeight(.bold)
+                        .font(device == .pad ? .largeTitle : .title)
                         .multilineTextAlignment(.trailing)
                         .frame(width: xSize * 0.1)
 
                     if view.value == .offline || view.value == .bot {
                         Image("O")
-                            .resizable()
+                            .if(device == .phone) { image in
+                                image.resizable()
+                            }
                             .frame(width: xSize * 0.13, height: xSize * 0.13)
                     } else {
 

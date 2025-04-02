@@ -9,26 +9,6 @@ import Foundation
 
 extension GameLogic {
 
-    /// This is the function that delets the last move, it extracts the first element of this array.
-    /// By its own construction it's always gonna remove the first element, and later another one is gonna be appended
-    /// - Parameter player: it needs to know the player that is doing the move
-    func removeFirstMove(of player: Player) {
-
-        guard let firstMoveIndex = playerHistory[activePlayer]?.removeFirst() else {
-            return
-        }
-
-        // delete that action of the player
-        grid[firstMoveIndex] = nil
-
-        // and decremenet their count, so that the algorithm works
-        if player == .X {
-            moveCountX -= 1
-        } else {
-            moveCountO -= 1
-        }
-    }
-
     /// This function checks all the possible winning combinations.
     /// It counts the elements corresponding to the rule of Tic Tac Toe
     /// It also tells at which degree (in the diagonals) to rotate the animation in the view

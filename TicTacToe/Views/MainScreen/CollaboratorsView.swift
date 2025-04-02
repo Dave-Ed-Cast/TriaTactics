@@ -12,60 +12,70 @@ struct CollaboratorsView: View {
     @EnvironmentObject var view: Navigation
     @AppStorage("animationStatus") private var animationEnabled = true
 
-    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.device) private var device
+
     var collaborators: [Collaborator] = Collaborator.list
 
     var body: some View {
+        GeometryReader { geometry in
+            let size = geometry.size
 
-        ScrollView {
-            ForEach(collaborators) { collab in
-                HStack {
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text(collab.name)
-                            .font(.title2)
-                            .fontWeight(.bold)
-                        Text(collab.role)
-                            .font(.headline)
-                        Text(collab.contribute)
-                            .font(.callout)
-                    }
-                    .foregroundStyle(.textTheme)
-
-                    Spacer()
-
-                    Link(destination: URL(string: collab.contactInfo)!, label: {
-                        Text("Their page")
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
-                            .underline(true)
-                            .foregroundStyle(.blue)
-                            .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
-                            .background {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .foregroundStyle(colorScheme == .dark ?  .white.opacity(0.05) : .clear)
+            ScrollView {
+                Spacer()
+                VStack(spacing: 20) {
+                    ForEach(collaborators) { collab in
+                        HStack {
+                            VStack(alignment: .leading, spacing: 10) {
+                                Text(collab.name)
+                                    .font(device == .pad ? .largeTitle : .title2)
+                                    .fontWeight(.bold)
+                                Text(collab.role)
+                                    .font(device == .pad ? .title : .headline)
+                                Text(collab.contribute)
+                                    .font(device == .pad ? .title3 : .callout)
                             }
-                    })
+                            .foregroundStyle(.textTheme)
+
+                            Spacer()
+
+                            Link(destination: URL(string: collab.contactInfo)!, label: {
+                                Text("Their page")
+                                    .font(device == .pad ? .callout : .subheadline)
+                                    .fontWeight(.semibold)
+                                    .underline(true)
+                                    .foregroundStyle(.blue)
+                                    .padding(5)
+                                    .background {
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .foregroundStyle(colorScheme == .dark ? .white.opacity(0.05) : .clear)
+                                    }
+                            })
+                        }
+                        .padding()
+                        .background {
+                            RoundedRectangle(cornerRadius: 20)
+                                .foregroundStyle(.buttonTheme.opacity(0.8))
+                        }
+                    }
                 }
                 .padding()
-                .background {
-                    RoundedRectangle(cornerRadius: 20)
-                        .foregroundStyle(.buttonTheme.opacity(0.8))
-                }
-                .lineLimit(nil)
+                .frame(width: size.width)
             }
-            .padding()
-        }
 
-        .overlay(alignment: .topTrailing) {
-            TertiaryButton {
-                withAnimation {
-                    view.value = .main
+            .overlay(alignment: .topTrailing) {
+                HStack {
+                    Spacer()
+                    TertiaryButton {
+                        withAnimation {
+                            view.value = .main
+                        }
+                    }
+                    .padding()
                 }
             }
         }
-        .padding(.top, 60)
     }
-
 }
 
 #Preview("English") {
@@ -82,5 +92,4 @@ struct CollaboratorsView: View {
         .environmentObject(Navigation.shared)
         .environmentObject(MatchManager.shared)
         .environmentObject(GameLogic.shared)
-        .environmentObject(AnimationTap())
 }

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 
 class OnboardingParameters: ObservableObject {
     @Published var completed: Bool

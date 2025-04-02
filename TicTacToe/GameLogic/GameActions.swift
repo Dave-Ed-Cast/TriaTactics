@@ -93,7 +93,6 @@ extension GameLogic {
                     return
                 }
 
-                print("AI's move")
                 computerMove()
 
                 isPlayerTurn = true // Switch back to player's turn
@@ -105,14 +104,13 @@ extension GameLogic {
     /// Finalizes the move in the grid
     /// - Parameter index: the grid spot
     func finalizeMove(index: Int) {
-        // this player occupied the grid at this index
+
         grid[index] = activePlayer
         print("Player \(activePlayer) moved at index \(index)")
 
-        // the core of Tria Tactics
+        // Handle game actions and potential win conditions
         gameActions(index: index)
 
-        // did you win?
         if checkWinner() {
             winner = activePlayer
             activePlayer == .X ? (xScore += 1) : (oScore += 1)
@@ -188,16 +186,18 @@ extension GameLogic {
         if activePlayer == .X {
             moveCountX += 1
             playerHistory[.X]?.append(index)
-        } else {
+            print("history of X: \(playerHistory[.X]!)")
+        } else if activePlayer == .O {
             moveCountO += 1
             playerHistory[.O]?.append(index)
+            print("history of O: \(playerHistory[.O]!)")
         }
 
         // after understanding who hit their fourth move
         let currentPlayerMoveCount = activePlayer == .X ? moveCountX : moveCountO
 
         // we remove the first move of that player
-        if currentPlayerMoveCount == 4 {
+        if currentPlayerMoveCount >= 4 {
             removeFirstMove(of: activePlayer)
         }
 
@@ -231,6 +231,26 @@ extension GameLogic {
         }
         matchManager.currentlyPlaying = false
         matchManager.remainingTime = 10
+    }
+
+    /// This is the function that delets the last move, it extracts the first element of this array.
+    /// By its own construction it's always gonna remove the first element, and later another one is gonna be appended
+    /// - Parameter player: it needs to know the player that is doing the move
+    func removeFirstMove(of player: Player) {
+
+        guard let firstMoveIndex = playerHistory[activePlayer]?.removeFirst() else {
+            return
+        }
+
+        // delete that action of the player
+        grid[firstMoveIndex] = nil
+
+        // and decremenet their count, so that the algorithm works
+        if player == .X {
+            moveCountX -= 1
+        } else {
+            moveCountO -= 1
+        }
     }
 
     /// put everything back in place

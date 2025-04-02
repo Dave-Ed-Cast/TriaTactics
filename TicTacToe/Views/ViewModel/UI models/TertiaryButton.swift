@@ -9,37 +9,38 @@ import SwiftUI
 
 struct TertiaryButton: View {
 
-    @State private var doSomething: Bool = false
+    @Environment(\.device) private var device
+
     let action: (() -> Void)?
     let color: Color
     let invertColor: Bool
 
-    let size = UIScreen.main.bounds
+    let size = UIScreen.main.bounds.size
 
-    init(action: (() -> Void)? = nil, color: Color = .buttonTheme, invertColor: Bool = false) {
+    init(color: Color = .buttonTheme, invertColor: Bool = false, action: (() -> Void)? = nil) {
         self.action = action
         self.color = color
         self.invertColor = invertColor
     }
 
     var body: some View {
+        let buttonSize = size.width / 12
         Button {
             action?()
-            doSomething = true
         } label: {
             ZStack {
                 Circle()
                     .foregroundStyle(color)
-                    .frame(width: size.width / 12, height: size.height / 12)
                     .if(invertColor) { view in
                         view.colorInvert()
                     }
                 Image(systemName: "xmark")
                     .padding()
                     .foregroundStyle(.textTheme)
-                    .font(.headline)
+                    .font(device == .pad ? .title :.headline)
             }
         }
+        .frame(width: buttonSize, height: buttonSize)
     }
 }
 

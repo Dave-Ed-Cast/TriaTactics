@@ -9,11 +9,12 @@ import SwiftUI
 
 struct GameView: View {
 
-    @EnvironmentObject var matchManager: MatchManager
-    @EnvironmentObject var gameLogic: GameLogic
-    @EnvironmentObject var view: Navigation
+    @EnvironmentObject private var matchManager: MatchManager
+    @EnvironmentObject private var gameLogic: GameLogic
+    @EnvironmentObject private var view: Navigation
 
-    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.device) private var device
 
     @State private var showAlert = false
     @State private var showWinnerOverlay = false
@@ -46,18 +47,26 @@ struct GameView: View {
         Group {
             VStack(spacing: 15) {
 
-                TopHUD()
-                    .padding(.horizontal)
-                ScoreView()
-                    .padding(.horizontal)
+                Group {
+                    TopHUD()
+                    ScoreView()
+                }
+                .if(device == .pad) { hud in
+                    hud.padding(.bottom, -100)
+                }
+                .padding(.horizontal)
 
                 VStack {
                     if view.value == .online {
                         Text("Time left: \(matchManager.remainingTime)")
-                            .font(.title2)
+                            .font(device == .pad ? .title : .title2)
                             .fontWeight(.semibold)
                             .opacity((view.value == .offline) ? 0 : 1)
                             .foregroundStyle(matchManager.remainingTime <= 3 ? .red : .textTheme)
+                            .if(device == .pad) { text in
+                                text
+                                    .offset(y: 115)
+                            }
                             .padding(.top, 10)
 
                     } else {
@@ -88,6 +97,10 @@ struct GameView: View {
                             .onDisappear { timer?.invalidate() }
 //                            .rainbowEffect(time: time)
 //                    }
+                }
+                .if(device == .pad) { grid in
+                    grid
+                        .padding(.top, 90)
                 }
                 Spacer()
 

@@ -7,19 +7,13 @@
 
 import SwiftUI
 
-class AnimationTap: ObservableObject {
-    @Published var shouldAnimate: Bool = false
-}
-
 struct ParentView: View {
-
-    @StateObject private var animation = AnimationTap()
 
     @AppStorage("animationStatus") private var animationEnabled = true
 
-    @EnvironmentObject var view: Navigation
-    @EnvironmentObject var matchManager: MatchManager
-    @EnvironmentObject var gameLogic: GameLogic
+    @EnvironmentObject private var view: Navigation
+    @EnvironmentObject private var matchManager: MatchManager
+    @EnvironmentObject private var gameLogic: GameLogic
 
     @Namespace private var namespace
 
@@ -31,51 +25,41 @@ struct ParentView: View {
     var body: some View {
         ZStack(alignment: .center) {
             BackgroundView(savedValueForAnimation: $animationEnabled)
+
             switch view.value {
             case .main, .play:
-                MainView(namespace: namespace)
-                    .environmentObject(animation)
-                    .transition(.customPush(cfrom: .top))
+                VStack(alignment: .center) {
+                    MainView(namespace: namespace)
+                }
+                .transition(.customPush(cfrom: .top))
 
             case .online, .offline, .bot:
-                GameView()
+                VStack {
+                    Spacer()
+                    GameView()
+                    Spacer()
+                }
 
             case .tutorial:
-                TutorialView()
-                    .transition(.customPush(cfrom: .bottom))
+                VStack {
+                    Spacer()
+                    TutorialView()
+                    Spacer()
+                }
+                .transition(.customPush(cfrom: .bottom))
 
             case .collaborators:
-                CollaboratorsView()
 
+                Group {
+                    CollaboratorsView()
+                }
+                .padding(.top, 40)
+                .transition(.customPush(cfrom: .bottom))
             }
-
-//            if let location = touchLocation {
-//                LottieAnimation(
-//                    name: "Sparkle",
-//                    contentMode: .scaleAspectFit,
-//                    playbackMode: .playing(.toProgress(1, loopMode: .playOnce)),
-//                    scaleFactor: 8
-//                )
-//                .position(location)
-//                .onAppear {
-//                    print("on appear x: \(location.x)")
-//                    print("on appear y: \(location.y)")
-//                }
-//                .onDisappear {
-//                    print("disappear: \(animateSparkle)")
-//                    animateSparkle = false
-//                }
-//            }
         }
-//        .gesture(
-//            DragGesture(minimumDistance: 0)
-//                .onEnded { value in
-//                    touchLocation = value.location
-//                }
-//        )
 
-        }
     }
+}
 
 /// ParentView has the background.
 /// with this we can control the background on the previews.
@@ -91,7 +75,6 @@ struct PreviewWrapper<Content: View>: View {
                 .environmentObject(MatchManager.shared)
                 .environmentObject(Navigation.shared)
                 .environmentObject(GameLogic.shared)
-                .environmentObject(AnimationTap())
                 .background {
                     BackgroundView(savedValueForAnimation: $isPreviewAnimationEnabled)
                 }
@@ -109,5 +92,4 @@ struct PreviewWrapper<Content: View>: View {
         .environmentObject(Navigation.shared)
         .environmentObject(MatchManager.shared)
         .environmentObject(GameLogic.shared)
-        .environmentObject(AnimationTap())
 }

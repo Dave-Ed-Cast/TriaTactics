@@ -9,15 +9,18 @@ import SwiftUI
 
 struct PrimaryButton: View {
 
+    @Environment(\.device) private var device
+
     let label: LocalizedStringKey
     let subtitle: LocalizedStringKey?
     let action: (() -> Void)?
     let color: Color
     let invertColor: Bool
-    let animation: AnimationTap?
-    let size = UIScreen.main.bounds
+    let animation: Bool
 
-    init(label: LocalizedStringKey, subtitle: LocalizedStringKey? = nil, action: (() -> Void)? = nil, color: Color = .buttonTheme, invertColor: Bool = false, animation: AnimationTap = AnimationTap.init()) {
+    let size = UIScreen.main.bounds.size
+
+    init(_ label: LocalizedStringKey, subtitle: LocalizedStringKey? = nil, color: Color = .buttonTheme.opacity(0.8), invertColor: Bool = false, animation: Bool = true, action: (() -> Void)? = nil) {
         self.label = label
         self.subtitle = subtitle
         self.action = action
@@ -27,62 +30,69 @@ struct PrimaryButton: View {
     }
 
     var body: some View {
-        Button {
-//            if let animation = animation {
-//                print("aaa")
-//                animation.shouldAnimate = true
-//            }
-            action?()
-        } label: {
-            ZStack {
-                RoundedRectangle(cornerRadius: 15)
-                    .foregroundStyle(color)
-                    .frame(width: size.width / 2, height: size.height / 14)
-                    .if(invertColor) { view in
-                        view.colorInvert()
+        VStack(alignment: .center) {
+            let buttonWidth = size.width * 0.5
+            let buttonHeight = size.height * 0.1
+            Button {
+                if animation {
+                    withAnimation {
+                        action?()
                     }
-                    .contentShape(RoundedRectangle(cornerRadius: 15))
-                VStack {
-                    Text(label)
-                        .fontWeight(.bold)
-                        .font(.title2)
-                        .if(subtitle != nil) { view in
-                            view.overlay {
-                                if subtitle != nil {
-                                    HStack(spacing: 0) {
-                                        Text(verbatim: "(")
-                                            .fontWeight(.light)
-                                        Text(subtitle!)
-                                            .fontWeight(.light)
-                                        Text(verbatim: ")")
-                                            .fontWeight(.light)
-                                    }
-                                    .font(.callout)
-                                    .fixedSize(horizontal: true, vertical: false)
-                                    .multilineTextAlignment(.center)
-                                    .padding(.top, 40)
-                                }
-                            }
+                } else {
+                    action?()
+                }
+            } label: {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 15)
+                        .foregroundColor(color)
+                        .if(invertColor) { $0.colorInvert() }
+                    VStack {
+                        Text(label)
+                            .fontWeight(.bold)
+                            .font(device == .pad ? .largeTitle : .title)
+
+                        if let subtitle = subtitle {
+                            Text(subtitle)
+                                .fontWeight(.light)
+                                .font(device == .pad ? .title2 : .callout)
+                                .multilineTextAlignment(.center)
                         }
+                    }
+                    .foregroundStyle(.textTheme)
+                    .padding()
 
                 }
-                .foregroundStyle(.textTheme)
-                .padding()
-                .multilineTextAlignment(.center)
             }
+            .frame(width: buttonWidth, height: buttonHeight)
         }
     }
 }
 
 #Preview {
-    ZStack {
-        Color.black.ignoresSafeArea()
 
-        VStack(spacing: 30) {
-            PrimaryButton(label: "orland shbienen", subtitle: "ciao", action: {})
-//            PrimaryButton(label: "TEST BBBB", action: {}, color: .red)
-//            PrimaryButton(label: "TEST CCCC", action: {}, color: .red, invertColor: true)
+    //    VStack(spacing: 30) {
+    //        PrimaryButton(label: "orland shbienen", subtitle: "ciao", action: {})
+    //        //            PrimaryButton(label: "TEST BBBB", action: {}, color: .red)
+    //        //            PrimaryButton(label: "TEST CCCC", action: {}, color: .red, invertColor: true)
+    //
+    //    }
 
-        }
+    PreviewWrapper {
+        MainView(namespace: Namespace().wrappedValue)
+    }
+}
+
+#Preview("IT") {
+
+    //    VStack(spacing: 30) {
+    //        PrimaryButton(label: "orland shbienen", subtitle: "ciao", action: {})
+    //        //            PrimaryButton(label: "TEST BBBB", action: {}, color: .red)
+    //        //            PrimaryButton(label: "TEST CCCC", action: {}, color: .red, invertColor: true)
+    //
+    //    }
+
+    PreviewWrapper {
+        MainView(namespace: Namespace().wrappedValue)
+
     }
 }

@@ -45,9 +45,9 @@ struct OnboardingPageViewModel: View {
 
             }
             .lineLimit(nil)
-            SecondaryButton(label: "Lets' start!", action: {
+            SecondaryButton("Lets' start!") {
                 onboardingIsCompleted = true
-            }, color: .buttonTheme.opacity(0.8))
+            }
             .padding(.bottom, 40)
             .opacity(showDoneButton ? 1 : 0)
         }

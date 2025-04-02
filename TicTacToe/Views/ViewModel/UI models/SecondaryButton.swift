@@ -9,30 +9,41 @@ import SwiftUI
 
 struct SecondaryButton: View {
 
-    @State private var doSomething: Bool = false
+    @Environment(\.device) private var device
+
     let label: LocalizedStringKey
     let action: (() -> Void)?
     let color: Color
     let invertColor: Bool
+    let animation: Bool
 
-    let size = UIScreen.main.bounds
+    let size = UIScreen.main.bounds.size
 
-    init(label: LocalizedStringKey, action: (() -> Void)? = nil, color: Color = .buttonTheme, invertColor: Bool = false) {
+    init(_ label: LocalizedStringKey, color: Color = .buttonTheme.opacity(0.8), invertColor: Bool = false, animation: Bool = true, action: (() -> Void)? = nil) {
         self.label = label
         self.action = action
         self.color = color
         self.invertColor = invertColor
+        self.animation = animation
     }
 
     var body: some View {
+
+        let buttonWidth = size.width * 0.3
+        let buttonHeight = size.height * 0.05
+
         Button {
-            action?()
-            doSomething = true
+            if animation {
+                withAnimation {
+                    action?()
+                }
+            } else {
+                action?()
+            }
         } label: {
             ZStack {
-                RoundedRectangle(cornerRadius: 15)
+                RoundedRectangle(cornerRadius: 10)
                     .foregroundStyle(color)
-                    .frame(width: size.width / 3, height: size.height / 16)
                     .if(invertColor) { view in
                         view.colorInvert()
                     }
@@ -40,22 +51,23 @@ struct SecondaryButton: View {
                     .fontWeight(.light)
                     .padding()
                     .foregroundStyle(.textTheme)
-                    .font(.title3)
+                    .font(device == .pad ? .title : .title3)
             }
         }
+        .frame(width: buttonWidth, height: buttonHeight)
     }
 }
 
 #Preview {
-    ZStack {
-        Color.black
-
-        VStack(spacing: 20) {
-//            PrimaryButton(label: "TEST AAAA")
-//            PrimaryButton(label: "TEST BBBB")
-//            SecondaryButton(label: "TEST AAAA")
-//            SecondaryButton(label: "TEST BBBB", color: .yellow)
-        }
+    //    ZStack {
+    //        VStack {
+    ////                        PrimaryButton(label: "TEST AAAA")
+    //            //            PrimaryButton(label: "TEST BBBB")
+    //                        SecondaryButton(label: "TEST AAAA")
+    //                        SecondaryButton(label: "TEST BBBB", color: .red)
+    //        }
+    //    }
+    PreviewWrapper {
+        MainView(namespace: Namespace().wrappedValue)
     }
-
 }

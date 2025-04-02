@@ -9,8 +9,10 @@ import SwiftUI
 
 struct ScoreView: View {
 
-    @EnvironmentObject var matchManager: MatchManager
-    @EnvironmentObject var gameLogic: GameLogic
+    @EnvironmentObject private var matchManager: MatchManager
+    @EnvironmentObject private var gameLogic: GameLogic
+
+    @Environment(\.device) private var device
 
     let xSize = UIScreen.main.bounds.width
 
@@ -18,7 +20,7 @@ struct ScoreView: View {
         VStack(spacing: 20) {
             Text("Score")
                 .fontWeight(.semibold)
-                .font(.title3)
+                .font(device == .pad ? .title : .title3)
                 .foregroundStyle(.textTheme)
 
             HStack {

@@ -37,6 +37,17 @@ extension GameLogic {
             return
         }
 
+        guard moveCountO > 0 else {
+            while true {
+                let randomInt = Int.random(in: 0...8)
+                if grid[randomInt] != .X {
+                    makeMove(index: randomInt)
+                }
+                return
+            }
+
+        }
+
         if let bestMove = minimaxMove() {
             print("Minimax move for O")
             makeMove(index: bestMove)
@@ -48,13 +59,14 @@ extension GameLogic {
     /// - Returns: depth for difficulty
     private func maxDepthForDifficulty() -> Int {
         switch difficulty {
-        case .easy:
-            return 1
         case .medium:
-            return 4
+            return 1
         case .hard:
-            return 9
+            return 2
+        default:
+            return 0
         }
+
     }
 
     /// Makes the move based on the index
@@ -76,24 +88,42 @@ extension GameLogic {
     /// Then, define the score if the AI were to put its value in each spot.
     /// - Returns: the move with the highest score
     private func minimaxMove() -> Int? {
+        for index in 0..<grid.count where grid[index] == nil {
+            grid[index] = activePlayer // Simulate AI's move
+            if checkWinnerOnGrid() == activePlayer {
+                grid[index] = nil // Undo move
+                return index // Take the winning move
+            }
+            grid[index] = nil // Undo move
+        }
+
+        // 2. Check if the opponent can win in their next move
+        let opponent = (activePlayer == .O ? Player.X : Player.O)
+        for index in 0..<grid.count where grid[index] == nil {
+            grid[index] = opponent // Simulate opponent's move
+            if checkWinnerOnGrid() == opponent {
+                grid[index] = nil // Undo move
+                return index // Block the opponent's winning move
+            }
+            grid[index] = nil // Undo move
+        }
+
+        // 3. Proceed with Minimax if no immediate win/loss is found
         var bestScore = Int.min
         var move: Int?
+        var alpha = Int.min
+        let beta = Int.max
 
-        // iterate over all possible moves on the grid
         for index in 0..<grid.count where grid[index] == nil {
-            // try both players' symbols at the empty spot
-            for player in [Player.X, Player.O] {
-                grid[index] = player
-                // define the score if that player were to fill the spot
-                let score = minimax(depth: 0, isMaximizing: false)
-                grid[index] = nil
-
-                // update best move if this move has a better score
-                if score > bestScore {
-                    bestScore = score
-                    move = index
-                }
+            grid[index] = activePlayer
+            let score = minimax(depth: 0, isMaximizing: false, alpha: alpha, beta: beta)
+            grid[index] = nil
+            if score > bestScore {
+                bestScore = score
+                move = index
             }
+            alpha = max(alpha, bestScore) // Update alpha
+            if beta <= alpha { break }   // Prune
         }
 
         return move
@@ -104,33 +134,38 @@ extension GameLogic {
     ///   - depth: Tracks how many moves deep the current recursion level is.
     ///   - isMaximizing: A boolean indicating if the current move is for the maximizing player (AI, O) or the minimizing player (human, X)
     /// - Returns: the bestScore after evaluating all possible moves.
-    private func minimax(depth: Int, isMaximizing: Bool) -> Int {
+    private func minimax(depth: Int, isMaximizing: Bool, alpha: Int, beta: Int) -> Int {
         if let winner = checkWinnerOnGrid() {
-            return winner == .O ? 25 - depth : depth - 15
+            return winner == .O ? (10 - depth) : (depth - 10)
         }
 
         if depth >= maxDepthForDifficulty() {
             return 0
         }
 
+        var alpha = alpha
+        var beta = beta
+
         if isMaximizing {
             var bestScore = Int.min
             for index in 0..<grid.count where grid[index] == nil {
                 grid[index] = .O
-                let score = minimax(depth: depth + 1, isMaximizing: false)
-                print("at depth \(depth), for the index \(index), the AI assigns \(score) as score")
+                let score = minimax(depth: depth + 1, isMaximizing: false, alpha: alpha, beta: beta)
                 grid[index] = nil
                 bestScore = max(score, bestScore)
+                alpha = max(alpha, bestScore)
+                if beta <= alpha { break }
             }
             return bestScore
         } else {
             var bestScore = Int.max
             for index in 0..<grid.count where grid[index] == nil {
                 grid[index] = .X
-                let score = minimax(depth: depth + 1, isMaximizing: true)
-                print("at depth \(depth), for the index \(index), the player assigns \(score) as score")
+                let score = minimax(depth: depth + 1, isMaximizing: true, alpha: alpha, beta: beta)
                 grid[index] = nil
                 bestScore = min(score, bestScore)
+                beta = min(beta, bestScore)
+                if beta <= alpha { break }
             }
             return bestScore
         }

@@ -14,6 +14,8 @@ struct TopHUD: View {
     @EnvironmentObject var gameLogic: GameLogic
     @EnvironmentObject var view: Navigation
 
+    @Environment(\.device) private var device
+
     @State private var showAlert = false
     @State private var showWinnerOverlay = false
 
@@ -23,9 +25,13 @@ struct TopHUD: View {
 
         VStack {
 
-            ZStack(alignment: .bottom) {
+            ZStack(alignment: device == .pad ? .top : .bottom) {
                 Rectangle()
                     .foregroundStyle(.backgroundTheme.opacity(0.6))
+                    .if(device == .pad) { rectangle in
+                        rectangle
+                            .padding(.bottom, 130)
+                    }
 
                 HStack(alignment: .center) {
                     Group {
@@ -70,9 +76,11 @@ struct TopHUD: View {
     }
 
     func playerTurnText() -> some View {
-        let displayName = matchManager.currentlyPlaying ? matchManager.localPlayer.displayName : (matchManager.otherPlayer?.displayName ?? "DaveFullHD")
+        let displayName = matchManager.currentlyPlaying ? matchManager.localPlayer.displayName : (matchManager.otherPlayer?.displayName ?? "Unknown")
         return Text("\(displayName)'s turn")
             .fontWeight(.semibold)
+            .font(device == .pad ? .largeTitle : .title)
+
     }
 
     func offlineImageView() -> some View {
@@ -90,6 +98,7 @@ struct TopHUD: View {
         }
         return Text(turnText)
             .fontWeight(.semibold)
+            .font(device == .pad ? .largeTitle : .title)
             .frame(width: xSize * 0.5, height: xSize * 0.2)
     }
 }
@@ -117,6 +126,17 @@ struct TopHUD: View {
 
 #Preview("AI") {
     TopHUD()
+        .environmentObject(MatchManager.shared)
+        .environmentObject(GameLogic.shared)
+        .environmentObject({
+            let navigation = Navigation.shared
+            navigation.value = .bot
+            return navigation
+        }())
+}
+
+#Preview("game") {
+    GameView()
         .environmentObject(MatchManager.shared)
         .environmentObject(GameLogic.shared)
         .environmentObject({

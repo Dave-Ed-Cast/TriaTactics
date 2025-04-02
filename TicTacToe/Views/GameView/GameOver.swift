@@ -12,6 +12,9 @@ struct GameOver: View {
     @ObservedObject var gameLogic: GameLogic
     @Binding var showLottieAnimation: Bool
 
+    @Environment(\.device) private var device
+
+    let size = UIScreen.main.bounds.size
     var body: some View {
         ZStack {
             LottieAnimation(
@@ -31,9 +34,9 @@ struct GameOver: View {
 //                    playbackMode: .playing(.toProgress(1, loopMode: .playOnce)),
 //                    scaleFactor: 1
 //                )
-//                    .background(Color.black.opacity(0.65))
-//                    .cornerRadius(20)
-//                    .padding()
+//                .background(Color.black.opacity(0.65))
+//                .cornerRadius(20)
+//                .padding()
 //            }
         }
         .onAppear {
